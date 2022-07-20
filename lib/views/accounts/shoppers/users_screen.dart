@@ -25,7 +25,7 @@ class _UsersScreenState extends State<UsersScreen>
   void initState() {
     super.initState();
     _tabController = TabController(
-      length: tabs.length,
+      length: 4,
       initialIndex: 0,
       vsync: this,
     );
@@ -38,7 +38,7 @@ class _UsersScreenState extends State<UsersScreen>
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
-            Icons.data_saver_on_outlined,
+            Icons.arrow_back,
             color: kDarkColor,
           ),
           onPressed: () {
@@ -48,7 +48,7 @@ class _UsersScreenState extends State<UsersScreen>
         elevation: 0.0,
         backgroundColor: kBackgroundColor,
         title: const Text(
-          '',
+          '@layi',
           style: TextStyle(
               fontFamily: kDefaultFont,
               fontSize: kNormalText,
@@ -59,54 +59,169 @@ class _UsersScreenState extends State<UsersScreen>
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.settings_outlined,
+              CupertinoIcons.search,
+              color: kIconColor,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.more_vert_outlined,
               color: kIconColor,
             ),
           ),
         ],
       ),
       body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(
-            20.0,
-          ),
-          child: Column(
-            children: <Widget>[
-              Center(
+        child: Column(
+          children: <Widget>[
+            TabBar(
+              tabs: getTabs(size.width / 4),
+              controller: _tabController,
+              indicatorColor: kPrimaryColor,
+              labelColor: kPrimaryColor,
+              labelStyle: const TextStyle(fontFamily: kDefaultFont),
+              isScrollable: true,
+              indicator: const BoxDecoration(
+                  border:
+                      Border(bottom: BorderSide(color: Colors.transparent))),
+              unselectedLabelColor: kLightGrayColor,
+              unselectedLabelStyle: const TextStyle(
+                color: kLightGrayColor,
+              ),
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 1.0,
+            ),
+            Container(
+              width: double.infinity,
+              height: 1.0,
+              decoration: const BoxDecoration(color: kLightGrayColor),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 5.0),
-                      padding: const EdgeInsets.all(5.0),
-                      //width: size.height * 0.025,
-                      height: size.height * 0.150,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: ClipOval(
-                        child: Image.asset(
-                          AssetsPath.profileDp,
-                          fit: BoxFit.cover,
+                    Stack(
+                      alignment: Alignment.center,
+                      clipBehavior: Clip.none,
+                      children: <Widget>[
+                        // background image and bottom contents
+                        Container(
+                          height: 150.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: kProfileBannerColor,
+                            border: Border.all(color: Colors.white, width: 5.0),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              CupertinoIcons.cloud_download,
+                              color: kPlaceholderColor,
+                            ),
+                          ),
                         ),
-                      ),
+                        Positioned(
+                          top:
+                              120.0, // (background container size) - (circle height / 2)
+                          left: 20.0,
+                          child: Container(
+                            height: 80.0,
+                            width: 80.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: kProfileBannerColor,
+                              border:
+                                  Border.all(color: Colors.white, width: 5.0),
+                            ),
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 15.0),
+                              child: const Center(
+                                child: Icon(
+                                  CupertinoIcons.cloud_download,
+                                  color: kPlaceholderColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Ashfak Sayem',
-                      style: TextStyle(
-                        fontSize: size.height * 0.025,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: kDefaultFont,
-                        color: kPrimaryColor,
-                      ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(top: 5.0, left: 105.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Akinpelumi Akinlade',
+                                style: TextStyle(
+                                  fontSize: size.height * 0.0120,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: kDefaultFont,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                              Text(
+                                '@layi',
+                                style: TextStyle(
+                                  fontSize: size.height * 0.0125,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: kDefaultFont,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        Container(
+                          margin: const EdgeInsets.only(top: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: size.width * 0.100,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5.0, vertical: 5.0),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: kPrimaryColor,
+                                      width: 1.0,
+                                    ),
+                                    shape: BoxShape.circle,
+                                    color: kPrimaryColor),
+                                child: const Icon(
+                                  CupertinoIcons.chat_bubble_fill,
+                                  size: 15,
+                                  color: kWhiteColor,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+                              MiniButton(
+                                width: size.width * 0.200,
+                                size: size,
+                                iconPath: AssetsPath.followIcon,
+                                title: 'Follow',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           FollowerCounter(
@@ -115,8 +230,8 @@ class _UsersScreenState extends State<UsersScreen>
                             count: '350',
                           ),
                           Container(
-                            margin:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            // margin:
+                            //     const EdgeInsets.symmetric(horizontal: 10.0),
                             height: 40.0,
                             width: 2.0,
                             color: kLineColor,
@@ -126,46 +241,29 @@ class _UsersScreenState extends State<UsersScreen>
                             title: 'Followers',
                             count: '346',
                           ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          MiniButton(
+                          Container(
+                            // margin:
+                            //     const EdgeInsets.symmetric(horizontal: 10.0),
+                            height: 40.0,
+                            width: 2.0,
+                            color: kLineColor,
+                          ),
+                          FollowerCounter(
                             size: size,
-                            iconPath: AssetsPath.followIcon,
-                            title: 'Follow',
+                            title: 'Thrift',
+                            count: '4',
                           ),
-                          const SizedBox(
-                            width: 20.0,
+                          Container(
+                            // margin:
+                            //     const EdgeInsets.symmetric(horizontal: 10.0),
+                            height: 40.0,
+                            width: 2.0,
+                            color: kLineColor,
                           ),
-                          CircleButton(
-                            bgColor: kPrimaryColor,
-                            iconColor: kWhiteColor,
-                            iconData: CupertinoIcons.chat_bubble_fill,
-                            pressed: () {},
-                          ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          CircleButton(
-                            bgColor: kPrimaryColor,
-                            iconColor: kWhiteColor,
-                            iconData: CupertinoIcons.video_camera_solid,
-                            pressed: () {},
-                          ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          CircleButton(
-                            bgColor: kPrimaryColor,
-                            iconColor: kWhiteColor,
-                            iconData: CupertinoIcons.phone_fill,
-                            pressed: () {},
+                          FollowerCounter(
+                            size: size,
+                            title: 'Events',
+                            count: '2',
                           ),
                         ],
                       ),
@@ -173,26 +271,11 @@ class _UsersScreenState extends State<UsersScreen>
                   ],
                 ),
               ),
-              TabBar(
-                tabs: tabs,
-                controller: _tabController,
-                indicatorColor: kPrimaryColor,
-                labelColor: kPrimaryColor,
-                labelStyle: const TextStyle(fontFamily: kDefaultFont),
-                isScrollable: true,
-                indicator: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: kPrimaryColor))),
-                unselectedLabelColor: kLightGrayColor,
-                unselectedLabelStyle: const TextStyle(
-                  color: kLightGrayColor,
-                ),
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 1.0,
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Flexible(
+            ),
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 20.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +288,7 @@ class _UsersScreenState extends State<UsersScreen>
                           color: kPrimaryColor,
                           fontFamily: kDefaultFont,
                           fontWeight: FontWeight.w500,
-                          fontSize: size.height * 0.0225,
+                          fontSize: size.height * 0.0200,
                         ),
                       ),
                     ),
@@ -217,7 +300,7 @@ class _UsersScreenState extends State<UsersScreen>
                           color: kPrimaryColor,
                           fontFamily: kDefaultFont,
                           fontWeight: FontWeight.normal,
-                          fontSize: size.height * 0.018,
+                          fontSize: size.height * 0.0180,
                         ),
                         children: <TextSpan>[
                           TextSpan(
@@ -226,7 +309,7 @@ class _UsersScreenState extends State<UsersScreen>
                               color: kPurpleColor,
                               fontFamily: kDefaultFont,
                               fontWeight: FontWeight.w600,
-                              fontSize: size.height * 0.020,
+                              fontSize: size.height * 0.0200,
                               decoration: TextDecoration.underline,
                             ),
                           ),
@@ -234,25 +317,64 @@ class _UsersScreenState extends State<UsersScreen>
                       ),
                     ),
                     const SizedBox(
-                      height: 10.0,
+                      height: 20.0,
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Interests',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontFamily: kDefaultFont,
-                          fontWeight: FontWeight.w500,
-                          fontSize: size.height * 0.0225,
+                    Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Interests',
+                            style: TextStyle(
+                              color: kPrimaryColor,
+                              fontFamily: kDefaultFont,
+                              fontWeight: FontWeight.w500,
+                              fontSize: size.height * 0.0200,
+                            ),
+                          ),
                         ),
-                      ),
+                        const Spacer(),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15.0,
+                            vertical: 6.0,
+                          ),
+                          decoration: BoxDecoration(
+                            color: kPurpleColor.withOpacity(0.10),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                AssetsPath.pencilIcon,
+                                color: kPurpleColor,
+                                height: 25.0,
+                                width: 25.0,
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              Text(
+                                'CHANGE',
+                                style: TextStyle(
+                                  color: kPurpleColor,
+                                  fontFamily: kDefaultFont,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: size.height * 0.0150,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

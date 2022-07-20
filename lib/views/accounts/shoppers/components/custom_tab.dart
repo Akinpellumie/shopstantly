@@ -1,19 +1,47 @@
 import 'package:flutter/material.dart';
 
-List<Widget> tabs = [
-    Tab(
-      text: 'ABOUTS',
+List<Widget> getTabs(double _width) {
+  List<Widget> tabs = [];
+
+  var wid1 = SizedBox(
+    width: _width,
+    child: const Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        text: 'Info',
+      ),
     ),
-    Tab(
-      text: 'POSTS',
+  );
+  var wid2 = SizedBox(
+    width: _width,
+    child: const Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        text: 'Thrift',
+      ),
     ),
-    Tab(
-      text: 'THRIFT',
+  );
+  var wid3 = SizedBox(
+    width: _width,
+    child: const Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        text: 'Wishlist',
+      ),
     ),
-    Tab(
-      text: 'WISHLIST',
+  );
+  var wid4 = SizedBox(
+    width: _width,
+    child: const Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        text: 'Events',
+      ),
     ),
-    Tab(
-      text: 'EVENTS',
-    ),
-  ];
+  );
+  tabs.add(wid1);
+  tabs.add(wid2);
+  tabs.add(wid3);
+  tabs.add(wid4);
+  return tabs;
+}

@@ -9,10 +9,12 @@ class MiniButton extends StatelessWidget {
   const MiniButton({
     Key? key,
     required this.size,
+    required this.width,
     required this.title,
     required this.iconPath,
   }) : super(key: key);
 
+  final double width;
   final Size size;
   final String title;
   final String iconPath;
@@ -20,14 +22,14 @@ class MiniButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: size.width * 0.35,
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+      width: width,
+      padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
       decoration: BoxDecoration(
         border: Border.all(
           color: kPrimaryColor,
           width: 1.0,
         ),
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(30.0),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,8 +38,8 @@ class MiniButton extends StatelessWidget {
           SvgPicture.asset(
             iconPath,
             color: kPrimaryColor,
-            height: 25.0,
-            width: 25.0,
+            height: 20.0,
+            width: 20.0,
           ),
           const SizedBox(
             width: 5.0,

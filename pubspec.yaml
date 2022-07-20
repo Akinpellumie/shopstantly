@@ -44,6 +44,10 @@ dependencies:
   unicons: ^2.1.0
   country_picker: ^2.0.15
   dotted_border: ^2.0.0+2
+  animated_bottom_navigation_bar: ^1.0.1
+  circular_reveal_animation: ^2.0.1
+  auto_size_text: ^3.0.0
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:

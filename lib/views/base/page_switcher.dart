@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
+import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
 import 'package:shopstantly_app/views/accounts/shoppers/owners_screen.dart';
 import 'package:shopstantly_app/views/accounts/shoppers/users_screen.dart';
 import 'package:shopstantly_app/views/dashboard/dashboard_screen.dart';
 import 'package:shopstantly_app/views/events/create_event_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
+import 'package:shopstantly_app/views/post/create_post_screen.dart';
 import 'package:shopstantly_app/views/shop/shop_screen.dart';
 import 'package:shopstantly_app/views/thrift/post_thrift_screen.dart';
 
@@ -50,7 +52,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
             ShopScreen(),
             ManageScreen(),
             DashboardScreen(),
-            CreateEventScreen(),
+            BusinessAccountScreen(),
           ],
         ),
         bottomNavigationBar: WaterDropNavBar(

@@ -55,7 +55,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                       color: kProfileBannerColor,
                       border: Border.all(color: Colors.white, width: 5.0),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Icon(
                         CupertinoIcons.cloud_download,
                         color: kPlaceholderColor,

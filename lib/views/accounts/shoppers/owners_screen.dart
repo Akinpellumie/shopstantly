@@ -24,7 +24,7 @@ class _OwnersScreenState extends State<OwnersScreen>
   void initState() {
     super.initState();
     _tabController = TabController(
-      length: tabs.length,
+      length: 4,
       initialIndex: 0,
       vsync: this,
     );
@@ -35,24 +35,33 @@ class _OwnersScreenState extends State<OwnersScreen>
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: kDarkColor,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back,
+        //     color: kDarkColor,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
+        leadingWidth: 0.0,
         elevation: 0.0,
         backgroundColor: kBackgroundColor,
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-              fontFamily: kDefaultFont,
-              fontSize: kNormalText,
+        title: Row(
+          children: const <Widget>[
+            Text(
+              'Profile',
+              style: TextStyle(
+                  fontFamily: kDefaultFont,
+                  fontSize: kNormalText,
+                  color: kPrimaryTextColor,
+                  fontWeight: FontWeight.w500),
+            ),
+            Icon(
+              Icons.keyboard_arrow_down,
               color: kPrimaryTextColor,
-              fontWeight: FontWeight.w500),
+            ),
+          ],
         ),
         actions: [
           IconButton(
@@ -72,47 +81,156 @@ class _OwnersScreenState extends State<OwnersScreen>
         ],
       ),
       body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(
-            20.0,
-          ),
-          child: Column(
-            children: <Widget>[
-              Center(
+        child: Column(
+          children: <Widget>[
+            TabBar(
+              tabs: getTabs(size.width / 4),
+              controller: _tabController,
+              indicatorColor: kPrimaryColor,
+              labelColor: kPrimaryColor,
+              labelStyle: const TextStyle(fontFamily: kDefaultFont),
+              isScrollable: true,
+              indicator: const BoxDecoration(
+                  border:
+                      Border(bottom: BorderSide(color: Colors.transparent))),
+              unselectedLabelColor: kLightGrayColor,
+              unselectedLabelStyle: const TextStyle(
+                color: kLightGrayColor,
+              ),
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 1.0,
+            ),
+            Container(
+              width: double.infinity,
+              height: 1.0,
+              decoration: const BoxDecoration(color: kLightGrayColor),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 5.0),
-                      padding: const EdgeInsets.all(5.0),
-                      //width: size.height * 0.025,
-                      height: size.height * 0.150,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: ClipOval(
-                        child: Image.asset(
-                          AssetsPath.profileDp,
-                          fit: BoxFit.cover,
+                    Stack(
+                      alignment: Alignment.center,
+                      clipBehavior: Clip.none,
+                      children: <Widget>[
+                        // background image and bottom contents
+                        Container(
+                          height: 150.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: kProfileBannerColor,
+                            border: Border.all(color: Colors.white, width: 5.0),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              CupertinoIcons.cloud_download,
+                              color: kPlaceholderColor,
+                            ),
+                          ),
                         ),
-                      ),
+                        Positioned(
+                          top:
+                              120.0, // (background container size) - (circle height / 2)
+                          left: 20.0,
+                          child: Container(
+                            height: 80.0,
+                            width: 80.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: kProfileBannerColor,
+                              border:
+                                  Border.all(color: Colors.white, width: 5.0),
+                            ),
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 15.0),
+                              child: const Center(
+                                child: Icon(
+                                  CupertinoIcons.cloud_download,
+                                  color: kPlaceholderColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Ashfak Sayem',
-                      style: TextStyle(
-                        fontSize: size.height * 0.025,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: kDefaultFont,
-                        color: kPrimaryColor,
-                      ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(top: 5.0, left: 105.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Akinpelumi Akinlade',
+                                style: TextStyle(
+                                  fontSize: size.height * 0.0120,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: kDefaultFont,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                              Text(
+                                '@layi',
+                                style: TextStyle(
+                                  fontSize: size.height * 0.0125,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: kDefaultFont,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        Container(
+                          margin: const EdgeInsets.only(top: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: size.width * 0.100,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5.0, vertical: 5.0),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: kPrimaryColor,
+                                      width: 1.0,
+                                    ),
+                                    shape: BoxShape.circle,
+                                    color: kPrimaryColor),
+                                child: SvgPicture.asset(
+                                  AssetsPath.editIcon,
+                                  color: kWhiteColor,
+                                  height: 15.0,
+                                  width: 15.0,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+                              MiniButton(
+                                width: size.width * 0.200,
+                                size: size,
+                                iconPath: AssetsPath.walletIcon,
+                                title: 'Wallet',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           FollowerCounter(
@@ -121,8 +239,8 @@ class _OwnersScreenState extends State<OwnersScreen>
                             count: '350',
                           ),
                           Container(
-                            margin:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            // margin:
+                            //     const EdgeInsets.symmetric(horizontal: 10.0),
                             height: 40.0,
                             width: 2.0,
                             color: kLineColor,
@@ -132,27 +250,29 @@ class _OwnersScreenState extends State<OwnersScreen>
                             title: 'Followers',
                             count: '346',
                           ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          MiniButton(
-                            size: size,
-                            iconPath: AssetsPath.editIcon,
-                            title: 'Edit Profile',
+                          Container(
+                            // margin:
+                            //     const EdgeInsets.symmetric(horizontal: 10.0),
+                            height: 40.0,
+                            width: 2.0,
+                            color: kLineColor,
                           ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          MiniButton(
+                          FollowerCounter(
                             size: size,
-                            iconPath: AssetsPath.walletIcon,
-                            title: 'Wallet',
+                            title: 'Thrift',
+                            count: '4',
+                          ),
+                          Container(
+                            // margin:
+                            //     const EdgeInsets.symmetric(horizontal: 10.0),
+                            height: 40.0,
+                            width: 2.0,
+                            color: kLineColor,
+                          ),
+                          FollowerCounter(
+                            size: size,
+                            title: 'Events',
+                            count: '2',
                           ),
                         ],
                       ),
@@ -160,26 +280,11 @@ class _OwnersScreenState extends State<OwnersScreen>
                   ],
                 ),
               ),
-              TabBar(
-                tabs: tabs,
-                controller: _tabController,
-                indicatorColor: kPrimaryColor,
-                labelColor: kPrimaryColor,
-                labelStyle: const TextStyle(fontFamily: kDefaultFont),
-                isScrollable: true,
-                indicator: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: kPrimaryColor))),
-                unselectedLabelColor: kLightGrayColor,
-                unselectedLabelStyle: const TextStyle(
-                  color: kLightGrayColor,
-                ),
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 1.0,
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Flexible(
+            ),
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 20.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +297,7 @@ class _OwnersScreenState extends State<OwnersScreen>
                           color: kPrimaryColor,
                           fontFamily: kDefaultFont,
                           fontWeight: FontWeight.w500,
-                          fontSize: size.height * 0.0225,
+                          fontSize: size.height * 0.0200,
                         ),
                       ),
                     ),
@@ -204,7 +309,7 @@ class _OwnersScreenState extends State<OwnersScreen>
                           color: kPrimaryColor,
                           fontFamily: kDefaultFont,
                           fontWeight: FontWeight.normal,
-                          fontSize: size.height * 0.018,
+                          fontSize: size.height * 0.0180,
                         ),
                         children: <TextSpan>[
                           TextSpan(
@@ -213,7 +318,7 @@ class _OwnersScreenState extends State<OwnersScreen>
                               color: kPurpleColor,
                               fontFamily: kDefaultFont,
                               fontWeight: FontWeight.w600,
-                              fontSize: size.height * 0.020,
+                              fontSize: size.height * 0.0200,
                               decoration: TextDecoration.underline,
                             ),
                           ),
@@ -221,7 +326,7 @@ class _OwnersScreenState extends State<OwnersScreen>
                       ),
                     ),
                     const SizedBox(
-                      height: 10.0,
+                      height: 20.0,
                     ),
                     Row(
                       children: [
@@ -233,7 +338,7 @@ class _OwnersScreenState extends State<OwnersScreen>
                               color: kPrimaryColor,
                               fontFamily: kDefaultFont,
                               fontWeight: FontWeight.w500,
-                              fontSize: size.height * 0.0225,
+                              fontSize: size.height * 0.0200,
                             ),
                           ),
                         ),
@@ -277,8 +382,8 @@ class _OwnersScreenState extends State<OwnersScreen>
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

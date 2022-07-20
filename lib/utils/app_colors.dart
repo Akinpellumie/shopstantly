@@ -23,3 +23,7 @@ const kPostEntryBgColor = Color.fromRGBO(245, 245, 245, 0.75);
 const kSecondaryTextColor = Color(0xFF747688);
 const kPurpleColor = Color(0xFF5669FF);
 const kLightPurpleColor = Color(0xFFD7D9E8);
+const kOrangeColor = Color(0xFFFBBE47);
+const kPrimaryOrangeColor = Color(0xFFEC994B);
+const kSecondaryOrangeColor = Color(0xFFD48C4A);
+const kTabIconBgColor = Color(0xFFF3F5F7);
