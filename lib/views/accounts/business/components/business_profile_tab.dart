@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
+import 'package:shopstantly_app/utils/dimensions.dart';
 
 List<Widget> getBusinessTabs(double _width) {
   List<Widget> tabs = [];
@@ -154,5 +155,99 @@ List<Widget> getProductListTabs(int index) {
   tabs.add(wid4);
   tabs.add(wid5);
   tabs.add(wid6);
+  return tabs;
+}
+
+List<Widget> getProductCategoryTabs(int index) {
+  List<Widget> tabs = [];
+
+  var wid1 = SizedBox(
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        iconMargin: const EdgeInsets.only(bottom: 5.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+          decoration: BoxDecoration(
+              color: index == 0 ? kPrimaryColor : kCategoryTabColor),
+          child: Text(
+            'Category A',
+            style: TextStyle(
+              color: index == 0 ? kWhiteColor : kPlaceholderColor,
+              fontFamily: kDefaultFont,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  var wid2 = SizedBox(
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        iconMargin: const EdgeInsets.only(bottom: 5.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+          decoration: BoxDecoration(
+              color: index == 1 ? kPrimaryColor : kCategoryTabColor,),
+              child: Text(
+            'Category B',
+            style: TextStyle(
+                color: index == 1 ? kWhiteColor : kPlaceholderColor,
+                fontFamily: kDefaultFont,
+                fontWeight: FontWeight.normal),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  var wid3 = SizedBox(
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        iconMargin: const EdgeInsets.only(bottom: 5.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+          decoration: BoxDecoration(
+              color: index == 2 ? kPrimaryColor : kCategoryTabColor,),
+              child: Text(
+            'Category C',
+            style: TextStyle(
+                color: index == 2 ? kWhiteColor : kPlaceholderColor,
+                fontFamily: kDefaultFont,
+                fontWeight: FontWeight.normal),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  var wid4 = SizedBox(
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Tab(
+        iconMargin: const EdgeInsets.only(bottom: 5.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+          decoration: BoxDecoration(
+              color: index == 3 ? kPrimaryColor : kCategoryTabColor,),
+              child: Text(
+            'Category D',
+            style: TextStyle(
+                color: index == 3 ? kWhiteColor : kPlaceholderColor,
+                fontFamily: kDefaultFont,
+                fontWeight: FontWeight.normal),
+          ),
+        ),
+      ),
+    ),
+  );
+  tabs.add(wid1);
+  tabs.add(wid2);
+  tabs.add(wid3);
+  tabs.add(wid4);
   return tabs;
 }

@@ -1,22 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:shopstantly_app/views/accounts/business/components/business_profile_tab.dart';
-import 'package:shopstantly_app/views/accounts/business/components/product_view.dart';
-import 'package:shopstantly_app/views/accounts/components/comment_widget.dart';
 
-import '../../../helpers/theme_helper.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
-import '../components/circle_icon_button.dart';
-import '../components/user_profile_widget.dart';
-import '../shoppers/components/custom_tab.dart';
-import '../shoppers/components/follower_counter.dart';
-import '../shoppers/components/mini_button.dart';
-import 'components/info_view.dart';
+import 'widgets/event_view.dart';
+import 'widgets/info_view.dart';
+import 'widgets/post_view.dart';
+import 'widgets/product_view.dart';
 
 class BusinessAccountScreen extends StatefulWidget {
   const BusinessAccountScreen({Key? key}) : super(key: key);
@@ -124,6 +116,14 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen>
             Visibility(
               visible: selectedIndex == 1,
               child: const ProductView(),
+            ),
+            Visibility(
+              visible: selectedIndex == 2,
+              child: const PostView(),
+            ),
+            Visibility(
+              visible: selectedIndex == 3,
+              child: const EventView(),
             ),
           ],
         ),

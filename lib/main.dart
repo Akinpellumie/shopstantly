@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/views/accounts/business/product_detail_screen.dart';
 import 'package:shopstantly_app/views/activity/activity_screen.dart';
 import 'package:shopstantly_app/views/auth/login/login_screen.dart';
 import 'package:shopstantly_app/views/auth/register/otp_screen.dart';
@@ -125,6 +126,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/mainPage":
       return MaterialPageRoute(builder: (BuildContext context) {
         return const PageSwitcher();
+      });
+    case "/productDetail":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return const ProductDetailScreen();
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {

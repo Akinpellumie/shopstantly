@@ -33,6 +33,11 @@ class AssetsPath {
   static const String imageDp = 'assets/images/imageDp.png';
   static const String food = 'assets/images/food.png';
   static const String heels = 'assets/images/heels.png';
+  static const String image1 = 'assets/images/img1.png';
+  static const String image2 = 'assets/images/img2.png';
+  static const String flyer = 'assets/images/flyer.png';
+  static const String sofast = 'assets/icons/sofast.png';
+  static const String wishlist = 'assets/icons/wishlist.svg';
   static const IconData email = IconData(0xe22a, fontFamily: 'MaterialIcons');
   //static const IconData eye = IconData(0xf424, fontFamily: iconFont, fontPackage: iconFontPackage);
 
