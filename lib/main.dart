@@ -5,6 +5,8 @@ import 'package:shopstantly_app/views/auth/login/login_screen.dart';
 import 'package:shopstantly_app/views/auth/register/otp_screen.dart';
 import 'package:shopstantly_app/views/auth/register/register_screen.dart';
 import 'package:shopstantly_app/views/base/page_switcher.dart';
+import 'package:shopstantly_app/views/events/event_detail_screen.dart';
+import 'package:shopstantly_app/views/post/blog_post_screen.dart';
 import 'package:shopstantly_app/views/profile/add_photo_screen.dart';
 import 'package:shopstantly_app/views/profile/choose_location_screen.dart';
 import 'package:shopstantly_app/views/profile/profile_complete_screen.dart';
@@ -130,6 +132,14 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/productDetail":
       return MaterialPageRoute(builder: (BuildContext context) {
         return const ProductDetailScreen();
+      });
+    case "/blogPost":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return const BlogPostScreen();
+      });
+    case "/eventDetail":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return const EventDetailScreen();
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {

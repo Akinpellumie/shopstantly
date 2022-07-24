@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopstantly_app/views/accounts/business/components/business_profile_tab.dart';
+import 'package:shopstantly_app/views/accounts/social/components/social_profile_tab.dart';
+import 'package:shopstantly_app/views/accounts/social/widgets/affiliate_view.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
@@ -8,16 +9,16 @@ import '../../../utils/dimensions.dart';
 import 'widgets/event_view.dart';
 import 'widgets/info_view.dart';
 import 'widgets/post_view.dart';
-import 'widgets/product_view.dart';
+import 'widgets/merchandize_view.dart';
 
-class BusinessAccountScreen extends StatefulWidget {
-  const BusinessAccountScreen({Key? key}) : super(key: key);
+class SocialAccountScreen extends StatefulWidget {
+  const SocialAccountScreen({Key? key}) : super(key: key);
 
   @override
-  State<BusinessAccountScreen> createState() => _BusinessAccountScreenState();
+  State<SocialAccountScreen> createState() => _SocialAccountScreenState();
 }
 
-class _BusinessAccountScreenState extends State<BusinessAccountScreen>
+class _SocialAccountScreenState extends State<SocialAccountScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   //late double? _ratingValue;
@@ -27,7 +28,7 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen>
   void initState() {
     super.initState();
     _tabController = TabController(
-      length: 4,
+      length: 5,
       initialIndex: 0,
       vsync: this,
     );
@@ -83,7 +84,7 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen>
           children: <Widget>[
             TabBar(
               padding: const EdgeInsets.only(left: 10.0),
-              tabs: getBusinessTabs(size.width / 4),
+              tabs: getSocialTabs(size.width / 5),
               controller: _tabController,
               indicatorColor: kPrimaryColor,
               labelColor: kPrimaryColor,
@@ -115,14 +116,18 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen>
             ),
             Visibility(
               visible: selectedIndex == 1,
-              child: const ProductView(),
+              child: const MerchandizeView(),
             ),
             Visibility(
               visible: selectedIndex == 2,
-              child: const PostView(),
+              child: const AffiliateView(),
             ),
             Visibility(
               visible: selectedIndex == 3,
+              child: const PostView(),
+            ),
+            Visibility(
+              visible: selectedIndex == 4,
               child: const EventView(),
             ),
           ],

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class BarItem {
   /// Selected or active icon must be filled icon and complementary to inactive icon.

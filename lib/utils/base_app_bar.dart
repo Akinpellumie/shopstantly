@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
-import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {

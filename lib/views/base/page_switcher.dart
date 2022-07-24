@@ -1,20 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
+import 'package:shopstantly_app/utils/assets_path.dart';
+import 'package:shopstantly_app/utils/custom_router.dart';
 import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
-import 'package:shopstantly_app/views/accounts/shoppers/owners_screen.dart';
-import 'package:shopstantly_app/views/accounts/shoppers/users_screen.dart';
-import 'package:shopstantly_app/views/dashboard/dashboard_screen.dart';
-import 'package:shopstantly_app/views/events/create_event_screen.dart';
+import 'package:shopstantly_app/views/accounts/social/social_account_screen.dart';
+import 'package:shopstantly_app/views/auth/login/login_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
-import 'package:shopstantly_app/views/post/create_post_screen.dart';
 import 'package:shopstantly_app/views/shop/shop_screen.dart';
-import 'package:shopstantly_app/views/thrift/post_thrift_screen.dart';
 
-import '../../utils/assets_path.dart';
-import '../../widgets/bottom_nav/bar_item.dart';
-import '../../widgets/bottom_nav/build_nav_bar.dart';
+import 'fab_bottom_app_bar.dart';
 
 class PageSwitcher extends StatefulWidget {
   const PageSwitcher({Key? key}) : super(key: key);
@@ -26,6 +23,19 @@ class PageSwitcher extends StatefulWidget {
 class _PageSwitcherState extends State<PageSwitcher> {
   final Color navigationBarColor = kBackgroundColor;
   int selectedIndex = 0;
+  String fabIcon = AssetsPath.bagShopePlus;
+  void _selectedTab(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  void _selectedFab(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   late PageController pageController;
   @override
   void initState() {
@@ -43,23 +53,26 @@ class _PageSwitcherState extends State<PageSwitcher> {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Scaffold(
-        backgroundColor: Colors.grey,
+        //backgroundColor: Colors.transparent,
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: const <Widget>[
             HomeScreen(),
             ShopScreen(),
-            ManageScreen(),
-            DashboardScreen(),
+            //ManageScreen(),
+            SocialAccountScreen(),
             BusinessAccountScreen(),
+            LoginScreen(),
           ],
         ),
-        bottomNavigationBar: WaterDropNavBar(
-          inactiveIconColor: kLightGrayColor,
-          waterDropColor: kPrimaryColor,
+        bottomNavigationBar: FABBottomAppBar(
+          centerItemText: 'Plus',
           backgroundColor: kBackgroundColor,
-          onItemSelected: (int index) {
+          color: kPlaceholderColor,
+          selectedColor: kPrimaryColor,
+          notchedShape: const CircularNotchedRectangle(),
+          onTabSelected: (index) {
             setState(() {
               selectedIndex = index;
             });
@@ -67,33 +80,77 @@ class _PageSwitcherState extends State<PageSwitcher> {
                 duration: const Duration(milliseconds: 400),
                 curve: Curves.easeOutQuad);
           },
-          selectedIndex: selectedIndex,
-          barItems: <BarItem>[
-            BarItem(
-                filledIcon: AssetsPath.homeIcon,
-                outlinedIcon: AssetsPath.homeIcon,
-                title: 'Home'),
-            BarItem(
-              filledIcon: AssetsPath.shopIcon,
-              outlinedIcon: AssetsPath.shopIcon,
-              title: 'Shops',
-            ),
-            BarItem(
-              filledIcon: AssetsPath.manageIcon,
-              outlinedIcon: AssetsPath.manageIcon,
-              title: 'Manage',
-            ),
-            BarItem(
-              filledIcon: AssetsPath.dashIcon,
-              outlinedIcon: AssetsPath.dashIcon,
-              title: 'Dashboard',
-            ),
-            BarItem(
-                filledIcon: AssetsPath.profileIcon,
-                outlinedIcon: AssetsPath.profileIcon,
-                title: 'Profile'),
+          items: [
+            FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
+            FABBottomAppBarItem(iconData: Icons.shopping_cart, text: 'Manage'),
+            FABBottomAppBarItem(
+                iconData: Icons.grid_view_rounded, text: 'Dashboard'),
+            FABBottomAppBarItem(
+                iconData: Icons.account_circle, text: 'Profile'),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // floatingActionButton: _buildFab(
+        //     context),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: kBackgroundColor,
+          child: Image.asset(
+            selectedIndex == 4 ? AssetsPath.bagShop : AssetsPath.bagShopePlus,
+            fit: BoxFit.contain,
+            width: 30.0,
+            height: 30.0,
+          ),
+          onPressed: () {
+            setState(() {
+              selectedIndex == 4;
+              fabIcon = AssetsPath.bagShop;
+              //CustomRouter.nextScreen(context, '/login');
+            });
+            pageController.animateToPage(4,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeOutQuad);
+          },
+        ),
+        //   bottomNavigationBar: WaterDropNavBar(
+        //     inactiveIconColor: kLightGrayColor,
+        //     waterDropColor: kPrimaryColor,
+        //     backgroundColor: kBackgroundColor,
+        //     onItemSelected: (int index) {
+        //       setState(() {
+        //         selectedIndex = index;
+        //       });
+        //       pageController.animateToPage(selectedIndex,
+        //           duration: const Duration(milliseconds: 400),
+        //           curve: Curves.easeOutQuad);
+        //     },
+        //     selectedIndex: selectedIndex,
+        //     barItems: <BarItem>[
+        //       BarItem(
+        //           filledIcon: AssetsPath.homeIcon,
+        //           outlinedIcon: AssetsPath.homeIcon,
+        //           title: 'Home'),
+        //       BarItem(
+        //         filledIcon: AssetsPath.shopIcon,
+        //         outlinedIcon: AssetsPath.shopIcon,
+        //         title: 'Shops',
+        //       ),
+        //       BarItem(
+        //         filledIcon: AssetsPath.manageIcon,
+        //         outlinedIcon: AssetsPath.manageIcon,
+        //         title: 'Manage',
+        //       ),
+        //       BarItem(
+        //         filledIcon: AssetsPath.dashIcon,
+        //         outlinedIcon: AssetsPath.dashIcon,
+        //         title: 'Dashboard',
+        //       ),
+        //       BarItem(
+        //           filledIcon: AssetsPath.profileIcon,
+        //           outlinedIcon: AssetsPath.profileIcon,
+        //           title: 'Profile'),
+        //     ],
+        //   ),
+        // ),
       ),
     );
   }

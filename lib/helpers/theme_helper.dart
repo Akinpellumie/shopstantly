@@ -216,7 +216,11 @@ class ThemeHelper {
   }
 
   InputDecoration chatEntryInputDecoration(
-      [String lableText = "", String hintText = ""]) {
+      [String lableText = "",
+      String hintText = "",
+      Widget? _suffixIcon,
+      Widget? _prefixIcon,
+      double iconSize = 20]) {
     return InputDecoration(
       //iconColor: kWhiteColor,
       labelText: lableText,
@@ -225,17 +229,23 @@ class ThemeHelper {
       hintText: hintText,
       hintStyle:
           const TextStyle(color: kPlaceholderColor, fontFamily: kDefaultFont),
-      fillColor: kBackgroundColor,
+      fillColor: kPrimaryColor,
       filled: true,
+      suffixIconConstraints:
+          BoxConstraints(minHeight: iconSize, minWidth: iconSize),
+      prefixIconConstraints:
+          BoxConstraints(minHeight: iconSize, minWidth: iconSize),
+      suffixIcon: _suffixIcon,
+      prefixIcon: _prefixIcon,
       contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
-        borderSide: BorderSide(color: kPrimaryColor.withOpacity(0.5)),
+        borderSide: const BorderSide(color: Colors.transparent),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
         borderSide: const BorderSide(
-          color: kEntryBorderColor,
+          color: Colors.transparent,
           width: 1.0,
         ),
       ),

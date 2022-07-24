@@ -38,6 +38,11 @@ class AssetsPath {
   static const String flyer = 'assets/images/flyer.png';
   static const String sofast = 'assets/icons/sofast.png';
   static const String wishlist = 'assets/icons/wishlist.svg';
+  static const String more = 'assets/icons/more.svg';
+  static const String send = 'assets/icons/send.svg';
+  static const String plusIcon = 'assets/icons/plusIcon.svg';
+  static const String bagShop = 'assets/icons/bag.png';
+  static const String bagShopePlus = 'assets/icons/bagAccent.png';
   static const IconData email = IconData(0xe22a, fontFamily: 'MaterialIcons');
   //static const IconData eye = IconData(0xf424, fontFamily: iconFont, fontPackage: iconFontPackage);
 

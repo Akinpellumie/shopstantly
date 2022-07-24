@@ -6,17 +6,17 @@ import 'package:sticky_headers/sticky_headers.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/custom_router.dart';
 import '../../../../utils/dimensions.dart';
-import '../components/business_profile_tab.dart';
-import '../components/product_card.dart';
+import '../components/social_profile_tab.dart';
+import '../components/merchandize_card.dart';
 
-class ProductView extends StatefulWidget {
-  const ProductView({Key? key}) : super(key: key);
+class MerchandizeView extends StatefulWidget {
+  const MerchandizeView({Key? key}) : super(key: key);
 
   @override
-  State<ProductView> createState() => _ProductViewState();
+  State<MerchandizeView> createState() => _MerchandizeViewState();
 }
 
-class _ProductViewState extends State<ProductView>
+class _MerchandizeViewState extends State<MerchandizeView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int selectedIndex = 0;
@@ -293,7 +293,7 @@ class _ProductViewState extends State<ProductView>
                           crossAxisCount: 2,
                           padding: const EdgeInsets.only(left: 20.0),
                           children: generateNumbers().map((int i) {
-                            return ProductCard(
+                            return MerchandizeCard(
                               size: size,
                               onTapped: () => CustomRouter.nextScreen(
                                   context, "/productDetail"),

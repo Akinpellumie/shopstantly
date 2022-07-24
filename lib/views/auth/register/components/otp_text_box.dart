@@ -31,7 +31,7 @@ class _OtpTextBoxState extends State<OtpTextBox> {
             if (value.length == 1 && widget.last == false) {
               FocusScope.of(context).nextFocus();
             }
-            if (value.length == 0 && widget.first == false) {
+            if (value.isEmpty && widget.first == false) {
               FocusScope.of(context).previousFocus();
             }
           },

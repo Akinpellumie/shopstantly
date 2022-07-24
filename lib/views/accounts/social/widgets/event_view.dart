@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../components/event_card.dart';
 
-import '../components/post_card.dart';
-
-class PostView extends StatefulWidget {
-  const PostView({Key? key}) : super(key: key);
+class EventView extends StatefulWidget {
+  const EventView({Key? key}) : super(key: key);
 
   @override
-  State<PostView> createState() => _PostViewState();
+  State<EventView> createState() => _EventViewState();
 }
 
-class _PostViewState extends State<PostView> {
+class _EventViewState extends State<EventView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,8 +21,8 @@ class _PostViewState extends State<PostView> {
         slivers: [
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                (context, index) => PostCard(size: size, currentIndex: index),
-                childCount: 10),
+                (context, _index) => EventCard(size: size, index: _index),
+                childCount: 5),
           ),
         ],
       ),

@@ -254,7 +254,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 style: TextStyle(
                                     color: kPrimaryColor.withOpacity(0.6),
                                     fontSize: size.height * 0.0170,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: kDefaultFont),
                               ),
                             ),
@@ -272,7 +272,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 style: TextStyle(
                                     color: kPrimaryColor.withOpacity(0.6),
                                     fontSize: size.height * 0.0170,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: kDefaultFont),
                               ),
                             ),
@@ -290,7 +290,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 style: TextStyle(
                                     color: kWhiteColor,
                                     fontSize: size.height * 0.0170,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: kDefaultFont),
                               ),
                             ),
@@ -308,7 +308,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 style: TextStyle(
                                     color: kPrimaryColor.withOpacity(0.6),
                                     fontSize: size.height * 0.0170,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: kDefaultFont),
                               ),
                             ),
@@ -326,7 +326,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 style: TextStyle(
                                     color: kPrimaryColor.withOpacity(0.6),
                                     fontSize: size.height * 0.0170,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: kDefaultFont),
                               ),
                             ),
@@ -382,24 +382,40 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 color: kWhiteColor,
                               ),
                             ),
+                            const SizedBox(
+                              width: 5.0,
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(2.0),
+                              decoration: const BoxDecoration(
+                                  color: Colors.brown, shape: BoxShape.circle),
+                              child: Icon(
+                                null,
+                                size: size.height * 0.0200,
+                                color: kWhiteColor,
+                              ),
+                            ),
                           ],
                         ),
                         Column(
                           children: [
-                            Text(
-                              'Product Details',
-                              style: TextStyle(
-                                  color: kPrimaryColor,
-                                  fontSize: size.height * 0.050,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: kDefaultFont),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Product Details',
+                                style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontSize: size.width * 0.050,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: kDefaultFont),
+                              ),
                             ),
                             Text(
                               'Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.',
                               style: TextStyle(
                                   color: kPrimaryTextColor,
-                                  fontSize: size.height * 0.0220,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: size.width * 0.035,
+                                  fontWeight: FontWeight.normal,
                                   fontFamily: kDefaultFont),
                             ),
                           ],

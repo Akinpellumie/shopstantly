@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
-import 'components/circle_button.dart';
 import 'components/custom_tab.dart';
 import 'components/follower_counter.dart';
 import 'components/mini_button.dart';
