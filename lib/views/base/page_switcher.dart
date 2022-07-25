@@ -111,46 +111,6 @@ class _PageSwitcherState extends State<PageSwitcher> {
                 curve: Curves.easeOutQuad);
           },
         ),
-        //   bottomNavigationBar: WaterDropNavBar(
-        //     inactiveIconColor: kLightGrayColor,
-        //     waterDropColor: kPrimaryColor,
-        //     backgroundColor: kBackgroundColor,
-        //     onItemSelected: (int index) {
-        //       setState(() {
-        //         selectedIndex = index;
-        //       });
-        //       pageController.animateToPage(selectedIndex,
-        //           duration: const Duration(milliseconds: 400),
-        //           curve: Curves.easeOutQuad);
-        //     },
-        //     selectedIndex: selectedIndex,
-        //     barItems: <BarItem>[
-        //       BarItem(
-        //           filledIcon: AssetsPath.homeIcon,
-        //           outlinedIcon: AssetsPath.homeIcon,
-        //           title: 'Home'),
-        //       BarItem(
-        //         filledIcon: AssetsPath.shopIcon,
-        //         outlinedIcon: AssetsPath.shopIcon,
-        //         title: 'Shops',
-        //       ),
-        //       BarItem(
-        //         filledIcon: AssetsPath.manageIcon,
-        //         outlinedIcon: AssetsPath.manageIcon,
-        //         title: 'Manage',
-        //       ),
-        //       BarItem(
-        //         filledIcon: AssetsPath.dashIcon,
-        //         outlinedIcon: AssetsPath.dashIcon,
-        //         title: 'Dashboard',
-        //       ),
-        //       BarItem(
-        //           filledIcon: AssetsPath.profileIcon,
-        //           outlinedIcon: AssetsPath.profileIcon,
-        //           title: 'Profile'),
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }

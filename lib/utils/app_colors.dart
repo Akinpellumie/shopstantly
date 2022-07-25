@@ -29,3 +29,4 @@ const kPrimaryOrangeColor = Color(0xFFEC994B);
 const kSecondaryOrangeColor = Color(0xFFD48C4A);
 const kTabIconBgColor = Color(0xFFF3F5F7);
 const kCategoryTabColor = Color.fromRGBO(242, 242, 242, 0.48);
+const kBoxShadowColor = Color.fromRGBO(32, 56, 85, 0.15);
