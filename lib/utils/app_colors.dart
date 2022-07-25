@@ -22,6 +22,7 @@ const kPostCardBgColor = Color.fromRGBO(185, 185, 185, 0.15);
 const kPostEntryBgColor = Color.fromRGBO(245, 245, 245, 0.75);
 const kBlueColor = Color.fromRGBO(40, 84, 198, 1);
 const kSecondaryTextColor = Color(0xFF747688);
+const kPurpleDarkColor = Color(0xFF3F38DD);
 const kPurpleColor = Color(0xFF5669FF);
 const kLightPurpleColor = Color(0xFFD7D9E8);
 const kOrangeColor = Color(0xFFFF7250);

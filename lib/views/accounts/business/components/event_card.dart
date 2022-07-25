@@ -66,22 +66,24 @@ class EventCard extends StatelessWidget {
                 children: [
                   RichText(
                     text: TextSpan(
-                        text: 'International Band Music Concert - ',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: size.width * 0.045,
-                          fontWeight: FontWeight.normal,
+                      text: 'International Band Music Concert - ',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontSize: size.width * 0.045,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: ' #IntBandConcert',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: size.width * 0.035,
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: ' #IntBandConcert',
-                            style: TextStyle(
-                                color: kPrimaryColor,
-                                fontWeight: FontWeight.w300,
-                                fontSize: size.width * 0.035,
-                                fontStyle: FontStyle.italic),
-                          )
-                        ]),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 5.0,

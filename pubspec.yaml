@@ -51,6 +51,8 @@ dependencies:
   sticky_headers: ^0.3.0+2
   percent_indicator: ^4.2.2
   face_pile: ^0.0.2
+  smooth_page_indicator: ^1.0.0+2
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
