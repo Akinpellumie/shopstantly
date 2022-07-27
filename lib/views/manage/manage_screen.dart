@@ -1,7 +1,13 @@
+import 'package:face_pile/face_pile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
+import 'package:shopstantly_app/utils/assets_path.dart';
+import 'package:shopstantly_app/views/manage/widgets/commerce_list_view.dart';
+import 'package:shopstantly_app/views/manage/widgets/event_list_view.dart';
 
 import '../../utils/dimensions.dart';
+import 'widgets/chat_list_view.dart';
 
 class ManageScreen extends StatefulWidget {
   const ManageScreen({Key? key}) : super(key: key);
@@ -143,109 +149,95 @@ class _ManageScreenState extends State<ManageScreen> {
               const SizedBox(
                 height: 20.0,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Message Requests (12)',
-                  style: TextStyle(
-                    fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0180,
-                    fontWeight: FontWeight.w500,
-                    color: kPrimaryColor,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                  vertical: 5.0,
-                ),
+              SizedBox(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // FacePile(
-                    //   radius: 20,
-                    //   space: 10,
-                    //   images: const [
-                    //     NetworkImage("https://i.pravatar.cc/300?img=1"),
-                    //     NetworkImage("https://i.pravatar.cc/300?img=2"),
-                    //     NetworkImage("https://i.pravatar.cc/300?img=3"),
-                    //   ],
-                    //   border: Border.all(color: kWhiteColor, width: 2),
-                    // ),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Private Bridal shower',
-                            style: TextStyle(
-                              fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0180,
-                              fontWeight: FontWeight.w500,
-                              color: kPrimaryColor,
+                      child: Container(
+                        margin:
+                            const EdgeInsets.only(right: kDefaultPadding / 2),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: kDefaultPadding - 10),
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: kWhiteColor,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50,
+                              offset: const Offset(0, 10),
+                              color: kPrimaryColor.withOpacity(0.10),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 2.0,
-                          ),
-                          Text(
-                            'Phillips Started following you...',
-                            style: TextStyle(
-                              fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0150,
-                              fontWeight: FontWeight.normal,
-                              color: kPlaceholderColor,
+                          ],
+                          border:
+                              Border.all(color: kPlaceholderColor, width: 1.0),
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              height: 20.0,
+                              width: 20.0,
+                              margin: const EdgeInsets.only(right: 5.0),
+                              child: SvgPicture.asset(AssetsPath.searchIcon),
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 5.0),
+                            Expanded(
+                              child: TextField(
+                                onChanged: (value) {},
+                                decoration: InputDecoration(
+                                  hintText: 'Search customers',
+                                  hintStyle: TextStyle(
+                                    color: kPrimaryColor.withOpacity(0.5),
+                                    fontFamily: kDefaultFont,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          '05:34',
-                          style: TextStyle(
-                            fontFamily: kDefaultFont,
-                            fontSize: size.height * 0.0180,
-                            fontWeight: FontWeight.w500,
-                            color: kPrimaryColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5.0,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                            vertical: 5.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: kOrangeColor,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Text(
-                            '120',
-                            style: TextStyle(
-                              fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0150,
-                              fontWeight: FontWeight.normal,
-                              color: kWhiteColor,
-                            ),
-                          ),
-                        ),
-                      ],
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Icon(
+                        Icons.filter_list,
+                        color: kPlaceholderColor,
+                      ),
                     ),
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              getDisplayWidget(size),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget getDisplayWidget(Size size) {
+    if (isChat) {
+      return ChatListView(
+        size: size,
+      );
+    } else if (isCommerce) {
+      return CommerceListView(
+        size: size,
+      );
+    } else if (isEvent) {
+      return EventListView(
+        size: size,
+      );
+    } else {
+      return ChatListView(
+        size: size,
+      );
+    }
   }
 }

@@ -43,9 +43,12 @@ class AssetsPath {
   static const String send = 'assets/icons/send.svg';
   static const String work = 'assets/icons/work.svg';
   static const String plusIcon = 'assets/icons/plusIcon.svg';
+  static const String pin = 'assets/icons/pin.svg';
+  static const String volumeOff = 'assets/icons/VolumeOff.svg';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
-  static const String sneakerPhoto = 'https://media.istockphoto.com/photos/fashion-white-sneakers-in-neon-light-sport-shoes-for-training-in-the-picture-id1301394040?b=1&k=20&m=1301394040&s=170667a&w=0&h=DM2FyLVbwZ-YjZeb5P8d45RgF2x_gTmT8kC66u7zIrk=';
+  static const String sneakerPhoto =
+      'https://media.istockphoto.com/photos/fashion-white-sneakers-in-neon-light-sport-shoes-for-training-in-the-picture-id1301394040?b=1&k=20&m=1301394040&s=170667a&w=0&h=DM2FyLVbwZ-YjZeb5P8d45RgF2x_gTmT8kC66u7zIrk=';
   static const IconData email = IconData(0xe22a, fontFamily: 'MaterialIcons');
   //static const IconData eye = IconData(0xf424, fontFamily: iconFont, fontPackage: iconFontPackage);
 
