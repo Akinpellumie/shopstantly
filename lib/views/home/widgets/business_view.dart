@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../components/business_card_item.dart';
-import '../components/news_card_item.dart';
 
 class BusinessView extends StatelessWidget {
   const BusinessView({

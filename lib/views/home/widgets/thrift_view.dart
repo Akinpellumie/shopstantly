@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/utils/custom_router.dart';
 
 import '../components/thrift_card.dart';
 
@@ -22,7 +23,7 @@ class ThriftView extends StatelessWidget {
       children: generateNumbers().map((int i) {
         return ThriftCard(
           size: size,
-          onTapped: () {},
+          onTapped: () => CustomRouter.nextScreen(context, '/thriftDetail'),
           // onTapped: () => CustomRouter.nextScreen(
           //     context, "/productDetail"),
         );

@@ -11,6 +11,7 @@ import 'package:shopstantly_app/views/profile/add_photo_screen.dart';
 import 'package:shopstantly_app/views/profile/choose_location_screen.dart';
 import 'package:shopstantly_app/views/profile/profile_complete_screen.dart';
 import 'package:shopstantly_app/views/profile/set_profile_screen.dart';
+import 'package:shopstantly_app/views/thrift/thrift_detail_screen.dart';
 import 'package:shopstantly_app/views/unboarding/landing_screen.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
@@ -140,6 +141,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/eventDetail":
       return MaterialPageRoute(builder: (BuildContext context) {
         return const EventDetailScreen();
+      });
+    case "/thriftDetail":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return const ThriftDetailScreen();
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {

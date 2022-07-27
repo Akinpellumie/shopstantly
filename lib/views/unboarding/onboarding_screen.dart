@@ -4,7 +4,6 @@ import 'package:shopstantly_app/utils/app_button.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/custom_router.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
-import 'package:sizer/sizer.dart';
 
 import '../../models/content_model.dart';
 

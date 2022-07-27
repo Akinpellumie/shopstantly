@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
-import 'package:shopstantly_app/utils/custom_router.dart';
 import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
 import 'package:shopstantly_app/views/accounts/social/social_account_screen.dart';
-import 'package:shopstantly_app/views/auth/login/login_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
 import 'package:shopstantly_app/views/shop/shop_screen.dart';
@@ -59,11 +56,11 @@ class _PageSwitcherState extends State<PageSwitcher> {
           controller: pageController,
           children: const <Widget>[
             HomeScreen(),
-            ShopScreen(),
+            ManageScreen(),
             //ManageScreen(),
             SocialAccountScreen(),
             BusinessAccountScreen(),
-            LoginScreen(),
+            ShopScreen(),
           ],
         ),
         bottomNavigationBar: FABBottomAppBar(
@@ -106,9 +103,11 @@ class _PageSwitcherState extends State<PageSwitcher> {
               fabIcon = AssetsPath.bagShop;
               //CustomRouter.nextScreen(context, '/login');
             });
-            pageController.animateToPage(4,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeOutQuad);
+            pageController.animateToPage(
+              4,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeOutQuad,
+            );
           },
         ),
       ),

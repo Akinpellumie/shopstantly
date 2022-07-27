@@ -1,6 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:face_pile/face_pile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
@@ -8,13 +5,8 @@ import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/utils/main_page_app_bar.dart';
 import 'package:shopstantly_app/views/home/widgets/business_view.dart';
 import 'package:shopstantly_app/views/home/widgets/thrift_view.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../utils/app_colors.dart';
-import '../accounts/business/components/product_card.dart';
-import 'components/build_image.dart';
-import 'components/event_card_item.dart';
-import 'components/news_card_item.dart';
 import 'widgets/event_view.dart';
 import 'widgets/news_view.dart';
 
@@ -28,6 +20,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   int carouselIndex = 0;
+  int eventFilterIndex = 0;
+  int thriftFilterIndex = 0;
+  bool showFilterTabs = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -118,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       setState(() {
                         selectedIndex = 3;
+                        showFilterTabs = true;
                       });
                     },
                     child: menuTabItem(
@@ -130,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       setState(() {
                         selectedIndex = 4;
+                        showFilterTabs = true;
                       });
                     },
                     child: menuTabItem(
@@ -139,6 +136,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+          //this tab will only appear when event or thrift is active
+          SliverToBoxAdapter(
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 20.0,
+              ),
+              height: selectedIndex < 3 ? 1.0 : size.height * 0.050,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: getFilterLength(),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          switch (selectedIndex) {
+                            case 3:
+                              eventFilterIndex = index;
+                              break;
+                            case 4:
+                              thriftFilterIndex = index;
+                              break;
+                            default:
+                              break;
+                          }
+                        });
+                      },
+                      child: displayFilterTabs(size, index));
+                },
               ),
             ),
           ),
@@ -175,7 +203,56 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  final List<String> eventFilterTexts = [
+    'Popular',
+    'Trending',
+    'Music',
+    'Business',
+    'Arts',
+    'Community',
+    'Upcoming'
+  ];
+  final List<String> thriftFilterTexts = [
+    'Trousers',
+    'Shoes',
+    'Clothes',
+    'Bags',
+    'Tops',
+    'Electronics'
+  ];
+
+  int getFilterLength() {
+    if (selectedIndex == 3) {
+      return eventFilterTexts.length;
+    } else if (selectedIndex == 4) {
+      return thriftFilterTexts.length;
+    } else {
+      return 0;
+    }
+  }
+
+  Widget displayFilterTabs(Size size, int index) {
+    if (selectedIndex == 3) {
+      return eventFilterItem(
+        eventFilterTexts[index],
+        eventFilterIndex == index ? true : false,
+        size,
+      );
+    } else if (selectedIndex == 4) {
+      return eventFilterItem(
+        thriftFilterTexts[index],
+        thriftFilterIndex == index ? true : false,
+        size,
+      );
+    } else {
+      return const SizedBox(
+        height: 10.0,
+      );
+    }
+  }
+
   List<int> generateNumbers() => List<int>.generate(6, (i) => i + 1);
+
   SizedBox menuTabItem(Size size, String title, bool active) {
     return SizedBox(
       //width: boxWidth,
@@ -211,6 +288,31 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Center eventFilterItem(String eventFilterText, bool active, Size size) {
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 3.0),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10.0,
+          vertical: 5.0,
+        ),
+        decoration: BoxDecoration(
+          color: active ? kPrimaryColor : kTabBgColor,
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        child: Text(
+          eventFilterText,
+          style: TextStyle(
+            fontFamily: kDefaultFont,
+            fontSize: size.height * 0.0150,
+            fontWeight: FontWeight.normal,
+            color: active ? kWhiteColor : kPrimaryColor,
+          ),
+        ),
       ),
     );
   }
