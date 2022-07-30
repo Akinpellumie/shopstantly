@@ -45,6 +45,9 @@ class AssetsPath {
   static const String plusIcon = 'assets/icons/plusIcon.svg';
   static const String pin = 'assets/icons/pin.svg';
   static const String volumeOff = 'assets/icons/VolumeOff.svg';
+  static const String emoji = 'assets/icons/emoji.svg';
+  static const String sendIcon = 'assets/icons/sendIcon.svg';
+  static const String attachment = 'assets/icons/paperclip.svg';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
   static const String sneakerPhoto =

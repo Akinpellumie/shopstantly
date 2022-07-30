@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         fit: BoxFit.contain,
                       ),
                       const SizedBox(
-                        height: 10.0,
+                        height: 20.0,
                       ),
                       Text(
                         contents[i].title,
@@ -121,7 +121,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 20.0,
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20.0),
