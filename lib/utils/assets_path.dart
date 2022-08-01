@@ -48,6 +48,11 @@ class AssetsPath {
   static const String emoji = 'assets/icons/emoji.svg';
   static const String sendIcon = 'assets/icons/sendIcon.svg';
   static const String attachment = 'assets/icons/paperclip.svg';
+  static const String cart = 'assets/icons/cart.svg';
+  static const String commerce = 'assets/icons/commerce.svg';
+  static const String event = 'assets/icons/event.svg';
+  static const String history = 'assets/icons/history.svg';
+  static const String inbox = 'assets/icons/inbox.svg';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
   static const String sneakerPhoto =

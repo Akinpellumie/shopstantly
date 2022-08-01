@@ -4,6 +4,7 @@ import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/utils/main_page_app_bar.dart';
 import 'package:shopstantly_app/views/home/widgets/business_view.dart';
+import 'package:shopstantly_app/views/home/widgets/social_view.dart';
 import 'package:shopstantly_app/views/home/widgets/thrift_view.dart';
 
 import '../../utils/app_colors.dart';
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: menuTabItem(
                       size,
-                      'Plus',
+                      'Social',
                       selectedIndex == 0 ? true : false,
                     ),
                   ),
@@ -105,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: menuTabItem(
                       size,
-                      'Social',
+                      'Plus',
                       selectedIndex == 2 ? true : false,
                     ),
                   ),
@@ -189,11 +190,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget displayWidget(Size size) {
     if (selectedIndex == 0) {
-      return NewsView(size: size);
+      return SocialView(size: size);
     } else if (selectedIndex == 1) {
       return BusinessView(size: size);
     } else if (selectedIndex == 2) {
-      return BusinessView(size: size);
+      return NewsView(size: size);
     } else if (selectedIndex == 3) {
       return EventView(size: size);
     } else if (selectedIndex == 4) {

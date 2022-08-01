@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/utils/assets_path.dart';
 
 import '../../../models/chats/chat_message.dart';
+import '../../../utils/app_button.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/dimensions.dart';
+import '../../accounts/business/components/quality_counter.dart';
 
 class CommerceMainScreen extends StatefulWidget {
   const CommerceMainScreen({Key? key}) : super(key: key);
@@ -29,6 +32,7 @@ class _CommerceMainScreenState extends State<CommerceMainScreen> {
   ];
 
   int selectedIndex = 0;
+  int selectedCartIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -221,52 +225,252 @@ class _CommerceMainScreenState extends State<CommerceMainScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            //width: size.width / 4 - 10,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                              vertical: 8.0
-                            ),
-                            decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.circular(5.0)),
-                            child: Center(
-                              child: Text(
-                                'Category A',
-                                style: TextStyle(
-                                  color: kWhiteColor,
-                                  fontFamily: kDefaultFont,
-                                  fontSize: size.width * 0.030,
-                                  fontWeight: FontWeight.normal,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedCartIndex = 0;
+                              });
+                            },
+                            child: Container(
+                              //width: size.width / 4 - 10,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 5.0),
+                              decoration: BoxDecoration(
+                                  color: selectedCartIndex == 0
+                                      ? kPrimaryColor
+                                      : kTabBgColor,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                child: Text(
+                                  'Cart A',
+                                  style: TextStyle(
+                                    color: selectedCartIndex == 0
+                                        ? kWhiteColor
+                                        : kPlaceholderColor,
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.width * 0.030,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                          Container(
-                            width: size.width / 4 - 10,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.circular(5.0)),
-                            child: Center(
-                              child: Text(
-                                'Category A',
-                                style: TextStyle(
-                                  color: kWhiteColor,
-                                  fontFamily: kDefaultFont,
-                                  fontSize: size.width * 0.030,
-                                  fontWeight: FontWeight.normal,
+                          const SizedBox(width: 5.0),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedCartIndex = 1;
+                              });
+                            },
+                            child: Container(
+                              //width: size.width / 4 - 10,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 5.0),
+                              decoration: BoxDecoration(
+                                  color: selectedCartIndex == 1
+                                      ? kPrimaryColor
+                                      : kTabBgColor,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                child: Text(
+                                  'Cart B',
+                                  style: TextStyle(
+                                    color: selectedCartIndex == 1
+                                        ? kWhiteColor
+                                        : kPlaceholderColor,
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.width * 0.030,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
+                          const SizedBox(width: 5.0),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedCartIndex = 2;
+                              });
+                            },
+                            child: Container(
+                              //width: size.width / 4 - 10,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 5.0),
+                              decoration: BoxDecoration(
+                                  color: selectedCartIndex == 2
+                                      ? kPrimaryColor
+                                      : kTabBgColor,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                child: Text(
+                                  'Cart C',
+                                  style: TextStyle(
+                                    color: selectedCartIndex == 2
+                                        ? kWhiteColor
+                                        : kPlaceholderColor,
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.width * 0.030,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 5.0),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedCartIndex = 3;
+                              });
+                            },
+                            child: Container(
+                              //width: size.width / 4 - 10,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 5.0),
+                              decoration: BoxDecoration(
+                                  color: selectedCartIndex == 3
+                                      ? kPrimaryColor
+                                      : kTabBgColor,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                child: Text(
+                                  'Cart D',
+                                  style: TextStyle(
+                                    color: selectedCartIndex == 3
+                                        ? kWhiteColor
+                                        : kPlaceholderColor,
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.width * 0.030,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 5.0),
                         ],
-                      )
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      SizedBox(
+                        height: 100.0,
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 100.0,
+                              width: 100.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  15.0,
+                                ),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15.0),
+                                child: Image.network(
+                                  AssetsPath.sneakerPhoto,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10.0,
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Amazing T-shirt',
+                                    style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontFamily: kDefaultFont,
+                                      fontSize: size.height * 0.0180,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Black /M',
+                                    style: TextStyle(
+                                      color: kPlaceholderColor,
+                                      fontFamily: kDefaultFont,
+                                      fontSize: size.height * 0.0170,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  QualityCounter(size: size),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Text(
+                                '\$12.00',
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontFamily: kDefaultFont,
+                                  fontSize: size.height * 0.0200,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10.0),
+                        color: kTimeTextColor.withOpacity(0.40),
+                        width: double.infinity,
+                        height: 0.5,
+                      ),
                     ],
                   ),
                 )
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20.0),
+            color: kWhiteColor,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Total',
+                        style: TextStyle(
+                          color: kPlaceholderColor,
+                          fontFamily: kDefaultFont,
+                          fontSize: size.height * 0.0180,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '\$20.00',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontFamily: kDefaultFont,
+                        fontSize: size.height * 0.0190,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                AppButton(
+                  text: "Checkout",
+                  type: ButtonType.primary,
+                  onPressed: () {
+                    //CustomRouter.nextScreen(context, "/mainPage");
+                  },
+                ),
               ],
             ),
           ),
