@@ -33,6 +33,7 @@ const kPrimaryOrangeColor = Color(0xFFEC994B);
 const kSecondaryOrangeColor = Color(0xFFD48C4A);
 const kTabIconBgColor = Color(0xFFF3F5F7);
 const kGrayColor = Color(0xFFF4F4F4);
+const kEventBgColor = Color(0xFFF8F9FE);
 const kChatBgAccentColor = Color(0xFF1D272F);
 const kCategoryTabColor = Color.fromRGBO(242, 242, 242, 0.48);
 const kBoxShadowColor = Color.fromRGBO(32, 56, 85, 0.15);

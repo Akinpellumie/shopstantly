@@ -1,8 +1,17 @@
+import 'package:face_pile/face_pile.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
+import 'package:shopstantly_app/views/home/components/custom_staggered_grid.dart';
+import 'package:shopstantly_app/views/home/components/image_grid_post.dart';
+import 'package:shopstantly_app/views/home/components/single_image_card.dart';
 
 import '../../../utils/dimensions.dart';
+import '../../../utils/global_utils.dart';
+import '../components/social_card_item.dart';
 
 class SocialView extends StatefulWidget {
   final Size size;
@@ -15,89 +24,256 @@ class SocialView extends StatefulWidget {
 class _SocialViewState extends State<SocialView> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        SizedBox(
+          height: size.height * 0.10,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 40.0,
-                    height: 40.0,
+                    width: size.width / 5 - 20,
+                    height: size.height * 0.07,
+                    margin: const EdgeInsets.only(right: 10.0),
                     padding: const EdgeInsets.all(2.0),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: kPrimaryColor,
+                        color: kPlaceholderColor,
                       ),
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
-                        child: Image.asset(
-                          AssetsPath.image2,
-                          fit: BoxFit.cover,
-                        )),
-                  ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Linda Flora',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontFamily: kDefaultFont,
-                          fontSize: widget.size.height * 0.0150,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.add,
+                        color: kPlaceholderColor,
                       ),
-                      Text(
-                        'Ibadan, Nigeria',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontFamily: kDefaultFont,
-                          fontSize: widget.size.height * 0.0130,
-                          fontWeight: FontWeight.normal,
-                        ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      'My story',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.normal,
+                        fontSize: size.height * 0.0130,
+                        fontFamily: kDefaultFont,
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  const Icon(
-                    Icons.check_circle,
-                    color: Colors.green,
-                    size: 15.0,
+                    ),
                   ),
                 ],
               ),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '3 days ago',
-                  style: TextStyle(
-                    color: kPlaceholderColor.withOpacity(0.75),
-                    fontFamily: kDefaultFont,
-                    fontSize: widget.size.height * 0.0150,
-                    fontWeight: FontWeight.normal,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Container(
+                      width: size.width / 5 - 20,
+                      height: size.height * 0.07,
+                      margin: const EdgeInsets.only(right: 10.0),
+                      padding: const EdgeInsets.all(2.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: kPrimaryColor,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(13.0),
+                          child: Image.asset(
+                            AssetsPath.image2,
+                            fit: BoxFit.cover,
+                          )),
+                    ),
                   ),
-                ),
-                const Icon(
-                  Icons.more_vert_outlined,
-                  color: kPrimaryColor,
-                ),
-              ],
-            )
-          ],
+                  Center(
+                    child: Text(
+                      'Lina',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.normal,
+                        fontSize: size.height * 0.0130,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Container(
+                      width: size.width / 5 - 20,
+                      height: size.height * 0.07,
+                      margin: const EdgeInsets.only(right: 10.0),
+                      padding: const EdgeInsets.all(2.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: kPrimaryColor,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(13.0),
+                          child: Image.asset(
+                            AssetsPath.image2,
+                            fit: BoxFit.cover,
+                          )),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      'Lina',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.normal,
+                        fontSize: size.height * 0.0130,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Container(
+                      width: size.width / 5 - 20,
+                      height: size.height * 0.07,
+                      margin: const EdgeInsets.only(right: 10.0),
+                      padding: const EdgeInsets.all(2.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: kPrimaryColor,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(13.0),
+                          child: Image.asset(
+                            AssetsPath.image2,
+                            fit: BoxFit.cover,
+                          )),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      'Lina',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.normal,
+                        fontSize: size.height * 0.0130,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Container(
+                      width: size.width / 5 - 20,
+                      height: size.height * 0.07,
+                      margin: const EdgeInsets.only(right: 10.0),
+                      padding: const EdgeInsets.all(2.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: kPrimaryColor,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(13.0),
+                          child: Image.asset(
+                            AssetsPath.image2,
+                            fit: BoxFit.cover,
+                          )),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      'Lina',
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.normal,
+                        fontSize: size.height * 0.0130,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 30.0,
+        ),
+        SocialCardItem(
+          imageCount: 4,
+          size: widget.size,
+          imageUrls: _image4Urls,
+        ),
+        const SizedBox(
+          height: 30.0,
+        ),
+        SocialCardItem(
+          imageCount: 1,
+          size: widget.size,
+          imageUrls: _image1Urls,
+        ),
+        const SizedBox(
+          height: 30.0,
+        ),
+        SocialCardItem(
+          imageCount: 2,
+          size: widget.size,
+          imageUrls: _image2Urls,
+        ),
+        const SizedBox(
+          height: 30.0,
+        ),
+        SocialCardItem(
+          imageCount: 3,
+          size: widget.size,
+          imageUrls: _image3Urls,
+        ),
+        const SizedBox(
+          height: 30.0,
         ),
       ],
     );
   }
+
+  final List<String> _image3Urls = [
+    'https://i.pravatar.cc/300?img=1',
+    'https://i.pravatar.cc/300?img=3',
+    'https://i.pravatar.cc/300?img=7'
+  ];
+
+  final List<String> _image4Urls = [
+    'https://i.pravatar.cc/300?img=2',
+    'https://i.pravatar.cc/300?img=5',
+    'https://i.pravatar.cc/300?img=9',
+    'https://i.pravatar.cc/300?img=8'
+  ];
+
+  final List<String> _image2Urls = [
+    'https://i.pravatar.cc/300?img=9',
+    'https://i.pravatar.cc/300?img=8'
+  ];
+
+  final List<String> _image1Urls = ['https://i.pravatar.cc/300?img=4'];
 }

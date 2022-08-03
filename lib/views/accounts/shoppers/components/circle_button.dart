@@ -15,16 +15,19 @@ class CircleButton extends StatelessWidget {
   final IconData iconData;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: bgColor,
-      ),
-      child: Icon(
-        iconData,
-        size: 20.0,
-        color: iconColor,
+    return GestureDetector(
+      onTap: pressed,
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: bgColor,
+        ),
+        child: Icon(
+          iconData,
+          size: 20.0,
+          color: iconColor,
+        ),
       ),
     );
   }

@@ -149,25 +149,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'Already have an account?',
                       style: TextStyle(
                           color: kPrimaryTextColor,
                           fontFamily: kDefaultFont,
-                          fontSize: 18.0,
+                          fontSize: size.height * 0.0190,
                           fontWeight: FontWeight.normal),
                     ),
                     const SizedBox(
-                      width: 10.0,
+                      width: 5.0,
                     ),
                     GestureDetector(
                       onTap: () => CustomRouter.nextScreen(context, "/login"),
-                      child: const Text(
+                      child: Text(
                         'Sign In',
                         style: TextStyle(
                             color: kPrimaryColor,
                             fontFamily: kDefaultFont,
-                            fontSize: 18.0,
+                            fontSize: size.height * 0.0190,
                             fontWeight: FontWeight.bold),
                       ),
                     )

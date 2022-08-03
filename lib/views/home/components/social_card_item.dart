@@ -2,16 +2,17 @@ import 'package:face_pile/face_pile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shopstantly_app/views/home/components/single_image_card.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
 import 'custom_double_grid.dart';
+import 'custom_staggered_grid.dart';
+import 'image_grid_post.dart';
 
-
-class NewsCardItem extends StatefulWidget {
-  const NewsCardItem({
+class SocialCardItem extends StatelessWidget {
+  const SocialCardItem({
     Key? key,
     required this.imageCount,
     required this.size,
@@ -22,16 +23,9 @@ class NewsCardItem extends StatefulWidget {
   final int imageCount;
   final Size size;
   final List<String> _imageUrls;
-  @override
-  State<NewsCardItem> createState() => _NewsCardItemState();
-}
-
-class _NewsCardItemState extends State<NewsCardItem> {
-  int carouselIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return SizedBox(
       child: Column(
         children: [
@@ -54,7 +48,7 @@ class _NewsCardItemState extends State<NewsCardItem> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(4.0),
                           child: Image.asset(
-                            AssetsPath.image1,
+                            AssetsPath.image2,
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -65,7 +59,7 @@ class _NewsCardItemState extends State<NewsCardItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Tolani Soft',
+                          'Linda Flora',
                           style: TextStyle(
                             color: kPrimaryColor,
                             fontFamily: kDefaultFont,
@@ -123,7 +117,7 @@ class _NewsCardItemState extends State<NewsCardItem> {
           ),
           SizedBox(
             width: double.infinity,
-            child: CustomDoubleGrid(imageUrls: widget._imageUrls),
+            child: displayWidget(3, size, _imageUrls),
           ),
           const SizedBox(
             height: 10.0,
@@ -132,15 +126,6 @@ class _NewsCardItemState extends State<NewsCardItem> {
             width: double.infinity,
             child: Row(
               children: [
-                SvgPicture.asset(
-                  AssetsPath.cart,
-                  color: kPlaceholderColor,
-                  height: size.height * 0.025,
-                  width: size.height * 0.025,
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
                 Icon(
                   CupertinoIcons.heart,
                   color: kPlaceholderColor,
@@ -157,11 +142,10 @@ class _NewsCardItemState extends State<NewsCardItem> {
                 const SizedBox(
                   width: 10.0,
                 ),
-                SvgPicture.asset(
-                  AssetsPath.wishlist,
+                Icon(
+                  CupertinoIcons.bookmark,
                   color: kPlaceholderColor,
-                  height: size.height * 0.025,
-                  width: size.height * 0.025,
+                  size: size.height * 0.025,
                 ),
               ],
             ),
@@ -285,27 +269,26 @@ class _NewsCardItemState extends State<NewsCardItem> {
     );
   }
 
-  // Widget displayWidget(int imgCount, Size _size, List<String> _imageUrls) {
-  //   if (_imageUrls.length == 1) {
-  //     return SingleImageCard(
-  //       imageUrl: _imageUrls[0],
-  //       size: _size,
-  //     );
-  //   }
-  //   if (_imageUrls.length == 2) {
-  //     return CustomDoubleGrid(imageUrls: _imageUrls);
-  //   }
-  //   if (_imageUrls.length == 3) {
-  //     return CustomStaggeredGrid(imageUrls: _imageUrls);
-  //   }
-  //   if (_imageUrls.length == 4) {
-  //     return ImageGridPost(size: _size, imageUrls: _imageUrls);
-  //   } else {
-  //     return SingleImageCard(
-  //       imageUrl: _imageUrls[0],
-  //       size: _size,
-  //     );
-  //   }
-  // }
-
+  Widget displayWidget(int imgCount, Size _size, List<String> _imageUrls) {
+    if (_imageUrls.length == 1) {
+      return SingleImageCard(
+        imageUrl: _imageUrls[0],
+        size: _size,
+      );
+    }
+    if (_imageUrls.length == 2) {
+      return CustomDoubleGrid(imageUrls: _imageUrls);
+    }
+    if (_imageUrls.length == 3) {
+      return CustomStaggeredGrid(imageUrls: _imageUrls);
+    }
+    if (_imageUrls.length == 4) {
+      return ImageGridPost(size: _size, imageUrls: _imageUrls);
+    } else {
+      return SingleImageCard(
+        imageUrl: _imageUrls[0],
+        size: _size,
+      );
+    }
+  }
 }

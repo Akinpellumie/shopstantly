@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Login',
@@ -210,13 +211,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        const Text(
+                        Text(
                           "Don't have an account?",
                           style: TextStyle(
-                              color: kPrimaryTextColor,
-                              fontFamily: kDefaultFont,
-                              fontSize: kRegularText,
-                              fontWeight: FontWeight.normal),
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                            fontSize: size.height * 0.0190,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                         const SizedBox(
                           width: 5.0,
@@ -224,13 +226,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         GestureDetector(
                           onTap: () =>
                               CustomRouter.nextScreen(context, "/register"),
-                          child: const Text(
+                          child: Text(
                             'Create Account',
                             style: TextStyle(
-                                color: kPrimaryColor,
-                                fontFamily: kDefaultFont,
-                                fontSize: kRegularText,
-                                fontWeight: FontWeight.bold),
+                              color: kPrimaryColor,
+                              fontFamily: kDefaultFont,
+                              fontSize: size.height * 0.0190,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         )
                       ],

@@ -42,7 +42,9 @@ class _ThriftDetailScreenState extends State<ThriftDetailScreen> {
                     children: [
                       CircleButton(
                         iconData: Icons.keyboard_arrow_left,
-                        pressed: () {},
+                        pressed: () {
+                          Navigator.pop(context);
+                        },
                         bgColor: kBackgroundColor,
                         iconColor: kPrimaryColor,
                       ),
