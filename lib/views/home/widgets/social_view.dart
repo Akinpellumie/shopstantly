@@ -1,16 +1,8 @@
-import 'package:face_pile/face_pile.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
-import 'package:shopstantly_app/views/home/components/custom_staggered_grid.dart';
-import 'package:shopstantly_app/views/home/components/image_grid_post.dart';
-import 'package:shopstantly_app/views/home/components/single_image_card.dart';
 
 import '../../../utils/dimensions.dart';
-import '../../../utils/global_utils.dart';
 import '../components/social_card_item.dart';
 
 class SocialView extends StatefulWidget {
