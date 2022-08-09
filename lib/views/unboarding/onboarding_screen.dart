@@ -82,8 +82,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                       Text(
                         contents[i].title,
-                        style: const TextStyle(
-                            fontSize: 20.0,
+                        style: TextStyle(
+                            fontSize: size.height * 0.0250,
                             fontWeight: FontWeight.w500,
                             color: kPrimaryTextColor),
                       ),
@@ -91,10 +91,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: 10.0,
                       ),
                       Text(
-                        contents[i].discription,
+                        contents[i].description,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 16.0,
+                        style: TextStyle(
+                          fontSize: size.height * 0.0180,
                           color: kSubTextColor,
                         ),
                       ),

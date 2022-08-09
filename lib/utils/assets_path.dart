@@ -38,6 +38,8 @@ class AssetsPath {
   static const String flyer = 'assets/images/flyer.png';
   static const String fruit = 'assets/images/fruit.png';
   static const String sofast = 'assets/icons/sofast.png';
+  static const String google = 'assets/images/google.png';
+  static const String facebook = 'assets/images/facebook.png';
   static const String wishlist = 'assets/icons/wishlist.svg';
   static const String more = 'assets/icons/more.svg';
   static const String send = 'assets/icons/send.svg';

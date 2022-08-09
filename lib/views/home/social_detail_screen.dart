@@ -1,15 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_swiper_plus/flutter_swiper_plus.dart';
 
 import '../../utils/app_button.dart';
 import '../../utils/app_colors.dart';
-import '../../utils/assets_path.dart';
 import '../../utils/dimensions.dart';
-import '../../utils/main_page_app_bar.dart';
 
 class SocialDetailScreen extends StatefulWidget {
   const SocialDetailScreen({Key? key}) : super(key: key);

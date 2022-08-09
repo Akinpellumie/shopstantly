@@ -5,6 +5,7 @@ import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
 import 'package:shopstantly_app/views/accounts/social/social_account_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
+import 'package:shopstantly_app/views/logistics/getting_started.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
 import 'package:shopstantly_app/views/shop/shop_screen.dart';
 
@@ -21,6 +22,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
   final Color navigationBarColor = kBackgroundColor;
   int selectedIndex = 0;
   String fabIcon = AssetsPath.bagShopePlus;
+  
   void _selectedTab(int index) {
     setState(() {
       selectedIndex = index;
@@ -30,6 +32,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
   void _selectedFab(int index) {
     setState(() {
       selectedIndex = index;
+      fabIcon = AssetsPath.bagShop;
     });
   }
 
@@ -57,10 +60,9 @@ class _PageSwitcherState extends State<PageSwitcher> {
           children: const <Widget>[
             HomeScreen(),
             ManageScreen(),
-            //ManageScreen(),
             SocialAccountScreen(),
             BusinessAccountScreen(),
-            ShopScreen(),
+            GettingStarted(),
           ],
         ),
         bottomNavigationBar: FABBottomAppBar(
@@ -72,10 +74,17 @@ class _PageSwitcherState extends State<PageSwitcher> {
           onTabSelected: (index) {
             setState(() {
               selectedIndex = index;
+              if (index == 4) {
+                fabIcon = AssetsPath.bagShop;
+              } else {
+                fabIcon = AssetsPath.bagShopePlus;
+              }
             });
-            pageController.animateToPage(selectedIndex,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeOutQuad);
+            pageController.animateToPage(
+              selectedIndex,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeOutQuad,
+            );
           },
           items: [
             FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
@@ -92,17 +101,16 @@ class _PageSwitcherState extends State<PageSwitcher> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: kBackgroundColor,
           child: Image.asset(
-            selectedIndex == 4 ? AssetsPath.bagShop : AssetsPath.bagShopePlus,
+            fabIcon,
             fit: BoxFit.contain,
             width: 30.0,
             height: 30.0,
           ),
           onPressed: () {
-            setState(() {
-              selectedIndex == 4;
-              fabIcon = AssetsPath.bagShop;
-              //CustomRouter.nextScreen(context, '/login');
-            });
+            // setState(() {
+            //   selectedIndex == 4;
+            //   _selectedFab(selectedIndex);
+            // });
             pageController.animateToPage(
               4,
               duration: const Duration(milliseconds: 400),

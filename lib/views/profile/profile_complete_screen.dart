@@ -53,7 +53,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                 text: "Continue",
                 type: ButtonType.primary,
                 onPressed: () {
-                  CustomRouter.nextScreen(context, "/activity");
+                  CustomRouter.nextScreen(context, "/mainPage");
                 },
               ),
             ],

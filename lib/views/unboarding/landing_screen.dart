@@ -15,6 +15,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Container(
@@ -33,11 +34,11 @@ class _LandingScreenState extends State<LandingScreen> {
             const SizedBox(
               height: 10.0,
             ),
-            const Text(
+            Text(
               "Sign In Or Create New Account",
               style: TextStyle(
                 color: kSubTextColor,
-                fontSize: 16.0,
+                fontSize: size.height * 0.0180,
               ),
             ),
             const SizedBox(
@@ -62,7 +63,7 @@ class _LandingScreenState extends State<LandingScreen> {
               text: "Create Account",
               type: ButtonType.plain,
               onPressed: () {
-                CustomRouter.nextScreen(context, "/register");
+                CustomRouter.nextScreen(context, "/chooseAccount");
               },
             ),
           ],

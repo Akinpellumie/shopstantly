@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:shopstantly_app/utils/app_button.dart';
@@ -52,9 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
-              const SizedBox(
-                height: 50.0,
-              ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -62,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: AppStyling.header3,
                 ),
               ),
-              const SizedBox(height: 40.0),
+              const SizedBox(height: 20.0),
               Form(
                 //key: _loginViewModel.formKey,
                 child: Column(
@@ -77,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const Icon(
                             AssetsPath.email,
                             color: kLightGrayColor,
-                            size: 25.0,
+                            size: 20.0,
                           ),
                         ),
                         validator: (v) {
@@ -94,11 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                         //controller: _loginViewModel.userIdController,
+                        style: TextStyle(fontSize: size.height * 0.0170),
                         keyboardType: TextInputType.text,
                       ),
                       decoration: ThemeHelper().inputBoxDecorationShaddow(),
                     ),
-                    const SizedBox(height: 30.0),
+                    const SizedBox(height: 15.0),
                     Container(
                       child: TextFormField(
                         // readOnly: _loginViewModel.loggingIn,
@@ -129,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const Icon(
                             CupertinoIcons.lock_fill,
                             color: kLightGrayColor,
-                            size: 25.0,
+                            size: 20.0,
                           ),
                         ),
                         validator: (v) {
@@ -145,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                           return null;
                         },
+                        style: TextStyle(fontSize: size.height * 0.0170),
                       ),
                       decoration: ThemeHelper().inputBoxDecorationShaddow(),
                     ),
@@ -160,11 +160,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ? const Icon(
                                       UniconsLine.check_circle,
                                       color: kLightGrayColor,
-                                      size: 25.0,
+                                      size: 20.0,
                                     )
                                   : const Icon(
                                       UniconsSolid.check_circle,
-                                      size: 25.0,
+                                      size: 20.0,
                                       color: kPrimaryColor,
                                     ),
                             ),
@@ -173,8 +173,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Text(
                               'Remember Me',
-                              style: AppStyling.iconWithText,
-                            )
+                              style: TextStyle(
+                                color: kPlaceholderColor,
+                                fontFamily: kDefaultFont,
+                                fontSize: size.height * 0.0160,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
                           ],
                         ),
                         const Spacer(),
@@ -183,13 +188,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             context,
                             '/forgotPassword',
                           ),
-                          child: const Text(
+                          child: Text(
                             'Forgot Password?',
                             style: TextStyle(
-                                color: kPrimaryColor,
-                                fontFamily: kDefaultFont,
-                                fontSize: kNormalText,
-                                fontWeight: FontWeight.bold),
+                              color: kPrimaryColor,
+                              fontFamily: kDefaultFont,
+                              fontSize: size.height * 0.0160,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ],
@@ -207,36 +213,122 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Don't have an account?",
-                          style: TextStyle(
-                            color: kPrimaryTextColor,
-                            fontFamily: kDefaultFont,
-                            fontSize: size.height * 0.0190,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
-                        GestureDetector(
-                          onTap: () =>
-                              CustomRouter.nextScreen(context, "/register"),
-                          child: Text(
-                            'Create Account',
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Don't have an account?",
                             style: TextStyle(
-                              color: kPrimaryColor,
+                              color: kDarkColor,
                               fontFamily: kDefaultFont,
+                              fontWeight: FontWeight.w300,
                               fontSize: size.height * 0.0190,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        )
-                      ],
+                          TextSpan(
+                            text: " Create Account",
+                            style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: size.height * 0.0190,
+                              fontFamily: kDefaultFont,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () =>
+                                  CustomRouter.nextScreen(context, '/register'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Text(
+                      "OR",
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontSize: size.height * 0.018,
+                        fontFamily: kDefaultFont,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0,
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: kPrimaryColor,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Image.asset(
+                            AssetsPath.google,
+                            width: size.height * 0.0300,
+                            height: size.height * 0.0300,
+                          ),
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                "Continue with Google",
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontSize: size.height * 0.018,
+                                  fontFamily: kDefaultFont,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0,
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: kPrimaryColor,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Image.asset(
+                            AssetsPath.facebook,
+                            width: size.height * 0.0300,
+                            height: size.height * 0.0300,
+                          ),
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                "Continue with Facebook",
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontSize: size.height * 0.018,
+                                  fontFamily: kDefaultFont,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

@@ -26,7 +26,7 @@ class ThemeHelper {
           fontFamily: kDefaultFont),
       fillColor: bgColor,
       filled: true,
-      contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+      contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
@@ -266,14 +266,19 @@ class ThemeHelper {
     return InputDecoration(
         //iconColor: kWhiteColor,
         labelText: lableText,
-        labelStyle:
-            const TextStyle(color: kPlaceholderColor, fontFamily: kDefaultFont),
+        labelStyle: const TextStyle(
+            color: kPlaceholderColor,
+            fontWeight: FontWeight.normal,
+            fontFamily: kDefaultFont),
         hintText: hintText,
-        hintStyle:
-            const TextStyle(color: kPlaceholderColor, fontFamily: kDefaultFont),
+        hintStyle: const TextStyle(
+          color: kPlaceholderColor,
+          fontWeight: FontWeight.normal,
+          fontFamily: kDefaultFont,
+        ),
         fillColor: kBackgroundColor,
         filled: true,
-        contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
           borderSide: BorderSide(

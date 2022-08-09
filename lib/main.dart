@@ -15,6 +15,7 @@ import 'package:shopstantly_app/views/profile/choose_location_screen.dart';
 import 'package:shopstantly_app/views/profile/profile_complete_screen.dart';
 import 'package:shopstantly_app/views/profile/set_profile_screen.dart';
 import 'package:shopstantly_app/views/thrift/thrift_detail_screen.dart';
+import 'package:shopstantly_app/views/unboarding/choose_account_screen.dart';
 import 'package:shopstantly_app/views/unboarding/landing_screen.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
@@ -84,6 +85,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/landing":
       return MaterialPageRoute(builder: (BuildContext context) {
         return const LandingScreen();
+      });
+    case "/chooseAccount":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return const ChooseAccountScreen();
       });
     case "/login":
       return MaterialPageRoute(builder: (BuildContext context) {
