@@ -39,6 +39,7 @@ class AssetsPath {
   static const String fruit = 'assets/images/fruit.png';
   static const String sofast = 'assets/icons/sofast.png';
   static const String google = 'assets/images/google.png';
+  static const String faceID = 'assets/images/faceId.svg';
   static const String facebook = 'assets/images/facebook.png';
   static const String wishlist = 'assets/icons/wishlist.svg';
   static const String more = 'assets/icons/more.svg';
@@ -54,6 +55,7 @@ class AssetsPath {
   static const String commerce = 'assets/icons/commerce.svg';
   static const String event = 'assets/icons/event.svg';
   static const String history = 'assets/icons/history.svg';
+  static const String success = 'assets/icons/success.svg';
   static const String inbox = 'assets/icons/inbox.svg';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
@@ -62,4 +64,6 @@ class AssetsPath {
   static const IconData email = IconData(0xe22a, fontFamily: 'MaterialIcons');
   //static const IconData eye = IconData(0xf424, fontFamily: iconFont, fontPackage: iconFontPackage);
 
+//gif animated files
+  static const String loading = 'assets/gifs/loading.gif';
 }

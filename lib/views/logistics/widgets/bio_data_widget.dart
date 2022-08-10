@@ -8,8 +8,8 @@ import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
 
 
-class VehicleFirstStage extends StatelessWidget {
-  const VehicleFirstStage({
+class BioDataWidget extends StatelessWidget {
+  const BioDataWidget({
     Key? key,
     required this.size,
   }) : super(key: key);

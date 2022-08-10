@@ -1,0 +1,1 @@
+enum LogisticType{intra,inter}

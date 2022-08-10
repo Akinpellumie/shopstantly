@@ -25,6 +25,7 @@ import 'package:sizer/sizer.dart';
 import 'views/auth/password/create_password_screen.dart';
 import 'views/auth/password/forgot_password_screen.dart';
 import 'views/auth/password/set_password_screen.dart';
+import 'views/logistics/logistic_screen.dart';
 import 'views/unboarding/onboarding_screen.dart';
 
 void main() {
@@ -80,100 +81,154 @@ class MyApp extends StatelessWidget {
 Route<dynamic> _onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case "/":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const OnboardingScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const OnboardingScreen();
+          });
     case "/landing":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const LandingScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const LandingScreen();
+          });
     case "/chooseAccount":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ChooseAccountScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ChooseAccountScreen();
+          });
     case "/login":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const LoginScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const LoginScreen();
+          });
     case "/register":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const RegisterScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const RegisterScreen();
+          });
     case "/forgotPassword":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ForgotPasswordScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ForgotPasswordScreen();
+          });
     case "/setNewPassword":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const SetPasswordScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const SetPasswordScreen();
+          });
     case "/createPassword":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const CreatePasswordScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const CreatePasswordScreen();
+          });
     case "/verifyOtp":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const OtpScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const OtpScreen();
+          });
     case "/profileComplete":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ProfileCompleteScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ProfileCompleteScreen();
+          });
     case "/setProfile":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const SetProfileScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const SetProfileScreen();
+          });
     case "/addPhoto":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const AddPhotoScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const AddPhotoScreen();
+          });
     case "/chooseLocation":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ChooseLocationScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ChooseLocationScreen();
+          });
     case "/activity":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ActivityScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ActivityScreen();
+          });
     case "/mainPage":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const PageSwitcher();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const PageSwitcher();
+          });
     case "/productDetail":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ProductDetailScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ProductDetailScreen();
+          });
     case "/blogPost":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const BlogPostScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const BlogPostScreen();
+          });
     case "/eventDetail":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const EventDetailScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const EventDetailScreen();
+          });
     case "/thriftDetail":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ThriftDetailScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ThriftDetailScreen();
+          });
     case "/chatDetail":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const ChatDetailScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const ChatDetailScreen();
+          });
     case "/commerce":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const CommerceMainScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const CommerceMainScreen();
+          });
     case "/socialDetail":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const SocialDetailScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const SocialDetailScreen();
+          });
     case "/logistic-verfiy":
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const LogisticVerificationScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const LogisticVerificationScreen();
+          });
+    case "/logistic":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const LogisticScreen();
+          });
     default:
-      return MaterialPageRoute(builder: (BuildContext context) {
-        return const OnboardingScreen();
-      });
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const OnboardingScreen();
+          });
   }
 }

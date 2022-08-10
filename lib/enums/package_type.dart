@@ -1,0 +1,1 @@
+enum PackageType { passenger, parcel }
