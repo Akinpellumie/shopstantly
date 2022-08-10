@@ -8,6 +8,7 @@ import 'package:shopstantly_app/views/base/page_switcher.dart';
 import 'package:shopstantly_app/views/chats/chat_detail_screen.dart';
 import 'package:shopstantly_app/views/events/event_detail_screen.dart';
 import 'package:shopstantly_app/views/home/social_detail_screen.dart';
+import 'package:shopstantly_app/views/logistics/logistic_verification_screen.dart';
 import 'package:shopstantly_app/views/manage/commerce/commerce_main_screen.dart';
 import 'package:shopstantly_app/views/post/blog_post_screen.dart';
 import 'package:shopstantly_app/views/profile/add_photo_screen.dart';
@@ -165,6 +166,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     case "/socialDetail":
       return MaterialPageRoute(builder: (BuildContext context) {
         return const SocialDetailScreen();
+      });
+    case "/logistic-verfiy":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return const LogisticVerificationScreen();
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {

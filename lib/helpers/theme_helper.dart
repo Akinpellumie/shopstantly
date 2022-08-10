@@ -31,8 +31,8 @@ class ThemeHelper {
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
           color:
-              showBorder ? kPrimaryColor.withOpacity(0.5) : Colors.transparent,
-          width: 1.0,
+              showBorder ? kPrimaryColor.withOpacity(0.4) : Colors.transparent,
+          width: 0.5,
         ),
       ),
       enabledBorder: OutlineInputBorder(
@@ -81,8 +81,8 @@ class ThemeHelper {
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
           color:
-              showBorder ? kPrimaryColor.withOpacity(0.5) : Colors.transparent,
-          width: 1.0,
+              showBorder ? kPrimaryColor.withOpacity(0.4) : Colors.transparent,
+          width: 0.5,
         ),
       ),
       enabledBorder: OutlineInputBorder(
