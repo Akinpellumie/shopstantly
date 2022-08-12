@@ -1,32 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopstantly_app/views/accounts/business/product_detail_screen.dart';
-import 'package:shopstantly_app/views/activity/activity_screen.dart';
-import 'package:shopstantly_app/views/auth/login/login_screen.dart';
-import 'package:shopstantly_app/views/auth/register/otp_screen.dart';
-import 'package:shopstantly_app/views/auth/register/register_screen.dart';
-import 'package:shopstantly_app/views/base/page_switcher.dart';
-import 'package:shopstantly_app/views/chats/chat_detail_screen.dart';
-import 'package:shopstantly_app/views/events/event_detail_screen.dart';
-import 'package:shopstantly_app/views/home/social_detail_screen.dart';
-import 'package:shopstantly_app/views/logistics/logistic_verification_screen.dart';
-import 'package:shopstantly_app/views/manage/commerce/commerce_main_screen.dart';
-import 'package:shopstantly_app/views/post/blog_post_screen.dart';
-import 'package:shopstantly_app/views/profile/add_photo_screen.dart';
-import 'package:shopstantly_app/views/profile/choose_location_screen.dart';
-import 'package:shopstantly_app/views/profile/profile_complete_screen.dart';
-import 'package:shopstantly_app/views/profile/set_profile_screen.dart';
-import 'package:shopstantly_app/views/thrift/thrift_detail_screen.dart';
-import 'package:shopstantly_app/views/unboarding/choose_account_screen.dart';
-import 'package:shopstantly_app/views/unboarding/landing_screen.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:sizer/sizer.dart';
 
-import 'views/auth/password/create_password_screen.dart';
-import 'views/auth/password/forgot_password_screen.dart';
-import 'views/auth/password/set_password_screen.dart';
-import 'views/logistics/logistic_screen.dart';
-import 'views/unboarding/onboarding_screen.dart';
+import 'utils/router_generator.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -71,164 +49,9 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           initialRoute: "/",
-          onGenerateRoute: _onGenerateRoute,
+          onGenerateRoute: generateRouter,
         );
       },
     );
-  }
-}
-
-Route<dynamic> _onGenerateRoute(RouteSettings settings) {
-  switch (settings.name) {
-    case "/":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const OnboardingScreen();
-          });
-    case "/landing":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const LandingScreen();
-          });
-    case "/chooseAccount":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ChooseAccountScreen();
-          });
-    case "/login":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const LoginScreen();
-          });
-    case "/register":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const RegisterScreen();
-          });
-    case "/forgotPassword":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ForgotPasswordScreen();
-          });
-    case "/setNewPassword":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const SetPasswordScreen();
-          });
-    case "/createPassword":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const CreatePasswordScreen();
-          });
-    case "/verifyOtp":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const OtpScreen();
-          });
-    case "/profileComplete":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ProfileCompleteScreen();
-          });
-    case "/setProfile":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const SetProfileScreen();
-          });
-    case "/addPhoto":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const AddPhotoScreen();
-          });
-    case "/chooseLocation":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ChooseLocationScreen();
-          });
-    case "/activity":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ActivityScreen();
-          });
-    case "/mainPage":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const PageSwitcher();
-          });
-    case "/productDetail":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ProductDetailScreen();
-          });
-    case "/blogPost":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const BlogPostScreen();
-          });
-    case "/eventDetail":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const EventDetailScreen();
-          });
-    case "/thriftDetail":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ThriftDetailScreen();
-          });
-    case "/chatDetail":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const ChatDetailScreen();
-          });
-    case "/commerce":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const CommerceMainScreen();
-          });
-    case "/socialDetail":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const SocialDetailScreen();
-          });
-    case "/logistic-verfiy":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const LogisticVerificationScreen();
-          });
-    case "/logistic":
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const LogisticScreen();
-          });
-    default:
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (BuildContext context) {
-            return const OnboardingScreen();
-          });
   }
 }

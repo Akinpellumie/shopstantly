@@ -1,0 +1,1 @@
+enum LogisticPlanType { rider, driver }
