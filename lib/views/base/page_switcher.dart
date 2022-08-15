@@ -21,18 +21,12 @@ class PageSwitcher extends StatefulWidget {
 class _PageSwitcherState extends State<PageSwitcher> {
   final Color navigationBarColor = kBackgroundColor;
   int selectedIndex = 0;
-  String fabIcon = AssetsPath.bagShopePlus;
-  
+  Color fabIconColor = kPlaceholderColor;
+
   void _selectedTab(int index) {
     setState(() {
       selectedIndex = index;
-    });
-  }
-
-  void _selectedFab(int index) {
-    setState(() {
-      selectedIndex = index;
-      fabIcon = AssetsPath.bagShop;
+      fabIconColor = selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor;
     });
   }
 
@@ -49,11 +43,11 @@ class _PageSwitcherState extends State<PageSwitcher> {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        systemNavigationBarColor: navigationBarColor,
+        systemNavigationBarColor: navigationBarColor.withOpacity(0.50),
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Scaffold(
-        //backgroundColor: Colors.transparent,
+        //backgroundColor: kBackgroundColor.withOpacity(0.45),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
@@ -66,19 +60,15 @@ class _PageSwitcherState extends State<PageSwitcher> {
           ],
         ),
         bottomNavigationBar: FABBottomAppBar(
-          centerItemText: 'Plus',
+          centerItemText: 'Logistics',
           backgroundColor: kBackgroundColor,
-          color: kPlaceholderColor,
-          selectedColor: kPrimaryColor,
+          color: selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor,
+          selectedColor: selectedIndex == 4 ? kPlaceholderColor : kPrimaryColor,
           notchedShape: const CircularNotchedRectangle(),
           onTabSelected: (index) {
             setState(() {
               selectedIndex = index;
-              if (index == 4) {
-                fabIcon = AssetsPath.bagShop;
-              } else {
-                fabIcon = AssetsPath.bagShopePlus;
-              }
+              _selectedTab(index);
             });
             pageController.animateToPage(
               selectedIndex,
@@ -100,17 +90,17 @@ class _PageSwitcherState extends State<PageSwitcher> {
         //     context),
         floatingActionButton: FloatingActionButton(
           backgroundColor: kBackgroundColor,
-          child: Image.asset(
-            fabIcon,
-            fit: BoxFit.contain,
-            width: 30.0,
-            height: 30.0,
+          child: Icon(
+            Icons.my_location,
+            size: 25.0,
+            color: fabIconColor,
           ),
           onPressed: () {
-            // setState(() {
-            //   selectedIndex == 4;
-            //   _selectedFab(selectedIndex);
-            // });
+            setState(() {
+              selectedIndex == 4;
+              //_selectedTab(4);
+              fabIconColor = kPrimaryColor;
+            });
             pageController.animateToPage(
               4,
               duration: const Duration(milliseconds: 400),

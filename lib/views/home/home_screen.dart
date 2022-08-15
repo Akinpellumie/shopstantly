@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: menuTabItem(
                       size,
-                      'Plus',
+                      'Trademarks',
                       selectedIndex == 2 ? true : false,
                     ),
                   ),
@@ -123,19 +123,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       selectedIndex == 3 ? true : false,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = 4;
-                        showFilterTabs = true;
-                      });
-                    },
-                    child: menuTabItem(
-                      size,
-                      'Thrift',
-                      selectedIndex == 4 ? true : false,
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     setState(() {
+                  //       selectedIndex = 4;
+                  //       showFilterTabs = true;
+                  //     });
+                  //   },
+                  //   child: menuTabItem(
+                  //     size,
+                  //     'Thrift',
+                  //     selectedIndex == 4 ? true : false,
+                  //   ),
+                  // ),
                 ],
               ),
             ),

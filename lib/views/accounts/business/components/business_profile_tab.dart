@@ -191,8 +191,9 @@ List<Widget> getProductCategoryTabs(int index) {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
           decoration: BoxDecoration(
-              color: index == 1 ? kPrimaryColor : kCategoryTabColor,),
-              child: Text(
+            color: index == 1 ? kPrimaryColor : kCategoryTabColor,
+          ),
+          child: Text(
             'Category B',
             style: TextStyle(
                 color: index == 1 ? kWhiteColor : kPlaceholderColor,
@@ -212,8 +213,9 @@ List<Widget> getProductCategoryTabs(int index) {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
           decoration: BoxDecoration(
-              color: index == 2 ? kPrimaryColor : kCategoryTabColor,),
-              child: Text(
+            color: index == 2 ? kPrimaryColor : kCategoryTabColor,
+          ),
+          child: Text(
             'Category C',
             style: TextStyle(
                 color: index == 2 ? kWhiteColor : kPlaceholderColor,
@@ -233,8 +235,9 @@ List<Widget> getProductCategoryTabs(int index) {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
           decoration: BoxDecoration(
-              color: index == 3 ? kPrimaryColor : kCategoryTabColor,),
-              child: Text(
+            color: index == 3 ? kPrimaryColor : kCategoryTabColor,
+          ),
+          child: Text(
             'Category D',
             style: TextStyle(
                 color: index == 3 ? kWhiteColor : kPlaceholderColor,

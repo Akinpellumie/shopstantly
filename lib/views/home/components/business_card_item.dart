@@ -319,7 +319,7 @@ class _BusinessCardItemState extends State<BusinessCardItem> {
             dotColor: kPrimaryAccentColor,
             dotHeight: 10.0,
             dotWidth: 10.0,
-            spacing: 10.0),
+            spacing: 10.0,),
       );
   final urlImages = [
     'https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',

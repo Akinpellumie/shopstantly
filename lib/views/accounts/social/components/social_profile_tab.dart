@@ -21,7 +21,7 @@ List<Widget> getSocialTabs(double _width) {
     child: const Align(
       alignment: Alignment.centerLeft,
       child: Tab(
-        text: 'Merchandize',
+        text: 'Store',
       ),
     ),
   );

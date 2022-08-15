@@ -1,1 +1,1 @@
-enum LogisticType{intra,inter}
+enum LogisticType { intra, inter, abroad }

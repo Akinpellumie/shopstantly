@@ -247,7 +247,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: ThemeHelper().passwordInputDecoration(
                             'Create Password',
                             'Enter password',
-                            null,
+                            GestureDetector(
+                              onTap: () => _toggle(),
+                              child: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                                color: kLightGrayColor,
+                                size: 20.0,
+                              ),
+                            ),
                             const Icon(
                               Icons.lock_rounded,
                               color: kLightGrayColor,
@@ -282,7 +291,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: ThemeHelper().passwordInputDecoration(
                             'Confirm Password',
                             'Enter password',
-                            null,
+                            GestureDetector(
+                              onTap: () => _toggle(),
+                              child: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                                color: kLightGrayColor,
+                                size: 20.0,
+                              ),
+                            ),
                             const Icon(
                               Icons.lock_rounded,
                               color: kLightGrayColor,

@@ -20,7 +20,7 @@ class FABBottomAppBar extends StatefulWidget {
     required this.notchedShape,
     required this.onTabSelected,
   }) : super(key: key) {
-    assert(this.items.length == 2 || this.items.length == 4);
+    assert(items.length == 2 || items.length == 4);
   }
   final List<FABBottomAppBarItem> items;
   final String centerItemText;
@@ -69,6 +69,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   }
 
   Widget _buildMiddleTabItem() {
+    Color color = _selectedIndex == 4 ? widget.selectedColor : widget.color;
     return Expanded(
       child: SizedBox(
         height: widget.height,
@@ -80,7 +81,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
             Text(
               widget.centerItemText,
               style: TextStyle(
-                color: widget.color,
+                color: color,
                 fontFamily: kDefaultFont,
                 fontSize: kRegularText - 3,
               ),
@@ -116,7 +117,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
                     fontFamily: kDefaultFont,
                     fontSize: kRegularText - 3,
                   ),
-                )
+                ),
               ],
             ),
           ),
