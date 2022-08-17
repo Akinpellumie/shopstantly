@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/views/home/comment_screen.dart';
 
 import '../views/accounts/business/product_detail_screen.dart';
 import '../views/activity/activity_screen.dart';
@@ -81,6 +82,12 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const OtpScreen();
+          });
+    case "/commentScreen":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const CommentScreen();
           });
     case "/profileComplete":
       return MaterialPageRoute(

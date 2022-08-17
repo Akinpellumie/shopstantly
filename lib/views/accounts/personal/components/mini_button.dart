@@ -22,13 +22,13 @@ class MiniButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
       decoration: BoxDecoration(
         border: Border.all(
           color: kPrimaryColor,
           width: 1.0,
         ),
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,12 +41,12 @@ class MiniButton extends StatelessWidget {
             width: 20.0,
           ),
           const SizedBox(
-            width: 5.0,
+            width: 10.0,
           ),
           Text(
             title,
             style: TextStyle(
-              fontSize: size.height * 0.015,
+              fontSize: size.height * 0.016,
               fontWeight: FontWeight.w400,
               fontFamily: kDefaultFont,
               color: kPrimaryColor,

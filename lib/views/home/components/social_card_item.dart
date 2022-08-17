@@ -38,7 +38,7 @@ class SocialCardItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         width: 40.0,
@@ -62,15 +62,28 @@ class SocialCardItem extends StatelessWidget {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            'Linda Flora',
-                            style: TextStyle(
-                              color: kPrimaryColor,
-                              fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0150,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Linda Flora',
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontFamily: kDefaultFont,
+                                  fontSize: size.height * 0.0150,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+                              const Icon(
+                                Icons.check_circle,
+                                color: kOrangeColor,
+                                size: 15.0,
+                              ),
+                            ],
                           ),
                           Text(
                             'Ibadan, Nigeria',
@@ -82,14 +95,6 @@ class SocialCardItem extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      const Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                        size: 15.0,
                       ),
                     ],
                   ),
@@ -124,39 +129,55 @@ class SocialCardItem extends StatelessWidget {
               width: double.infinity,
               child: displayWidget(3, size, _imageUrls),
             ),
-            const SizedBox(
-              height: 10.0,
-            ),
             SizedBox(
               width: double.infinity,
               child: Row(
                 children: [
-                  Icon(
-                    CupertinoIcons.heart,
+                  IconButton(
                     color: kPlaceholderColor,
-                    size: size.height * 0.025,
+                    icon: const Icon(
+                      CupertinoIcons.heart,
+                      color: kPlaceholderColor,
+                    ),
+                    iconSize: size.height * 0.030,
+                    onPressed: () =>
+                        CustomRouter.nextScreen(context, '/commentScreen'),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0.0,
+                      vertical: 0.0,
+                    ),
+                    alignment: Alignment.centerLeft,
                   ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  Icon(
-                    Icons.share_outlined,
+                  IconButton(
                     color: kPlaceholderColor,
-                    size: size.height * 0.025,
+                    icon: const Icon(
+                      Icons.share_outlined,
+                      color: kPlaceholderColor,
+                    ),
+                    iconSize: size.height * 0.030,
+                    onPressed: () {},
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0.0,
+                      vertical: 0.0,
+                    ),
+                    alignment: Alignment.centerLeft,
                   ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  Icon(
-                    CupertinoIcons.bookmark,
+                  IconButton(
                     color: kPlaceholderColor,
-                    size: size.height * 0.025,
+                    icon: const Icon(
+                      CupertinoIcons.bookmark,
+                      color: kPlaceholderColor,
+                    ),
+                    iconSize: size.height * 0.030,
+                    onPressed: () {},
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0.0,
+                      vertical: 0.0,
+                    ),
+                    alignment: Alignment.centerLeft,
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 10.0,
             ),
             Text(
               'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
@@ -180,7 +201,7 @@ class SocialCardItem extends StatelessWidget {
                         '30k views',
                         style: TextStyle(
                           fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0120,
+                          fontSize: size.height * 0.0130,
                           fontWeight: FontWeight.normal,
                           color: kPlaceholderColor.withOpacity(0.75),
                         ),
@@ -198,7 +219,7 @@ class SocialCardItem extends StatelessWidget {
                         '412 comments',
                         style: TextStyle(
                           fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0120,
+                          fontSize: size.height * 0.0130,
                           fontWeight: FontWeight.normal,
                           color: kPlaceholderColor.withOpacity(0.75),
                         ),
@@ -229,7 +250,7 @@ class SocialCardItem extends StatelessWidget {
                             '+28 others engaged this post',
                             style: TextStyle(
                               fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0120,
+                              fontSize: size.height * 0.0130,
                               fontWeight: FontWeight.normal,
                               color: kPlaceholderColor.withOpacity(0.75),
                             ),
@@ -251,8 +272,8 @@ class SocialCardItem extends StatelessWidget {
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi tortor, molestie sed convallis sit amet, ultrices et enim. In ut maximus augue, quis venenatis risus.. ',
                 style: TextStyle(
                   color: kPrimaryColor,
-                  fontSize: size.height * 0.0130,
-                  fontWeight: FontWeight.w300,
+                  fontSize: size.height * 0.0140,
+                  fontWeight: FontWeight.w400,
                 ),
                 children: <TextSpan>[
                   TextSpan(
@@ -260,7 +281,7 @@ class SocialCardItem extends StatelessWidget {
                     style: TextStyle(
                       color: kPrimaryColor,
                       fontWeight: FontWeight.w500,
-                      fontSize: size.height * 0.0130,
+                      fontSize: size.height * 0.0150,
                       fontStyle: FontStyle.italic,
                     ),
                     recognizer: TapGestureRecognizer()

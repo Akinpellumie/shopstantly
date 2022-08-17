@@ -9,8 +9,8 @@ import '../../../../utils/dimensions.dart';
 import '../../components/circle_icon_button.dart';
 import '../../components/comment_widget.dart';
 import '../../components/user_profile_widget.dart';
-import '../../shoppers/components/follower_counter.dart';
-import '../../shoppers/components/mini_button.dart';
+import '../../personal/components/follower_counter.dart';
+import '../../personal/components/mini_button.dart';
 
 class InfoView extends StatelessWidget {
   const InfoView({

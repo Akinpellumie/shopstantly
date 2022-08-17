@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopstantly_app/views/accounts/shoppers/components/circle_button.dart';
+import 'package:shopstantly_app/views/accounts/personal/components/circle_button.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/assets_path.dart';

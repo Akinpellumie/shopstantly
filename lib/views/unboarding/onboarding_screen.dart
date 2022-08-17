@@ -42,15 +42,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               margin:
                   const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 20.0),
               height: size.height * 0.1,
-              child: const Align(
+              child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
                   'Skip',
                   style: TextStyle(
-                      color: kPrimaryTextColor,
-                      fontFamily: kDefaultFont,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500),
+                    color: kPrimaryTextColor,
+                    fontFamily: kDefaultFont,
+                    fontSize: size.height * 0.0250,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),

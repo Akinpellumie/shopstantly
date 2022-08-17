@@ -29,16 +29,16 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: MainPageAppBar(
-        actions: [
-          SvgPicture.asset(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: SvgPicture.asset(
             AssetsPath.searchIcon,
             color: kIconColor,
             width: 20.0,
             height: 20.0,
           ),
-          const SizedBox(
-            width: 10.0,
-          ),
+        ),
+        actions: [
           SvgPicture.asset(
             AssetsPath.settingsIcon,
             color: kIconColor,
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         appBar: AppBar(),
         title: Align(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: Image.asset(
             'assets/images/shoplogo.png',
             fit: BoxFit.fitHeight,
@@ -67,12 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverAppBar(
             leadingWidth: 0.0,
             elevation: 0.0,
-            automaticallyImplyLeading: false,
+            automaticallyImplyLeading: true,
             pinned: true,
             backgroundColor: kBackgroundColor,
             flexibleSpace: FlexibleSpaceBar(
+              titlePadding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              centerTitle: false,
               title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -283,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title,
             style: TextStyle(
               fontFamily: kDefaultFont,
-              fontSize: size.height * 0.0150,
+              fontSize: size.height * 0.0180,
               fontWeight: FontWeight.normal,
               color: active ? kPrimaryColor : kPlaceholderColor,
             ),

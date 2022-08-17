@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/dimensions.dart';
 
-
 class FollowerCounter extends StatelessWidget {
   const FollowerCounter({
     Key? key,
@@ -23,7 +22,7 @@ class FollowerCounter extends StatelessWidget {
         Text(
           count,
           style: TextStyle(
-            fontSize: size.height * 0.015,
+            fontSize: size.height * 0.0190,
             fontWeight: FontWeight.w500,
             fontFamily: kDefaultFont,
             color: kPrimaryColor,
@@ -32,8 +31,8 @@ class FollowerCounter extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            fontSize: size.height * 0.015,
-            fontWeight: FontWeight.bold,
+            fontSize: size.height * 0.0180,
+            fontWeight: FontWeight.normal,
             fontFamily: kDefaultFont,
             color: kSecondaryTextColor,
           ),
