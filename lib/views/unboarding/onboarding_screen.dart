@@ -40,7 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             onTap: () => CustomRouter.nextScreen(context, '/landing'),
             child: Container(
               margin:
-                  const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 20.0),
+                  const EdgeInsets.only(top: 20.0, bottom: 10.0, right: 20.0),
               height: size.height * 0.1,
               child: Align(
                 alignment: Alignment.centerRight,
@@ -49,7 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   style: TextStyle(
                     color: kPrimaryTextColor,
                     fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0250,
+                    fontSize: size.height * 0.0200,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -108,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
             width: double.infinity,
-            height: size.height * 0.3 - 30.0,
+            height: size.height * 0.3 - 40.0,
             child: Column(
               children: <Widget>[
                 Container(
