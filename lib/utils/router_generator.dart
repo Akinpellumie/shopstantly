@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/views/home/comment_screen.dart';
 
 import '../views/accounts/business/product_detail_screen.dart';
+import '../views/accounts/others/post_detail_screen.dart';
 import '../views/activity/activity_screen.dart';
 import '../views/auth/login/login_screen.dart';
 import '../views/auth/password/create_password_screen.dart';
@@ -142,6 +143,12 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const EventDetailScreen();
+          });
+    case "/postDetail":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const PostDetailScreen();
           });
     case "/thriftDetail":
       return MaterialPageRoute(

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../components/event_card.dart';
+import '../../components/event_card.dart';
 
-class EventView extends StatefulWidget {
-  const EventView({Key? key}) : super(key: key);
+class UserEventView extends StatefulWidget {
+  const UserEventView({Key? key}) : super(key: key);
 
   @override
-  State<EventView> createState() => _EventViewState();
+  State<UserEventView> createState() => _UserEventViewState();
 }
 
-class _EventViewState extends State<EventView> {
+class _UserEventViewState extends State<UserEventView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

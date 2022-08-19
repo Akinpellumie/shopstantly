@@ -179,13 +179,16 @@ class SocialCardItem extends StatelessWidget {
                 ],
               ),
             ),
-            Text(
-              'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
-              style: TextStyle(
-                fontFamily: kDefaultFont,
-                fontSize: size.height * 0.0180,
-                fontWeight: FontWeight.w500,
-                color: kPrimaryColor,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
+                style: TextStyle(
+                  fontFamily: kDefaultFont,
+                  fontSize: size.height * 0.0180,
+                  fontWeight: FontWeight.w500,
+                  color: kPrimaryColor,
+                ),
               ),
             ),
             const SizedBox(

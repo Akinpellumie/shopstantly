@@ -1,25 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 
-import '../../../../helpers/theme_helper.dart';
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/assets_path.dart';
-import '../../../../utils/dimensions.dart';
-import '../../components/circle_icon_button.dart';
-import '../../components/comment_widget.dart';
-import '../../components/user_profile_widget.dart';
-import '../../personal/components/follower_counter.dart';
-import '../../personal/components/mini_button.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/assets_path.dart';
+import '../../../../../utils/dimensions.dart';
+import '../../../components/circle_icon_button.dart';
+import '../../../components/user_profile_widget.dart';
+import '../../../personal/components/follower_counter.dart';
+import '../../../personal/components/mini_button.dart';
 
-class InfoView extends StatelessWidget {
-  const InfoView({
+class UserInfoView extends StatefulWidget {
+  const UserInfoView({
     Key? key,
     required this.size,
   }) : super(key: key);
 
   final Size size;
 
+  @override
+  State<UserInfoView> createState() => _UserInfoViewState();
+}
+
+class _UserInfoViewState extends State<UserInfoView> {
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -40,7 +42,7 @@ class InfoView extends StatelessWidget {
                         // background image and bottom contents
                         Container(
                           height: 150.0,
-                          width: size.width,
+                          width: widget.size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.0),
                             color: kProfileBannerColor,
@@ -88,7 +90,7 @@ class InfoView extends StatelessWidget {
                               Text(
                                 'Akinpelumi Akinlade',
                                 style: TextStyle(
-                                  fontSize: size.height * 0.0120,
+                                  fontSize: widget.size.height * 0.0120,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: kDefaultFont,
                                   color: kPrimaryColor,
@@ -97,7 +99,7 @@ class InfoView extends StatelessWidget {
                               Text(
                                 '@layi',
                                 style: TextStyle(
-                                  fontSize: size.height * 0.0125,
+                                  fontSize: widget.size.height * 0.0125,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: kDefaultFont,
                                   color: kPrimaryColor,
@@ -114,7 +116,7 @@ class InfoView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               CircleIconButton(
-                                size: size,
+                                size: widget.size,
                                 iconData: CupertinoIcons.chat_bubble_fill,
                                 iconColor: kWhiteColor,
                                 iconSize: 13.0,
@@ -124,7 +126,7 @@ class InfoView extends StatelessWidget {
                                 width: 5.0,
                               ),
                               CircleIconButton(
-                                size: size,
+                                size: widget.size,
                                 iconData: CupertinoIcons.video_camera_solid,
                                 iconColor: kWhiteColor,
                                 iconSize: 13.0,
@@ -134,12 +136,18 @@ class InfoView extends StatelessWidget {
                                 width: 5.0,
                               ),
                               CircleIconButton(
-                                size: size,
+                                size: widget.size,
                                 iconData: CupertinoIcons.phone_solid,
                                 iconColor: kWhiteColor,
                                 iconSize: 13.0,
                                 bgColor: kPrimaryColor,
                               ),
+                              // MiniButton(
+                              //   width: size.width * 0.200,
+                              //   size: size,
+                              //   iconPath: AssetsPath.followIcon,
+                              //   title: 'Follow',
+                              // ),
                             ],
                           ),
                         ),
@@ -152,7 +160,7 @@ class InfoView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           FollowerCounter(
-                            size: size,
+                            size: widget.size,
                             title: 'Following',
                             count: '250',
                           ),
@@ -164,7 +172,7 @@ class InfoView extends StatelessWidget {
                             color: kLineColor,
                           ),
                           FollowerCounter(
-                            size: size,
+                            size: widget.size,
                             title: 'Followers',
                             count: '146',
                           ),
@@ -176,7 +184,7 @@ class InfoView extends StatelessWidget {
                             color: kLineColor,
                           ),
                           FollowerCounter(
-                            size: size,
+                            size: widget.size,
                             title: 'Events',
                             count: '4',
                           ),
@@ -188,8 +196,8 @@ class InfoView extends StatelessWidget {
                             color: kLineColor,
                           ),
                           MiniButton(
-                            width: size.width / 4,
-                            size: size,
+                            width: widget.size.width / 4,
+                            size: widget.size,
                             iconPath: AssetsPath.followIcon,
                             title: 'Follow',
                           ),
@@ -215,7 +223,7 @@ class InfoView extends StatelessWidget {
                         color: kPrimaryColor,
                         fontFamily: kDefaultFont,
                         fontWeight: FontWeight.w500,
-                        fontSize: size.height * 0.0200,
+                        fontSize: widget.size.height * 0.0200,
                       ),
                     ),
                   ),
@@ -227,7 +235,7 @@ class InfoView extends StatelessWidget {
                         color: kPrimaryColor,
                         fontFamily: kDefaultFont,
                         fontWeight: FontWeight.normal,
-                        fontSize: size.height * 0.0150,
+                        fontSize: widget.size.height * 0.0150,
                       ),
                       children: <TextSpan>[
                         TextSpan(
@@ -236,7 +244,7 @@ class InfoView extends StatelessWidget {
                             color: kPurpleColor,
                             fontFamily: kDefaultFont,
                             fontWeight: FontWeight.w600,
-                            fontSize: size.height * 0.0160,
+                            fontSize: widget.size.height * 0.0160,
                             decoration: TextDecoration.underline,
                           ),
                         ),
@@ -254,12 +262,12 @@ class InfoView extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Executive (10)',
+                      'Management (10)',
                       style: TextStyle(
                         color: kPrimaryColor,
                         fontFamily: kDefaultFont,
                         fontWeight: FontWeight.w500,
-                        fontSize: size.height * 0.0200,
+                        fontSize: widget.size.height * 0.0200,
                       ),
                     ),
                   ),
@@ -272,133 +280,43 @@ class InfoView extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: const EdgeInsets.only(left: 20.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Lade',
                     lastname: 'Ajala',
                     role: 'Designer',
-                    height: size.height * 0.100,
+                    height: 80.0,
                   ),
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Akinpelumi',
                     lastname: 'Ade',
                     role: 'Developer',
-                    height: size.height * 0.100,
+                    height: 80.0,
                   ),
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Emmanuel',
                     lastname: 'Ade',
                     role: 'CTO',
-                    height: size.height * 0.100,
+                    height: 80.0,
                   ),
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Tosin',
                     lastname: 'Ajewole',
                     role: 'Designer',
-                    height: size.height * 0.100,
+                    height: 80.0,
                   ),
                 ],
               ),
-            ),
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    decoration: BoxDecoration(
-                      color: kPostEntryBgColor,
-                      borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(
-                        width: 1.0,
-                        color: kLightGrayColor,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          child: Container(
-                            height: 30.0,
-                            width: 30.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: kProfileBannerColor,
-                              border:
-                                  Border.all(color: Colors.white, width: 1.0),
-                            ),
-                            child: ClipOval(
-                              child: Image.asset(AssetsPath.profileDp),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: TextFormField(
-                            //initialValue: initialUser,
-                            //readOnly: _loginViewModel.loggingIn,
-                            decoration: ThemeHelper().postInputDecoration(
-                              ' Comment',
-                              'Write comment',
-                              false,
-                              Colors.transparent,
-                            ),
-                            validator: (v) {
-                              if (!RequiredValidator(
-                                errorText: '',
-                              ).isValid(v)) {
-                                // _loginViewModel.setError(
-                                //   "User ID",
-                                //   'Enter a valid user ID',
-                                // );
-                              } else {
-                                //_loginViewModel.removeError("userId");
-                              }
-                              return null;
-                            },
-                            //controller: _loginViewModel.userIdController,
-                            keyboardType: TextInputType.text,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            CommentWidget(
-              size: size,
-              name: 'Angel Lukaku',
-              desc:
-                  'Cinemas is the ultimate experience to see new movies in Gold Class or Vmax. Find a cinema near you.',
-              imagePath: AssetsPath.imageDp,
-              date: '26 Feb',
-            ),
-            CommentWidget(
-              size: size,
-              name: 'Lionel Messi',
-              desc:
-                  'Cinemas is the ultimate experience to see new movies in Gold Class or Vmax. Find a cinema near you.',
-              imagePath: AssetsPath.imageDp,
-              date: '27 Feb',
-            ),
-            CommentWidget(
-              size: size,
-              name: 'Anjelina Jolly',
-              desc:
-                  'Cinemas is the ultimate experience to see new movies in Gold Class or Vmax. Find a cinema near you.',
-              imagePath: AssetsPath.imageDp,
-              date: '29 Feb',
             ),
           ],
         ),

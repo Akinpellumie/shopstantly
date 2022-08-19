@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
+import 'package:shopstantly_app/views/accounts/components/circle_icon_button.dart';
 
 import '../../helpers/theme_helper.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/custom_router.dart';
 import '../../utils/dimensions.dart';
+import '../../widgets/circle_avatar_with_tick.dart';
 
 class BlogPostScreen extends StatefulWidget {
   const BlogPostScreen({Key? key}) : super(key: key);
@@ -29,49 +31,36 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
           onPressed: () => CustomRouter.previousScreen(context),
         ),
         elevation: 0.0,
+        leadingWidth: 0.0,
         backgroundColor: kBackgroundColor,
         title: Align(
           alignment: Alignment.centerLeft,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                height: 50.0,
-                width: 50.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kProfileBannerColor,
-                  border: Border.all(color: Colors.white, width: 5.0),
-                ),
-                child: Container(
-                  margin: const EdgeInsets.only(top: 15.0),
-                  child: const Center(
-                    child: Icon(
-                      CupertinoIcons.cloud_download,
-                      color: kPlaceholderColor,
-                    ),
-                  ),
-                ),
+              const CircleAvatarWithTick(
+                imageUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+                tickBgColor: kOrangeColor,
               ),
               const SizedBox(
-                width: 5.0,
+                width: 10.0,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '@kerah_stores',
+                    'David Andreas',
                     style: TextStyle(
                         fontFamily: kDefaultFont,
                         fontSize: size.height * 0.0150,
-                        color: kPrimaryTextColor,
+                        color: kPrimaryColor,
                         fontWeight: FontWeight.w400),
                   ),
                   RichText(
                     text: TextSpan(
                       text: '1,980.893 ',
                       style: TextStyle(
-                        color: kPrimaryColor,
+                        color: kPrimaryTextColor,
                         fontSize: size.height * 0.0130,
                         fontWeight: FontWeight.normal,
                       ),
@@ -79,7 +68,7 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
                         TextSpan(
                           text: 'subcribers',
                           style: TextStyle(
-                            color: kPrimaryColor,
+                            color: kPrimaryTextColor,
                             fontWeight: FontWeight.normal,
                             fontSize: size.height * 0.0130,
                             fontStyle: FontStyle.normal,
@@ -96,11 +85,12 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: SvgPicture.asset(
-              AssetsPath.settingsIcon,
-              color: kLightGrayColor,
-              width: 25.0,
-              height: 25.0,
+            icon: CircleIconButton(
+              bgColor: Colors.redAccent,
+              iconColor: kWhiteColor,
+              iconData: CupertinoIcons.heart_fill,
+              size: size,
+              iconSize: 15.0,
             ),
           ),
         ],
@@ -135,23 +125,23 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
                             ),
                           ),
                         ),
-                        Row(
-                          children: const <Widget>[
-                            Icon(
-                              Icons.share,
-                              color: kPlaceholderColor,
-                              size: 20.0,
-                            ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Icon(
-                              CupertinoIcons.bookmark,
-                              color: kPlaceholderColor,
-                              size: 20.0,
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   children: const <Widget>[
+                        //     Icon(
+                        //       Icons.share,
+                        //       color: kPlaceholderColor,
+                        //       size: 20.0,
+                        //     ),
+                        //     SizedBox(
+                        //       width: 5.0,
+                        //     ),
+                        //     Icon(
+                        //       CupertinoIcons.bookmark,
+                        //       color: kPlaceholderColor,
+                        //       size: 20.0,
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                     Column(
@@ -255,40 +245,71 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                decoration: BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: BorderRadius.circular(25.0)),
-                child: TextFormField(
-                  onChanged: (value) {},
-                  maxLines: null,
-                  textAlignVertical: TextAlignVertical.top,
-                  textCapitalization: TextCapitalization.sentences,
-                  style: const TextStyle(
-                      color: kWhiteColor,
-                      fontFamily: kDefaultFont,
-                      fontWeight: FontWeight.w400),
-                  decoration: ThemeHelper().chatEntryInputDecoration(
-                    'Add Comments',
-                    'Type comment...',
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: SvgPicture.asset(
-                        AssetsPath.send,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: SvgPicture.asset(
-                        AssetsPath.more,
-                      ),
-                    ),
-                    size.height * 0.0125,
+              child: SizedBox(
+                //height: size.height * 0.15,
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    bottom: 10,
+                    left: 15,
+                    right: 15,
                   ),
-                  keyboardType: TextInputType.text,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: kBackgroundColor,
+                    border: Border.all(
+                      color: kPlaceholderColor.withOpacity(0.65),
+                      width: 0.50,
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          onChanged: (value) {},
+                          maxLines: null,
+                          textAlignVertical: TextAlignVertical.bottom,
+                          //maxLength: 100,
+                          textCapitalization: TextCapitalization.sentences,
+                          style: TextStyle(
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                            fontSize: size.height * 0.0200,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          decoration: const InputDecoration(
+                            hintText: "Add comment...",
+                            hintStyle: TextStyle(
+                              color: kPrimaryTextColor,
+                            ),
+                            border: InputBorder.none,
+                          ),
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                          padding: const EdgeInsets.all(5.0),
+                          decoration: BoxDecoration(
+                            color: kCategoryTabColor.withOpacity(0.95),
+                            shape: BoxShape.circle,
+                          ),
+                          child: SvgPicture.asset(
+                            AssetsPath.sendIcon,
+                            color: kPrimaryColor.withOpacity(0.95),
+                            width: size.height * 0.0150,
+                            height: size.height * 0.0200,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

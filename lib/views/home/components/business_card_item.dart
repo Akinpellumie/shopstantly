@@ -172,13 +172,16 @@ class _BusinessCardItemState extends State<BusinessCardItem> {
           const SizedBox(
             height: 10.0,
           ),
-          Text(
-            'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
-            style: TextStyle(
-              fontFamily: kDefaultFont,
-              fontSize: size.height * 0.0180,
-              fontWeight: FontWeight.w500,
-              color: kPrimaryColor,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
+              style: TextStyle(
+                fontFamily: kDefaultFont,
+                fontSize: size.height * 0.0180,
+                fontWeight: FontWeight.w500,
+                color: kPrimaryColor,
+              ),
             ),
           ),
           const SizedBox(
@@ -315,11 +318,12 @@ class _BusinessCardItemState extends State<BusinessCardItem> {
         activeIndex: carouselIndex,
         count: urlImages.length,
         effect: const WormEffect(
-            activeDotColor: kOrangeColor,
-            dotColor: kPrimaryAccentColor,
-            dotHeight: 10.0,
-            dotWidth: 10.0,
-            spacing: 10.0,),
+          activeDotColor: kOrangeColor,
+          dotColor: kPrimaryAccentColor,
+          dotHeight: 10.0,
+          dotWidth: 10.0,
+          spacing: 10.0,
+        ),
       );
   final urlImages = [
     'https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',

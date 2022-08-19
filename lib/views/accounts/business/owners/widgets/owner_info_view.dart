@@ -1,22 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/assets_path.dart';
-import '../../../../utils/dimensions.dart';
-import '../../components/circle_icon_button.dart';
-import '../../components/user_profile_widget.dart';
-import '../../personal/components/follower_counter.dart';
-import '../../personal/components/mini_button.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/assets_path.dart';
+import '../../../../../utils/dimensions.dart';
+import '../../../components/user_profile_widget.dart';
+import '../../../personal/components/follower_counter.dart';
+import '../../../personal/components/mini_button.dart';
 
-class InfoView extends StatelessWidget {
-  const InfoView({
+class OwnerInfoView extends StatefulWidget {
+  const OwnerInfoView({
     Key? key,
     required this.size,
   }) : super(key: key);
 
   final Size size;
 
+  @override
+  State<OwnerInfoView> createState() => _OwnerInfoViewState();
+}
+
+class _OwnerInfoViewState extends State<OwnerInfoView> {
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -37,15 +43,17 @@ class InfoView extends StatelessWidget {
                         // background image and bottom contents
                         Container(
                           height: 150.0,
+                          width: widget.size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.0),
                             color: kProfileBannerColor,
                             border: Border.all(color: Colors.white, width: 5.0),
                           ),
-                          child: const Center(
-                            child: Icon(
-                              CupertinoIcons.cloud_download,
-                              color: kPlaceholderColor,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(13.0),
+                            child: Image.asset(
+                              AssetsPath.image2,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
@@ -62,13 +70,10 @@ class InfoView extends StatelessWidget {
                               border:
                                   Border.all(color: Colors.white, width: 5.0),
                             ),
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 15.0),
-                              child: const Center(
-                                child: Icon(
-                                  CupertinoIcons.cloud_download,
-                                  color: kPlaceholderColor,
-                                ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                AssetsPath.image2,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -86,7 +91,7 @@ class InfoView extends StatelessWidget {
                               Text(
                                 'Akinpelumi Akinlade',
                                 style: TextStyle(
-                                  fontSize: size.height * 0.0120,
+                                  fontSize: widget.size.height * 0.0120,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: kDefaultFont,
                                   color: kPrimaryColor,
@@ -95,7 +100,7 @@ class InfoView extends StatelessWidget {
                               Text(
                                 '@layi',
                                 style: TextStyle(
-                                  fontSize: size.height * 0.0125,
+                                  fontSize: widget.size.height * 0.0125,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: kDefaultFont,
                                   color: kPrimaryColor,
@@ -104,47 +109,53 @@ class InfoView extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const Spacer(),
-                        Container(
-                          margin: const EdgeInsets.only(top: 5.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircleIconButton(
-                                size: size,
-                                iconData: CupertinoIcons.chat_bubble_fill,
-                                iconColor: kWhiteColor,
-                                iconSize: 15.0,
-                                bgColor: kPrimaryColor,
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        RatingBar(
+                            initialRating: 4,
+                            maxRating: 5,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemSize: widget.size.height * 0.0200,
+                            ratingWidget: RatingWidget(
+                              full: SvgPicture.asset(
+                                AssetsPath.starFillIcon,
+                                color: Colors.amber,
                               ),
-                              const SizedBox(
-                                width: 5.0,
+                              half: SvgPicture.asset(
+                                AssetsPath.starHalfIcon,
+                                color: Colors.amber,
                               ),
-                              CircleIconButton(
-                                size: size,
-                                iconData: CupertinoIcons.video_camera_solid,
-                                iconColor: kWhiteColor,
-                                iconSize: 15.0,
-                                bgColor: kPrimaryColor,
+                              empty: SvgPicture.asset(
+                                AssetsPath.starOutlineIcon,
+                                color: Colors.amber,
                               ),
-                              const SizedBox(
-                                width: 5.0,
-                              ),
-                              CircleIconButton(
-                                size: size,
-                                iconData: CupertinoIcons.phone_solid,
-                                iconColor: kWhiteColor,
-                                iconSize: 15.0,
-                                bgColor: kPrimaryColor,
-                              ),
-                              // MiniButton(
-                              //   width: size.width * 0.200,
-                              //   size: size,
-                              //   iconPath: AssetsPath.followIcon,
-                              //   title: 'Follow',
-                              // ),
-                            ],
+                            ),
+                            onRatingUpdate: (value) {
+                              setState(() {
+                                //_ratingValue = value;
+                              });
+                            }),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            '4.5',
+                            style: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: widget.size.width * 0.035,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ],
@@ -152,53 +163,62 @@ class InfoView extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           FollowerCounter(
-                            size: size,
+                            size: widget.size,
                             title: 'Following',
-                            count: '250',
+                            count: '350',
                           ),
+                          // const SizedBox(width: 10.0,),
                           Container(
                             // margin:
                             //     const EdgeInsets.symmetric(horizontal: 10.0),
                             height: 40.0,
-                            width: 2.0,
+                            width: 1.0,
                             color: kLineColor,
                           ),
                           FollowerCounter(
-                            size: size,
+                            size: widget.size,
                             title: 'Followers',
-                            count: '146',
+                            count: '346',
                           ),
                           Container(
                             // margin:
                             //     const EdgeInsets.symmetric(horizontal: 10.0),
                             height: 40.0,
-                            width: 2.0,
+                            width: 1.0,
                             color: kLineColor,
                           ),
                           FollowerCounter(
-                            size: size,
+                            size: widget.size,
                             title: 'Events',
-                            count: '4',
-                          ),
-                          Container(
-                            // margin:
-                            //     const EdgeInsets.symmetric(horizontal: 10.0),
-                            height: 40.0,
-                            width: 2.0,
-                            color: kLineColor,
-                          ),
-                          MiniButton(
-                            width: size.width * 0.200,
-                            size: size,
-                            iconPath: AssetsPath.followIcon,
-                            title: 'Follow',
+                            count: '2',
                           ),
                         ],
                       ),
+                    ),
+                    Row(
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MiniButton(
+                          width: widget.size.width / 3,
+                          size: widget.size,
+                          iconPath: AssetsPath.walletIcon,
+                          title: 'Edit Profile',
+                        ),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        MiniButton(
+                          width: widget.size.width / 3,
+                          size: widget.size,
+                          iconPath: AssetsPath.walletIcon,
+                          title: 'Wallet',
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -219,7 +239,7 @@ class InfoView extends StatelessWidget {
                         color: kPrimaryColor,
                         fontFamily: kDefaultFont,
                         fontWeight: FontWeight.w500,
-                        fontSize: size.height * 0.0200,
+                        fontSize: widget.size.height * 0.0200,
                       ),
                     ),
                   ),
@@ -231,7 +251,7 @@ class InfoView extends StatelessWidget {
                         color: kPrimaryColor,
                         fontFamily: kDefaultFont,
                         fontWeight: FontWeight.normal,
-                        fontSize: size.height * 0.0150,
+                        fontSize: widget.size.height * 0.0150,
                       ),
                       children: <TextSpan>[
                         TextSpan(
@@ -240,7 +260,7 @@ class InfoView extends StatelessWidget {
                             color: kPurpleColor,
                             fontFamily: kDefaultFont,
                             fontWeight: FontWeight.w600,
-                            fontSize: size.height * 0.0160,
+                            fontSize: widget.size.height * 0.0160,
                             decoration: TextDecoration.underline,
                           ),
                         ),
@@ -258,12 +278,12 @@ class InfoView extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Management (10)',
+                      'Executive (10)',
                       style: TextStyle(
                         color: kPrimaryColor,
                         fontFamily: kDefaultFont,
                         fontWeight: FontWeight.w500,
-                        fontSize: size.height * 0.0200,
+                        fontSize: widget.size.height * 0.0200,
                       ),
                     ),
                   ),
@@ -276,40 +296,41 @@ class InfoView extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(left: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
-                    firstname: 'Lade',
+                    firstname: 'Oyinlade',
                     lastname: 'Ajala',
                     role: 'Designer',
-                    height: 80.0,
+                    height: widget.size.height * 0.100,
                   ),
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Akinpelumi',
                     lastname: 'Ade',
                     role: 'Developer',
-                    height: 80.0,
+                    height: widget.size.height * 0.100,
                   ),
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Emmanuel',
                     lastname: 'Ade',
                     role: 'CTO',
-                    height: 80.0,
+                    height: widget.size.height * 0.100,
                   ),
                   UserProfileWidget(
-                    size: size,
+                    size: widget.size,
                     imagePath: AssetsPath.profileDp,
                     firstname: 'Tosin',
                     lastname: 'Ajewole',
                     role: 'Designer',
-                    height: 80.0,
+                    height: widget.size.height * 0.100,
                   ),
                 ],
               ),

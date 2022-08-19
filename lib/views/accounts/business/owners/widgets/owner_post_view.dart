@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../components/post_card.dart';
+import '../../components/post_card.dart';
 
-class PostView extends StatefulWidget {
-  const PostView({Key? key}) : super(key: key);
+class OwnerPostView extends StatefulWidget {
+  const OwnerPostView({Key? key}) : super(key: key);
 
   @override
-  State<PostView> createState() => _PostViewState();
+  State<OwnerPostView> createState() => _OwnerPostViewState();
 }
 
-class _PostViewState extends State<PostView> {
+class _OwnerPostViewState extends State<OwnerPostView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

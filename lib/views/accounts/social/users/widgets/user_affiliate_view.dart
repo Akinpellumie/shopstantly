@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
-import '../../../../utils/custom_router.dart';
-import '../../../../utils/dimensions.dart';
-import '../components/affiliate_card.dart';
+import '../../../../../utils/custom_router.dart';
+import '../../../../../utils/dimensions.dart';
+import '../../components/affiliate_card.dart';
 
-class AffiliateView extends StatefulWidget {
-  const AffiliateView({Key? key}) : super(key: key);
+class UserAffiliateView extends StatefulWidget {
+  const UserAffiliateView({Key? key}) : super(key: key);
 
   @override
-  State<AffiliateView> createState() => _AffiliateViewState();
+  State<UserAffiliateView> createState() => _UserAffiliateViewState();
 }
 
-class _AffiliateViewState extends State<AffiliateView> {
+class _UserAffiliateViewState extends State<UserAffiliateView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

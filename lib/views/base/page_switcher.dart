@@ -4,12 +4,13 @@ import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
 import 'package:shopstantly_app/views/accounts/personal/personal_account_screen.dart';
-import 'package:shopstantly_app/views/accounts/social/social_account_screen.dart';
+import 'package:shopstantly_app/views/accounts/social/users/social_account_user_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/logistics/getting_started.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
 import 'package:shopstantly_app/views/shop/shop_screen.dart';
 
+import '../accounts/business/owners/business_account_owner_screen.dart';
 import 'fab_bottom_app_bar.dart';
 
 class PageSwitcher extends StatefulWidget {
@@ -55,8 +56,8 @@ class _PageSwitcherState extends State<PageSwitcher> {
           children: const <Widget>[
             HomeScreen(),
             ManageScreen(),
+            BusinessAccountOwnerScreen(),
             SocialAccountScreen(),
-            PersonalAccountScreen(),
             GettingStarted(),
           ],
         ),

@@ -31,8 +31,8 @@ class FollowerCounter extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            fontSize: size.height * 0.0180,
-            fontWeight: FontWeight.normal,
+            fontSize: size.height * 0.0160,
+            fontWeight: FontWeight.w400,
             fontFamily: kDefaultFont,
             color: kSecondaryTextColor,
           ),

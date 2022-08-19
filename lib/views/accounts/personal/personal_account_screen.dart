@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
+import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/views/accounts/personal/widgets/post_view.dart';
 
+import 'widgets/event_view.dart';
 import 'widgets/owner_info_view.dart';
+import 'widgets/service_view.dart';
 
 class PersonalAccountScreen extends StatefulWidget {
   const PersonalAccountScreen({Key? key}) : super(key: key);
@@ -193,6 +196,7 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           displayWidgetView(size),
         ],
@@ -211,6 +215,10 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
       return PostView(
         size: size,
       );
+    } else if (selectedIndex == 2) {
+      return ServiceView(size: size);
+    } else if (selectedIndex == 3) {
+      return EventView(size: size);
     } else {
       return OwnerInfoView(size: size);
     }

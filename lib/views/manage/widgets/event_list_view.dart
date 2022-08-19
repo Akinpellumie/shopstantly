@@ -406,6 +406,7 @@ class _EventListViewState extends State<EventListView> {
             ],
           ),
         ),
+        
         const SizedBox(
           height: 25.0,
         ),

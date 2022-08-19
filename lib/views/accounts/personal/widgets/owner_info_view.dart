@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../utils/app_colors.dart';
@@ -7,8 +8,7 @@ import '../../../../utils/dimensions.dart';
 import '../components/follower_counter.dart';
 import '../components/mini_button.dart';
 
-
-class OwnerInfoView extends StatelessWidget {
+class OwnerInfoView extends StatefulWidget {
   const OwnerInfoView({
     Key? key,
     required this.size,
@@ -16,6 +16,11 @@ class OwnerInfoView extends StatelessWidget {
 
   final Size size;
 
+  @override
+  State<OwnerInfoView> createState() => _OwnerInfoViewState();
+}
+
+class _OwnerInfoViewState extends State<OwnerInfoView> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -50,7 +55,7 @@ class OwnerInfoView extends StatelessWidget {
                       Text(
                         'Akinpelumi Akinlade',
                         style: TextStyle(
-                          fontSize: size.height * 0.0190,
+                          fontSize: widget.size.height * 0.0190,
                           fontWeight: FontWeight.w500,
                           fontFamily: kDefaultFont,
                           color: kPrimaryColor,
@@ -59,10 +64,59 @@ class OwnerInfoView extends StatelessWidget {
                       Text(
                         '@layi',
                         style: TextStyle(
-                          fontSize: size.height * 0.0170,
+                          fontSize: widget.size.height * 0.0170,
                           fontWeight: FontWeight.w400,
                           fontFamily: kDefaultFont,
                           color: kPrimaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      RatingBar(
+                          initialRating: 4,
+                          maxRating: 5,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: widget.size.height * 0.0200,
+                          ratingWidget: RatingWidget(
+                            full: SvgPicture.asset(
+                              AssetsPath.starFillIcon,
+                              color: Colors.amber,
+                            ),
+                            half: SvgPicture.asset(
+                              AssetsPath.starHalfIcon,
+                              color: Colors.amber,
+                            ),
+                            empty: SvgPicture.asset(
+                              AssetsPath.starOutlineIcon,
+                              color: Colors.amber,
+                            ),
+                          ),
+                          onRatingUpdate: (value) {
+                            setState(() {
+                              //_ratingValue = value;
+                            });
+                          }),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          '4.5',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: widget.size.width * 0.035,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                     ],
@@ -74,7 +128,7 @@ class OwnerInfoView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FollowerCounter(
-                          size: size,
+                          size: widget.size,
                           title: 'Following',
                           count: '350',
                         ),
@@ -83,11 +137,11 @@ class OwnerInfoView extends StatelessWidget {
                           // margin:
                           //     const EdgeInsets.symmetric(horizontal: 10.0),
                           height: 40.0,
-                          width: 2.0,
+                          width: 1.0,
                           color: kLineColor,
                         ),
                         FollowerCounter(
-                          size: size,
+                          size: widget.size,
                           title: 'Followers',
                           count: '346',
                         ),
@@ -95,11 +149,11 @@ class OwnerInfoView extends StatelessWidget {
                           // margin:
                           //     const EdgeInsets.symmetric(horizontal: 10.0),
                           height: 40.0,
-                          width: 2.0,
+                          width: 1.0,
                           color: kLineColor,
                         ),
                         FollowerCounter(
-                          size: size,
+                          size: widget.size,
                           title: 'Events',
                           count: '2',
                         ),
@@ -107,12 +161,12 @@ class OwnerInfoView extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MiniButton(
-                        width: size.width / 3,
-                        size: size,
+                        width: widget.size.width / 3,
+                        size: widget.size,
                         iconPath: AssetsPath.walletIcon,
                         title: 'Edit Profile',
                       ),
@@ -120,8 +174,8 @@ class OwnerInfoView extends StatelessWidget {
                         width: 10.0,
                       ),
                       MiniButton(
-                        width: size.width / 3,
-                        size: size,
+                        width: widget.size.width / 3,
+                        size: widget.size,
                         iconPath: AssetsPath.walletIcon,
                         title: 'Wallet',
                       ),
@@ -146,7 +200,7 @@ class OwnerInfoView extends StatelessWidget {
                       color: kPrimaryColor,
                       fontFamily: kDefaultFont,
                       fontWeight: FontWeight.w500,
-                      fontSize: size.height * 0.0200,
+                      fontSize: widget.size.height * 0.0200,
                     ),
                   ),
                 ),
@@ -158,7 +212,7 @@ class OwnerInfoView extends StatelessWidget {
                       color: kPrimaryColor,
                       fontFamily: kDefaultFont,
                       fontWeight: FontWeight.normal,
-                      fontSize: size.height * 0.0180,
+                      fontSize: widget.size.height * 0.0180,
                     ),
                     children: <TextSpan>[
                       TextSpan(
@@ -167,7 +221,7 @@ class OwnerInfoView extends StatelessWidget {
                           color: kPurpleColor,
                           fontFamily: kDefaultFont,
                           fontWeight: FontWeight.w600,
-                          fontSize: size.height * 0.0200,
+                          fontSize: widget.size.height * 0.0200,
                           decoration: TextDecoration.underline,
                         ),
                       ),
@@ -187,7 +241,7 @@ class OwnerInfoView extends StatelessWidget {
                           color: kPrimaryColor,
                           fontFamily: kDefaultFont,
                           fontWeight: FontWeight.w500,
-                          fontSize: size.height * 0.0200,
+                          fontSize: widget.size.height * 0.0200,
                         ),
                       ),
                     ),
@@ -220,7 +274,7 @@ class OwnerInfoView extends StatelessWidget {
                               color: kPurpleColor,
                               fontFamily: kDefaultFont,
                               fontWeight: FontWeight.w500,
-                              fontSize: size.height * 0.0150,
+                              fontSize: widget.size.height * 0.0150,
                             ),
                           ),
                         ],

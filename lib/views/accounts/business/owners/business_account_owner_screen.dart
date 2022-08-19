@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopstantly_app/views/accounts/business/components/business_profile_tab.dart';
 
-import '../../../utils/app_colors.dart';
-import '../../../utils/assets_path.dart';
-import '../../../utils/dimensions.dart';
-import 'widgets/event_view.dart';
-import 'widgets/info_view.dart';
-import 'widgets/post_view.dart';
-import 'widgets/product_view.dart';
+import '../../../../utils/app_colors.dart';
+import '../../../../utils/dimensions.dart';
+import 'widgets/owner_info_view.dart';
+import 'widgets/owner_event_view.dart';
+import 'widgets/owner_post_view.dart';
+import 'widgets/owner_product_view.dart';
 
-class BusinessAccountScreen extends StatefulWidget {
-  const BusinessAccountScreen({Key? key}) : super(key: key);
+class BusinessAccountOwnerScreen extends StatefulWidget {
+  const BusinessAccountOwnerScreen({Key? key}) : super(key: key);
 
   @override
-  State<BusinessAccountScreen> createState() => _BusinessAccountScreenState();
+  State<BusinessAccountOwnerScreen> createState() =>
+      _BusinessAccountOwnerScreenState();
 }
 
-class _BusinessAccountScreenState extends State<BusinessAccountScreen> {
+class _BusinessAccountOwnerScreenState
+    extends State<BusinessAccountOwnerScreen> {
   int selectedIndex = 0;
 
   @override
@@ -116,7 +115,7 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen> {
                             });
                           },
                           child: Text(
-                            'Post',
+                            'Store',
                             style: TextStyle(
                               color: selectedIndex == 1
                                   ? kPrimaryColor
@@ -134,7 +133,7 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen> {
                             });
                           },
                           child: Text(
-                            'Services',
+                            'Post',
                             style: TextStyle(
                               color: selectedIndex == 2
                                   ? kPrimaryColor
@@ -201,19 +200,19 @@ class _BusinessAccountScreenState extends State<BusinessAccountScreen> {
           children: <Widget>[
             Visibility(
               visible: selectedIndex == 0,
-              child: InfoView(size: size),
+              child: OwnerInfoView(size: size),
             ),
             Visibility(
               visible: selectedIndex == 1,
-              child: const ProductView(),
+              child: const OwnerProductView(),
             ),
             Visibility(
               visible: selectedIndex == 2,
-              child: const PostView(),
+              child: const OwnerPostView(),
             ),
             Visibility(
               visible: selectedIndex == 3,
-              child: const EventView(),
+              child: const OwnerEventView(),
             ),
           ],
         ),

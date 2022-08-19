@@ -72,15 +72,15 @@ class _CommentWidgetState extends State<CommentWidget> {
                           ratingWidget: RatingWidget(
                             full: SvgPicture.asset(
                               AssetsPath.starFillIcon,
-                              color: kOrangeColor,
+                              color: Colors.amber,
                             ),
                             half: SvgPicture.asset(
                               AssetsPath.starHalfIcon,
-                              color: kOrangeColor,
+                              color: Colors.amber,
                             ),
                             empty: SvgPicture.asset(
                               AssetsPath.starOutlineIcon,
-                              color: kOrangeColor,
+                              color: Colors.amber,
                             ),
                           ),
                           onRatingUpdate: (value) {

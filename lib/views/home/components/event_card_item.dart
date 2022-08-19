@@ -5,7 +5,6 @@ import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
 
-
 class EventCardItem extends StatelessWidget {
   const EventCardItem({
     Key? key,
@@ -23,9 +22,7 @@ class EventCardItem extends StatelessWidget {
         color: kWhiteColor,
         boxShadow: const [
           BoxShadow(
-              color: kBoxShadowColor,
-              offset: Offset(3, 6),
-              blurRadius: 7.0)
+              color: kBoxShadowColor, offset: Offset(3, 6), blurRadius: 7.0)
         ],
       ),
       child: Column(
@@ -68,8 +65,7 @@ class EventCardItem extends StatelessWidget {
                   height: 5.0,
                   width: 5.0,
                   decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: kPlaceholderColor),
+                      shape: BoxShape.circle, color: kPlaceholderColor),
                 ),
                 const SizedBox(
                   width: 5.0,
@@ -89,26 +85,29 @@ class EventCardItem extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          RichText(
-            text: TextSpan(
-              text: "Jo Malone London's Mother's Day Presents - ",
-              style: TextStyle(
-                fontFamily: kDefaultFont,
-                fontSize: size.height * 0.0180,
-                fontWeight: FontWeight.w500,
-                color: kPrimaryColor,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' #JoMalone',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.w300,
-                    fontSize: size.height * 0.0150,
-                    fontStyle: FontStyle.italic,
-                  ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: RichText(
+              text: TextSpan(
+                text: "Jo Malone London's Mother's Day Presents - ",
+                style: TextStyle(
+                  fontFamily: kDefaultFont,
+                  fontSize: size.height * 0.0180,
+                  fontWeight: FontWeight.w500,
+                  color: kPrimaryColor,
                 ),
-              ],
+                children: <TextSpan>[
+                  TextSpan(
+                    text: ' #JoMalone',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.w300,
+                      fontSize: size.height * 0.0150,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(
@@ -188,8 +187,7 @@ class EventCardItem extends StatelessWidget {
                   ),
                   SizedBox(
                     child: Row(
-                      mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Icon(
                           CupertinoIcons.chat_bubble,
@@ -216,8 +214,7 @@ class EventCardItem extends StatelessWidget {
                   ),
                   SizedBox(
                     child: Row(
-                      mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Icon(
                           CupertinoIcons.bookmark,

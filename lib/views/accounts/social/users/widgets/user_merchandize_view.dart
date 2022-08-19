@@ -3,20 +3,20 @@ import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/widgets/dot_indicator.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/custom_router.dart';
-import '../../../../utils/dimensions.dart';
-import '../components/social_profile_tab.dart';
-import '../components/merchandize_card.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/custom_router.dart';
+import '../../../../../utils/dimensions.dart';
+import '../../components/social_profile_tab.dart';
+import '../../components/merchandize_card.dart';
 
-class MerchandizeView extends StatefulWidget {
-  const MerchandizeView({Key? key}) : super(key: key);
+class UserMerchandizeView extends StatefulWidget {
+  const UserMerchandizeView({Key? key}) : super(key: key);
 
   @override
-  State<MerchandizeView> createState() => _MerchandizeViewState();
+  State<UserMerchandizeView> createState() => _UserMerchandizeViewState();
 }
 
-class _MerchandizeViewState extends State<MerchandizeView>
+class _UserMerchandizeViewState extends State<UserMerchandizeView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int selectedIndex = 0;
