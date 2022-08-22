@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
-import 'package:shopstantly_app/views/accounts/personal/personal_account_screen.dart';
+import 'package:shopstantly_app/views/accounts/personal/owner/personal_account_screen.dart';
 import 'package:shopstantly_app/views/accounts/social/users/social_account_user_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/logistics/getting_started.dart';
@@ -57,7 +57,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
             HomeScreen(),
             ManageScreen(),
             BusinessAccountOwnerScreen(),
-            SocialAccountScreen(),
+            PersonalAccountScreen(),
             GettingStarted(),
           ],
         ),

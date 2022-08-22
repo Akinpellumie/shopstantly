@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/components/switch_account_modal.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
-import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
-import 'package:shopstantly_app/views/accounts/personal/widgets/post_view.dart';
-
-import 'widgets/event_view.dart';
-import 'widgets/owner_info_view.dart';
-import 'widgets/service_view.dart';
+import '../../../../utils/assets_path.dart';
+import '../../personal/owner/widgets/event_view.dart';
+import '../../personal/owner/widgets/owner_info_view.dart';
+import '../../personal/owner/widgets/post_view.dart';
+import '../widgets/service_view.dart';
+import 'widgets/owner_post_view.dart';
 
 class PersonalAccountScreen extends StatefulWidget {
   const PersonalAccountScreen({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class PersonalAccountScreen extends StatefulWidget {
 
 class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
   int selectedIndex = 0;
+  String acctType = 'Personal Account';
 
   @override
   void initState() {
@@ -47,12 +49,42 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              'Profile',
+                              'Dotun Felixx',
                               style: TextStyle(
                                 fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.0180,
+                                fontSize: size.height * 0.0160,
                                 color: kPrimaryTextColor,
                                 fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () async {
+                                List<String> accts = [
+                                  'Personal',
+                                  'Business',
+                                  'Social'
+                                ];
+                                await SwitchAccountModal.showAccountListModal(
+                                        context, accts)
+                                    .then((value) {
+                                  setState(() {
+                                    acctType = value;
+                                  });
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    ' ($acctType)',
+                                    style: TextStyle(
+                                      fontFamily: kDefaultFont,
+                                      fontSize: size.height * 0.0125,
+                                      color:
+                                          kPrimaryTextColor.withOpacity(0.75),
+                                      fontWeight: FontWeight.w200,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             const SizedBox(
@@ -133,7 +165,7 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
                             });
                           },
                           child: Text(
-                            'Services',
+                            'Thrift',
                             style: TextStyle(
                               color: selectedIndex == 2
                                   ? kPrimaryColor
@@ -212,7 +244,7 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
       return OwnerInfoView(size: size);
     }
     if (selectedIndex == 1) {
-      return PostView(
+      return OwnerPostView(
         size: size,
       );
     } else if (selectedIndex == 2) {
