@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/components/switch_account_modal.dart';
+import 'package:shopstantly_app/views/thrift/components/custom_tab_bar_with_click.dart';
 
+import '../../../../models/general/account_type_model.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/dimensions.dart';
 import 'widgets/owner_info_view.dart';
@@ -8,7 +11,9 @@ import 'widgets/owner_post_view.dart';
 import 'widgets/owner_product_view.dart';
 
 class BusinessAccountOwnerScreen extends StatefulWidget {
-  const BusinessAccountOwnerScreen({Key? key}) : super(key: key);
+  final StringCallback callback;
+  const BusinessAccountOwnerScreen({Key? key, required this.callback})
+      : super(key: key);
 
   @override
   State<BusinessAccountOwnerScreen> createState() =>
@@ -18,6 +23,7 @@ class BusinessAccountOwnerScreen extends StatefulWidget {
 class _BusinessAccountOwnerScreenState
     extends State<BusinessAccountOwnerScreen> {
   int selectedIndex = 0;
+  String acctType = 'Business Account';
 
   @override
   void initState() {
@@ -47,12 +53,45 @@ class _BusinessAccountOwnerScreenState
                         child: Row(
                           children: <Widget>[
                             Text(
-                              'Profile',
+                              'Dotun Felixx',
                               style: TextStyle(
                                 fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.0180,
+                                fontSize: size.height * 0.0160,
                                 color: kPrimaryTextColor,
                                 fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () async {
+                                await SwitchAccountModal.showAccountListModal(
+                                        context, accounts)
+                                    .then((value) {
+                                  setState(() {
+                                    if (value == null) {
+                                      //means nothing was selected
+
+                                    } else {
+                                      AccountTypeModel model =
+                                          value as AccountTypeModel;
+                                      acctType = model.account;
+                                      widget.callback(model.type);
+                                    }
+                                  });
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    ' ($acctType)',
+                                    style: TextStyle(
+                                      fontFamily: kDefaultFont,
+                                      fontSize: size.height * 0.0125,
+                                      color:
+                                          kPrimaryTextColor.withOpacity(0.75),
+                                      fontWeight: FontWeight.w200,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             const SizedBox(
@@ -115,7 +154,7 @@ class _BusinessAccountOwnerScreenState
                             });
                           },
                           child: Text(
-                            'Store',
+                            'Post',
                             style: TextStyle(
                               color: selectedIndex == 1
                                   ? kPrimaryColor
@@ -133,7 +172,7 @@ class _BusinessAccountOwnerScreenState
                             });
                           },
                           child: Text(
-                            'Post',
+                            'Thrift',
                             style: TextStyle(
                               color: selectedIndex == 2
                                   ? kPrimaryColor

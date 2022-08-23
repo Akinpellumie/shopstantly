@@ -1,22 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/callbacks/string_callback.dart';
+import 'package:shopstantly_app/components/switch_account_modal.dart';
+import 'package:shopstantly_app/utils/app_colors.dart';
+import 'package:shopstantly_app/utils/dimensions.dart';
+import 'package:shopstantly_app/views/accounts/personal/components/more_option_modal.dart';
+import '../../../../models/general/account_type_model.dart';
+import '../../personal/owner/widgets/event_view.dart';
+import '../../personal/owner/widgets/owner_info_view.dart';
+import '../widgets/service_view.dart';
+import 'widgets/owner_post_view.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/dimensions.dart';
-import 'widgets/user_affiliate_view.dart';
-import 'widgets/user_event_view.dart';
-import 'widgets/user_info_view.dart';
-import 'widgets/user_post_view.dart';
-import 'widgets/user_merchandize_view.dart';
-
-class SocialAccountUserScreen extends StatefulWidget {
-  const SocialAccountUserScreen({Key? key}) : super(key: key);
+class PersonalAccountOwnerScreen extends StatefulWidget {
+  final StringCallback callback;
+  const PersonalAccountOwnerScreen({Key? key, required this.callback})
+      : super(key: key);
 
   @override
-  State<SocialAccountUserScreen> createState() => _SocialAccountUserScreenState();
+  State<PersonalAccountOwnerScreen> createState() =>
+      _PersonalAccountOwnerScreenState();
 }
 
-class _SocialAccountUserScreenState extends State<SocialAccountUserScreen> {
+class _PersonalAccountOwnerScreenState
+    extends State<PersonalAccountOwnerScreen> {
   int selectedIndex = 0;
+  String acctType = 'Personal Account';
 
   @override
   void initState() {
@@ -46,26 +54,61 @@ class _SocialAccountUserScreenState extends State<SocialAccountUserScreen> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              'Profile',
+                              'Dotun Felixx',
                               style: TextStyle(
                                 fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.0180,
+                                fontSize: size.height * 0.0160,
                                 color: kPrimaryTextColor,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(
-                              width: 5.0,
-                            ),
-                            const Icon(
-                              Icons.keyboard_arrow_down,
-                              color: kPrimaryTextColor,
+                            GestureDetector(
+                              onTap: () async {
+                                await SwitchAccountModal.showAccountListModal(
+                                        context, accounts)
+                                    .then((value) {
+                                  setState(() {
+                                    if (value == null) {
+                                      //means nothing was selected
+
+                                    } else {
+                                      AccountTypeModel model =
+                                          value as AccountTypeModel;
+                                      acctType = model.account;
+                                      widget.callback(model.type);
+                                    }
+                                  });
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    ' ($acctType)',
+                                    style: TextStyle(
+                                      fontFamily: kDefaultFont,
+                                      fontSize: size.height * 0.0125,
+                                      color:
+                                          kPrimaryTextColor.withOpacity(0.75),
+                                      fontWeight: FontWeight.w200,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  const Icon(
+                                    Icons.keyboard_arrow_down,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await MoreOptionModal.showMoreOptionModal(context);
+                        },
                         icon: Icon(
                           Icons.add_box_outlined,
                           color: kIconColor,
@@ -114,7 +157,7 @@ class _SocialAccountUserScreenState extends State<SocialAccountUserScreen> {
                             });
                           },
                           child: Text(
-                            'Store',
+                            'Post',
                             style: TextStyle(
                               color: selectedIndex == 1
                                   ? kPrimaryColor
@@ -132,7 +175,7 @@ class _SocialAccountUserScreenState extends State<SocialAccountUserScreen> {
                             });
                           },
                           child: Text(
-                            'Post',
+                            'Thrift',
                             style: TextStyle(
                               color: selectedIndex == 2
                                   ? kPrimaryColor
@@ -194,32 +237,32 @@ class _SocialAccountUserScreenState extends State<SocialAccountUserScreen> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Visibility(
-              visible: selectedIndex == 0,
-              child: UserInfoView(size: size),
-            ),
-            Visibility(
-              visible: selectedIndex == 1,
-              child: const UserMerchandizeView(),
-            ),
-            Visibility(
-              visible: selectedIndex == 4,
-              child: const UserAffiliateView(),
-            ),
-            Visibility(
-              visible: selectedIndex == 2,
-              child: const UserPostView(),
-            ),
-            Visibility(
-              visible: selectedIndex == 3,
-              child: const UserEventView(),
-            ),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          displayWidgetView(size),
+        ],
       ),
+      // Column(
+      //   children: [],
+      // ),
     );
+  }
+
+  Widget displayWidgetView(Size size) {
+    if (selectedIndex == 0) {
+      return OwnerInfoView(size: size);
+    }
+    if (selectedIndex == 1) {
+      return OwnerPostView(
+        size: size,
+      );
+    } else if (selectedIndex == 2) {
+      return ServiceView(size: size);
+    } else if (selectedIndex == 3) {
+      return EventView(size: size);
+    } else {
+      return OwnerInfoView(size: size);
+    }
   }
 }

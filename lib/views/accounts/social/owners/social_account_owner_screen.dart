@@ -1,25 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/callbacks/string_callback.dart';
 import 'package:shopstantly_app/components/switch_account_modal.dart';
-import 'package:shopstantly_app/utils/app_colors.dart';
-import 'package:shopstantly_app/utils/dimensions.dart';
-import '../../../../utils/assets_path.dart';
-import '../../personal/owner/widgets/event_view.dart';
-import '../../personal/owner/widgets/owner_info_view.dart';
-import '../../personal/owner/widgets/post_view.dart';
-import '../widgets/service_view.dart';
-import 'widgets/owner_post_view.dart';
 
-class PersonalAccountScreen extends StatefulWidget {
-  const PersonalAccountScreen({Key? key}) : super(key: key);
+import '../../../../models/general/account_type_model.dart';
+import '../../../../utils/app_colors.dart';
+import '../../../../utils/dimensions.dart';
+
+class SocialAccountOwnerScreen extends StatefulWidget {
+  final StringCallback callback;
+  const SocialAccountOwnerScreen({Key? key, required this.callback})
+      : super(key: key);
 
   @override
-  State<PersonalAccountScreen> createState() => _PersonalAccountScreenState();
+  State<SocialAccountOwnerScreen> createState() =>
+      _SocialAccountOwnerScreenState();
 }
 
-class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
+class _SocialAccountOwnerScreenState extends State<SocialAccountOwnerScreen> {
   int selectedIndex = 0;
-  String acctType = 'Personal Account';
+  String acctType = 'Social Account';
 
   @override
   void initState() {
@@ -59,16 +58,19 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
                             ),
                             GestureDetector(
                               onTap: () async {
-                                List<String> accts = [
-                                  'Personal',
-                                  'Business',
-                                  'Social'
-                                ];
                                 await SwitchAccountModal.showAccountListModal(
-                                        context, accts)
+                                        context, accounts)
                                     .then((value) {
                                   setState(() {
-                                    acctType = value;
+                                    if (value == null) {
+                                      //means nothing was selected
+
+                                    } else {
+                                      AccountTypeModel model =
+                                          value as AccountTypeModel;
+                                      acctType = model.account;
+                                      widget.callback(model.type);
+                                    }
                                   });
                                 });
                               },
@@ -227,32 +229,6 @@ class _PersonalAccountScreenState extends State<PersonalAccountScreen> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          displayWidgetView(size),
-        ],
-      ),
-      // Column(
-      //   children: [],
-      // ),
     );
-  }
-
-  Widget displayWidgetView(Size size) {
-    if (selectedIndex == 0) {
-      return OwnerInfoView(size: size);
-    }
-    if (selectedIndex == 1) {
-      return OwnerPostView(
-        size: size,
-      );
-    } else if (selectedIndex == 2) {
-      return ServiceView(size: size);
-    } else if (selectedIndex == 3) {
-      return EventView(size: size);
-    } else {
-      return OwnerInfoView(size: size);
-    }
   }
 }

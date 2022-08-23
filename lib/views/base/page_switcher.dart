@@ -3,14 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/views/accounts/business/business_account_screen.dart';
-import 'package:shopstantly_app/views/accounts/personal/owner/personal_account_screen.dart';
+import 'package:shopstantly_app/views/accounts/personal/owner/personal_account_owner_screen.dart';
 import 'package:shopstantly_app/views/accounts/social/users/social_account_user_screen.dart';
+import 'package:shopstantly_app/views/activity/activity_screen.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/logistics/getting_started.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
 import 'package:shopstantly_app/views/shop/shop_screen.dart';
 
 import '../accounts/business/owners/business_account_owner_screen.dart';
+import '../accounts/others/account_switch_screen.dart';
 import 'fab_bottom_app_bar.dart';
 
 class PageSwitcher extends StatefulWidget {
@@ -56,8 +58,8 @@ class _PageSwitcherState extends State<PageSwitcher> {
           children: const <Widget>[
             HomeScreen(),
             ManageScreen(),
-            BusinessAccountOwnerScreen(),
-            PersonalAccountScreen(),
+            ActivityScreen(),
+            AccountSwitchScreen(),
             GettingStarted(),
           ],
         ),
@@ -82,7 +84,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
             FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
             FABBottomAppBarItem(iconData: Icons.shopping_cart, text: 'Manage'),
             FABBottomAppBarItem(
-                iconData: Icons.grid_view_rounded, text: 'Dashboard'),
+                iconData: Icons.notifications, text: 'Activity'),
             FABBottomAppBarItem(
                 iconData: Icons.account_circle, text: 'Profile'),
           ],

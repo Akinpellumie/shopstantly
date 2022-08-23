@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../callbacks/int_callback.dart';
 import '../utils/app_colors.dart';
 
-typedef IntCallback = void Function(int val);
 
 class CustomThreeTab extends StatefulWidget {
   const CustomThreeTab({

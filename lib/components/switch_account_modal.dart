@@ -4,19 +4,22 @@ import 'package:shopstantly_app/utils/assets_path.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/dimensions.dart';
+import '../models/general/account_type_model.dart';
 
 class SwitchAccountModal {
-  static showAccountListModal(BuildContext context, List<String> acctList) {
+  static showAccountListModal(
+      BuildContext context, List<AccountTypeModel> acctList) {
     Size size = MediaQuery.of(context).size;
     return showModalBottomSheet(
       isScrollControlled: true,
+      //routeSettings: RouteSettings(),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
       context: context,
       builder: (BuildContext bc) {
         return Container(
-          height: size.height * 0.55,
+          height: size.height * 0.40,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -39,22 +42,22 @@ class SwitchAccountModal {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context, '');
-                    },
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(
-                        Icons.cancel,
-                        color: kPrimaryColor.withOpacity(0.8),
-                        size: 25.0,
-                      ),
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.topRight,
+                //   child: GestureDetector(
+                //     onTap: () {
+                //       Navigator.pop(context, '');
+                //     },
+                //     child: Align(
+                //       alignment: Alignment.centerRight,
+                //       child: Icon(
+                //         Icons.cancel,
+                //         color: kPrimaryColor.withOpacity(0.8),
+                //         size: 25.0,
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -67,6 +70,7 @@ class SwitchAccountModal {
                         Navigator.pop(context, acctList[index]);
                       },
                       child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10.0),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10.0,
                           vertical: 5.0,
@@ -82,20 +86,25 @@ class SwitchAccountModal {
                         child: Row(
                           children: [
                             SvgPicture.asset(
-                              getAcctIcon(acctList[index]),
+                              getAcctIcon(acctList[index].type),
                               color: kPrimaryColor,
-                              width: size.height * 0.0200,
-                              height: size.height * 0.0200,
+                              width: size.height * 0.0300,
+                              height: size.height * 0.0300,
                             ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                acctList[index],
-                                style: TextStyle(
-                                  color: kPrimaryColor,
-                                  fontFamily: kDefaultFont,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: size.height * 0.0200,
+                            const SizedBox(
+                              width: 20.0,
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  acctList[index].account,
+                                  style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontFamily: kDefaultFont,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: size.height * 0.0200,
+                                  ),
                                 ),
                               ),
                             ),
@@ -106,13 +115,55 @@ class SwitchAccountModal {
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return Container(
-                      height: 2.0,
+                      height: 1.0,
                       width: size.width,
-                      color: kLightGrayColor,
+                      color: kLightGrayColor.withOpacity(0.45),
                     );
                   },
                   itemCount: acctList.length,
                 ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      AssetsPath.plusIcon,
+                      color: kWhiteColor,
+                      width: size.height * 0.0300,
+                      height: size.height * 0.0300,
+                    ),
+                    const SizedBox(
+                      width: 20.0,
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: kPrimaryColor,
+                            size: size.height * 0.0200,
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Add another account',
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontFamily: kDefaultFont,
+                                fontWeight: FontWeight.normal,
+                                fontSize: size.height * 0.0200,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
