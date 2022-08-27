@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shopstantly_app/utils/custom_router.dart';
 
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/assets_path.dart';
@@ -84,6 +85,7 @@ class _OwnerInfoViewState extends State<OwnerInfoView> {
                         size: widget.size,
                         iconPath: AssetsPath.walletIcon,
                         title: 'Edit Profile',
+                        onBtnPressed: (){},
                       ),
                       const SizedBox(
                         width: 10.0,
@@ -93,6 +95,8 @@ class _OwnerInfoViewState extends State<OwnerInfoView> {
                         size: widget.size,
                         iconPath: AssetsPath.walletIcon,
                         title: 'Wallet',
+                        onBtnPressed: () =>
+                            CustomRouter.nextScreen(context, '/setWalletPin'),
                       ),
                     ],
                   ),

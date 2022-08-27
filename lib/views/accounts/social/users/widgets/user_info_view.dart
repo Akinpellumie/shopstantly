@@ -200,6 +200,7 @@ class _UserInfoViewState extends State<UserInfoView> {
                             size: widget.size,
                             iconPath: AssetsPath.followIcon,
                             title: 'Follow',
+                            onBtnPressed: () {},
                           ),
                         ],
                       ),

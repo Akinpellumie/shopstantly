@@ -192,6 +192,7 @@ class InfoView extends StatelessWidget {
                             size: size,
                             iconPath: AssetsPath.followIcon,
                             title: 'Follow',
+                                onBtnPressed: (){},
                           ),
                         ],
                       ),

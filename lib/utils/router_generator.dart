@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/views/home/comment_screen.dart';
+import 'package:shopstantly_app/views/wallets/set_wallet_pin_screen.dart';
+import 'package:shopstantly_app/views/wallets/wallet_pin_screen.dart';
 
 import '../views/accounts/business/product_detail_screen.dart';
 import '../views/accounts/others/post_detail_screen.dart';
@@ -185,6 +187,18 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const LogisticScreen();
+          });
+    case "/setWalletPin":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const SetWalletPinScreen();
+          });
+    case "/walletPin":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const WalletPinScreen();
           });
     default:
       return MaterialPageRoute(

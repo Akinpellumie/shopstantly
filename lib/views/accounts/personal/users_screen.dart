@@ -211,6 +211,7 @@ class _UsersScreenState extends State<UsersScreen>
                                 size: size,
                                 iconPath: AssetsPath.followIcon,
                                 title: 'Follow',
+                                onBtnPressed: (){},
                               ),
                             ],
                           ),
