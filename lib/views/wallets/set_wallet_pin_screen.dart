@@ -88,7 +88,7 @@ class _SetWalletPinScreenState extends State<SetWalletPinScreen> {
                   text: "Set Password",
                   type: ButtonType.primary,
                   onPressed: () {
-                    CustomRouter.nextScreen(context, "/walletPin");
+                    CustomRouter.nextScreen(context, "/personalWallet");
                   },
                 ),
               ],

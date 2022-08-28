@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 
-enum ButtonType { primary, plain }
+enum ButtonType { primary, plain, disabled }
 
 class AppButton extends StatelessWidget {
   final ButtonType type;
@@ -37,9 +37,8 @@ class AppButton extends StatelessWidget {
             )
           ],
           border: Border.all(
-              color: type == ButtonType.primary
-                  ? Colors.transparent
-                  : kPrimaryColor,
+              color:
+                  type == ButtonType.plain ? kPrimaryColor : Colors.transparent,
               width: 1.0),
         ),
         child: Center(
@@ -62,7 +61,9 @@ Color getButtonColor(ButtonType type) {
     case ButtonType.primary:
       return kPrimaryColor;
     case ButtonType.plain:
-      return Colors.white;
+      return kWhiteColor;
+    case ButtonType.disabled:
+      return kLightGrayColor;
     default:
       return kPrimaryColor;
   }
@@ -73,8 +74,10 @@ Color getTextColor(ButtonType type) {
     case ButtonType.plain:
       return kPrimaryColor;
     case ButtonType.primary:
-      return Colors.white;
+      return kWhiteColor;
+    case ButtonType.disabled:
+      return kPrimaryColor;
     default:
-      return Colors.white;
+      return kWhiteColor;
   }
 }

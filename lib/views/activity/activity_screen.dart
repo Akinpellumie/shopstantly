@@ -50,7 +50,9 @@ class _ActivityScreenState extends State<ActivityScreen> {
                     Center(
                       child: SvgPicture.asset(
                         AssetsPath.emptyBell,
+                        color: kOrangeColor.withOpacity(0.65),
                         height: size.height * 0.50,
+                        width: size.width / 2,
                       ),
                     ),
                     Text(

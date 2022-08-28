@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/models/general/keyboard_model.dart';
+import 'package:shopstantly_app/utils/app_button.dart';
 
 import '../../models/general/keyboard_key.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/assets_path.dart';
 import '../../utils/base_app_bar.dart';
+import '../../utils/custom_router.dart';
 import '../../utils/dimensions.dart';
+import '../../utils/keyboard_pad.dart';
 
 class WalletPinScreen extends StatefulWidget {
   const WalletPinScreen({Key? key}) : super(key: key);
@@ -23,342 +26,7 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
   @override
   void initState() {
     super.initState();
-    keys = [
-      [
-        KeyboardModel(
-          value: '1',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '1',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '2',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '2',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '3',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '3',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-      [
-        KeyboardModel(
-          value: '4',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '4',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '5',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '5',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '6',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '6',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-      [
-        KeyboardModel(
-          value: '7',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '7',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '8',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '8',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '9',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '9',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-      [
-        KeyboardModel(
-          value: 'bio',
-          type: 'icon',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: const BoxDecoration(
-              color: kPrimaryColor,
-              // border: Border.all(
-              //   color: kPrimaryColor,
-              //   width: 2.0,
-              // ),
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                AssetsPath.faceID,
-                color: kWhiteColor,
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: '0',
-          type: 'number',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: kPrimaryColor,
-                width: 2.0,
-              ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Text(
-                '0',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        KeyboardModel(
-          value: 'del',
-          type: 'icon',
-          widget: Container(
-            //height: 20.0,
-            //width: 20.0,
-            padding: const EdgeInsets.all(10.0),
-            decoration: const BoxDecoration(
-              color: kPrimaryColor,
-              // border: Border.all(
-              //   color: kPrimaryColor,
-              //   width: 2.0,
-              // ),
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Icon(
-                Icons.backspace,
-                color: kWhiteColor,
-              ),
-            ),
-          ),
-        ),
-      ],
-    ];
+    keys = keyboardKeys;
     walletPin = '';
   }
 
@@ -392,12 +60,13 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
               (y) {
                 return Expanded(
                   child: KeyboardKey(
-                    label: y.value,
+                    label: y.widget,
                     value: y.value,
+                    model: y,
                     onTap: (val) {
-                      if (val.type == 'del') {
+                      if (val.value == 'del') {
                         onBackspacePress();
-                      } else if (val.type == 'bio') {
+                      } else if (val.value == 'bio') {
                         //handle biometric unlock
 
                       } else {
@@ -411,59 +80,6 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
           ),
         )
         .toList();
-  }
-
-  renderAmount() {
-    String display = 'Enter Phone Number';
-    TextStyle style = const TextStyle(
-      fontSize: 30.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.grey,
-    );
-
-    if (walletPin.isNotEmpty) {
-      // NumberFormat f = NumberFormat('#,###');
-      display = walletPin;
-      // display = f.format(int.parse(amount));
-      style = style.copyWith(
-        color: Colors.black,
-      );
-    }
-
-    return Expanded(
-      child: Center(
-        child: Text(
-          display,
-          style: style,
-        ),
-      ),
-    );
-  }
-
-  renderConfirmButton() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-      child: GestureDetector(
-        onTap: walletPin.isNotEmpty ? () {} : null,
-        child: Container(
-          height: 50.0,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: walletPin.isNotEmpty ? Colors.blue : Colors.grey,
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Center(
-            child: Text(
-              'Submit',
-              style: TextStyle(
-                color: walletPin.isNotEmpty ? Colors.white : Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 
   @override
@@ -516,11 +132,11 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
                   height: 20.0,
                   width: 20.0,
                   decoration: BoxDecoration(
-                    color: walletPin.length == 1
+                    color: walletPin.length >= 1
                         ? kPrimaryColor
                         : Colors.transparent,
                     border: Border.all(
-                      color: walletPin.length == 1
+                      color: walletPin.length >= 1
                           ? Colors.transparent
                           : kPlaceholderColor,
                       width: 2.0,
@@ -533,11 +149,11 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
                   height: 20.0,
                   width: 20.0,
                   decoration: BoxDecoration(
-                    color: walletPin.length == 2
+                    color: walletPin.length >= 2
                         ? kPrimaryColor
                         : Colors.transparent,
                     border: Border.all(
-                      color: walletPin.length == 2
+                      color: walletPin.length >= 2
                           ? Colors.transparent
                           : kPlaceholderColor,
                       width: 2.0,
@@ -549,12 +165,12 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
                 Container(
                   height: 20.0,
                   width: 20.0,
-                   decoration: BoxDecoration(
-                    color: walletPin.length == 3
+                  decoration: BoxDecoration(
+                    color: walletPin.length >= 3
                         ? kPrimaryColor
                         : Colors.transparent,
                     border: Border.all(
-                      color: walletPin.length == 3
+                      color: walletPin.length >= 3
                           ? Colors.transparent
                           : kPlaceholderColor,
                       width: 2.0,
@@ -566,7 +182,7 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
                 Container(
                   height: 20.0,
                   width: 20.0,
-                   decoration: BoxDecoration(
+                  decoration: BoxDecoration(
                     color: walletPin.length == 4
                         ? kPrimaryColor
                         : Colors.transparent,
@@ -581,15 +197,25 @@ class _WalletPinScreenState extends State<WalletPinScreen> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20.0,
+            SizedBox(
+              height: size.height * 0.10,
             ),
-            renderAmount(),
             ...renderKeyboard(),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: size.height * 0.10,
             ),
-            renderConfirmButton(),
+            //renderConfirmButton(),
+            AppButton(
+              text: "Proceed",
+              type: walletPin.isNotEmpty
+                  ? ButtonType.primary
+                  : ButtonType.disabled,
+              onPressed: walletPin.isNotEmpty
+                  ? () {
+                      CustomRouter.nextScreen(context, "/personalWallet");
+                    }
+                  : () {},
+            ),
           ],
         ),
       ),
