@@ -29,6 +29,7 @@ import '../views/thrift/thrift_detail_screen.dart';
 import '../views/unboarding/choose_account_screen.dart';
 import '../views/unboarding/landing_screen.dart';
 import '../views/unboarding/onboarding_screen.dart';
+import '../views/wallets/main_wallet_screen.dart';
 
 Route<dynamic> generateRouter(RouteSettings settings) {
   switch (settings.name) {
@@ -205,6 +206,12 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const PersonalMainWalletScreen();
+          });
+    case "/mainWallet":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const MainWalletScreen();
           });
     default:
       return MaterialPageRoute(

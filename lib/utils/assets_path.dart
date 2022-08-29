@@ -64,6 +64,11 @@ class AssetsPath {
   static const String postEventIcon = 'assets/icons/carbon_event.svg';
   static const String postIcon = 'assets/icons/post_icon.svg';
   static const String user = 'assets/icons/user.svg';
+  static const String profile = 'assets/icons/profile.svg';
+  static const String calendar = 'assets/icons/calendar.svg';
+  static const String shopping = 'assets/icons/cart.svg';
+  static const String invest = 'assets/icons/invest.svg';
+  static const String cashback = 'assets/icons/cashback.svg';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
   static const String sneakerPhoto =
