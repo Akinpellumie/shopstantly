@@ -69,6 +69,7 @@ class AssetsPath {
   static const String shopping = 'assets/icons/cart.svg';
   static const String invest = 'assets/icons/invest.svg';
   static const String cashback = 'assets/icons/cashback.svg';
+  static const String qrcode = 'assets/images/qrcode.svg';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
   static const String sneakerPhoto =
