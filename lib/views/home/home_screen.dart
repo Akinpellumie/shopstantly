@@ -4,6 +4,8 @@ import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/utils/main_page_app_bar.dart';
 import 'package:shopstantly_app/views/home/widgets/business_view.dart';
+import 'package:shopstantly_app/views/home/widgets/channel_view.dart';
+import 'package:shopstantly_app/views/home/widgets/feed_view.dart';
 import 'package:shopstantly_app/views/home/widgets/social_view.dart';
 import 'package:shopstantly_app/views/home/widgets/thrift_view.dart';
 
@@ -71,75 +73,74 @@ class _HomeScreenState extends State<HomeScreen> {
             pinned: true,
             backgroundColor: kBackgroundColor,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              titlePadding: const EdgeInsets.all(0.0),
               centerTitle: false,
-              title: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              title: Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = 0;
-                      });
-                    },
-                    child: menuTabItem(
-                      size,
-                      'Social',
-                      selectedIndex == 0 ? true : false,
-                    ),
+                  const SizedBox(
+                    height: 5.0,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = 1;
-                      });
-                    },
-                    child: menuTabItem(
-                      size,
-                      'Business',
-                      selectedIndex == 1 ? true : false,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = 0;
+                          });
+                        },
+                        child: menuTabItem(
+                          size,
+                          'Feed',
+                          selectedIndex == 0 ? true : false,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = 1;
+                          });
+                        },
+                        child: menuTabItem(
+                          size,
+                          'Blog',
+                          selectedIndex == 1 ? true : false,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = 2;
+                          });
+                        },
+                        child: menuTabItem(
+                          size,
+                          'Channel',
+                          selectedIndex == 2 ? true : false,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = 3;
+                            showFilterTabs = true;
+                          });
+                        },
+                        child: menuTabItem(
+                          size,
+                          'Thrift',
+                          selectedIndex == 3 ? true : false,
+                        ),
+                      ),
+                    ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = 2;
-                      });
-                    },
-                    child: menuTabItem(
-                      size,
-                      'Trademarks',
-                      selectedIndex == 2 ? true : false,
-                    ),
+                  Container(
+                    height: 3.0,
+                    margin: const EdgeInsets.symmetric(vertical: 10.0),
+                    width: size.width,
+                    color: kLightGrayColor.withOpacity(0.45),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = 3;
-                        showFilterTabs = true;
-                      });
-                    },
-                    child: menuTabItem(
-                      size,
-                      'Event',
-                      selectedIndex == 3 ? true : false,
-                    ),
-                  ),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     setState(() {
-                  //       selectedIndex = 4;
-                  //       showFilterTabs = true;
-                  //     });
-                  //   },
-                  //   child: menuTabItem(
-                  //     size,
-                  //     'Thrift',
-                  //     selectedIndex == 4 ? true : false,
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -160,10 +161,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         setState(() {
                           switch (selectedIndex) {
                             case 3:
-                              eventFilterIndex = index;
+                              thriftFilterIndex = index;
                               break;
                             case 4:
-                              thriftFilterIndex = index;
+                              eventFilterIndex = index;
                               break;
                             default:
                               break;
@@ -178,8 +179,8 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) => Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: selectedIndex == 0 ? 0.0 : 20.0,
                   vertical: 10.0,
                 ),
                 child: displayWidget(size),
@@ -194,17 +195,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget displayWidget(Size size) {
     if (selectedIndex == 0) {
-      return SocialView(size: size);
+      return FeedView(size: size);
     } else if (selectedIndex == 1) {
-      return BusinessView(size: size);
+      return SocialView(size: size);
     } else if (selectedIndex == 2) {
-      return NewsView(size: size);
+      return ChannelView(size: size);
     } else if (selectedIndex == 3) {
-      return EventView(size: size);
-    } else if (selectedIndex == 4) {
       return ThriftView(size: size);
+    } else if (selectedIndex == 4) {
+      return EventView(size: size);
     } else {
-      return NewsView(size: size);
+      return FeedView(size: size);
     }
   }
 
@@ -228,9 +229,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int getFilterLength() {
     if (selectedIndex == 3) {
-      return eventFilterTexts.length;
-    } else if (selectedIndex == 4) {
       return thriftFilterTexts.length;
+    } else if (selectedIndex == 4) {
+      return eventFilterTexts.length;
     } else {
       return 0;
     }

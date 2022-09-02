@@ -13,7 +13,6 @@ class SocialView extends StatefulWidget {
 class _SocialViewState extends State<SocialView> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         SocialCardItem(

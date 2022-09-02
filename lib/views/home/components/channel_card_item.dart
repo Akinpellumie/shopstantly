@@ -2,28 +2,23 @@ import 'package:face_pile/face_pile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/components/video_card.dart';
 import 'package:shopstantly_app/utils/custom_router.dart';
-import 'package:shopstantly_app/views/home/components/single_image_card.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
-import 'custom_double_grid.dart';
-import 'custom_staggered_grid.dart';
-import 'image_grid_post.dart';
 
-class SocialCardItem extends StatelessWidget {
-  const SocialCardItem({
+class ChannelCardItem extends StatelessWidget {
+  const ChannelCardItem({
     Key? key,
-    required this.imageCount,
     required this.size,
-    required List<String> imageUrls,
-  })  : _imageUrls = imageUrls,
-        super(key: key);
+    required this.videoUrl,
+  }) : super(key: key);
 
-  final int imageCount;
   final Size size;
-  final List<String> _imageUrls;
+  final String videoUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -126,8 +121,25 @@ class SocialCardItem extends StatelessWidget {
               height: 13.0,
             ),
             SizedBox(
-              width: double.infinity,
-              child: displayWidget(3, size, _imageUrls),
+              width: size.width,
+              child: Container(
+                height: size.height * 0.40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: VideoCard(
+                    videoPlayerController: VideoPlayerController.network(
+                      videoUrl,
+                      videoPlayerOptions: VideoPlayerOptions(
+                        allowBackgroundPlayback: true,
+                      ),
+                    ),
+                    size: size,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               width: double.infinity,
@@ -312,28 +324,5 @@ class SocialCardItem extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget displayWidget(int imgCount, Size _size, List<String> _imageUrls) {
-    if (_imageUrls.length == 1) {
-      return SingleImageCard(
-        imageUrl: _imageUrls[0],
-        size: _size,
-      );
-    }
-    if (_imageUrls.length == 2) {
-      return CustomDoubleGrid(imageUrls: _imageUrls);
-    }
-    if (_imageUrls.length == 3) {
-      return CustomStaggeredGrid(imageUrls: _imageUrls);
-    }
-    if (_imageUrls.length == 4) {
-      return ImageGridPost(size: _size, imageUrls: _imageUrls);
-    } else {
-      return SingleImageCard(
-        imageUrl: _imageUrls[0],
-        size: _size,
-      );
-    }
   }
 }

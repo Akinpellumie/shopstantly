@@ -236,7 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => CustomRouter.nextScreen(
-                                    context, '/register'),
+                                    context, '/chooseAccount'),
                             ),
                           ],
                         ),

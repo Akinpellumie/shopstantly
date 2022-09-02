@@ -39,19 +39,24 @@ class ThemeHelper {
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
           color: showBorder ? kEntryBorderColor : Colors.transparent,
-          width: 2.0,
+          width: 1.0,
         ),
       ),
       prefixIcon: prefixIcon,
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
-            color: showBorder ? Colors.red : Colors.transparent, width: 2.0),
+          color: showBorder ? Colors.red : Colors.transparent,
+          width: 1.0,
+        ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.0),
-          borderSide: BorderSide(
-              color: showBorder ? Colors.red : Colors.transparent, width: 2.0)),
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: BorderSide(
+          color: showBorder ? Colors.red : Colors.transparent,
+          width: 1.0,
+        ),
+      ),
     );
   }
 
@@ -89,18 +94,23 @@ class ThemeHelper {
         borderRadius: BorderRadius.circular(7.0),
         borderSide: const BorderSide(
           color: Colors.transparent,
-          width: 2.0,
+          width: 1.0,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
-            color: showBorder ? Colors.red : Colors.transparent, width: 2.0),
+          color: showBorder ? Colors.red : Colors.transparent,
+          width: 1.0,
+        ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.0),
-          borderSide: BorderSide(
-              color: showBorder ? Colors.red : Colors.transparent, width: 2.0)),
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: BorderSide(
+          color: showBorder ? Colors.red : Colors.transparent,
+          width: 1.0,
+        ),
+      ),
     );
   }
 
@@ -131,10 +141,10 @@ class ThemeHelper {
       ),
       errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0)),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0)),
       focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0)),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0)),
     );
   }
 
@@ -251,10 +261,10 @@ class ThemeHelper {
       ),
       errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0)),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0)),
       focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0)),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0)),
     );
   }
 
@@ -267,9 +277,10 @@ class ThemeHelper {
         //iconColor: kWhiteColor,
         labelText: lableText,
         labelStyle: const TextStyle(
-            color: kPlaceholderColor,
-            fontWeight: FontWeight.normal,
-            fontFamily: kDefaultFont),
+          color: kPlaceholderColor,
+          fontWeight: FontWeight.normal,
+          fontFamily: kDefaultFont,
+        ),
         hintText: hintText,
         hintStyle: const TextStyle(
           color: kPlaceholderColor,
@@ -292,11 +303,11 @@ class ThemeHelper {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0),
         ),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon);

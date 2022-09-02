@@ -1,1 +1,1 @@
-enum AccountType { shoppers, social }
+enum AccountType { shoppers, social, business }

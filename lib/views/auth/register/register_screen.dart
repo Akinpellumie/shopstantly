@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -238,6 +239,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
                       const SizedBox(height: 10.0),
+
+                      Container(
+                        child: TextFormField(
+                          //initialValue: initialUser,
+                          //readOnly: _loginViewModel.loggingIn,
+                          decoration: ThemeHelper().textInputDecoration(
+                            'Username',
+                            'Enter username',
+                            const Icon(
+                              CupertinoIcons.person_circle,
+                              color: kLightGrayColor,
+                              size: 20.0,
+                            ),
+                          ),
+                          validator: (v) {
+                            if (!RequiredValidator(
+                              errorText: '',
+                            ).isValid(v)) {
+                              // _loginViewModel.setError(
+                              //   "User ID",
+                              //   'Enter a valid user ID',
+                              // );
+                            } else {
+                              //_loginViewModel.removeError("userId");
+                            }
+                            return null;
+                          },
+                          //controller: _loginViewModel.userIdController,
+                          style: TextStyle(fontSize: size.height * 0.0170),
+                          keyboardType: TextInputType.text,
+                        ),
+                        decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                      ),
+                      const SizedBox(height: 10.0),
+
                       Container(
                         child: TextFormField(
                           // readOnly: _loginViewModel.loggingIn,
