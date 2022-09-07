@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -38,6 +37,30 @@ class CustomStaggeredGrid extends StatelessWidget {
                   child: Image.network(
                     imageUrls[0],
                     fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
+                      // Appropriate logging or analytics, e.g.
+                      // myAnalytics.recordError(
+                      //   'An error occurred loading "https://example.does.not.exist/image.jpg"',
+                      //   exception,
+                      //   stackTrace,
+                      // );
+                      return const Icon(Icons.image_not_supported);
+                    },
                   ),
                 ),
               ),
@@ -64,6 +87,30 @@ class CustomStaggeredGrid extends StatelessWidget {
                   child: Image.network(
                     imageUrls[1],
                     fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
+                      // Appropriate logging or analytics, e.g.
+                      // myAnalytics.recordError(
+                      //   'An error occurred loading "https://example.does.not.exist/image.jpg"',
+                      //   exception,
+                      //   stackTrace,
+                      // );
+                      return const Icon(Icons.image_not_supported);
+                    },
                   ),
                 ),
               ),
@@ -90,6 +137,30 @@ class CustomStaggeredGrid extends StatelessWidget {
                   child: Image.network(
                     imageUrls[2],
                     fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
+                      // Appropriate logging or analytics, e.g.
+                      // myAnalytics.recordError(
+                      //   'An error occurred loading "https://example.does.not.exist/image.jpg"',
+                      //   exception,
+                      //   stackTrace,
+                      // );
+                      return const Icon(Icons.image_not_supported);
+                    },
                   ),
                 ),
               ),

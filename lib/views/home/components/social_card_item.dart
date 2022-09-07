@@ -126,7 +126,7 @@ class SocialCardItem extends StatelessWidget {
               height: 13.0,
             ),
             SizedBox(
-              width: double.infinity,
+              width: size.width,
               child: displayWidget(3, size, _imageUrls),
             ),
             SizedBox(

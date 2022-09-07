@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/enums/vehicle_type.dart';
+import 'package:shopstantly_app/views/logistics/widgets/car_data_widget.dart';
 import 'package:shopstantly_app/views/logistics/widgets/success_widget.dart';
 
 import '../../utils/app_colors.dart';
@@ -25,7 +26,7 @@ class _LogisticVerificationScreenState
         leading: Icon(
           Icons.keyboard_backspace_rounded,
           color: kPrimaryColor,
-          size: size.height * 0.0250,
+          size: size.height * 0.045,
         ),
         elevation: 0.0,
         backgroundColor: kBackgroundColor,
@@ -34,7 +35,7 @@ class _LogisticVerificationScreenState
           child: Text(
             'Logistics',
             style: TextStyle(
-              fontSize: size.height * 0.0170,
+              fontSize: size.height * 0.020,
               fontWeight: FontWeight.w500,
               color: kPrimaryColor,
             ),
@@ -53,64 +54,117 @@ class _LogisticVerificationScreenState
             pinned: true,
             backgroundColor: kBackgroundColor,
             flexibleSpace: FlexibleSpaceBar(
+              titlePadding: const EdgeInsets.all(0.0),
+              centerTitle: false,
               title: Column(
                 children: [
                   const SizedBox(
                     height: 10.0,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            selectedIndex = 0;
+                            vehicleType = VehicleType.car;
                           });
                         },
-                        child: menuTabItem(
-                          size,
-                          'Vehicles',
-                          selectedIndex == 0 ? true : false,
+                        child: Text(
+                          'Car',
+                          style: TextStyle(
+                            fontFamily: kDefaultFont,
+                            fontSize: size.height * 0.020,
+                            fontWeight: vehicleType == VehicleType.car
+                                ? FontWeight.bold
+                                : FontWeight.w500,
+                            color: vehicleType == VehicleType.car
+                                ? kPrimaryColor
+                                : kPlaceholderColor,
+                          ),
                         ),
+                      ),
+                      SizedBox(
+                        width: size.width / 3,
                       ),
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            selectedIndex = 1;
+                            vehicleType = VehicleType.bus;
                           });
                         },
-                        child: menuTabItem(
-                          size,
-                          'Towing Vehicles',
-                          selectedIndex == 1 ? true : false,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = 2;
-                          });
-                        },
-                        child: menuTabItem(
-                          size,
-                          'Bike',
-                          selectedIndex == 2 ? true : false,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = 3;
-                          });
-                        },
-                        child: menuTabItem(
-                          size,
-                          'Ambulance',
-                          selectedIndex == 3 ? true : false,
+                        child: Text(
+                          'Bus',
+                          style: TextStyle(
+                            fontFamily: kDefaultFont,
+                            fontSize: size.height * 0.020,
+                            fontWeight: vehicleType == VehicleType.bus
+                                ? FontWeight.bold
+                                : FontWeight.w500,
+                            color: vehicleType == VehicleType.bus
+                                ? kPrimaryColor
+                                : kPlaceholderColor,
+                          ),
                         ),
                       ),
                     ],
                   ),
+
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: [
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         setState(() {
+                  //           selectedIndex = 0;
+                  //         });
+                  //       },
+                  //       child: menuTabItem(
+                  //         size,
+                  //         'Vehicles',
+                  //         selectedIndex == 0 ? true : false,
+                  //       ),
+                  //     ),
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         setState(() {
+                  //           selectedIndex = 1;
+                  //         });
+                  //       },
+                  //       child: menuTabItem(
+                  //         size,
+                  //         'Towing Vehicles',
+                  //         selectedIndex == 1 ? true : false,
+                  //       ),
+                  //     ),
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         setState(() {
+                  //           selectedIndex = 2;
+                  //         });
+                  //       },
+                  //       child: menuTabItem(
+                  //         size,
+                  //         'Bike',
+                  //         selectedIndex == 2 ? true : false,
+                  //       ),
+                  //     ),
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         setState(() {
+                  //           selectedIndex = 3;
+                  //         });
+                  //       },
+                  //       child: menuTabItem(
+                  //         size,
+                  //         'Ambulance',
+                  //         selectedIndex == 3 ? true : false,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+
                   const SizedBox(
                     height: 10.0,
                   ),
@@ -123,89 +177,6 @@ class _LogisticVerificationScreenState
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Visibility(
-              visible: selectedIndex == 0,
-              child: Container(
-                margin: const EdgeInsets.only(top: 15.0, bottom: 15.0),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            vehicleType = VehicleType.car;
-                          });
-                        },
-                        child: Column(
-                          children: [
-                            Text(
-                              'Car',
-                              style: TextStyle(
-                                fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.0150,
-                                fontWeight: FontWeight.normal,
-                                color: vehicleType == VehicleType.car
-                                    ? kPrimaryColor
-                                    : kPlaceholderColor,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Container(
-                              color: vehicleType == VehicleType.car
-                                  ? kPrimaryColor
-                                  : Colors.transparent,
-                              height: 0.5,
-                              width: 30.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: size.width / 3,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            vehicleType = VehicleType.bus;
-                          });
-                        },
-                        child: Column(
-                          children: [
-                            Text(
-                              'Bus',
-                              style: TextStyle(
-                                fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.0150,
-                                fontWeight: FontWeight.normal,
-                                color: vehicleType == VehicleType.bus
-                                    ? kPrimaryColor
-                                    : kPlaceholderColor,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Container(
-                              color: vehicleType == VehicleType.bus
-                                  ? kPrimaryColor
-                                  : Colors.transparent,
-                              height: 0.5,
-                              width: 30.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, _index) => Container(
@@ -213,7 +184,7 @@ class _LogisticVerificationScreenState
                   vertical: 10.0,
                   horizontal: 15.0,
                 ),
-                child: SuccessWidget(
+                child: CarDataWidget(
                   size: size,
                 ),
               ),

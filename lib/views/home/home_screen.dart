@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/utils/main_page_app_bar.dart';
-import 'package:shopstantly_app/views/home/widgets/business_view.dart';
 import 'package:shopstantly_app/views/home/widgets/channel_view.dart';
 import 'package:shopstantly_app/views/home/widgets/feed_view.dart';
 import 'package:shopstantly_app/views/home/widgets/social_view.dart';
@@ -11,7 +10,6 @@ import 'package:shopstantly_app/views/home/widgets/thrift_view.dart';
 
 import '../../utils/app_colors.dart';
 import 'widgets/event_view.dart';
-import 'widgets/news_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

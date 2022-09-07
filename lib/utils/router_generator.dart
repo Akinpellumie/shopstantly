@@ -177,7 +177,7 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           builder: (BuildContext context) {
             return const SocialDetailScreen();
           });
-    case "/logistic-verfiy":
+    case "/logistic-verify":
       return MaterialPageRoute(
           settings: settings,
           builder: (BuildContext context) {

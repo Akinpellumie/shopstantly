@@ -40,7 +40,7 @@ class ThriftCard extends StatelessWidget {
             'Garnished Pasta with sauce',
             style: TextStyle(
               color: kPrimaryTextColor,
-              fontSize: size.width * 0.040,
+              fontSize: size.height * 0.018,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -51,7 +51,7 @@ class ThriftCard extends StatelessWidget {
                   '#1,500',
                   style: TextStyle(
                     color: kPrimaryTextColor,
-                    fontSize: size.width * 0.035,
+                    fontSize: size.height * 0.018,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -60,7 +60,7 @@ class ThriftCard extends StatelessWidget {
                 '#2,500',
                 style: TextStyle(
                   color: kPrimaryTextColor,
-                  fontSize: size.width * 0.035,
+                  fontSize: size.height * 0.017,
                   fontWeight: FontWeight.normal,
                   fontStyle: FontStyle.italic,
                   decoration: TextDecoration.lineThrough,
@@ -74,7 +74,7 @@ class ThriftCard extends StatelessWidget {
           Row(
             children: <Widget>[
               Image.asset(
-                AssetsPath.sofast,
+                AssetsPath.iconLogo,
                 height: 20.0,
                 fit: BoxFit.contain,
               ),
@@ -88,7 +88,7 @@ class ThriftCard extends StatelessWidget {
                     color: kPlaceholderColor,
                     fontFamily: kDefaultFont,
                     fontWeight: FontWeight.w400,
-                    fontSize: size.width * 0.030,
+                    fontSize: size.height * 0.016,
                   ),
                 ),
               ),
@@ -106,14 +106,14 @@ class ThriftCard extends StatelessWidget {
                   color: kPlaceholderColor,
                   fontFamily: kDefaultFont,
                   fontWeight: FontWeight.w400,
-                  fontSize: size.width * 0.035,
+                  fontSize: size.height * 0.017,
                 ),
               ),
               const SizedBox(
                 height: 5.0,
               ),
               LinearPercentIndicator(
-                lineHeight: 6.0,
+                lineHeight: 5.0,
                 percent: 0.6,
                 padding: const EdgeInsets.all(0),
                 barRadius: const Radius.circular(10.0),

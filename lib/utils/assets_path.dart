@@ -32,6 +32,8 @@ class AssetsPath {
   static const String profileDp = 'assets/images/dp.png';
   static const String imageDp = 'assets/images/imageDp.png';
   static const String food = 'assets/images/food.png';
+  static const String cash = 'assets/images/cash.png';
+  static const String car = 'assets/images/car.png';
   static const String heels = 'assets/images/heels.png';
   static const String image1 = 'assets/images/img1.png';
   static const String image2 = 'assets/images/img2.png';
