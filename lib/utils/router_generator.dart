@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/views/home/comment_screen.dart';
+import 'package:shopstantly_app/views/logistics/driver/driver_main_screen.dart';
+import 'package:shopstantly_app/views/logistics/face_verification_screen.dart';
 import 'package:shopstantly_app/views/wallets/personal/personal_main_wallet_screen.dart';
 import 'package:shopstantly_app/views/wallets/set_wallet_pin_screen.dart';
 import 'package:shopstantly_app/views/wallets/wallet_pin_screen.dart';
@@ -188,6 +190,18 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const LogisticScreen();
+          });
+    case "/driver-screen":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const DriverMainScreen();
+          });
+    case "/face-verify":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const FaceVerificationScreen();
           });
     case "/setWalletPin":
       return MaterialPageRoute(

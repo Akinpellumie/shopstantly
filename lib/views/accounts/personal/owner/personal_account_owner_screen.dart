@@ -39,7 +39,7 @@ class _PersonalAccountOwnerScreenState
         leadingWidth: 0.0,
         elevation: 0.0,
         backgroundColor: kBackgroundColor,
-        toolbarHeight: size.height * 0.10,
+        toolbarHeight: size.height * 0.15,
         flexibleSpace: SafeArea(
           child: SizedBox(
             height: size.height * 0.30,

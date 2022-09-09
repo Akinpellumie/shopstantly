@@ -42,6 +42,7 @@ class AssetsPath {
   static const String sofast = 'assets/icons/sofast.png';
   static const String google = 'assets/images/google.png';
   static const String faceID = 'assets/images/faceId.svg';
+  static const String faceScan = 'assets/images/faceScan.png';
   static const String facebook = 'assets/images/facebook.png';
   static const String wishlist = 'assets/icons/wishlist.svg';
   static const String more = 'assets/icons/more.svg';
@@ -58,6 +59,8 @@ class AssetsPath {
   static const String event = 'assets/icons/event.svg';
   static const String history = 'assets/icons/history.svg';
   static const String success = 'assets/icons/success.svg';
+  static const String successIcon = 'assets/images/success.svg';
+  static const String starCosmos = 'assets/icons/starCosmos.svg';
   static const String inbox = 'assets/icons/inbox.svg';
   static const String ride = 'assets/icons/ride.svg';
   static const String wheel = 'assets/icons/wheel.svg';

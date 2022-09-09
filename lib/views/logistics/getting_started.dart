@@ -17,7 +17,7 @@ class GettingStarted extends StatefulWidget {
 }
 
 class _GettingStartedState extends State<GettingStarted> {
-  LogisticPlanType? logisticPlanType = LogisticPlanType.rider;
+  LogisticPlanType? logisticPlanType = LogisticPlanType.driver;
   int carouselIndex = 0;
   int carouselLength = 3;
   int tabIndex = 0;
@@ -53,6 +53,18 @@ class _GettingStartedState extends State<GettingStarted> {
                 callback: (val) => setState(
                   () {
                     tabIndex = val;
+                    switch (val) {
+                      case 0:
+                        logisticPlanType = LogisticPlanType.driver;
+                        break;
+                      case 1:
+                        logisticPlanType = LogisticPlanType.rider;
+                        break;
+                      case 2:
+                        logisticPlanType = LogisticPlanType.waybill;
+                        break;
+                      default:
+                    }
                     // updateViewOnTabChange(
                     //     widget.customerViewModel, val, widget.caller);
                   },
@@ -101,7 +113,7 @@ class _GettingStartedState extends State<GettingStarted> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  tabIndex == 0 ? 'Be A Driver' : 'Book a Ride',
+                                  getSliderTitleText(),
                                   style: TextStyle(
                                     color: kWhiteColor,
                                     fontSize: size.height * 0.020,
@@ -112,7 +124,7 @@ class _GettingStartedState extends State<GettingStarted> {
                                   height: 5.0,
                                 ),
                                 Text(
-                                  'Earn extra cash as a driver when you register on  Shopstantly and enjoy secure service.',
+                                  getSliderDescText(),
                                   style: TextStyle(
                                     color: kWhiteColor,
                                     fontSize: size.height * 0.0160,
@@ -192,7 +204,7 @@ class _GettingStartedState extends State<GettingStarted> {
                 height: 20.0,
               ),
               Text(
-                'You are yet to be verified as a driver. It takes less than 2 minute to do the first step.',
+                getPageText(),
                 style: TextStyle(
                   fontSize: size.height * 0.018,
                   fontWeight: FontWeight.w400,
@@ -310,12 +322,12 @@ class _GettingStartedState extends State<GettingStarted> {
               //   height: 30.0,
               // ),
               AppButton(
-                text: tabIndex == 0
-                    ? 'Apply To Be a Driver'
-                    : "Apply To Start A Ride",
+                text: getBtnText(),
                 type: ButtonType.primary,
                 onPressed: () {
-                  CustomRouter.nextScreen(context, "/logistic-verify");
+                  // CustomRouter.nextScreen(context, "/logistic-verify",
+                  //     args: {'LogisticPlanType': logisticPlanType});
+                  CustomRouter.nextScreen(context, '/driver-screen');
                 },
               ),
             ],
@@ -337,5 +349,57 @@ class _GettingStartedState extends State<GettingStarted> {
             : kPrimaryAccentColor,
       ),
     );
+  }
+
+  String getBtnText() {
+    switch (tabIndex) {
+      case 0:
+        return 'Apply To Be a Driver';
+      case 1:
+        return 'Upload ID';
+      case 2:
+        return 'Search for Courier';
+      default:
+        return 'Apply To Be a Driver';
+    }
+  }
+
+  String getSliderTitleText() {
+    switch (tabIndex) {
+      case 0:
+        return 'Ba a Driver';
+      case 1:
+        return 'Take a Ride';
+      case 2:
+        return 'Send Package';
+      default:
+        return 'Ba a Driver';
+    }
+  }
+
+  String getSliderDescText() {
+    switch (tabIndex) {
+      case 0:
+        return 'Earn extra cash as a driver when you register on  Shopstantly and enjoy secure service.';
+      case 1:
+        return 'Order a ride and be assured of your security with verified drivers and affordable charges.';
+      case 2:
+        return 'Get your package delivered to anywhere as soon as possible.';
+      default:
+        return 'Earn extra cash as a driver when you register on  Shopstantly and enjoy secure service.';
+    }
+  }
+
+  String getPageText() {
+    switch (tabIndex) {
+      case 0:
+        return 'You are yet to be verified as a driver. It takes less than 2 minute to do the first step.';
+      case 1:
+        return 'You are one step away from booking a ride. \nPlease Identify yourself. \nWe request this to ensure security.';
+      case 2:
+        return 'Thank you for Choosing to send your parcels  with Shopstantly. \nYou can send your parcels and gift items  at affordable rates with our Intercity and Intrastate delivery services.';
+      default:
+        return 'You are yet to be verified as a driver. It takes less than 2 minute to do the first step.';
+    }
   }
 }

@@ -45,5 +45,10 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>	
+	<string>This app would like to access your location to enable feature and support for users.</string>	
+	<key>NSLocationWhenInUseUsageDescription</key>	
+	<string>This app would like to access your location to enable feature and support for users. </string>
+	
 </dict>
 </plist>

@@ -1,1 +1,1 @@
-enum LogisticPlanType { rider, driver }
+enum LogisticPlanType { rider, driver, waybill }
