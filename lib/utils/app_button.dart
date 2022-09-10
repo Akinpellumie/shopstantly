@@ -8,21 +8,25 @@ class AppButton extends StatelessWidget {
   final ButtonType type;
   final VoidCallback onPressed;
   final String text;
+  final double btnHeight;
+  final double btnWidth;
 
-  const AppButton(
-      {Key? key,
-      required this.type,
-      required this.onPressed,
-      required this.text})
-      : super(key: key);
+  const AppButton({
+    Key? key,
+    required this.type,
+    required this.onPressed,
+    required this.text,
+    this.btnHeight = 50.0,
+    this.btnWidth = double.infinity,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: double.infinity,
-        height: 50.0,
+        width: btnWidth,
+        height: btnHeight,
         decoration: BoxDecoration(
           color: getButtonColor(type),
           borderRadius: const BorderRadius.all(
