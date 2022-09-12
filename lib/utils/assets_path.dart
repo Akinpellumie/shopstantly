@@ -70,12 +70,16 @@ class AssetsPath {
   static const String postIcon = 'assets/icons/post_icon.svg';
   static const String user = 'assets/icons/user.svg';
   static const String profile = 'assets/icons/profile.svg';
+  static const String bank = 'assets/icons/bank.svg';
   static const String calendar = 'assets/icons/calendar.svg';
   static const String shopping = 'assets/icons/cart.svg';
   static const String invest = 'assets/icons/invest.svg';
   static const String cashback = 'assets/icons/cashback.svg';
   static const String qrcode = 'assets/images/qrcode.svg';
   static const String map = 'assets/images/map.jpg';
+  static const String mastercard = 'assets/images/mastercard.png';
+  static const String visa = 'assets/images/visa.png';
+  static const String card = 'assets/images/card.png';
   static const String iconLogo = 'assets/images/shopiconlogo.png';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';

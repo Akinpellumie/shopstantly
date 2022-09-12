@@ -109,13 +109,53 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                           GestureDetector(
                             onTap: () =>
                                 CustomRouter.nextScreen(context, '/mainWallet'),
+                            child: SizedBox(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          AssetsPath.profile,
+                                          color: kPrimaryColor,
+                                          height: size.height * 0.0200,
+                                        ),
+                                        const SizedBox(
+                                          width: 15.0,
+                                        ),
+                                        Text(
+                                          "Personal",
+                                          style: TextStyle(
+                                            color: kDarkColor,
+                                            fontFamily: kDefaultFont,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: size.height * 0.019,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Icon(
+                                    Icons.keyboard_arrow_right_outlined,
+                                    color: kPrimaryColor,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          GestureDetector(
+                            onTap: () =>
+                                CustomRouter.nextScreen(context, '/mainWallet'),
                             child: Row(
                               children: [
                                 Expanded(
                                   child: Row(
                                     children: [
                                       SvgPicture.asset(
-                                        AssetsPath.profile,
+                                        AssetsPath.socialAcct,
                                         color: kPrimaryColor,
                                         height: size.height * 0.0200,
                                       ),
@@ -123,7 +163,7 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                                         width: 15.0,
                                       ),
                                       Text(
-                                        "Personal",
+                                        "Family",
                                         style: TextStyle(
                                           color: kDarkColor,
                                           fontFamily: kDefaultFont,
@@ -140,40 +180,6 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                                 ),
                               ],
                             ),
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      AssetsPath.socialAcct,
-                                      color: kPrimaryColor,
-                                      height: size.height * 0.0200,
-                                    ),
-                                    const SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(
-                                      "Family",
-                                      style: TextStyle(
-                                        color: kDarkColor,
-                                        fontFamily: kDefaultFont,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: size.height * 0.019,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: kPrimaryColor,
-                              ),
-                            ],
                           ),
                           const SizedBox(
                             height: 20.0,
@@ -244,138 +250,154 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                           const SizedBox(
                             height: 20.0,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      AssetsPath.cashback,
-                                      color: kPrimaryColor,
-                                      height: size.height * 0.0200,
-                                    ),
-                                    const SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(
-                                      "Cashback",
-                                      style: TextStyle(
-                                        color: kDarkColor,
-                                        fontFamily: kDefaultFont,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: size.height * 0.019,
+                          GestureDetector(
+                            onTap: () =>
+                                CustomRouter.nextScreen(context, '/mainWallet'),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AssetsPath.cashback,
+                                        color: kPrimaryColor,
+                                        height: size.height * 0.0200,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        width: 15.0,
+                                      ),
+                                      Text(
+                                        "Cashback",
+                                        style: TextStyle(
+                                          color: kDarkColor,
+                                          fontFamily: kDefaultFont,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: size.height * 0.019,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: kPrimaryColor,
-                              ),
-                            ],
+                                const Icon(
+                                  Icons.keyboard_arrow_right_outlined,
+                                  color: kPrimaryColor,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      AssetsPath.shopping,
-                                      color: kPrimaryColor,
-                                      height: size.height * 0.0200,
-                                    ),
-                                    const SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(
-                                      "Store",
-                                      style: TextStyle(
-                                        color: kDarkColor,
-                                        fontFamily: kDefaultFont,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: size.height * 0.019,
+                          GestureDetector(
+                            onTap: () =>
+                                CustomRouter.nextScreen(context, '/mainWallet'),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AssetsPath.shopping,
+                                        color: kPrimaryColor,
+                                        height: size.height * 0.0200,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        width: 15.0,
+                                      ),
+                                      Text(
+                                        "Store",
+                                        style: TextStyle(
+                                          color: kDarkColor,
+                                          fontFamily: kDefaultFont,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: size.height * 0.019,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: kPrimaryColor,
-                              ),
-                            ],
+                                const Icon(
+                                  Icons.keyboard_arrow_right_outlined,
+                                  color: kPrimaryColor,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      AssetsPath.invest,
-                                      color: kPrimaryColor,
-                                      height: size.height * 0.0200,
-                                    ),
-                                    const SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(
-                                      "Investment",
-                                      style: TextStyle(
-                                        color: kDarkColor,
-                                        fontFamily: kDefaultFont,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: size.height * 0.019,
+                          GestureDetector(
+                            onTap: () =>
+                                CustomRouter.nextScreen(context, '/mainWallet'),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AssetsPath.invest,
+                                        color: kPrimaryColor,
+                                        height: size.height * 0.0200,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        width: 15.0,
+                                      ),
+                                      Text(
+                                        "Investment",
+                                        style: TextStyle(
+                                          color: kDarkColor,
+                                          fontFamily: kDefaultFont,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: size.height * 0.019,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: kPrimaryColor,
-                              ),
-                            ],
+                                const Icon(
+                                  Icons.keyboard_arrow_right_outlined,
+                                  color: kPrimaryColor,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      AssetsPath.calendar,
-                                      color: kPrimaryColor,
-                                      height: size.height * 0.0200,
-                                    ),
-                                    const SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(
-                                      "Event",
-                                      style: TextStyle(
-                                        color: kDarkColor,
-                                        fontFamily: kDefaultFont,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: size.height * 0.019,
+                          GestureDetector(
+                            onTap: () =>
+                                CustomRouter.nextScreen(context, '/mainWallet'),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AssetsPath.calendar,
+                                        color: kPrimaryColor,
+                                        height: size.height * 0.0200,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        width: 15.0,
+                                      ),
+                                      Text(
+                                        "Event",
+                                        style: TextStyle(
+                                          color: kDarkColor,
+                                          fontFamily: kDefaultFont,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: size.height * 0.019,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const Icon(
-                                Icons.keyboard_arrow_right_outlined,
-                                color: kPrimaryColor,
-                              ),
-                            ],
+                                const Icon(
+                                  Icons.keyboard_arrow_right_outlined,
+                                  color: kPrimaryColor,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 20.0,

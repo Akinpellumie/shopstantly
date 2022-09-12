@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/views/home/comment_screen.dart';
 import 'package:shopstantly_app/views/logistics/driver/driver_main_screen.dart';
 import 'package:shopstantly_app/views/logistics/face_verification_screen.dart';
+import 'package:shopstantly_app/views/wallets/add_new_card_screen.dart';
 import 'package:shopstantly_app/views/wallets/personal/personal_main_wallet_screen.dart';
 import 'package:shopstantly_app/views/wallets/set_wallet_pin_screen.dart';
+import 'package:shopstantly_app/views/wallets/transfer_screen.dart';
 import 'package:shopstantly_app/views/wallets/wallet_pin_screen.dart';
 
 import '../views/accounts/business/product_detail_screen.dart';
@@ -226,6 +228,18 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const MainWalletScreen();
+          });
+    case "/addNewCard":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const AddNewCardScreen();
+          });
+    case "/sendMoney":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const TransferScreen();
           });
     default:
       return MaterialPageRoute(
