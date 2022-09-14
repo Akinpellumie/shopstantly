@@ -25,7 +25,6 @@ class CommentWidget extends StatefulWidget {
 }
 
 class _CommentWidgetState extends State<CommentWidget> {
-  late double? _ratingValue;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -85,7 +84,6 @@ class _CommentWidgetState extends State<CommentWidget> {
                           ),
                           onRatingUpdate: (value) {
                             setState(() {
-                              _ratingValue = value;
                             });
                           }),
                     ],

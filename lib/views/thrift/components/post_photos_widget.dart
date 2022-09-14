@@ -7,7 +7,7 @@ import '../../../utils/app_button.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/dimensions.dart';
 
-class PostPhotosWidget extends StatelessWidget {
+class PostPhotosWidget extends StatefulWidget {
   const PostPhotosWidget({
     Key? key,
     required this.size,
@@ -16,8 +16,13 @@ class PostPhotosWidget extends StatelessWidget {
   final Size size;
 
   @override
-  Widget build(BuildContext context) {
+  State<PostPhotosWidget> createState() => _PostPhotosWidgetState();
+}
+
+class _PostPhotosWidgetState extends State<PostPhotosWidget> {
   bool isTyping = false;
+  @override
+  Widget build(BuildContext context) {
     return Flexible(
       child: SingleChildScrollView(
         child: Container(
@@ -32,7 +37,7 @@ class PostPhotosWidget extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(10.0),
-                  height: size.height * 0.20,
+                  height: widget.size.height * 0.20,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,13 +47,13 @@ class PostPhotosWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.015,
+                          fontSize: widget.size.height * 0.015,
                           color: kPrimaryTextColor,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(
-                        height: size.height * 0.025,
+                        height: widget.size.height * 0.025,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,8 +64,8 @@ class PostPhotosWidget extends StatelessWidget {
                               horizontal: 8.0,
                               vertical: 5.0,
                             ),
-                            height: size.height * 0.085,
-                            width: size.width / 4 - 40,
+                            height: widget.size.height * 0.085,
+                            width: widget.size.width / 4 - 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               color: kPostCardBgColor,
@@ -75,8 +80,8 @@ class PostPhotosWidget extends StatelessWidget {
                               horizontal: 8.0,
                               vertical: 5.0,
                             ),
-                            height: size.height * 0.085,
-                            width: size.width / 4 - 40,
+                            height: widget.size.height * 0.085,
+                            width: widget.size.width / 4 - 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               color: kPostCardBgColor,
@@ -91,8 +96,8 @@ class PostPhotosWidget extends StatelessWidget {
                               horizontal: 8.0,
                               vertical: 5.0,
                             ),
-                            height: size.height * 0.085,
-                            width: size.width / 4 - 40,
+                            height: widget.size.height * 0.085,
+                            width: widget.size.width / 4 - 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               color: kPostCardBgColor,
@@ -107,8 +112,8 @@ class PostPhotosWidget extends StatelessWidget {
                               horizontal: 8.0,
                               vertical: 5.0,
                             ),
-                            height: size.height * 0.085,
-                            width: size.width / 4 - 40,
+                            height: widget.size.height * 0.085,
+                            width: widget.size.width / 4 - 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               color: kPostCardBgColor,
@@ -125,7 +130,7 @@ class PostPhotosWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: size.height * 0.025,
+                height: widget.size.height * 0.025,
               ),
               Form(
                 child: Column(
@@ -162,7 +167,7 @@ class PostPhotosWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: size.height * 0.025,
+                      height: widget.size.height * 0.025,
                     ),
                     Container(
                       child: TextFormField(
@@ -199,7 +204,7 @@ class PostPhotosWidget extends StatelessWidget {
                       decoration: ThemeHelper().editorBoxDecorationShaddow(),
                     ),
                     SizedBox(
-                      height: size.height * 0.025,
+                      height: widget.size.height * 0.025,
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -255,7 +260,10 @@ class PostPhotosWidget extends StatelessWidget {
                               //controller: _loginViewModel.userIdController,
                               keyboardType: TextInputType.text,
                               onChanged: (value) {
+                                setState(() {
                                 isTyping = true;
+                                  
+                                });
                               },
                             ),
                           ),
@@ -263,14 +271,14 @@ class PostPhotosWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: size.height * 0.050,
+                      height: widget.size.height * 0.050,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          width: size.width / 2 - 30,
+                          width: widget.size.width / 2 - 30,
                           margin: const EdgeInsets.only(right: 5.0),
                           child: AppButton(
                             text: "Save as Draft",
@@ -281,7 +289,7 @@ class PostPhotosWidget extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: size.width / 2 - 30,
+                          width: widget.size.width / 2 - 30,
                           margin: const EdgeInsets.only(left: 5.0),
                           child: AppButton(
                             text: "Post",

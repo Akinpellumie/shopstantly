@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../components/general_post_card.dart';
-import '../../../../../utils/app_colors.dart';
-import '../../../../../utils/assets_path.dart';
-import '../../../../../utils/dimensions.dart';
 
 
 class OwnerPostView extends StatelessWidget {

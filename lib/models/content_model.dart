@@ -11,24 +11,26 @@ List<UnbordingContent> contents = [
   UnbordingContent(
       title: 'Buy and Sell',
       image: 'assets/images/buy.svg',
-      description: "Send Parcels and waybill seamlessly at ridiculous prices."),
+      description:
+          "Service providers get the most affordable way to sell physical and digital products online without much hassle on marketing, increased sales, and speedy order fulfillment."),
   UnbordingContent(
       title: 'Payment Protection',
       image: 'assets/images/security.svg',
       description:
-          "Enjoy payment protection for all you buy and ship with ease"),
+          "Consumers get what they want and how they want without the fear of payment scams or logistics problems."),
   UnbordingContent(
-      title: 'Manage Business',
+      title: 'Decentralized Logistics',
       image: 'assets/images/business.svg',
       description:
           "Explore features and increase customers satisfaction. Post product, sell in multiple currencies, process orders and monitor state stats in real time."),
   UnbordingContent(
-      title: 'Manage Event',
+      title: 'Create And Manage Event',
       image: 'assets/images/events.svg',
-      description: "All your event management needs in one place."),
+      description:
+          "All your event management needs in one place.  Users can create, join  and sell tickets on the platform."),
   UnbordingContent(
-      title: 'Get Income',
+      title: 'Enjoy Multiple Income',
       image: 'assets/images/income.svg',
       description:
-          "Alternative income for celebrities and News bloggers. Retain traffic to your page and enjoy our powerful marketing  automation."),
+          "Alterntive income for celebrities and news bloggers. Retai traffic to your page and enjoy our powerful marketing automation."),
 ];

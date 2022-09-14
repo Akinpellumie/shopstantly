@@ -1,8 +1,5 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../utils/app_button.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 

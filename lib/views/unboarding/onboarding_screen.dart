@@ -107,9 +107,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.only(bottom: 30.0),
             width: double.infinity,
             height: size.height * 0.3 - 40.0,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
@@ -184,8 +186,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Container buildDot(int index, BuildContext context) {
     return Container(
-      height: 10,
-      width: 10,
+      height: 7,
+      width: 7,
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         shape: BoxShape.circle,

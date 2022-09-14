@@ -325,9 +325,9 @@ class _GettingStartedState extends State<GettingStarted> {
                 text: getBtnText(),
                 type: ButtonType.primary,
                 onPressed: () {
-                  // CustomRouter.nextScreen(context, "/logistic-verify",
-                  //     args: {'LogisticPlanType': logisticPlanType});
-                  CustomRouter.nextScreen(context, '/driver-screen');
+                  CustomRouter.nextScreen(context, "/logistic-verify",
+                      args: {'LogisticPlanType': logisticPlanType});
+                  //CustomRouter.nextScreen(context, '/driver-screen');
                 },
               ),
             ],
@@ -335,6 +335,22 @@ class _GettingStartedState extends State<GettingStarted> {
         ),
       ),
     );
+  }
+
+  void btnClickEvent(BuildContext context) {
+    if (tabIndex == 0) {
+      CustomRouter.nextScreen(context, "/logistic-verify",
+          args: {'LogisticPlanType': logisticPlanType});
+    } else if (tabIndex == 1) {
+      CustomRouter.nextScreen(context, "/logistic-verify",
+          args: {'LogisticPlanType': logisticPlanType});
+    } else if (tabIndex == 2) {
+      CustomRouter.nextScreen(context, "/logistic-verify",
+          args: {'LogisticPlanType': logisticPlanType});
+    }
+    else{
+      
+    }
   }
 
   Container buildDot(int index, BuildContext context) {

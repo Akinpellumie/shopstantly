@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
-import 'package:shopstantly_app/utils/assets_path.dart';
 
-import '../../../utils/app_button.dart';
 import '../../../utils/dimensions.dart';
 import '../components/event_card_item.dart';
 

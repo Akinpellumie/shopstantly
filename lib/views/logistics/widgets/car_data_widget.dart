@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:shopstantly_app/enums/logistic_type.dart';
 
 import '../../../enums/vehicle_type.dart';
 import '../../../helpers/theme_helper.dart';
-import '../../../utils/app_button.dart';
 import '../../../utils/app_colors.dart';
-import '../../../utils/custom_router.dart';
 import '../../../utils/dimensions.dart';
 
 class CarDataWidget extends StatelessWidget {

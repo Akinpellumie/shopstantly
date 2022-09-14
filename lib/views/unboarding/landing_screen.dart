@@ -21,35 +21,38 @@ class _LandingScreenState extends State<LandingScreen> {
       body: Container(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              "Let’s Get Started",
-              style: Theme.of(context).textTheme.headline5!.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: kPrimaryTextColor,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Let's Get Started",
+                    style: Theme.of(context).textTheme.headline5!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: kPrimaryTextColor,
+                        ),
                   ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Text(
-              "Sign In Or Create New Account",
-              style: TextStyle(
-                color: kSubTextColor,
-                fontSize: size.height * 0.0180,
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "Sign In Or Create New Account",
+                    style: TextStyle(
+                      color: kSubTextColor,
+                      fontSize: size.height * 0.0180,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  SvgPicture.asset(
+                    "assets/images/get_started.svg",
+                    fit: BoxFit.contain,
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            SvgPicture.asset(
-              "assets/images/get_started.svg",
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(
-              height: 60.0,
             ),
             AppButton(
               text: "Sign In",
@@ -65,6 +68,9 @@ class _LandingScreenState extends State<LandingScreen> {
               onPressed: () {
                 CustomRouter.nextScreen(context, "/chooseAccount");
               },
+            ),
+            const SizedBox(
+              height: 30.0,
             ),
           ],
         ),

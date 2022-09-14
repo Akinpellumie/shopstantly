@@ -23,14 +23,18 @@ class _TransferScreenState extends State<TransferScreen> {
         showLogo: false,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Transfer  to a Shopstantly User',
-            style: TextStyle(
-              fontFamily: kDefaultFont,
-              fontSize: size.height * 0.017,
-              color: kPrimaryColor,
-              fontWeight: FontWeight.normal,
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Text(
+              'Transfer to a Shopstantly User',
+              style: TextStyle(
+                fontFamily: kDefaultFont,
+                fontSize: size.height * 0.017,
+                color: kPrimaryColor,
+                fontWeight: FontWeight.normal,
+              ),
             ),
           ),
           Expanded(

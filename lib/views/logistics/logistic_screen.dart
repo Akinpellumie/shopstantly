@@ -1,8 +1,6 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/views/logistics/widgets/idrive_widget.dart';
 import 'package:shopstantly_app/views/logistics/widgets/iride_widget.dart';
-import 'package:timelines/timelines.dart';
 
 import '../../enums/logistic_type.dart';
 import '../../enums/package_type.dart';

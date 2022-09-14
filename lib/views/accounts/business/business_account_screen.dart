@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopstantly_app/views/accounts/business/components/business_profile_tab.dart';
 
 import '../../../utils/app_colors.dart';
-import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
 import 'widgets/event_view.dart';
 import 'widgets/info_view.dart';

@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopstantly_app/enums/transaction_type.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/views/wallets/widgets/fund_wallet_widget.dart';
 import 'package:shopstantly_app/views/wallets/widgets/request_fund_widget.dart';
@@ -11,12 +8,8 @@ import 'package:shopstantly_app/views/wallets/widgets/transfer_widget.dart';
 import 'package:shopstantly_app/views/wallets/widgets/wallet_history_widget.dart';
 import 'package:shopstantly_app/views/wallets/widgets/withdraw_fund_widget.dart';
 
-import '../../utils/app_button.dart';
-import '../../utils/assets_path.dart';
 import '../../utils/base_app_bar.dart';
-import '../../utils/custom_router.dart';
 import '../../utils/dimensions.dart';
-import '../../widgets/dotted_separator.dart';
 
 class MainWalletScreen extends StatefulWidget {
   const MainWalletScreen({Key? key}) : super(key: key);
@@ -39,7 +32,7 @@ class _MainWalletScreenState extends State<MainWalletScreen> {
       body: Column(
         children: [
           Container(
-            height: size.height * 0.20,
+            height: size.height * 0.25,
             width: size.width,
             margin: const EdgeInsets.symmetric(
               horizontal: 20.0,

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../utils/app_button.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
-import '../../../utils/custom_router.dart';
 
 class SuccessWidget extends StatelessWidget {
   const SuccessWidget({

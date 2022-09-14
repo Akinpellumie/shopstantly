@@ -1,4 +1,3 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:face_pile/face_pile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -109,7 +108,9 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                           GestureDetector(
                             onTap: () =>
                                 CustomRouter.nextScreen(context, '/mainWallet'),
-                            child: SizedBox(
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 5.0),
                               child: Row(
                                 children: [
                                   Expanded(

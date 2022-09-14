@@ -1,5 +1,3 @@
-import 'package:face_pile/face_pile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';

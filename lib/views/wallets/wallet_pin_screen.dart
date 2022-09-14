@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/models/general/keyboard_model.dart';
 import 'package:shopstantly_app/utils/app_button.dart';
 
 import '../../models/general/keyboard_key.dart';
 import '../../utils/app_colors.dart';
-import '../../utils/assets_path.dart';
 import '../../utils/base_app_bar.dart';
 import '../../utils/custom_router.dart';
 import '../../utils/dimensions.dart';

@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/views/accounts/components/circle_icon_button.dart';
 
-import '../../helpers/theme_helper.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/custom_router.dart';
 import '../../utils/dimensions.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/views/accounts/personal/components/thrift_card.dart';
 
-import '../../../../../utils/custom_router.dart';
 
 class ThriftView extends StatefulWidget {
   const ThriftView({Key? key}) : super(key: key);

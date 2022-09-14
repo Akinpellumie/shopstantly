@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/callbacks/string_callback.dart';
 import 'package:shopstantly_app/components/switch_account_modal.dart';
