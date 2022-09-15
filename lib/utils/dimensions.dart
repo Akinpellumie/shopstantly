@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //padding and margin definition
 const double kDefaultPadding = 20.0;
+const double kBottomSpacing = 50.0;
 
 //font size
 const double kHeaderText = 35.0;

@@ -107,7 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
-            padding: const EdgeInsets.only(bottom: 30.0),
+            padding: const EdgeInsets.only(bottom: kBottomSpacing),
             width: double.infinity,
             height: size.height * 0.3 - 40.0,
             child: Column(

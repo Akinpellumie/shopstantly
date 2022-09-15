@@ -28,6 +28,7 @@ class _MainWalletScreenState extends State<MainWalletScreen> {
         title: 'Transaction',
         appBar: AppBar(),
         showLogo: false,
+        centerTitle: true,
       ),
       body: Column(
         children: [

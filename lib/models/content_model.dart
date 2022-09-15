@@ -9,6 +9,11 @@ class UnbordingContent {
 
 List<UnbordingContent> contents = [
   UnbordingContent(
+      title: 'Interact with Users',
+      image: 'assets/images/interact.svg',
+      description:
+          "Explore our social features, conceptualize your posts around trends relevant to your audience to gain more credibility."),
+  UnbordingContent(
       title: 'Buy and Sell',
       image: 'assets/images/buy.svg',
       description:
@@ -20,7 +25,7 @@ List<UnbordingContent> contents = [
           "Consumers get what they want and how they want without the fear of payment scams or logistics problems."),
   UnbordingContent(
       title: 'Decentralized Logistics',
-      image: 'assets/images/business.svg',
+      image: 'assets/images/logistic.svg',
       description:
           "Explore features and increase customers satisfaction. Post product, sell in multiple currencies, process orders and monitor state stats in real time."),
   UnbordingContent(

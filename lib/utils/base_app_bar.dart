@@ -7,6 +7,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final AppBar appBar;
   final bool showLogo;
+  final bool centerTitle;
   //final List<Widget> widgets;
 
   /// you can add more fields that meet your needs
@@ -16,6 +17,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     required this.appBar,
     required this.showLogo,
+    this.centerTitle = false,
   }) : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: 60.0,
             )
           : Align(
-              alignment: Alignment.centerLeft,
+              alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
               child: Text(
                 title,
                 style: const TextStyle(

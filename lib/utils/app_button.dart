@@ -30,7 +30,7 @@ class AppButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: getButtonColor(type),
           borderRadius: const BorderRadius.all(
-            Radius.circular(7.0),
+            Radius.circular(10.0),
           ),
           boxShadow: const [
             BoxShadow(

@@ -21,6 +21,7 @@ class _TransferScreenState extends State<TransferScreen> {
         title: 'Transfer',
         appBar: AppBar(),
         showLogo: false,
+        centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

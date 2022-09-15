@@ -4,6 +4,7 @@ import 'package:shopstantly_app/utils/app_button.dart';
 import 'package:shopstantly_app/utils/custom_router.dart';
 
 import '../../utils/app_colors.dart';
+import '../../utils/dimensions.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -70,7 +71,7 @@ class _LandingScreenState extends State<LandingScreen> {
               },
             ),
             const SizedBox(
-              height: 30.0,
+              height: kBottomSpacing,
             ),
           ],
         ),
