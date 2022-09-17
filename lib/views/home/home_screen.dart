@@ -8,6 +8,8 @@ import 'package:shopstantly_app/views/home/widgets/feed_view.dart';
 import 'package:shopstantly_app/views/home/widgets/social_view.dart';
 import 'package:shopstantly_app/views/home/widgets/thrift_view.dart';
 
+import '../../data/choice_chips.dart';
+import '../../models/general/choice_chip_data.dart';
 import '../../utils/app_colors.dart';
 import 'widgets/event_view.dart';
 
@@ -23,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int carouselIndex = 0;
   int eventFilterIndex = 0;
   int thriftFilterIndex = 0;
+  final double spacing = 8;
+  List<ChoiceChipData> choiceChips = ChoiceChips.all;
   bool showFilterTabs = false;
   @override
   Widget build(BuildContext context) {
@@ -90,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: menuTabItem(
                           size,
-                          'Feed',
+                          'Trend',
                           selectedIndex == 0 ? true : false,
                         ),
                       ),
@@ -102,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: menuTabItem(
                           size,
-                          'Blog',
+                          'Feed',
                           selectedIndex == 1 ? true : false,
                         ),
                       ),
@@ -114,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: menuTabItem(
                           size,
-                          'Channel',
+                          'Video',
                           selectedIndex == 2 ? true : false,
                         ),
                       ),
@@ -122,19 +126,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           setState(() {
                             selectedIndex = 3;
+                          });
+                        },
+                        child: menuTabItem(
+                          size,
+                          'Audio',
+                          selectedIndex == 3 ? true : false,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = 4;
                             showFilterTabs = true;
                           });
                         },
                         child: menuTabItem(
                           size,
-                          'Thrift',
-                          selectedIndex == 3 ? true : false,
+                          'Event',
+                          selectedIndex == 4 ? true : false,
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    height: 3.0,
+                    height: 1.0,
                     margin: const EdgeInsets.symmetric(vertical: 10.0),
                     width: size.width,
                     color: kLightGrayColor.withOpacity(0.45),
@@ -181,7 +197,45 @@ class _HomeScreenState extends State<HomeScreen> {
                   horizontal: selectedIndex == 0 ? 0.0 : 20.0,
                   vertical: 10.0,
                 ),
-                child: displayWidget(size),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Popular Mentions',
+                              style: TextStyle(
+                                color: kPrimaryTextColor,
+                                fontSize: size.height * 0.018,
+                                fontFamily: kDefaultFont,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'see all',
+                            style: TextStyle(
+                              color: kPrimaryTextColor.withOpacity(0.45),
+                              fontSize: size.height * 0.015,
+                              fontFamily: kDefaultFont,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: buildChoiceChips(size),
+                    ),
+                  ],
+                ),
               ),
               childCount: 1,
             ),
@@ -320,4 +374,32 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  Widget buildChoiceChips(Size size) => Wrap(
+        runSpacing: spacing,
+        spacing: spacing,
+        children: choiceChips
+            .map((choiceChip) => ChoiceChip(
+                  label: Text(choiceChip.label!),
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: choiceChip.isSelected ? kWhiteColor : kTabTextColor,
+                    fontSize: size.height * 0.017,
+                  ),
+                  //shape: OutlinedBorder(side: ),
+                  onSelected: (isSelected) => setState(() {
+                    choiceChips = choiceChips.map((otherChip) {
+                      final newChip = otherChip.copy(isSelected: false);
+
+                      return choiceChip == newChip
+                          ? newChip.copy(isSelected: isSelected)
+                          : newChip;
+                    }).toList();
+                  }),
+                  selected: choiceChip.isSelected,
+                  selectedColor: kPrimaryColor,
+                  backgroundColor: kTabBgColor,
+                ))
+            .toList(),
+      );
 }
