@@ -29,6 +29,7 @@ class AssetsPath {
   static const String clothes = 'assets/icons/clothes.svg';
   static const String handbag = 'assets/icons/handbag.svg';
   static const String glasses = 'assets/icons/glasses.svg';
+  static const String slides = 'assets/icons/slides.svg';
   static const String profileDp = 'assets/images/dp.png';
   static const String imageDp = 'assets/images/imageDp.png';
   static const String food = 'assets/images/food.png';
@@ -77,6 +78,7 @@ class AssetsPath {
   static const String cashback = 'assets/icons/cashback.svg';
   static const String qrcode = 'assets/images/qrcode.svg';
   static const String map = 'assets/images/map.jpg';
+  static const String emptyActivity = 'assets/images/Artwork.png';
   static const String mastercard = 'assets/images/mastercard.png';
   static const String visa = 'assets/images/visa.png';
   static const String card = 'assets/images/card.png';

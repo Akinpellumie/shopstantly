@@ -44,7 +44,7 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Personal Wallet',
+                  'Main Wallet',
                   style: TextStyle(
                     fontFamily: kDefaultFont,
                     fontSize: size.height * 0.0200,
@@ -52,14 +52,14 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(
-                  width: 20.0,
-                ),
-                Icon(
-                  Icons.keyboard_arrow_down,
-                  color: kWhiteColor,
-                  size: size.height * 0.0300,
-                ),
+                // const SizedBox(
+                //   width: 20.0,
+                // ),
+                // Icon(
+                //   Icons.keyboard_arrow_down,
+                //   color: kWhiteColor,
+                //   size: size.height * 0.0300,
+                // ),
               ],
             ),
           ),

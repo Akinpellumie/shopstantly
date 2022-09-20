@@ -4,6 +4,7 @@ import 'package:shopstantly_app/components/switch_account_modal.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/views/accounts/personal/components/more_option_modal.dart';
+import 'package:shopstantly_app/views/accounts/personal/owner/widgets/store_view.dart';
 import '../../../../models/general/account_type_model.dart';
 import '../../personal/owner/widgets/event_view.dart';
 import '../../personal/owner/widgets/owner_info_view.dart';
@@ -38,7 +39,7 @@ class _PersonalAccountOwnerScreenState
         leadingWidth: 0.0,
         elevation: 0.0,
         backgroundColor: kBackgroundColor,
-        toolbarHeight: size.height * 0.15,
+        toolbarHeight: size.height * 0.12,
         flexibleSpace: SafeArea(
           child: SizedBox(
             height: size.height * 0.30,
@@ -50,58 +51,44 @@ class _PersonalAccountOwnerScreenState
                   child: Row(
                     children: [
                       Expanded(
-                        child: Row(
-                          children: <Widget>[
-                            Text(
-                              'Dotun Felixx',
-                              style: TextStyle(
-                                fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.0160,
-                                color: kPrimaryTextColor,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () async {
-                                await SwitchAccountModal.showAccountListModal(
-                                        context, accounts)
-                                    .then((value) {
-                                  setState(() {
-                                    if (value == null) {
-                                      //means nothing was selected
+                        child: GestureDetector(
+                          onTap: () async {
+                            await SwitchAccountModal.showAccountListModal(
+                                    context, accounts)
+                                .then((value) {
+                              setState(() {
+                                if (value == null) {
+                                  //means nothing was selected
 
-                                    } else {
-                                      AccountTypeModel model =
-                                          value as AccountTypeModel;
-                                      acctType = model.account;
-                                      widget.callback(model.type);
-                                    }
-                                  });
-                                });
-                              },
-                              child: Row(
-                                children: [
-                                  Text(
-                                    ' ($acctType)',
-                                    style: TextStyle(
-                                      fontFamily: kDefaultFont,
-                                      fontSize: size.height * 0.0125,
-                                      color:
-                                          kPrimaryTextColor.withOpacity(0.75),
-                                      fontWeight: FontWeight.w200,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 5.0,
-                                  ),
-                                  const Icon(
-                                    Icons.keyboard_arrow_down,
-                                    color: kPrimaryTextColor,
-                                  ),
-                                ],
+                                } else {
+                                  AccountTypeModel model =
+                                      value as AccountTypeModel;
+                                  acctType = model.account;
+                                  widget.callback(model.type);
+                                }
+                              });
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                'Dotun Felixx',
+                                style: TextStyle(
+                                  fontFamily: kDefaultFont,
+                                  fontSize: size.height * 0.03,
+                                  color: kPrimaryTextColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+                              const Icon(
+                                Icons.keyboard_arrow_down,
+                                color: kPrimaryTextColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       IconButton(
@@ -111,7 +98,7 @@ class _PersonalAccountOwnerScreenState
                         icon: Icon(
                           Icons.add_box_outlined,
                           color: kIconColor,
-                          size: size.height * 0.028,
+                          size: size.height * 0.035,
                         ),
                       ),
                       IconButton(
@@ -119,7 +106,7 @@ class _PersonalAccountOwnerScreenState
                         icon: Icon(
                           Icons.menu_outlined,
                           color: kIconColor,
-                          size: size.height * 0.028,
+                          size: size.height * 0.035,
                         ),
                       ),
                     ],
@@ -174,7 +161,7 @@ class _PersonalAccountOwnerScreenState
                             });
                           },
                           child: Text(
-                            'Thrift',
+                            'Store',
                             style: TextStyle(
                               color: selectedIndex == 2
                                   ? kPrimaryColor
@@ -257,7 +244,7 @@ class _PersonalAccountOwnerScreenState
         size: size,
       );
     } else if (selectedIndex == 2) {
-      return ServiceView(size: size);
+      return const StoreView();
     } else if (selectedIndex == 3) {
       return EventView(size: size);
     } else {

@@ -63,6 +63,8 @@ dependencies:
   location: ^4.4.0
   flutter_polyline_points: ^1.0.0
   geolocator: ^8.2.1
+  expandable_text: ^2.3.0
+  marquee: ^2.2.3
 
 dev_dependencies:
   flutter_test:

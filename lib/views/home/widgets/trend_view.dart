@@ -227,7 +227,21 @@ class _TrendViewState extends State<TrendView> {
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    carouselMenus[index].active = true;
+                    for (int i = 0; i < carouselMenus.length; i++) {
+                      index == i
+                          ? carouselMenus[i].active = true
+                          : carouselMenus[i].active = false;
+                    }
+
+                    // carouselMenus[index].active = true;
+                    // carouselMenus = carouselMenus.map((otherMenu) {
+                    //   final newMenu =
+                    //       otherMenu.copy(active: false, title: otherMenu.title);
+
+                    //   return otherMenu == newMenu
+                    //       ? newMenu.copy(active: active, title: otherMenu.title)
+                    //       : newMenu;
+                    // }).toList();
                   });
                 },
                 child: Container(
@@ -237,7 +251,7 @@ class _TrendViewState extends State<TrendView> {
                   child: Text(
                     carouselMenus[index].title,
                     style: TextStyle(
-                      color: carouselMenus[index].active!
+                      color: carouselMenus[index].active
                           ? kPrimaryTextColor
                           : kPlaceholderColor,
                       fontWeight: FontWeight.w500,

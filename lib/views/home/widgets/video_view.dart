@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/data/video_filter_menus.dart';
 
+import '../../../models/general/text_menu.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/custom_router.dart';
 import '../../../utils/dimensions.dart';
@@ -14,11 +16,69 @@ class VideoView extends StatefulWidget {
 }
 
 class _VideoViewState extends State<VideoView> {
+  List<TextMenu> carouselMenus = VideoFilterMenus.carouselVideoMenus;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
+        Container(
+          height: 30.0,
+          padding: const EdgeInsets.only(left: 20.0),
+          child: ListView.builder(
+            physics: const AlwaysScrollableScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: carouselMenus.length,
+            padding: EdgeInsets.zero,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    //carouselMenus[index].active = true;
+                    for (int i = 0; i < carouselMenus.length; i++) {
+                      index == i
+                          ? carouselMenus[i].active = true
+                          : carouselMenus[i].active = false;
+                    }
+                  });
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    right: 10.0,
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0, vertical: 5.0),
+                  decoration: BoxDecoration(
+                      color: carouselMenus[index].active
+                          ? kPrimaryColor
+                          : Colors.transparent,
+                      border: Border.all(
+                        color: carouselMenus[index].active
+                            ? Colors.transparent
+                            : kPlaceholderColor,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(5.0)),
+                  child: Text(
+                    carouselMenus[index].title,
+                    style: TextStyle(
+                      color: carouselMenus[index].active
+                          ? kWhiteColor
+                          : kPrimaryTextColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: size.height * 0.018,
+                      fontFamily: kDefaultFont,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
