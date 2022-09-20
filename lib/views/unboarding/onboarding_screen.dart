@@ -108,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
             padding: const EdgeInsets.only(bottom: kBottomSpacing),
-            width: double.infinity,
+            width: size.width,
             height: size.height * 0.3 - 40.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -124,11 +124,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20.0,
+                  height: 10.0,
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                  width: double.infinity,
+                  width: size.width,
                   child: AppButton(
                     type: ButtonType.primary,
                     text: currentIndex == contents.length - 1
@@ -146,7 +146,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 5.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

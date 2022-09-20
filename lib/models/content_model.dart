@@ -9,33 +9,33 @@ class UnbordingContent {
 
 List<UnbordingContent> contents = [
   UnbordingContent(
-      title: 'Interact with Users',
+      title: 'A Socio-Commerce App',
       image: 'assets/images/interact.svg',
       description:
-          "Explore our social features, conceptualize your posts around trends relevant to your audience to gain more credibility."),
+          "Your social media account, business and contents all in one place, amazing!"),
   UnbordingContent(
-      title: 'Buy and Sell',
+      title: 'Make Income',
       image: 'assets/images/buy.svg',
       description:
-          "Service providers get the most affordable way to sell physical and digital products online without much hassle on marketing, increased sales, and speedy order fulfillment."),
+          "Post quality contents, build followers and get your account monetized automatically."),
   UnbordingContent(
       title: 'Payment Protection',
       image: 'assets/images/security.svg',
       description:
-          "Consumers get what they want and how they want without the fear of payment scams or logistics problems."),
+          "Buyer pays and money is protected by us until delivery and buyer is satisfied. Incase of dispute, our resolution method is perfect. We protect both the buyer and seller equally."),
   UnbordingContent(
       title: 'Decentralized Logistics',
       image: 'assets/images/logistic.svg',
       description:
-          "Explore features and increase customers satisfaction. Post product, sell in multiple currencies, process orders and monitor state stats in real time."),
+          "A model of logistics services that guarantees consistent availability of dispatch and swiftness delivery to meet consumers' wish"),
   UnbordingContent(
       title: 'Create And Manage Event',
       image: 'assets/images/events.svg',
       description:
-          "All your event management needs in one place.  Users can create, join  and sell tickets on the platform."),
-  UnbordingContent(
-      title: 'Enjoy Multiple Income',
-      image: 'assets/images/income.svg',
-      description:
-          "Alterntive income for celebrities and news bloggers. Retai traffic to your page and enjoy our powerful marketing automation."),
+          "All your event management needs in one place. Users can create, join  and sell tickets on the platform."),
+  // UnbordingContent(
+  //     title: 'Enjoy Multiple Income',
+  //     image: 'assets/images/income.svg',
+  //     description:
+  //         "Alterntive income for celebrities and news bloggers. Retai traffic to your page and enjoy our powerful marketing automation."),
 ];

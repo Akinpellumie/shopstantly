@@ -361,7 +361,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             Container(
                               padding: const EdgeInsets.all(2.0),
                               decoration: const BoxDecoration(
-                                  color: kPrimaryOrangeColor,
+                                  color: kPrimaryLinkColor,
                                   shape: BoxShape.circle),
                               child: Icon(
                                 Icons.check,

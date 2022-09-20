@@ -6,31 +6,37 @@ import '../models/general/choice_chip_data.dart';
 class ChoiceChips {
   static final all = <ChoiceChipData>[
     ChoiceChipData(
-      label: 'Choice 1',
+      label: '#MondayMotivation',
       isSelected: false,
       selectedColor: kPrimaryColor,
       textColor: Colors.white,
     ),
     ChoiceChipData(
-      label: 'Choice 2',
+      label: '#AsuuStrike',
       isSelected: false,
       selectedColor: kPrimaryColor,
       textColor: Colors.white,
     ),
     ChoiceChipData(
-      label: 'Choice 3',
+      label: 'Davido',
       isSelected: false,
       selectedColor: kPrimaryColor,
       textColor: Colors.white,
     ),
     ChoiceChipData(
-      label: 'Choice 4',
+      label: 'Ama Graduate',
       isSelected: false,
       selectedColor: kPrimaryColor,
       textColor: Colors.white,
     ),
     ChoiceChipData(
-      label: 'Choice 5',
+      label: '#VibesonVibes',
+      isSelected: false,
+      selectedColor: kPrimaryColor,
+      textColor: Colors.white,
+    ),
+    ChoiceChipData(
+      label: 'WoliAgba',
       isSelected: false,
       selectedColor: kPrimaryColor,
       textColor: Colors.white,

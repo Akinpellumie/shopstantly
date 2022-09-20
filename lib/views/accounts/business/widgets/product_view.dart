@@ -90,7 +90,7 @@ class _ProductViewState extends State<ProductView>
                                 decoration: BoxDecoration(
                                   color: kOrangeColor,
                                   gradient: const LinearGradient(colors: [
-                                    kPrimaryOrangeColor,
+                                    kPrimaryLinkColor,
                                     kSecondaryOrangeColor
                                   ]),
                                   borderRadius: BorderRadius.circular(10.0),

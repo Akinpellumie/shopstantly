@@ -15,38 +15,38 @@ class _SocialViewState extends State<SocialView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SocialCardItem(
-          imageCount: 4,
-          size: widget.size,
-          imageUrls: _image4Urls,
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-        SocialCardItem(
-          imageCount: 1,
-          size: widget.size,
-          imageUrls: _image1Urls,
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-        SocialCardItem(
-          imageCount: 2,
-          size: widget.size,
-          imageUrls: _image2Urls,
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-        SocialCardItem(
-          imageCount: 3,
-          size: widget.size,
-          imageUrls: _image3Urls,
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
+        // SocialCardItem(
+        //   imageCount: 4,
+        //   size: widget.size,
+        //   imageUrls: _image4Urls,
+        // ),
+        // const SizedBox(
+        //   height: 30.0,
+        // ),
+        // SocialCardItem(
+        //   imageCount: 1,
+        //   size: widget.size,
+        //   imageUrls: _image1Urls,
+        // ),
+        // const SizedBox(
+        //   height: 30.0,
+        // ),
+        // SocialCardItem(
+        //   imageCount: 2,
+        //   size: widget.size,
+        //   imageUrls: _image2Urls,
+        // ),
+        // const SizedBox(
+        //   height: 30.0,
+        // ),
+        // SocialCardItem(
+        //   imageCount: 3,
+        //   size: widget.size,
+        //   imageUrls: _image3Urls,
+        // ),
+        // const SizedBox(
+        //   height: 30.0,
+        // ),
       ],
     );
   }

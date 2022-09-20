@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ChoiceChipData {
-  final String? label;
+  final String label;
   final bool isSelected;
   Color? textColor;
   Color? selectedColor;
 
   ChoiceChipData({
-    this.label,
+    required this.label,
     required this.isSelected,
     this.textColor,
     this.selectedColor,
   });
 
   ChoiceChipData copy({
-    String? label,
+    required String label,
     required bool isSelected,
     Color? textColor,
     Color? selectedColor,

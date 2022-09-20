@@ -26,7 +26,10 @@ class ChannelCardItem extends StatelessWidget {
       onTap: () {
         CustomRouter.nextScreen(context, '/socialDetail');
       },
-      child: SizedBox(
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+        ),
         child: Column(
           children: [
             Row(

@@ -98,7 +98,7 @@ class EventCard extends StatelessWidget {
                               color: kPlaceholderColor,
                             ),
                             const SizedBox(
-                              width: 7.0,
+                              width: 5.0,
                             ),
                             Text(
                               'Mon, Apr 18 · 21:00 Pm',
@@ -120,7 +120,7 @@ class EventCard extends StatelessWidget {
                               color: kPlaceholderColor,
                             ),
                             const SizedBox(
-                              width: 7.0,
+                              width: 5.0,
                             ),
                             Flexible(
                               child: Text(
@@ -148,8 +148,8 @@ class EventCard extends StatelessWidget {
                         child: Row(
                           children: [
                             FacePile(
-                              radius: 20,
-                              space: 30,
+                              radius: 15,
+                              space: 20,
                               images: const [
                                 NetworkImage("https://i.pravatar.cc/300?img=1"),
                                 NetworkImage("https://i.pravatar.cc/300?img=2"),

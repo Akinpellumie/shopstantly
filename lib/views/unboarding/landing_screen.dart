@@ -67,7 +67,8 @@ class _LandingScreenState extends State<LandingScreen> {
               text: "Create Account",
               type: ButtonType.plain,
               onPressed: () {
-                CustomRouter.nextScreen(context, "/chooseAccount");
+                //CustomRouter.nextScreen(context, "/chooseAccount");
+                  CustomRouter.nextScreen(context, "/register");
               },
             ),
             const SizedBox(

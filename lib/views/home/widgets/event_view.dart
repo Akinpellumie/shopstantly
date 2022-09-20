@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 
 import '../../../utils/dimensions.dart';
+import '../../accounts/business/components/event_card.dart';
 import '../components/event_card_item.dart';
 
 class EventView extends StatefulWidget {
@@ -25,35 +26,39 @@ class _EventViewState extends State<EventView> {
         const SizedBox(
           height: 10.0,
         ),
-        Row(
-          children: [
-            Expanded(
-              child: Text(
-                'Happening Now(56)',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: widget.size.height * 0.0150,
-                  fontFamily: kDefaultFont,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Happening Now',
+                  style: TextStyle(
+                    color: kPrimaryTextColor,
+                    fontSize: size.height * 0.019,
+                    fontFamily: kDefaultFont,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Text(
-              'See all',
-              style: TextStyle(
-                color: kBlueColor,
-                fontWeight: FontWeight.w500,
-                fontSize: widget.size.height * 0.0150,
-                fontFamily: kDefaultFont,
+              Text(
+                'see all',
+                style: TextStyle(
+                  color: kPrimaryTextColor.withOpacity(0.45),
+                  fontSize: size.height * 0.015,
+                  fontFamily: kDefaultFont,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const SizedBox(
           height: 10.0,
         ),
-        SizedBox(
-          height: size.height * 0.28,
+        Container(
+          height: size.height * 0.30,
+          padding: const EdgeInsets.only(left: 20.0),
           child: ListView.builder(
             physics: const AlwaysScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
@@ -189,32 +194,53 @@ class _EventViewState extends State<EventView> {
         const SizedBox(
           height: 15.0,
         ),
-        Row(
-          children: [
-            Expanded(
-              child: Text(
-                'Upcoming (56)',
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: widget.size.height * 0.0150,
-                  fontFamily: kDefaultFont,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Upcoming Events',
+                  style: TextStyle(
+                    color: kPrimaryTextColor,
+                    fontSize: size.height * 0.019,
+                    fontFamily: kDefaultFont,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Text(
-              'See all',
-              style: TextStyle(
-                color: kBlueColor,
-                fontWeight: FontWeight.w500,
-                fontSize: widget.size.height * 0.0150,
-                fontFamily: kDefaultFont,
+              Text(
+                'see all',
+                style: TextStyle(
+                  color: kPrimaryTextColor.withOpacity(0.45),
+                  fontSize: size.height * 0.015,
+                  fontFamily: kDefaultFont,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const SizedBox(
-          height: 15.0,
+          height: 10.0,
+        ),
+        SizedBox(
+          child: ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: 4,
+            padding: EdgeInsets.zero,
+            itemBuilder: (context, index) {
+              return EventCard(size: size, index: index);
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                height: 10.0,
+                width: size.width,
+              );
+            },
+          ),
         ),
         EventCardItem(size: widget.size),
         const SizedBox(

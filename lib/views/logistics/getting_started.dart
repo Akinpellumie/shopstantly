@@ -91,10 +91,8 @@ class _GettingStartedState extends State<GettingStarted> {
                       //width: size.width - 50,
                       decoration: BoxDecoration(
                         color: kOrangeColor,
-                        gradient: const LinearGradient(colors: [
-                          kPrimaryOrangeColor,
-                          kSecondaryOrangeColor
-                        ]),
+                        gradient: const LinearGradient(
+                            colors: [kPrimaryLinkColor, kSecondaryOrangeColor]),
                         borderRadius: BorderRadius.circular(10.0),
                         // boxShadow: [
                         //   BoxShadow(
@@ -347,10 +345,7 @@ class _GettingStartedState extends State<GettingStarted> {
     } else if (tabIndex == 2) {
       CustomRouter.nextScreen(context, "/logistic-verify",
           args: {'LogisticPlanType': logisticPlanType});
-    }
-    else{
-      
-    }
+    } else {}
   }
 
   Container buildDot(int index, BuildContext context) {

@@ -4,7 +4,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/custom_router.dart';
 import 'package:shopstantly_app/views/home/components/single_image_card.dart';
+import 'package:shopstantly_app/views/home/components/single_video_card.dart';
+import 'package:video_player/video_player.dart';
 
+import '../../../components/video_card.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
@@ -15,14 +18,18 @@ import 'image_grid_post.dart';
 class SocialCardItem extends StatelessWidget {
   const SocialCardItem({
     Key? key,
-    required this.imageCount,
     required this.size,
     required List<String> imageUrls,
+    this.isVideo = false,
+    this.hasMedia = true,
+    this.videoUrl,
   })  : _imageUrls = imageUrls,
         super(key: key);
 
-  final int imageCount;
+  final bool isVideo;
+  final bool hasMedia;
   final Size size;
+  final String? videoUrl;
   final List<String> _imageUrls;
 
   @override
@@ -125,74 +132,16 @@ class SocialCardItem extends StatelessWidget {
             const SizedBox(
               height: 13.0,
             ),
-            SizedBox(
-              width: size.width,
-              child: displayWidget(3, size, _imageUrls),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: Row(
-                children: [
-                  IconButton(
-                    color: kPlaceholderColor,
-                    icon: const Icon(
-                      CupertinoIcons.heart,
-                      color: kPlaceholderColor,
-                    ),
-                    iconSize: size.height * 0.030,
-                    onPressed: () =>
-                        CustomRouter.nextScreen(context, '/commentScreen'),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 0.0,
-                      vertical: 0.0,
-                    ),
-                    alignment: Alignment.centerLeft,
+            hasMedia
+                ? SizedBox(
+                    width: size.width,
+                    child: displayWidget(isVideo, videoUrl, size, _imageUrls),
+                  )
+                : const SizedBox(
+                    height: 5.0,
                   ),
-                  IconButton(
-                    color: kPlaceholderColor,
-                    icon: const Icon(
-                      CupertinoIcons.chat_bubble,
-                      color: kPlaceholderColor,
-                    ),
-                    iconSize: size.height * 0.030,
-                    onPressed: () =>
-                        CustomRouter.nextScreen(context, '/commentScreen'),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 0.0,
-                      vertical: 0.0,
-                    ),
-                    alignment: Alignment.centerLeft,
-                  ),
-                  IconButton(
-                    color: kPlaceholderColor,
-                    icon: const Icon(
-                      Icons.share_outlined,
-                      color: kPlaceholderColor,
-                    ),
-                    iconSize: size.height * 0.030,
-                    onPressed: () {},
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 0.0,
-                      vertical: 0.0,
-                    ),
-                    alignment: Alignment.centerLeft,
-                  ),
-                  IconButton(
-                    color: kPlaceholderColor,
-                    icon: const Icon(
-                      CupertinoIcons.bookmark,
-                      color: kPlaceholderColor,
-                    ),
-                    iconSize: size.height * 0.030,
-                    onPressed: () {},
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 0.0,
-                      vertical: 0.0,
-                    ),
-                    alignment: Alignment.centerLeft,
-                  ),
-                ],
-              ),
+            const SizedBox(
+              height: 10.0,
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -200,14 +149,14 @@ class SocialCardItem extends StatelessWidget {
                 'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
                 style: TextStyle(
                   fontFamily: kDefaultFont,
-                  fontSize: size.height * 0.0180,
+                  fontSize: size.height * 0.02,
                   fontWeight: FontWeight.w500,
                   color: kPrimaryColor,
                 ),
               ),
             ),
             const SizedBox(
-              height: 5.0,
+              height: 10.0,
             ),
             SizedBox(
               width: double.infinity,
@@ -215,31 +164,46 @@ class SocialCardItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        '30k views',
-                        style: TextStyle(
-                          fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0130,
-                          fontWeight: FontWeight.normal,
-                          color: kPlaceholderColor.withOpacity(0.75),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        height: 5.0,
-                        width: 5.0,
-                        decoration: const BoxDecoration(
+                      GestureDetector(
+                        onTap: () {},
+                        child: Icon(
+                          CupertinoIcons.heart,
                           color: kPlaceholderColor,
-                          shape: BoxShape.circle,
+                          size: size.height * 0.03,
                         ),
                       ),
-                      Text(
-                        '412 comments',
-                        style: TextStyle(
-                          fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0130,
-                          fontWeight: FontWeight.normal,
-                          color: kPlaceholderColor.withOpacity(0.75),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      GestureDetector(
+                        onTap: () =>
+                            CustomRouter.nextScreen(context, '/commentScreen'),
+                        child: Icon(
+                          CupertinoIcons.chat_bubble,
+                          color: kPlaceholderColor,
+                          size: size.height * 0.03,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      GestureDetector(
+                        onTap: () => {},
+                        child: Icon(
+                          Icons.share_outlined,
+                          color: kPlaceholderColor,
+                          size: size.height * 0.03,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      GestureDetector(
+                        onTap: () => {},
+                        child: Icon(
+                          CupertinoIcons.bookmark,
+                          color: kPlaceholderColor,
+                          size: size.height * 0.03,
                         ),
                       ),
                     ],
@@ -314,22 +278,26 @@ class SocialCardItem extends StatelessWidget {
     );
   }
 
-  Widget displayWidget(int imgCount, Size _size, List<String> _imageUrls) {
-    if (_imageUrls.length == 1) {
+  Widget displayWidget(bool isVideo, String? videoUrl, Size _size, List<String> _imageUrls) {
+    if (_imageUrls.length == 1 && !isVideo) {
       return SingleImageCard(
         imageUrl: _imageUrls[0],
         size: _size,
       );
     }
-    if (_imageUrls.length == 2) {
+    if (_imageUrls.length == 2 && !isVideo) {
       return CustomDoubleGrid(imageUrls: _imageUrls);
     }
-    if (_imageUrls.length == 3) {
+    if (_imageUrls.length == 3 && !isVideo) {
       return CustomStaggeredGrid(imageUrls: _imageUrls);
     }
-    if (_imageUrls.length == 4) {
+    if (_imageUrls.length == 4 && !isVideo) {
       return ImageGridPost(size: _size, imageUrls: _imageUrls);
-    } else {
+    } 
+    if (isVideo && videoUrl!.isNotEmpty) {
+      return SingleVideoCard(size: size, videoUrl: videoUrl);
+    } 
+    else {
       return SingleImageCard(
         imageUrl: _imageUrls[0],
         size: _size,

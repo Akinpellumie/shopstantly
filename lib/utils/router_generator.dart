@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/views/base/main_switcher_screen.dart';
 import 'package:shopstantly_app/views/home/comment_screen.dart';
 import 'package:shopstantly_app/views/logistics/driver/driver_main_screen.dart';
 import 'package:shopstantly_app/views/logistics/face_verification_screen.dart';
@@ -132,6 +133,12 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const PageSwitcher();
+          });
+    case "/main":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const MainSwitcherScreen();
           });
     case "/productDetail":
       return MaterialPageRoute(

@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/views/activity/activity_screen.dart';
+import 'package:shopstantly_app/views/base/animated_bar.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/logistics/getting_started.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
 
+import '../../data/bottom_bar_menus.dart';
+import '../../utils/custom_paint.dart';
+import '../../utils/dimensions.dart';
 import '../accounts/others/account_switch_screen.dart';
-import 'fab_bottom_app_bar.dart';
 
 class PageSwitcher extends StatefulWidget {
   const PageSwitcher({Key? key}) : super(key: key);
@@ -19,14 +22,15 @@ class PageSwitcher extends StatefulWidget {
 class _PageSwitcherState extends State<PageSwitcher> {
   final Color navigationBarColor = kBackgroundColor;
   int selectedIndex = 0;
-  Color fabIconColor = kPlaceholderColor;
 
-  void _selectedTab(int index) {
-    setState(() {
-      selectedIndex = index;
-      fabIconColor = selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor;
-    });
-  }
+  int selectBtn = 0;
+
+  // void _selectedTab(int index) {
+  //   setState(() {
+  //     selectedIndex = index;
+  //     fabIconColor = selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor;
+  //   });
+  // }
 
   late PageController pageController;
   @override
@@ -52,60 +56,105 @@ class _PageSwitcherState extends State<PageSwitcher> {
           children: const <Widget>[
             HomeScreen(),
             ManageScreen(),
+            GettingStarted(),
             ActivityScreen(),
             AccountSwitchScreen(),
-            GettingStarted(),
           ],
         ),
-        bottomNavigationBar: FABBottomAppBar(
-          centerItemText: 'Logistics',
-          backgroundColor: kBackgroundColor,
-          color: selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor,
-          selectedColor: selectedIndex == 4 ? kPlaceholderColor : kPrimaryColor,
-          notchedShape: const CircularNotchedRectangle(),
-          onTabSelected: (index) {
-            setState(() {
-              selectedIndex = index;
-              _selectedTab(index);
-            });
-            pageController.animateToPage(
-              selectedIndex,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeOutQuad,
-            );
-          },
-          items: [
-            FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
-            FABBottomAppBarItem(iconData: Icons.shopping_cart, text: 'Manage'),
-            FABBottomAppBarItem(
-                iconData: Icons.notifications, text: 'Activity'),
-            FABBottomAppBarItem(
-                iconData: Icons.account_circle, text: 'Profile'),
-          ],
+        bottomNavigationBar: navigationBar(),
+        // AnimatedBar(
+        //   onTabSelected: (index) {
+        //     setState(() {
+        //       selectedIndex = index;
+        //     });
+        //     pageController.animateToPage(
+        //       selectedIndex,
+        //       duration: const Duration(milliseconds: 400),
+        //       curve: Curves.easeOutQuad,
+        //     );
+        //   },
+        // ),
+      ),
+    );
+  }
+
+  AnimatedContainer navigationBar() {
+    return AnimatedContainer(
+      height: 60.0,
+      duration: const Duration(milliseconds: 400),
+      decoration: BoxDecoration(
+        color: kBackgroundColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(selectBtn == 0 ? 0.0 : 15.0),
+          topRight: Radius.circular(
+              selectBtn == bottomBarMenus.length - 1 ? 0.0 : 15.0),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // floatingActionButton: _buildFab(
-        //     context),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: kBackgroundColor,
-          child: Icon(
-            Icons.my_location,
-            size: 25.0,
-            color: fabIconColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          for (int i = 0; i < bottomBarMenus.length; i++)
+            GestureDetector(
+              onTap: () {
+                //=> setState(() => selectBtn = i)
+                setState(() {
+                  selectBtn = i;
+                });
+                pageController.animateToPage(
+                  selectBtn,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeOutQuad,
+                );
+              },
+              child: iconBtn(i),
+            ),
+        ],
+      ),
+    );
+  }
+
+  SizedBox iconBtn(int i) {
+    bool isActive = selectBtn == i ? true : false;
+    var height = isActive ? 40.0 : 0.0;
+    var width = isActive ? 50.0 : 0.0;
+    return SizedBox(
+      width: 60.0,
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: AnimatedContainer(
+              height: height,
+              width: width,
+              duration: const Duration(milliseconds: 600),
+              child: isActive
+                  ? CustomPaint(
+                      painter: ButtonNotch(),
+                    )
+                  : const SizedBox(),
+            ),
           ),
-          onPressed: () {
-            setState(() {
-              selectedIndex == 4;
-              //_selectedTab(4);
-              fabIconColor = kPrimaryColor;
-            });
-            pageController.animateToPage(
-              4,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeOutQuad,
-            );
-          },
-        ),
+          Align(
+            alignment: Alignment.center,
+            child: Icon(
+              bottomBarMenus[i].iconData,
+              color: isActive ? kPrimaryColor : kPlaceholderColor,
+              size: 24.0,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              bottomBarMenus[i].name,
+              style: TextStyle(
+                color: isActive ? kPrimaryColor : kPlaceholderColor,
+                fontFamily: kDefaultFont,
+                fontSize: 12.0,
+                fontWeight: isActive ? FontWeight.w500 : FontWeight.w400,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
