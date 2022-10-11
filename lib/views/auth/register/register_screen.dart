@@ -1,7 +1,11 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shopstantly_app/extensions/string_extension.dart';
+import 'package:unicons/unicons.dart';
 
 import '../../../helpers/theme_helper.dart';
 import '../../../utils/app_button.dart';
@@ -80,18 +84,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               size: 20.0,
                             ),
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: '',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "User ID",
-                              //   'Enter a valid user ID',
-                              // );
-                            } else {
-                              //_loginViewModel.removeError("userId");
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r"[a-zA-Z]+|\s"),
+                            ),
+                          ],
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter full name';
                             }
-                            return null;
+                            if (!val.isValidName) {
+                              return 'Enter valid name';
+                            } else {
+                              return null;
+                            }
                           },
                           style: TextStyle(fontSize: size.height * 0.0170),
                           //controller: _loginViewModel.userIdController,
@@ -100,180 +106,175 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
                       const SizedBox(height: 10.0),
-                      // Container(
-                      //   padding: const EdgeInsets.only(left: 10.0),
-                      //   child: Row(
-                      //     children: [
-                      //       GestureDetector(
-                      //         onTap: () {
-                      //           showCountryPicker(
-                      //             showPhoneCode: true,
-                      //             context: context,
-                      //             onSelect: (Country country) {
-                      //               setState(() {
-                      //                 selectedCountryLogo = country.flagEmoji;
-                      //                 selectedPhoneCode = country.phoneCode;
-                      //                 print(
-                      //                     'Select country: ${country.displayName}');
-                      //               });
-                      //             },
-                      //             countryListTheme: const CountryListThemeData(
-                      //               // Optional. Sets the border radius for the bottomsheet.
-                      //               borderRadius: BorderRadius.only(
-                      //                 topLeft: Radius.circular(40.0),
-                      //                 topRight: Radius.circular(40.0),
-                      //               ),
-                      //               // Optional. Styles the search field.
-                      //               inputDecoration: InputDecoration(
-                      //                 labelText: 'Search',
-                      //                 hintText: 'Start typing to search',
-                      //                 prefixIcon: Icon(Icons.search),
-                      //                 border: OutlineInputBorder(
-                      //                   borderSide: BorderSide(
-                      //                     color: kEntryBorderColor,
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           );
-                      //         },
-                      //         child: Row(
-                      //           crossAxisAlignment: CrossAxisAlignment.center,
-                      //           children: [
-                      //             Text(
-                      //               selectedCountryLogo,
-                      //               style: TextStyle(
-                      //                   color: kPlaceholderColor,
-                      //                   fontFamily: kDefaultFont,
-                      //                   fontSize: size.height * 0.025),
-                      //             ),
-                      //             const SizedBox(
-                      //               width: 5.0,
-                      //             ),
-                      //             Text(
-                      //               selectedPhoneCode,
-                      //               style: TextStyle(
-                      //                   color: kPlaceholderColor,
-                      //                   fontFamily: kDefaultFont,
-                      //                   fontSize: size.height * 0.015),
-                      //             ),
-                      //             const Icon(
-                      //               UniconsLine.angle_down,
-                      //               color: kPlaceholderColor,
-                      //             )
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Expanded(
-                      //         child: TextFormField(
-                      //           //initialValue: initialUser,
-                      //           //readOnly: _loginViewModel.loggingIn,
-                      //           decoration: ThemeHelper().textInputDecoration(
-                      //             'Phone Number',
-                      //             'Enter phone number',
-                      //             null,
-                      //             false,
-                      //           ),
-                      //           onChanged: (text) {
-                      //             setState(() {
-                      //               phoneEntryBorderColor = kPrimaryColor;
-                      //               print("First text field: $text");
-                      //             });
-                      //           },
-                      //           validator: (v) {
-                      //             if (!RequiredValidator(
-                      //               errorText: '',
-                      //             ).isValid(v)) {
-                      //               // _loginViewModel.setError(
-                      //               //   "User ID",
-                      //               //   'Enter a valid user ID',
-                      //               // );
-                      //             } else {
-                      //               //_loginViewModel.removeError("userId");
-                      //             }
-                      //             return null;
-                      //           },
-                      //           //controller: _loginViewModel.userIdController,
-                      //           keyboardType: TextInputType.text,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(7.0),
-                      //     border: Border.all(
-                      //         color: phoneEntryBorderColor, width: 1.0),
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 20.0),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                showCountryPicker(
+                                  showPhoneCode: true,
+                                  context: context,
+                                  onSelect: (Country country) {
+                                    setState(() {
+                                      selectedCountryLogo = country.flagEmoji;
+                                      selectedPhoneCode = country.phoneCode;
+                                      print(
+                                          'Select country: ${country.displayName}');
+                                    });
+                                  },
+                                  countryListTheme: const CountryListThemeData(
+                                    // Optional. Sets the border radius for the bottomsheet.
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(40.0),
+                                      topRight: Radius.circular(40.0),
+                                    ),
+                                    // Optional. Styles the search field.
+                                    inputDecoration: InputDecoration(
+                                      labelText: 'Search',
+                                      hintText: 'Start typing to search',
+                                      prefixIcon: Icon(Icons.search),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kEntryBorderColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    selectedCountryLogo,
+                                    style: TextStyle(
+                                        color: kPlaceholderColor,
+                                        fontFamily: kDefaultFont,
+                                        fontSize: size.height * 0.025),
+                                  ),
+                                  const SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    selectedPhoneCode,
+                                    style: TextStyle(
+                                        color: kPlaceholderColor,
+                                        fontFamily: kDefaultFont,
+                                        fontSize: size.height * 0.015),
+                                  ),
+                                  const Icon(
+                                    UniconsLine.angle_down,
+                                    color: kPlaceholderColor,
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                //initialValue: initialUser,
+                                //readOnly: _loginViewModel.loggingIn,
+                                decoration: ThemeHelper().textInputDecoration(
+                                  'Phone Number',
+                                  'Enter phone number',
+                                  null,
+                                  false,
+                                ),
+                                onChanged: (text) {
+                                  setState(() {
+                                    phoneEntryBorderColor = kPrimaryColor;
+                                    print("First text field: $text");
+                                  });
+                                },
+                                validator: (val) {
+                                  if (val!.isEmpty) {
+                                    return 'Enter phone number';
+                                  }
+                                  if (!val.isValidPhone) {
+                                    return 'Enter valid phone number';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                //controller: _loginViewModel.userIdController,
+                                keyboardType: TextInputType.text,
+                              ),
+                            ),
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          border: Border.all(
+                              color: phoneEntryBorderColor, width: 1.0),
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
                       Container(
                         child: TextFormField(
                           //initialValue: initialUser,
                           //readOnly: _loginViewModel.loggingIn,
                           decoration: ThemeHelper().textInputDecoration(
                             'Email',
-                            'Enter Mail',
+                            'Enter email address',
                             const Icon(
                               AssetsPath.email,
                               color: kLightGrayColor,
                               size: 20.0,
                             ),
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: '',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "User ID",
-                              //   'Enter a valid user ID',
-                              // );
-                            } else {
-                              //_loginViewModel.removeError("userId");
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter preferred email';
                             }
-                            return null;
+                            if (!val.isValidEmail) {
+                              return 'Enter valid email';
+                            } else {
+                              return null;
+                            }
                           },
                           //controller: _loginViewModel.userIdController,
-                          style: TextStyle(fontSize: size.height * 0.0170),
-                          keyboardType: TextInputType.text,
-                        ),
-                        decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                      ),
-                      const SizedBox(height: 10.0),
-
-                      Container(
-                        child: TextFormField(
-                          //initialValue: initialUser,
-                          //readOnly: _loginViewModel.loggingIn,
-                          decoration: ThemeHelper().textInputDecoration(
-                            'Username',
-                            'Enter username',
-                            const Icon(
-                              CupertinoIcons.person_circle,
-                              color: kLightGrayColor,
-                              size: 20.0,
-                            ),
+                          style: TextStyle(
+                            fontSize: size.height * 0.0170,
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: '',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "User ID",
-                              //   'Enter a valid user ID',
-                              // );
-                            } else {
-                              //_loginViewModel.removeError("userId");
-                            }
-                            return null;
-                          },
-                          //controller: _loginViewModel.userIdController,
-                          style: TextStyle(fontSize: size.height * 0.0170),
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
-                      const SizedBox(height: 10.0),
+                      // const SizedBox(height: 10.0),
+                      // Container(
+                      //   child: TextFormField(
+                      //     //initialValue: initialUser,
+                      //     //readOnly: _loginViewModel.loggingIn,
+                      //     decoration: ThemeHelper().textInputDecoration(
+                      //       'Username',
+                      //       'Enter username',
+                      //       const Icon(
+                      //         CupertinoIcons.person_circle,
+                      //         color: kLightGrayColor,
+                      //         size: 20.0,
+                      //       ),
+                      //     ),
+                      //     validator: (v) {
+                      //       if (!RequiredValidator(
+                      //         errorText: '',
+                      //       ).isValid(v)) {
+                      //         // _loginViewModel.setError(
+                      //         //   "User ID",
+                      //         //   'Enter a valid user ID',
+                      //         // );
+                      //       } else {
+                      //         //_loginViewModel.removeError("userId");
+                      //       }
+                      //       return null;
+                      //     },
+                      //     //controller: _loginViewModel.userIdController,
+                      //     style: TextStyle(fontSize: size.height * 0.0170),
+                      //     keyboardType: TextInputType.text,
+                      //   ),
+                      //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                      // ),
 
+                      const SizedBox(height: 10.0),
                       Container(
                         child: TextFormField(
                           // readOnly: _loginViewModel.loggingIn,
@@ -299,18 +300,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               size: 20.0,
                             ),
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: 'Enter valid password',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "Password",
-                              //   'Enter a valid password',
-                              // );
-                            } else {
-                              //_loginViewModel.removeError("password");
+                           validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter password';
                             }
-                            return null;
+                            if (!val.isValidPassword) {
+                              return 'Enter valid password with combinations of Caps, small letter, number, and characters.';
+                            } else {
+                              return null;
+                            }
                           },
                           style: TextStyle(fontSize: size.height * 0.0170),
                           keyboardType: TextInputType.text,
@@ -326,7 +324,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           obscuringCharacter: "*",
                           decoration: ThemeHelper().passwordInputDecoration(
                             'Confirm Password',
-                            'Enter password',
+                            'Re-Enter password',
                             GestureDetector(
                               onTap: () => _toggle(),
                               child: Icon(
@@ -343,18 +341,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               size: 20.0,
                             ),
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: 'Password must match',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "Password",
-                              //   'Enter a valid password',
-                              // );
-                            } else {
-                              //_loginViewModel.removeError("password");
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter password';
                             }
-                            return null;
+                            if (!val.isValidPassword) {
+                              return 'Enter valid password with combinations of Caps, small letter, number, and characters.';
+                            } else {
+                              return null;
+                            }
                           },
                           style: TextStyle(fontSize: size.height * 0.0170),
                         ),

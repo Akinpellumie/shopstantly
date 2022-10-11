@@ -52,14 +52,6 @@ class _PersonalMainWalletScreenState extends State<PersonalMainWalletScreen> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                // const SizedBox(
-                //   width: 20.0,
-                // ),
-                // Icon(
-                //   Icons.keyboard_arrow_down,
-                //   color: kWhiteColor,
-                //   size: size.height * 0.0300,
-                // ),
               ],
             ),
           ),

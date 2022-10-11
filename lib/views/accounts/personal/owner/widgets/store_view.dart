@@ -13,6 +13,7 @@ class StoreView extends StatefulWidget {
 
 class _StoreViewState extends State<StoreView> {
   int carouselIndex = 0;
+  int tabIndex = 0;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,17 +33,92 @@ class _StoreViewState extends State<StoreView> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: Text(
-                          'Hi Dotun,',
-                          style: TextStyle(
-                              fontSize: size.height * 0.03,
-                              fontWeight: FontWeight.w500,
-                              color: kPrimaryColor,
-                              fontFamily: kDefaultFont),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        height: 40.0,
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5.0,
+                          vertical: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: kPlaceholderColor.withOpacity(0.5),
+                            width: 0.5,
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                //widget.callback(0);
+                                setState(() {
+                                  tabIndex = 0;
+                                });
+                              },
+                              child: Container(
+                                width: size.width / 2 - 30,
+                                padding: const EdgeInsets.symmetric(
+                                  //vertical: 5.0,
+                                  horizontal: 8.0,
+                                ),
+                                height: 35.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: tabIndex == 0
+                                      ? kPrimaryColor
+                                      : Colors.transparent,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Listing',
+                                    style: TextStyle(
+                                      color: tabIndex == 0
+                                          ? kWhiteColor
+                                          : kPrimaryColor,
+                                      fontSize: size.height * 0.0150,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // widget.callback(1);
+                                setState(() {
+                                  tabIndex = 1;
+                                });
+                              },
+                              child: Container(
+                                width: size.width / 2 - 30,
+                                padding: const EdgeInsets.symmetric(
+                                  //vertical: 5.0,
+                                  horizontal: 8.0,
+                                ),
+                                height: 35.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: tabIndex == 1
+                                      ? kPrimaryColor
+                                      : Colors.transparent,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Affiliate',
+                                    style: TextStyle(
+                                      color: tabIndex == 1
+                                          ? kWhiteColor
+                                          : kPrimaryColor,
+                                      fontSize: size.height * 0.0150,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -50,7 +126,7 @@ class _StoreViewState extends State<StoreView> {
                       height: 10.0,
                     ),
                     Container(
-                      height: size.height * 0.20,
+                      height: size.height * 0.15,
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: PageView.builder(
                         itemCount: imageList.length,

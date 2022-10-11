@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/extensions/string_extension.dart';
 
+import '../../helpers/theme_helper.dart';
 import '../../utils/app_button.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/base_app_bar.dart';
@@ -17,7 +19,7 @@ class AddPhotoScreen extends StatefulWidget {
 class _AddPhotoScreenState extends State<AddPhotoScreen> {
   @override
   Widget build(BuildContext context) {
-    //Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Set Profile',
@@ -87,7 +89,113 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                 ],
               ),
               const SizedBox(
-                height: 90.0,
+                height: 70.0,
+              ),
+              Form(
+                //key: _loginViewModel.formKey,
+                child: Column(
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              //initialValue: initialUser,
+                              //readOnly: _loginViewModel.loggingIn,
+                              decoration: ThemeHelper().textInputDecoration(
+                                'Username',
+                                'Choose Username',
+                                null,
+                              ),
+                              validator: (val) {
+                                if (val!.isEmpty) {
+                                  return 'Enter username';
+                                }
+                                if (!val.isValidUserName) {
+                                  return 'Enter valid username.';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              //controller: _loginViewModel.userIdController,
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          Icon(
+                            Icons.check_circle_outlined,
+                            color: kYellowColor,
+                            size: size.height * 0.03,
+                          ),
+                        ],
+                      ),
+                      decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                      height: 55.0,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15.0,
+                        horizontal: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          border:
+                              Border.all(color: kEntryBorderColor, width: 1.0)),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              'Select country',
+                              style: TextStyle(
+                                color: kDarkColor,
+                                fontFamily: kDefaultFont,
+                                fontSize: size.height * 0.018,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            CupertinoIcons.chevron_down,
+                            size: size.height * 0.030,
+                            color: kDarkColor,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Container(
+                      child: TextFormField(
+                        //initialValue: initialUser,
+                        //readOnly: _loginViewModel.loggingIn,
+                        maxLines: 3,
+                        maxLength: 300,
+                        decoration: ThemeHelper().textInputDecoration(
+                          'Bio',
+                          'Add Bio',
+                          null,
+                        ),
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return 'Enter biography';
+                          } else {
+                            return null;
+                          }
+                        },
+                        //controller: _loginViewModel.userIdController,
+                        keyboardType: TextInputType.text,
+                      ),
+                      decoration: ThemeHelper().editorBoxDecorationShaddow(),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10.0,
               ),
               AppButton(
                 text: "Next",
