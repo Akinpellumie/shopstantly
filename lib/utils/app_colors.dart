@@ -29,6 +29,7 @@ const kPurpleDarkColor = Color(0xFF3F38DD);
 const kPurpleColor = Color(0xFF5669FF);
 const kLightPurpleColor = Color(0xFFD7D9E8);
 const kOrangeColor = Color(0xFFFF7250);
+const kRedColor = Colors.red;
 const kPrimaryLinkColor = Color(0xFFF98121);
 const kSecondaryOrangeColor = Color(0xFFD48C4A);
 const kTabIconBgColor = Color(0xFFF3F5F7);

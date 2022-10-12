@@ -17,6 +17,12 @@ void displayToast(String msg, Color color) {
   );
 }
 
+//error message string
+const String kErrorMessage =
+    'Something went wrong while making request. Please check your internet and try again.';
+const String kExceptionMessage =
+    "An unknown error occured. Don't panic; it's us not you! Please contact support for more information or check back later.";
+
 Future<LocationData> getPermissionAndLocation() async {
   Location location = Location();
 
@@ -28,14 +34,14 @@ Future<LocationData> getPermissionAndLocation() async {
   if (!_serviceEnabled) {
     _serviceEnabled = await location.requestService();
     if (!_serviceEnabled) {
-    _permissionGranted = await location.requestPermission();
+      _permissionGranted = await location.requestPermission();
     }
   }
 
   _permissionGranted = await location.hasPermission();
   if (_permissionGranted == PermissionStatus.denied) {
     _permissionGranted = await location.requestPermission();
-    
+
     if (_permissionGranted != PermissionStatus.granted) {
       //return;
     }

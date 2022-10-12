@@ -135,7 +135,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   text: "Confirm",
                   type: ButtonType.primary,
                   onPressed: () {
-                    CustomRouter.nextScreen(context, "/setProfile");
+                    CustomRouter.nextScreen(context, "/addPhoto");
                   },
                 ),
               ],

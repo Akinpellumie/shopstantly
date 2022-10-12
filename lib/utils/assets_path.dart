@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 
 /// path to various SVGs being used from `assets` folder
 class AssetsPath {
+    static const String help = 'assets/icons/help.svg';
+  static const String failure = 'assets/icons/failure.svg';
+  static const String successTag = 'assets/icons/successIcon.svg';
+  static const String warning = 'assets/icons/warning.svg';
+  static const String back = 'assets/icons/back.svg';
+  static const String bubbles = 'assets/icons/bubbles.svg';
   static const String logo = 'assets/images/shoplogo.png';
-  //static const String eye = 'assets/icons/eye.svg';
   static const String eyeOff = 'assets/icons/eyeOff.svg';
   static const String profileComplete = 'assets/images/complete.png';
   static const String lock = 'assets/icons/lock.png';

@@ -133,38 +133,64 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                     const SizedBox(
                       height: 10.0,
                     ),
+                    // Container(
+                    //   margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    //   height: 55.0,
+                    //   padding: const EdgeInsets.symmetric(
+                    //     vertical: 15.0,
+                    //     horizontal: 10.0,
+                    //   ),
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(10.0),
+                    //       border:
+                    //           Border.all(color: kEntryBorderColor, width: 1.0)),
+                    //   child: Row(
+                    //     children: <Widget>[
+                    //       Expanded(
+                    //         child: Text(
+                    //           'Select country',
+                    //           style: TextStyle(
+                    //             color: kDarkColor,
+                    //             fontFamily: kDefaultFont,
+                    //             fontSize: size.height * 0.018,
+                    //             fontWeight: FontWeight.normal,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       Icon(
+                    //         CupertinoIcons.chevron_down,
+                    //         size: size.height * 0.030,
+                    //         color: kDarkColor,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Container(
-                      margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                      height: 55.0,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15.0,
-                        horizontal: 10.0,
+                      child: TextFormField(
+                        //initialValue: initialUser,
+                        //readOnly: _loginViewModel.loggingIn,
+                        decoration: ThemeHelper().textInputDecoration(
+                          'Location',
+                          'Enter Location',
+                          null,
+                        ),
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return 'Enter location';
+                          }
+                          // if (!val.isValidUserName) {
+                          //   return 'Enter valid username.';
+                          // }
+                          else {
+                            return null;
+                          }
+                        },
+                        //controller: _loginViewModel.userIdController,
+                        keyboardType: TextInputType.text,
                       ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          border:
-                              Border.all(color: kEntryBorderColor, width: 1.0)),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              'Select country',
-                              style: TextStyle(
-                                color: kDarkColor,
-                                fontFamily: kDefaultFont,
-                                fontSize: size.height * 0.018,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                          Icon(
-                            CupertinoIcons.chevron_down,
-                            size: size.height * 0.030,
-                            color: kDarkColor,
-                          ),
-                        ],
-                      ),
+                      decoration: ThemeHelper().inputBoxDecorationShaddow(),
                     ),
+
                     const SizedBox(
                       height: 10.0,
                     ),
