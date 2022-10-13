@@ -10,32 +10,36 @@ String registerRequestModelToJson(RegisterRequestModel data) => json.encode(data
 
 class RegisterRequestModel {
     RegisterRequestModel({
-        required this.fullName,
+        required this.username,
+        required this.firstName,
+        required this.lastName,
         required this.email,
         required this.phone,
         required this.password,
-        required this.type,
     });
 
-    String fullName;
+    String username;
+    String firstName;
+    String lastName;
     String email;
     String phone;
     String password;
-    String type;
 
     factory RegisterRequestModel.fromJson(Map<String, dynamic> json) => RegisterRequestModel(
-        fullName: json["fullName"],
+        username: json["username"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
         email: json["email"],
         phone: json["phone"],
         password: json["password"],
-        type: json["type"],
     );
 
     Map<String, dynamic> toJson() => {
-        "fullName": fullName,
+        "username": username,
+        "firstName": firstName,
+        "lastName": lastName,
         "email": email,
         "phone": phone,
         "password": password,
-        "type": type,
     };
 }

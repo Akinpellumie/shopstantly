@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'register_data.dart';
+import 'package:shopstantly_app/models/auth/register/register_data.dart';
 
 RegisterResponseModel registerResponseModelFromJson(String str) => RegisterResponseModel.fromJson(json.decode(str));
 

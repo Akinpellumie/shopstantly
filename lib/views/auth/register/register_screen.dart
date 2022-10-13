@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
 import 'package:shopstantly_app/extensions/string_extension.dart';
 import 'package:unicons/unicons.dart';
 
@@ -14,6 +15,7 @@ import '../../../utils/assets_path.dart';
 import '../../../utils/base_app_bar.dart';
 import '../../../utils/custom_router.dart';
 import '../../../utils/dimensions.dart';
+import '../../../view_models/auth/auth/register_view_model.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -46,6 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    RegisterViewModel _registerViewModel = context.watch<RegisterViewModel>();
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Create account',
@@ -71,36 +74,121 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   //key: _loginViewModel.formKey,
                   child: Column(
                     children: [
+                      Row(
+                        children: [
+                          Container(
+                            child: TextFormField(
+                              //initialValue: initialUser,
+                              readOnly: _registerViewModel.creatingAccount,
+                              decoration: ThemeHelper().textInputDecoration(
+                                'First Name',
+                                'Enter first name',
+                                const Icon(
+                                  Icons.person,
+                                  color: kLightGrayColor,
+                                  size: 20.0,
+                                ),
+                              ),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                  RegExp(r"[a-zA-Z]+|\s"),
+                                ),
+                              ],
+                              validator: (val) {
+                                if (val!.isEmpty) {
+                                  return 'Enter first name';
+                                }
+                                if (!val.isValidName) {
+                                  return 'Enter valid name';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              style: TextStyle(fontSize: size.height * 0.0170),
+                              controller:
+                                  _registerViewModel.firstnameController,
+                              keyboardType: TextInputType.text,
+                            ),
+                            decoration:
+                                ThemeHelper().inputBoxDecorationShaddow(),
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Container(
+                            child: TextFormField(
+                              //initialValue: initialUser,
+                              readOnly: _registerViewModel.creatingAccount,
+                              decoration: ThemeHelper().textInputDecoration(
+                                'Last Name',
+                                'Enter last name',
+                                const Icon(
+                                  Icons.person,
+                                  color: kLightGrayColor,
+                                  size: 20.0,
+                                ),
+                              ),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                  RegExp(r"[a-zA-Z]+|\s"),
+                                ),
+                              ],
+                              validator: (val) {
+                                if (val!.isEmpty) {
+                                  return 'Enter last name';
+                                }
+                                if (!val.isValidName) {
+                                  return 'Enter valid name';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              style: TextStyle(fontSize: size.height * 0.0170),
+                              controller: _registerViewModel.lastnameController,
+                              keyboardType: TextInputType.text,
+                            ),
+                            decoration:
+                                ThemeHelper().inputBoxDecorationShaddow(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10.0),
                       Container(
                         child: TextFormField(
                           //initialValue: initialUser,
-                          //readOnly: _loginViewModel.loggingIn,
+                          readOnly: _registerViewModel.creatingAccount,
                           decoration: ThemeHelper().textInputDecoration(
-                            'Full Name',
-                            'Enter full name',
-                            const Icon(
-                              Icons.person,
-                              color: kLightGrayColor,
-                              size: 20.0,
-                            ),
+                            'Username',
+                            'Choose Username',
+                            null,
+                            _registerViewModel.checkingUsername
+                                ? const CircularProgressIndicator(
+                                    strokeWidth: 4.0,
+                                    color: kPrimaryColor,
+                                  )
+                                : _registerViewModel.isUsernameAvailable
+                                    ? Icon(
+                                        Icons.check_circle_outlined,
+                                        color: kPrimaryColor,
+                                        size: size.height * 0.03,
+                                      )
+                                    : Icon(
+                                        Icons.cancel_outlined,
+                                        color: kRedColor,
+                                        size: size.height * 0.03,
+                                      ),
                           ),
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(
-                              RegExp(r"[a-zA-Z]+|\s"),
-                            ),
-                          ],
                           validator: (val) {
                             if (val!.isEmpty) {
-                              return 'Enter full name';
+                              return 'Enter username';
                             }
-                            if (!val.isValidName) {
-                              return 'Enter valid name';
+                            if (!val.isValidUserName) {
+                              return 'Enter valid username.';
                             } else {
                               return null;
                             }
                           },
-                          style: TextStyle(fontSize: size.height * 0.0170),
-                          //controller: _loginViewModel.userIdController,
+                          controller: _registerViewModel.usernameController,
                           keyboardType: TextInputType.text,
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -173,10 +261,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Expanded(
                               child: TextFormField(
                                 //initialValue: initialUser,
-                                //readOnly: _loginViewModel.loggingIn,
+                                readOnly: _registerViewModel.creatingAccount,
                                 decoration: ThemeHelper().textInputDecoration(
                                   'Phone Number',
                                   'Enter phone number',
+                                  null,
                                   null,
                                   false,
                                 ),
@@ -196,7 +285,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     return null;
                                   }
                                 },
-                                //controller: _loginViewModel.userIdController,
+                                controller:
+                                    _registerViewModel.phonenumberController,
                                 keyboardType: TextInputType.text,
                               ),
                             ),
@@ -212,7 +302,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Container(
                         child: TextFormField(
                           //initialValue: initialUser,
-                          //readOnly: _loginViewModel.loggingIn,
+                          readOnly: _registerViewModel.creatingAccount,
                           decoration: ThemeHelper().textInputDecoration(
                             'Email',
                             'Enter email address',
@@ -232,7 +322,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return null;
                             }
                           },
-                          //controller: _loginViewModel.userIdController,
+                          controller: _registerViewModel.emailController,
                           style: TextStyle(
                             fontSize: size.height * 0.0170,
                           ),
@@ -240,12 +330,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
-                      
                       const SizedBox(height: 10.0),
                       Container(
                         child: TextFormField(
-                          // readOnly: _loginViewModel.loggingIn,
-                          // controller: _loginViewModel.passwordController,
+                          readOnly: _registerViewModel.creatingAccount,
+                          controller: _registerViewModel.passwordController,
                           obscureText: _obscureText,
                           obscuringCharacter: "*",
                           decoration: ThemeHelper().passwordInputDecoration(
@@ -267,7 +356,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               size: 20.0,
                             ),
                           ),
-                           validator: (val) {
+                          validator: (val) {
                             if (val!.isEmpty) {
                               return 'Enter password';
                             }
@@ -285,8 +374,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(height: 10.0),
                       Container(
                         child: TextFormField(
-                          // readOnly: _loginViewModel.loggingIn,
-                          // controller: _loginViewModel.passwordController,
+                          readOnly: _registerViewModel.creatingAccount,
+                          controller:
+                              _registerViewModel.confirmPasswordController,
                           obscureText: _obscureText,
                           obscuringCharacter: "*",
                           decoration: ThemeHelper().passwordInputDecoration(
@@ -310,7 +400,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           validator: (val) {
                             if (val!.isEmpty) {
-                              return 'Enter password';
+                              return 'Re-enter password';
                             }
                             if (!val.isValidPassword) {
                               return 'Enter valid password with combinations of Caps, small letter, number, and characters.';

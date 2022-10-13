@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
+import 'package:shopstantly_app/utils/view_model_provider.dart';
 import 'package:sizer/sizer.dart';
 
 import 'utils/router_generator.dart';
 
-
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: viewModelProviders,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

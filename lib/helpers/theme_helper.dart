@@ -9,6 +9,7 @@ class ThemeHelper {
     String lableText = "",
     String hintText = "",
     Widget? prefixIcon,
+    Widget? suffixIcon,
     bool showBorder = true,
     Color bgColor = kBackgroundColor,
   ]) {
@@ -23,7 +24,7 @@ class ThemeHelper {
       hintStyle: const TextStyle(
           color: kPlaceholderColor,
           fontWeight: FontWeight.normal,
-          fontFamily: kDefaultFont),
+          fontFamily: kDefaultFont,),
       fillColor: bgColor,
       filled: true,
       contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -43,6 +44,7 @@ class ThemeHelper {
         ),
       ),
       prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
@@ -78,7 +80,7 @@ class ThemeHelper {
       hintStyle: const TextStyle(
           color: kPostEntryTextColor,
           fontWeight: FontWeight.normal,
-          fontFamily: kDefaultFont),
+          fontFamily: kDefaultFont,),
       fillColor: bgColor,
       filled: true,
       contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
