@@ -10,11 +10,13 @@ class AppButton extends StatelessWidget {
   final String text;
   final double btnHeight;
   final double btnWidth;
+  final bool loading;
 
   const AppButton({
     Key? key,
     required this.type,
     required this.onPressed,
+    this.loading = false,
     required this.text,
     this.btnHeight = 50.0,
     this.btnWidth = double.infinity,
@@ -46,14 +48,25 @@ class AppButton extends StatelessWidget {
               width: 1.0),
         ),
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-                color: getTextColor(type),
-                fontSize: 16.0,
-                fontWeight: FontWeight.w500,
-                fontFamily: kDefaultFont),
-          ),
+          child: loading
+              ? const SizedBox(
+                  width: 30.0,
+                  height: 30.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(
+                      Colors.white,
+                    ),
+                  ),
+                )
+              : Text(
+                  text,
+                  style: TextStyle(
+                    color: getTextColor(type),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: kDefaultFont,
+                  ),
+                ),
         ),
       ),
     );

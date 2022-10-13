@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:shopstantly_app/models/auth/register/register_response_model.dart';
 import 'package:shopstantly_app/models/auth/register/username_model.dart';
 
 import '../../../models/auth/register/register_request_model.dart';
@@ -12,13 +13,13 @@ import '../../../utils/snackbar_content_type.dart';
 import '../../../utils/tuple.dart';
 
 class RegisterViewModel extends ChangeNotifier {
-  static late TextEditingController _firstnameController;
-  static late TextEditingController _lastnameController;
-  static late TextEditingController _usernameController;
-  static late TextEditingController _emailController;
-  static late TextEditingController _passwordController;
-  static late TextEditingController _confirmPasswordController;
-  static late TextEditingController _phonenumberController;
+  late TextEditingController _firstnameController;
+  late TextEditingController _lastnameController;
+  late TextEditingController _usernameController;
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+  late TextEditingController _confirmPasswordController;
+  late TextEditingController _phonenumberController;
   final GlobalKey<FormState> _formKey =
       GlobalKey<FormState>(debugLabel: '_registerFormKey');
   final RegisterRepositoryImpl _registerRepoImpl = RegisterRepositoryImpl();
@@ -84,12 +85,15 @@ class RegisterViewModel extends ChangeNotifier {
         );
 
         if (result.response != null && result.statusCode == 200) {
+          RegisterResponseModel response =
+              result.response as RegisterResponseModel;
           showsnackbar(
             context,
-            'Your membership account has been created successfully. Proceed to Login to continue...',
+            'Your membership account has been created successfully. Proceed to account activation...',
             SnackbarContentType.success,
           );
-          CustomRouter.nextScreen(context, "/verifyOtp");
+          CustomRouter.nextScreen(context, "/verifyOtp",
+              args: {'userId': response.data.userId});
           _passwordController.text = "";
         } else if (result.statusCode != 200 || result.error != null) {
           showsnackbar(context, result.error, SnackbarContentType.failure);

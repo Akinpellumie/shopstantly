@@ -5,11 +5,13 @@ class OtpTextBox extends StatefulWidget {
   final bool first;
   final bool last;
   final double widthSize;
+  final TextEditingController textEntryController;
   const OtpTextBox({
     Key? key,
     required this.first,
     required this.last,
     required this.widthSize,
+    required this.textEntryController,
   }) : super(key: key);
 
   @override
@@ -26,6 +28,7 @@ class _OtpTextBoxState extends State<OtpTextBox> {
       child: AspectRatio(
         aspectRatio: 1.0,
         child: TextField(
+          controller: widget.textEntryController,
           autofocus: true,
           onChanged: (value) {
             if (value.length == 1 && widget.last == false) {

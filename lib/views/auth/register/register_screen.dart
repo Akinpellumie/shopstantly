@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:shopstantly_app/extensions/string_extension.dart';
 import 'package:unicons/unicons.dart';
@@ -15,7 +14,7 @@ import '../../../utils/assets_path.dart';
 import '../../../utils/base_app_bar.dart';
 import '../../../utils/custom_router.dart';
 import '../../../utils/dimensions.dart';
-import '../../../view_models/auth/auth/register_view_model.dart';
+import '../../../view_models/auth/register_view_model.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);

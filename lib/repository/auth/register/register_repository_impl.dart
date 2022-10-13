@@ -6,9 +6,12 @@ import 'package:shopstantly_app/repository/auth/register/register_repository.dar
 
 import '../../../config/api_url.dart';
 import '../../../config/request_helper.dart';
+import '../../../models/auth/register/complete_profile_request_model.dart';
+import '../../../models/auth/register/complete_profile_response_model.dart';
 import '../../../models/auth/register/register_error_model.dart';
 import '../../../models/auth/register/register_request_model.dart';
 import '../../../models/auth/register/register_response_model.dart';
+import '../../../models/general/error_model.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/helpers.dart';
 import '../../../utils/tuple.dart';
@@ -25,6 +28,28 @@ class RegisterRepositoryImpl implements RegisterRepository {
         return Tuple(response: result, error: null, statusCode: 200);
       } else if (status >= 400 && status <= 409) {
         var _error = RegisterErrorModel.fromJson(jsonDecode(data.body));
+        return Tuple(response: null, error: _error.message, statusCode: 400);
+      } else {
+        return Tuple(response: null, error: kErrorMessage, statusCode: 500);
+      }
+    } catch (e) {
+      print(e);
+      return Tuple(response: null, error: kExceptionMessage, statusCode: 0);
+    }
+  }
+
+  @override
+  Future<Tuple> completeAccountRegistration(
+      CompleteProfileRequestModel account) async {
+    try {
+      var data = await RequestHelper.postApi(
+          ApiUrl.registerUrl, jsonEncode(account.toJson()));
+      int status = getHttpStatus(data!.statusCode);
+      if (status == 200) {
+        var result = CompleteProfileResponseModel.fromJson(jsonDecode(data.body));
+        return Tuple(response: result, error: null, statusCode: 200);
+      } else if (status >= 400 && status <= 409) {
+        var _error = ErrorModel.fromJson(jsonDecode(data.body));
         return Tuple(response: null, error: _error.message, statusCode: 400);
       } else {
         return Tuple(response: null, error: kErrorMessage, statusCode: 500);
@@ -61,6 +86,28 @@ class RegisterRepositoryImpl implements RegisterRepository {
   Future<Tuple> activateAccount(String userID, String otp) async {
     try {
       String url = '${ApiUrl.activateAcctUrl}/$userID/$otp';
+      var data = await RequestHelper.getApi(url);
+      int status = getHttpStatus(data!.statusCode);
+      if (status == 200) {
+        var result = ValidationModel.fromJson(jsonDecode(data.body));
+        return Tuple(response: result, error: null, statusCode: 200);
+      } else if (status >= 400 && status <= 409) {
+        var _error = ValidationModel.fromJson(jsonDecode(data.body));
+        return Tuple(
+            response: null, error: _error.message, statusCode: data.statusCode);
+      } else {
+        return Tuple(response: null, error: kErrorMessage, statusCode: 500);
+      }
+    } catch (e) {
+      print(e);
+      return Tuple(response: null, error: kExceptionMessage, statusCode: 0);
+    }
+  }
+
+  @override
+  Future<Tuple> resendVerificationCode(String userID) async {
+    try {
+      String url = '${ApiUrl.resendActivationCodeUrl}/$userID';
       var data = await RequestHelper.getApi(url);
       int status = getHttpStatus(data!.statusCode);
       if (status == 200) {

@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopstantly_app/utils/app_button.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/base_app_bar.dart';
@@ -6,6 +8,7 @@ import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/views/auth/register/components/otp_text_box.dart';
 
 import '../../../utils/custom_router.dart';
+import '../../../view_models/auth/otp_view_model.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -15,9 +18,13 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
+  String userId = '';
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    OtpViewModel _otpViewModel = context.watch<OtpViewModel>();
+    Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    userId = arguments['userId'];
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Verify Account',
@@ -45,7 +52,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 const Text(
-                  "Enter one time verification code sent to you Email",
+                  "Enter one time verification code sent to your Email",
                   style: TextStyle(
                     color: kPlaceholderColor,
                     fontFamily: kDefaultFont,
@@ -56,25 +63,25 @@ class _OtpScreenState extends State<OtpScreen> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                    height: 25.0,
-                    child: const Text(
-                      "Use Phone Number Instead",
-                      style: TextStyle(
-                        color: kPrimaryColor,
-                        fontFamily: kDefaultFont,
-                        fontWeight: FontWeight.w500,
-                        fontSize: kNormalText,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
+                // GestureDetector(
+                //   onTap: () {},
+                //   child: Container(
+                //     margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                //     height: 25.0,
+                //     child: const Text(
+                //       "Use Phone Number Instead",
+                //       style: TextStyle(
+                //         color: kPrimaryColor,
+                //         fontFamily: kDefaultFont,
+                //         fontWeight: FontWeight.w500,
+                //         fontSize: kNormalText,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 20.0,
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -82,21 +89,25 @@ class _OtpScreenState extends State<OtpScreen> {
                       first: true,
                       last: false,
                       widthSize: size.width * 0.25 - 15,
+                      textEntryController: _otpViewModel.otp1Controller,
                     ),
                     OtpTextBox(
                       first: false,
                       last: false,
                       widthSize: size.width * 0.25 - 15,
+                      textEntryController: _otpViewModel.otp2Controller,
                     ),
                     OtpTextBox(
                       first: false,
                       last: false,
                       widthSize: size.width * 0.25 - 15,
+                      textEntryController: _otpViewModel.otp3Controller,
                     ),
                     OtpTextBox(
                       first: false,
                       last: true,
                       widthSize: size.width * 0.25 - 15,
+                      textEntryController: _otpViewModel.otp4Controller,
                     ),
                   ],
                 ),
@@ -104,29 +115,60 @@ class _OtpScreenState extends State<OtpScreen> {
                   height: 10.0,
                 ),
                 Center(
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Didn’t Receive Code? ",
-                          style: TextStyle(
-                            color: kDarkColor,
-                            fontFamily: kDefaultFont,
-                            fontWeight: FontWeight.w500,
-                            fontSize: size.height * 0.019,
+                  child: _otpViewModel.resendingCode
+                      ? Row(
+                          children: [
+                            Text(
+                              "Sending code...",
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontFamily: kDefaultFont,
+                                fontWeight: FontWeight.w500,
+                                fontSize: size.height * 0.018,
+                              ),
+                            ),
+                            const SizedBox.square(
+                              dimension: 20.0,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3.0,
+                                valueColor: AlwaysStoppedAnimation(
+                                  kPrimaryColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "Didn't Receive Code? ",
+                                style: TextStyle(
+                                  color: kDarkColor,
+                                  fontFamily: kDefaultFont,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: size.height * 0.019,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Send again!",
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontFamily: kDefaultFont,
+                                  fontSize: size.height * 0.019,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    _otpViewModel.resendVerificationCodeAsync(
+                                      context,
+                                      userId,
+                                    );
+                                  },
+                              ),
+                            ],
                           ),
                         ),
-                        TextSpan(
-                          text: "Send again",
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.019,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
                 const SizedBox(
                   height: 40.0,
@@ -134,9 +176,11 @@ class _OtpScreenState extends State<OtpScreen> {
                 AppButton(
                   text: "Confirm",
                   type: ButtonType.primary,
-                  onPressed: () {
-                    CustomRouter.nextScreen(context, "/addPhoto");
-                  },
+                  loading: _otpViewModel.activating,
+                  onPressed: () => _otpViewModel.activateAcctAsync(
+                    context,
+                    userId,
+                  ),
                 ),
               ],
             ),
