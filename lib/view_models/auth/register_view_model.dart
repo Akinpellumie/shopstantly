@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:shopstantly_app/models/auth/register/register_response_model.dart';
 import 'package:shopstantly_app/models/auth/register/username_model.dart';
 
 import '../../../models/auth/register/register_request_model.dart';
 import '../../../repository/auth/register/register_repository_impl.dart';
-import '../../../utils/app_colors.dart';
 import '../../../utils/custom_router.dart';
-import '../../../utils/helpers.dart';
 import '../../../utils/show_snackbar.dart';
 import '../../../utils/snackbar_content_type.dart';
 import '../../../utils/tuple.dart';

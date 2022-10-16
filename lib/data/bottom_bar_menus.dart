@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../models/general/bottom_bar.dart';
+import '../models/common/bottom_bar.dart';
 
 List<BottomBar> bottomBarMenus = [
   BottomBar(id: 0, iconData: Icons.home, name: 'Home'),

@@ -55,7 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         showLogo: true,
       ),
       body: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(15.0),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -76,6 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         children: [
                           Container(
+                            width: size.width / 2 - 20,
                             child: TextFormField(
                               //initialValue: initialUser,
                               readOnly: _registerViewModel.creatingAccount,
@@ -115,6 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 10.0,
                           ),
                           Container(
+                            width: size.width / 2 - 20,
                             child: TextFormField(
                               //initialValue: initialUser,
                               readOnly: _registerViewModel.creatingAccount,
@@ -171,11 +173,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         color: kPrimaryColor,
                                         size: size.height * 0.03,
                                       )
-                                    : Icon(
-                                        Icons.cancel_outlined,
-                                        color: kRedColor,
-                                        size: size.height * 0.03,
-                                      ),
+                                    : !_registerViewModel.isUsernameAvailable &&
+                                            !_registerViewModel.checkingUsername
+                                        ? null
+                                        : Icon(
+                                            Icons.cancel_outlined,
+                                            color: kRedColor,
+                                            size: size.height * 0.03,
+                                          ),
                           ),
                           validator: (val) {
                             if (val!.isEmpty) {
@@ -484,7 +489,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         text: "Create Account",
                         type: ButtonType.primary,
                         onPressed: () {
-                          CustomRouter.nextScreen(context, "/verifyOtp");
+                          _registerViewModel.registerNewUserAsync(context);
+                          //CustomRouter.nextScreen(context, "/verifyOtp");
                         },
                       ),
                       const SizedBox(

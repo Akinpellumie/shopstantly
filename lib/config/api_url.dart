@@ -8,4 +8,5 @@ class ApiUrl {
   static String resendActivationCodeUrl = "$serverUrl/auth/resend-verification-code";
   static String completeRegistrationUrl = "$serverUrl/auth/complete-registration";
   static String usernameAvailabilityUrl = "$serverUrl/auth/username-exist";
+  static String fileUploadUrl = "$serverUrl/common/file-upload";
 }

@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
@@ -34,6 +33,44 @@ class RequestHelper {
         return res;
       } else {
         return res;
+      }
+    } on Exception catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  static Future<http.Response?> postImageApi(
+      String url, String fileName, File imageFile) async {
+    try {
+      //String token = await SharedPrefs.getString('userToken');
+      var postUri = Uri.parse("apiUrl");
+
+      http.MultipartRequest request = http.MultipartRequest("POST", postUri);
+
+      http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+        'file',
+        imageFile.path,
+        filename: fileName,
+      );
+
+      request.files.add(multipartFile);
+
+      //var response = await request.send();
+      http.StreamedResponse streamResponse = await request.send();
+
+      final response = await http.Response.fromStream(streamResponse);
+
+      print(response.statusCode);
+      int status = getHttpStatus(response.statusCode);
+      if (status == 200) {
+        return response;
+      } else if (status == 401) {
+        return response;
+      } else if (status == 400 && url == ApiUrl.loginUrl) {
+        return response;
+      } else {
+        return response;
       }
     } on Exception catch (e) {
       print(e);

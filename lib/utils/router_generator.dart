@@ -26,7 +26,7 @@ import '../views/logistics/logistic_screen.dart';
 import '../views/logistics/logistic_verification_screen.dart';
 import '../views/manage/commerce/commerce_main_screen.dart';
 import '../views/post/blog_post_screen.dart';
-import '../views/profile/add_photo_screen.dart';
+import '../views/profile/complete_profile_screen.dart';
 import '../views/profile/choose_location_screen.dart';
 import '../views/profile/profile_complete_screen.dart';
 import '../views/profile/set_profile_screen.dart';
@@ -42,7 +42,7 @@ Route<dynamic> generateRouter(RouteSettings settings) {
       return MaterialPageRoute(
           settings: settings,
           builder: (BuildContext context) {
-            return const OnboardingScreen();
+            return const CompleteProfileScreen();
           });
     case "/landing":
       return MaterialPageRoute(
@@ -110,11 +110,11 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           builder: (BuildContext context) {
             return const SetProfileScreen();
           });
-    case "/addPhoto":
+    case "/finishReg":
       return MaterialPageRoute(
           settings: settings,
           builder: (BuildContext context) {
-            return const AddPhotoScreen();
+            return const CompleteProfileScreen();
           });
     case "/chooseLocation":
       return MaterialPageRoute(

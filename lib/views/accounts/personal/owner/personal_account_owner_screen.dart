@@ -5,7 +5,7 @@ import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/views/accounts/personal/components/more_option_modal.dart';
 import 'package:shopstantly_app/views/accounts/personal/owner/widgets/store_view.dart';
-import '../../../../models/general/account_type_model.dart';
+import '../../../../models/common/account_type_model.dart';
 import '../../personal/owner/widgets/event_view.dart';
 import '../../personal/owner/widgets/owner_info_view.dart';
 import '../widgets/service_view.dart';

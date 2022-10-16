@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../data/audio_filter_menus.dart';
 import '../../../data/audio_items.dart';
-import '../../../data/video_filter_menus.dart';
-import '../../../models/general/audio.dart';
-import '../../../models/general/text_menu.dart';
+import '../../../models/common/audio.dart';
+import '../../../models/common/text_menu.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/dimensions.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopstantly_app/models/general/keyboard_model.dart';
+import 'package:shopstantly_app/models/common/keyboard_model.dart';
 
 class KeyboardKey extends StatefulWidget {
   final dynamic label;

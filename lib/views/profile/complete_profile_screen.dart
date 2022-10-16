@@ -1,3 +1,4 @@
+import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/extensions/string_extension.dart';
@@ -9,20 +10,27 @@ import '../../utils/base_app_bar.dart';
 import '../../utils/custom_router.dart';
 import '../../utils/dimensions.dart';
 
-class AddPhotoScreen extends StatefulWidget {
-  const AddPhotoScreen({Key? key}) : super(key: key);
+class CompleteProfileScreen extends StatefulWidget {
+  const CompleteProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddPhotoScreen> createState() => _AddPhotoScreenState();
+  State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
 }
 
-class _AddPhotoScreenState extends State<AddPhotoScreen> {
+class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+  /// Variables to store country state city data in onChanged method.
+  String countryValue = "";
+  String stateValue = "";
+  String cityValue = "";
+  String address = "";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: BaseAppBar(
-        title: 'Set Profile',
+        title: 'Complete Profile',
         appBar: AppBar(),
         showLogo: false,
       ),
@@ -34,7 +42,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
           child: Column(
             children: [
               const Text(
-                "Add a profile photo and a cover photo to your profile.",
+                "Complete your account registration below.",
                 style: TextStyle(
                   color: kDarkColor,
                   fontFamily: kDefaultFont,
@@ -95,100 +103,81 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                 //key: _loginViewModel.formKey,
                 child: Column(
                   children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              //initialValue: initialUser,
-                              //readOnly: _loginViewModel.loggingIn,
-                              decoration: ThemeHelper().textInputDecoration(
-                                'Username',
-                                'Choose Username',
-                                null,
-                              ),
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Enter username';
-                                }
-                                if (!val.isValidUserName) {
-                                  return 'Enter valid username.';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              //controller: _loginViewModel.userIdController,
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          Icon(
-                            Icons.check_circle_outlined,
-                            color: kYellowColor,
-                            size: size.height * 0.03,
-                          ),
-                        ],
+                    ///Adding CSC Picker Widget in app
+                    CSCPicker(
+                      ///Enable disable state dropdown [OPTIONAL PARAMETER]
+                      showStates: true,
+
+                      /// Enable disable city drop down [OPTIONAL PARAMETER]
+                      showCities: true,
+
+                      ///Enable (get flat with country name) / Disable (Disable flag) / ShowInDropdownOnly (display flag in dropdown only) [OPTIONAL PARAMETER]
+                      flagState: CountryFlag.SHOW_IN_DROP_DOWN_ONLY,
+
+                      ///Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER] (USE with disabledDropdownDecoration)
+                      dropdownDecoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Colors.grey.shade300, width: 1)),
+
+                      ///Disabled Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER]  (USE with disabled dropdownDecoration)
+                      disabledDropdownDecoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: Colors.grey.shade300,
+                          border: Border.all(
+                              color: Colors.grey.shade300, width: 1)),
+
+                      ///selected item style [OPTIONAL PARAMETER]
+                      selectedItemStyle: TextStyle(
+                        color: kPrimaryTextColor,
+                        fontSize: size.height * 0.017,
                       ),
-                      decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                    //   height: 55.0,
-                    //   padding: const EdgeInsets.symmetric(
-                    //     vertical: 15.0,
-                    //     horizontal: 10.0,
-                    //   ),
-                    //   decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(10.0),
-                    //       border:
-                    //           Border.all(color: kEntryBorderColor, width: 1.0)),
-                    //   child: Row(
-                    //     children: <Widget>[
-                    //       Expanded(
-                    //         child: Text(
-                    //           'Select country',
-                    //           style: TextStyle(
-                    //             color: kDarkColor,
-                    //             fontFamily: kDefaultFont,
-                    //             fontSize: size.height * 0.018,
-                    //             fontWeight: FontWeight.normal,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       Icon(
-                    //         CupertinoIcons.chevron_down,
-                    //         size: size.height * 0.030,
-                    //         color: kDarkColor,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    Container(
-                      child: TextFormField(
-                        //initialValue: initialUser,
-                        //readOnly: _loginViewModel.loggingIn,
-                        decoration: ThemeHelper().textInputDecoration(
-                          'Location',
-                          'Enter Location',
-                          null,
-                        ),
-                        validator: (val) {
-                          if (val!.isEmpty) {
-                            return 'Enter location';
-                          }
-                          // if (!val.isValidUserName) {
-                          //   return 'Enter valid username.';
-                          // }
-                          else {
-                            return null;
-                          }
-                        },
-                        //controller: _loginViewModel.userIdController,
-                        keyboardType: TextInputType.text,
+
+                      ///DropdownDialog Heading style [OPTIONAL PARAMETER]
+                      dropdownHeadingStyle: TextStyle(
+                        color: kPrimaryTextColor,
+                        fontSize: size.height * 0.017,
+                        fontWeight: FontWeight.bold,
                       ),
-                      decoration: ThemeHelper().inputBoxDecorationShaddow(),
+
+                      ///DropdownDialog Item style [OPTIONAL PARAMETER]
+                      dropdownItemStyle: TextStyle(
+                        color: kPrimaryTextColor,
+                        fontSize: size.height * 0.017,
+                      ),
+
+                      ///Dialog box radius [OPTIONAL PARAMETER]
+                      dropdownDialogRadius: 10.0,
+
+                      ///Search bar radius [OPTIONAL PARAMETER]
+                      searchBarRadius: 10.0,
+
+                      ///triggers once country selected in dropdown
+                      onCountryChanged: (value) {
+                        setState(() {
+                          ///store value in country variable
+                          countryValue = value;
+                        });
+                      },
+
+                      ///triggers once state selected in dropdown
+                      onStateChanged: (value) {
+                        setState(() {
+                          ///store value in state variable
+                          stateValue = value ?? "";
+                        });
+                      },
+
+                      ///triggers once city selected in dropdown
+                      onCityChanged: (value) {
+                        setState(() {
+                          ///store value in city variable
+                          cityValue = value ?? "";
+                        });
+                      },
                     ),
 
                     const SizedBox(

@@ -11,7 +11,7 @@ import '../../../models/auth/register/complete_profile_response_model.dart';
 import '../../../models/auth/register/register_error_model.dart';
 import '../../../models/auth/register/register_request_model.dart';
 import '../../../models/auth/register/register_response_model.dart';
-import '../../../models/general/error_model.dart';
+import '../../../models/common/error_model.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/helpers.dart';
 import '../../../utils/tuple.dart';

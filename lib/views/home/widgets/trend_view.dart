@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../data/choice_chips.dart';
 import '../../../data/trend_text_menus.dart';
-import '../../../models/general/choice_chip_data.dart';
-import '../../../models/general/text_menu.dart';
+import '../../../models/common/choice_chip_data.dart';
+import '../../../models/common/text_menu.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/dimensions.dart';
 

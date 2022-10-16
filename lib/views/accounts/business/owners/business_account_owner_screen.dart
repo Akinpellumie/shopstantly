@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/components/switch_account_modal.dart';
 import 'package:shopstantly_app/views/thrift/components/custom_tab_bar_with_click.dart';
 
-import '../../../../models/general/account_type_model.dart';
+import '../../../../models/common/account_type_model.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/dimensions.dart';
 import 'widgets/owner_info_view.dart';

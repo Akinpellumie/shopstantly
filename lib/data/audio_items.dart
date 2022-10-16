@@ -1,4 +1,4 @@
-import '../models/general/audio.dart';
+import '../models/common/audio.dart';
 
 class AudioItems {
   static final audioItems = <Audio>[

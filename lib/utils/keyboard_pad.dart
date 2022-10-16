@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 
-import '../models/general/keyboard_model.dart';
+import '../models/common/keyboard_model.dart';
 import 'dimensions.dart';
 
 List<List<KeyboardModel>> keyboardKeys = [

@@ -1,4 +1,4 @@
-import '../models/general/text_menu.dart';
+import '../models/common/text_menu.dart';
 
 class AudioFilterMenus {
   static final carouselAudioMenus = <TextMenu>[

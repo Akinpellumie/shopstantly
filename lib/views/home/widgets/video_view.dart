@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/data/video_filter_menus.dart';
 
-import '../../../models/general/text_menu.dart';
+import '../../../models/common/text_menu.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/custom_router.dart';
 import '../../../utils/dimensions.dart';

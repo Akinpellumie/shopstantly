@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopstantly_app/models/general/text_menu.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
-import 'package:shopstantly_app/utils/main_page_app_bar.dart';
 import 'package:shopstantly_app/views/home/widgets/feed_view.dart';
-import 'package:shopstantly_app/views/home/widgets/discard_feed_view.dart';
-import 'package:shopstantly_app/views/home/widgets/social_view.dart';
-import 'package:shopstantly_app/views/home/widgets/thrift_view.dart';
 import 'package:shopstantly_app/views/home/widgets/trend_view.dart';
 import 'package:shopstantly_app/views/home/widgets/video_view.dart';
 
-import '../../data/choice_chips.dart';
-import '../../data/trend_text_menus.dart';
-import '../../models/general/choice_chip_data.dart';
 import '../../utils/app_colors.dart';
 import 'widgets/audio_view.dart';
 import 'widgets/event_view.dart';

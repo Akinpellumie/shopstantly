@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/callbacks/string_callback.dart';
 import 'package:shopstantly_app/components/switch_account_modal.dart';
 
-import '../../../../models/general/account_type_model.dart';
+import '../../../../models/common/account_type_model.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/dimensions.dart';
 
