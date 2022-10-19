@@ -37,7 +37,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         children: [
           GestureDetector(
-            onTap: () => CustomRouter.nextScreen(context, '/landing'),
+            onTap: () => CustomRouter.nextScreen(context, '/mainPage'),
             child: Container(
               margin:
                   const EdgeInsets.only(top: 20.0, bottom: 10.0, right: 20.0),
@@ -146,35 +146,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 5.0,
+                  height: 10.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Already have an account?',
-                      style: TextStyle(
-                          color: kPrimaryTextColor,
-                          fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0190,
-                          fontWeight: FontWeight.normal),
-                    ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    GestureDetector(
-                      onTap: () => CustomRouter.nextScreen(context, "/login"),
-                      child: Text(
-                        'Sign In',
+                SizedBox(
+                  height: 20.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Already have an account?',
                         style: TextStyle(
-                            color: kPrimaryColor,
+                            color: kPrimaryTextColor,
                             fontFamily: kDefaultFont,
                             fontSize: size.height * 0.0190,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.normal),
                       ),
-                    )
-                  ],
+                      const SizedBox(
+                        width: 5.0,
+                      ),
+                      GestureDetector(
+                        onTap: () => CustomRouter.nextScreen(context, "/login"),
+                        child: SizedBox(
+                          height: 20.0,
+                          child: Text(
+                            'Sign In',
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontFamily: kDefaultFont,
+                                fontSize: size.height * 0.0190,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),

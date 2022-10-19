@@ -17,11 +17,12 @@ class ButtonNotch extends CustomPainter {
 
     path.moveTo(0, 0);
     path.quadraticBezierTo(7.5, 0, 12, 5);
-    path.quadraticBezierTo(size.width / 2, size.height / 2, size.width - 12, 5);
+    path.quadraticBezierTo(
+        size.width / 2, size.height / 2.5, size.width - 12, 5);
     path.quadraticBezierTo(size.width - 7.5, 0, size.width, 0);
     path.close();
     canvas.drawPath(path, paint_1);
-    canvas.drawCircle(dotPoint, 6, paint_2);
+    //canvas.drawCircle(dotPoint, 6, paint_2);
   }
 
   @override

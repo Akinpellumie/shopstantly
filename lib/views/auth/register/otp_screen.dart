@@ -24,7 +24,7 @@ class _OtpScreenState extends State<OtpScreen> {
     Size size = MediaQuery.of(context).size;
     OtpViewModel _otpViewModel = context.watch<OtpViewModel>();
     Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
-    userId = arguments['userId'];
+    userId = arguments['userId'] as String;
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Verify Account',

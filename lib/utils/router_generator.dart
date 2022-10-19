@@ -42,7 +42,7 @@ Route<dynamic> generateRouter(RouteSettings settings) {
       return MaterialPageRoute(
           settings: settings,
           builder: (BuildContext context) {
-            return const CompleteProfileScreen();
+            return const OnboardingScreen();
           });
     case "/landing":
       return MaterialPageRoute(
@@ -110,7 +110,7 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           builder: (BuildContext context) {
             return const SetProfileScreen();
           });
-    case "/finishReg":
+    case "/completeReg":
       return MaterialPageRoute(
           settings: settings,
           builder: (BuildContext context) {

@@ -40,13 +40,14 @@ class RegisterRepositoryImpl implements RegisterRepository {
 
   @override
   Future<Tuple> completeAccountRegistration(
-      CompleteProfileRequestModel account) async {
+      CompleteProfileRequestModel account, String userId) async {
     try {
-      var data = await RequestHelper.postApi(
-          ApiUrl.registerUrl, jsonEncode(account.toJson()));
+      String url = "${ApiUrl.completeRegistrationUrl}/$userId";
+      var data = await RequestHelper.postApi(url, jsonEncode(account.toJson()));
       int status = getHttpStatus(data!.statusCode);
       if (status == 200) {
-        var result = CompleteProfileResponseModel.fromJson(jsonDecode(data.body));
+        var result =
+            CompleteProfileResponseModel.fromJson(jsonDecode(data.body));
         return Tuple(response: result, error: null, statusCode: 200);
       } else if (status >= 400 && status <= 409) {
         var _error = ErrorModel.fromJson(jsonDecode(data.body));

@@ -10,6 +10,7 @@ import '../../../utils/snackbar_content_type.dart';
 import '../../../utils/tuple.dart';
 
 class RegisterViewModel extends ChangeNotifier {
+  static String countryCode = '+234';
   late TextEditingController _firstnameController;
   late TextEditingController _lastnameController;
   late TextEditingController _usernameController;
@@ -75,7 +76,7 @@ class RegisterViewModel extends ChangeNotifier {
             firstName: _firstnameController.text,
             lastName: _usernameController.text,
             username: _firstnameController.text,
-            phone: _phonenumberController.text,
+            phone: "$countryCode${_phonenumberController.text}",
             email: _emailController.text,
             password: _passwordController.text,
           ),
@@ -103,12 +104,12 @@ class RegisterViewModel extends ChangeNotifier {
           );
         }
       } else {
-        print(_errorBag);
-        showsnackbar(
-          context,
-          "Something went wrong while processing your request. Please check your internet speed or try again later.",
-          SnackbarContentType.failure,
-        );
+        // print(_errorBag);
+        // showsnackbar(
+        //   context,
+        //   "Something went wrong while processing your request. Please check your internet speed or try again later.",
+        //   SnackbarContentType.failure,
+        // );
       }
     } on Exception catch (e) {
       print(e);

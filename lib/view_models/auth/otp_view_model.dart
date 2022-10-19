@@ -59,7 +59,7 @@ class OtpViewModel extends ChangeNotifier {
               'Account successfully activated. Proceed to update profile info...',
               SnackbarContentType.success,
             );
-            CustomRouter.nextScreen(context, "/addPhoto",
+            CustomRouter.nextScreen(context, "/completeReg",
                 args: {'userId': userId});
           } else {
             showsnackbar(

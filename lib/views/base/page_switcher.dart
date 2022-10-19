@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/views/activity/activity_screen.dart';
-import 'package:shopstantly_app/views/base/animated_bar.dart';
 import 'package:shopstantly_app/views/home/home_screen.dart';
 import 'package:shopstantly_app/views/logistics/getting_started.dart';
 import 'package:shopstantly_app/views/manage/manage_screen.dart';
@@ -62,18 +61,6 @@ class _PageSwitcherState extends State<PageSwitcher> {
           ],
         ),
         bottomNavigationBar: navigationBar(),
-        // AnimatedBar(
-        //   onTabSelected: (index) {
-        //     setState(() {
-        //       selectedIndex = index;
-        //     });
-        //     pageController.animateToPage(
-        //       selectedIndex,
-        //       duration: const Duration(milliseconds: 400),
-        //       curve: Curves.easeOutQuad,
-        //     );
-        //   },
-        // ),
       ),
     );
   }
@@ -144,16 +131,19 @@ class _PageSwitcherState extends State<PageSwitcher> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Text(
-              bottomBarMenus[i].name,
-              style: TextStyle(
-                color: isActive ? kPrimaryColor : kPlaceholderColor,
-                fontFamily: kDefaultFont,
-                fontSize: 12.0,
-                fontWeight: isActive ? FontWeight.w500 : FontWeight.w400,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 3.0),
+              child: Text(
+                bottomBarMenus[i].name,
+                style: TextStyle(
+                  color: isActive ? kPrimaryColor : kPlaceholderColor,
+                  fontFamily: kDefaultFont,
+                  fontSize: 12.0,
+                  fontWeight: isActive ? FontWeight.w500 : FontWeight.w400,
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

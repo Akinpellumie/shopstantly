@@ -4,13 +4,13 @@
 
 import 'dart:convert';
 
-ErrorModel errorModelFromJson(String str) =>
-    ErrorModel.fromJson(json.decode(str));
+GeneralResponseModel generalModelFromJson(String str) =>
+    GeneralResponseModel.fromJson(json.decode(str));
 
-String errorModelToJson(ErrorModel data) => json.encode(data.toJson());
+String generalModelToJson(GeneralResponseModel data) => json.encode(data.toJson());
 
-class ErrorModel {
-  ErrorModel({
+class GeneralResponseModel {
+  GeneralResponseModel({
     required this.status,
     required this.message,
     this.data,
@@ -20,7 +20,7 @@ class ErrorModel {
   String message;
   dynamic data;
 
-  factory ErrorModel.fromJson(Map<String, dynamic> json) => ErrorModel(
+  factory GeneralResponseModel.fromJson(Map<String, dynamic> json) => GeneralResponseModel(
         status: json["status"],
         message: json["message"],
         data: json["data"],

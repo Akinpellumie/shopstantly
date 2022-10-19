@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   // Initially password is obscure
   bool _obscureText = true;
   bool _acceptTerms = false;
-  String selectedPhoneCode = '+234';
+  //String selectedPhoneCode = '+234';
   String selectedCountryLogo = '';
   Color phoneEntryBorderColor = kEntryBorderColor;
 
@@ -55,7 +55,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         showLogo: true,
       ),
       body: Container(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.only(
+          left: 15.0,
+          right: 15.0,
+          top: 15.0,
+        ),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -63,95 +67,103 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Create an Account',
+                    "Create a Shopper's  Account",
                     style: TextStyle(
-                        color: kPrimaryColor, fontSize: size.height * 0.0180),
+                      color: kPrimaryColor,
+                      fontSize: size.height * 0.019,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 20.0),
                 Form(
-                  //key: _loginViewModel.formKey,
+                  key: _registerViewModel.formKey,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: size.width / 2 - 20,
-                            child: TextFormField(
-                              //initialValue: initialUser,
-                              readOnly: _registerViewModel.creatingAccount,
-                              decoration: ThemeHelper().textInputDecoration(
-                                'First Name',
-                                'Enter first name',
-                                const Icon(
-                                  Icons.person,
-                                  color: kLightGrayColor,
-                                  size: 20.0,
-                                ),
-                              ),
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                  RegExp(r"[a-zA-Z]+|\s"),
-                                ),
-                              ],
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Enter first name';
-                                }
-                                if (!val.isValidName) {
-                                  return 'Enter valid name';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              style: TextStyle(fontSize: size.height * 0.0170),
-                              controller:
-                                  _registerViewModel.firstnameController,
-                              keyboardType: TextInputType.text,
+                      Container(
+                        //width: size.width / 2 - 20,
+                        child: TextFormField(
+                          //initialValue: initialUser,
+                          readOnly: _registerViewModel.creatingAccount,
+                          decoration: ThemeHelper().textInputDecoration(
+                            'First Name',
+                            'Enter first name',
+                            const Icon(
+                              Icons.person,
+                              color: kLightGrayColor,
+                              size: 20.0,
                             ),
-                            decoration:
-                                ThemeHelper().inputBoxDecorationShaddow(),
                           ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          Container(
-                            width: size.width / 2 - 20,
-                            child: TextFormField(
-                              //initialValue: initialUser,
-                              readOnly: _registerViewModel.creatingAccount,
-                              decoration: ThemeHelper().textInputDecoration(
-                                'Last Name',
-                                'Enter last name',
-                                const Icon(
-                                  Icons.person,
-                                  color: kLightGrayColor,
-                                  size: 20.0,
-                                ),
-                              ),
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                  RegExp(r"[a-zA-Z]+|\s"),
-                                ),
-                              ],
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Enter last name';
-                                }
-                                if (!val.isValidName) {
-                                  return 'Enter valid name';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              style: TextStyle(fontSize: size.height * 0.0170),
-                              controller: _registerViewModel.lastnameController,
-                              keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r"[a-zA-Z]+|\s"),
                             ),
-                            decoration:
-                                ThemeHelper().inputBoxDecorationShaddow(),
+                          ],
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter first name';
+                            }
+                            // if (!val.isValidName) {
+                            //   return 'Enter valid name';
+                            // }
+                            else {
+                              return null;
+                            }
+                          },
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
                           ),
-                        ],
+                          textInputAction: TextInputAction.next,
+                          controller: _registerViewModel.firstnameController,
+                          keyboardType: TextInputType.text,
+                        ),
+                        decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Container(
+                        //width: size.width,
+                        child: TextFormField(
+                          //initialValue: initialUser,
+                          readOnly: _registerViewModel.creatingAccount,
+                          decoration: ThemeHelper().textInputDecoration(
+                            'Last Name',
+                            'Enter last name',
+                            const Icon(
+                              Icons.person,
+                              color: kLightGrayColor,
+                              size: 20.0,
+                            ),
+                          ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r"[a-zA-Z]+|\s"),
+                            ),
+                          ],
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter last name';
+                            }
+                            // if (!val.isValidName) {
+                            //   return 'Enter valid name';
+                            // }
+                            else {
+                              return null;
+                            }
+                          },
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                          ),
+                          textInputAction: TextInputAction.next,
+                          controller: _registerViewModel.lastnameController,
+                          keyboardType: TextInputType.text,
+                        ),
+                        decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
                       const SizedBox(height: 10.0),
                       Container(
@@ -161,11 +173,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: ThemeHelper().textInputDecoration(
                             'Username',
                             'Choose Username',
-                            null,
+                            const Icon(
+                              Icons.verified_user,
+                              color: kLightGrayColor,
+                              size: 20.0,
+                            ),
                             _registerViewModel.checkingUsername
-                                ? const CircularProgressIndicator(
-                                    strokeWidth: 4.0,
-                                    color: kPrimaryColor,
+                                ? Transform.scale(
+                                    scale: 0.35,
+                                    child: const CircularProgressIndicator(
+                                      color: kPrimaryColor,
+                                      strokeWidth: 4.0,
+                                    ),
                                   )
                                 : _registerViewModel.isUsernameAvailable
                                     ? Icon(
@@ -182,16 +201,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             size: size.height * 0.03,
                                           ),
                           ),
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (value) {
+                            print(value);
+                            String val =
+                                _registerViewModel.usernameController.text;
+                            _registerViewModel.checkUsernameAsync(
+                              context,
+                              val,
+                            );
+                          },
                           validator: (val) {
                             if (val!.isEmpty) {
                               return 'Enter username';
                             }
-                            if (!val.isValidUserName) {
-                              return 'Enter valid username.';
-                            } else {
+                            // if (!val.isValidUserName) {
+                            //   return 'Enter valid username.';
+                            // }
+                            else {
                               return null;
                             }
                           },
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                          ),
                           controller: _registerViewModel.usernameController,
                           keyboardType: TextInputType.text,
                         ),
@@ -199,7 +235,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 10.0),
                       Container(
-                        padding: const EdgeInsets.only(left: 10.0),
+                        padding: EdgeInsets.zero,
                         child: Row(
                           children: [
                             GestureDetector(
@@ -210,7 +246,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   onSelect: (Country country) {
                                     setState(() {
                                       selectedCountryLogo = country.flagEmoji;
-                                      selectedPhoneCode = country.phoneCode;
+                                      RegisterViewModel.countryCode =
+                                          country.phoneCode;
                                       print(
                                           'Select country: ${country.displayName}');
                                     });
@@ -235,32 +272,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                 );
                               },
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    selectedCountryLogo,
-                                    style: TextStyle(
+                              child: Container(
+                                padding: const EdgeInsets.all(10.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7.0),
+                                  border: Border.all(
+                                      color: phoneEntryBorderColor, width: 1.0),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      selectedCountryLogo,
+                                      style: TextStyle(
+                                          color: kPlaceholderColor,
+                                          fontFamily: kDefaultFont,
+                                          fontSize: size.height * 0.025),
+                                    ),
+                                    const SizedBox(
+                                      width: 5.0,
+                                    ),
+                                    Text(
+                                      RegisterViewModel.countryCode,
+                                      style: TextStyle(
                                         color: kPlaceholderColor,
                                         fontFamily: kDefaultFont,
-                                        fontSize: size.height * 0.025),
-                                  ),
-                                  const SizedBox(
-                                    width: 5.0,
-                                  ),
-                                  Text(
-                                    selectedPhoneCode,
-                                    style: TextStyle(
-                                        color: kPlaceholderColor,
-                                        fontFamily: kDefaultFont,
-                                        fontSize: size.height * 0.015),
-                                  ),
-                                  const Icon(
-                                    UniconsLine.angle_down,
-                                    color: kPlaceholderColor,
-                                  )
-                                ],
+                                        fontSize: size.height * 0.018,
+                                      ),
+                                    ),
+                                    const Icon(
+                                      UniconsLine.angle_down,
+                                      color: kPlaceholderColor,
+                                    )
+                                  ],
+                                ),
                               ),
+                            ),
+                            const SizedBox(
+                              width: 5.0,
                             ),
                             Expanded(
                               child: TextFormField(
@@ -271,35 +320,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   'Enter phone number',
                                   null,
                                   null,
-                                  false,
                                 ),
-                                onChanged: (text) {
-                                  setState(() {
-                                    phoneEntryBorderColor = kPrimaryColor;
-                                    print("First text field: $text");
-                                  });
-                                },
+                                textInputAction: TextInputAction.next,
                                 validator: (val) {
-                                  if (val!.isEmpty) {
+                                  if (val == "") {
                                     return 'Enter phone number';
                                   }
-                                  if (!val.isValidPhone) {
-                                    return 'Enter valid phone number';
-                                  } else {
+                                  // if (!val.isValidPhone) {
+                                  //   return 'Enter valid phone number';
+                                  // }
+                                  else {
                                     return null;
                                   }
                                 },
+                                style: TextStyle(
+                                  fontSize: size.height * 0.019,
+                                  fontWeight: FontWeight.w500,
+                                  color: kPrimaryTextColor,
+                                  fontFamily: kDefaultFont,
+                                ),
                                 controller:
                                     _registerViewModel.phonenumberController,
-                                keyboardType: TextInputType.text,
+                                keyboardType: TextInputType.number,
                               ),
                             ),
                           ],
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          border: Border.all(
-                              color: phoneEntryBorderColor, width: 1.0),
                         ),
                       ),
                       const SizedBox(height: 10.0),
@@ -326,9 +371,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return null;
                             }
                           },
+                          textInputAction: TextInputAction.next,
                           controller: _registerViewModel.emailController,
                           style: TextStyle(
-                            fontSize: size.height * 0.0170,
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
                           ),
                           keyboardType: TextInputType.emailAddress,
                         ),
@@ -364,13 +413,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (val!.isEmpty) {
                               return 'Enter password';
                             }
-                            if (!val.isValidPassword) {
-                              return 'Enter valid password with combinations of Caps, small letter, number, and characters.';
-                            } else {
+                            // if (!val.isValidPassword) {
+                            //   return 'Enter valid password with combinations of Caps, small letter, number, and characters.';
+                            // }
+                            else {
                               return null;
                             }
                           },
-                          style: TextStyle(fontSize: size.height * 0.0170),
+                          textInputAction: TextInputAction.next,
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                          ),
                           keyboardType: TextInputType.text,
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -406,13 +462,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (val!.isEmpty) {
                               return 'Re-enter password';
                             }
-                            if (!val.isValidPassword) {
-                              return 'Enter valid password with combinations of Caps, small letter, number, and characters.';
+                            // if (!val.isValidPassword) {
+                            //   return 'Enter valid password with combinations of Caps, small letter, number, and characters.';
+                            // }
+                            if (val !=
+                                _registerViewModel.passwordController.text) {
+                              return 'Password does not match.';
                             } else {
                               return null;
                             }
                           },
-                          style: TextStyle(fontSize: size.height * 0.0170),
+                          textInputAction: TextInputAction.done,
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                          ),
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
@@ -445,15 +511,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       style: TextStyle(
                                         color: kDarkColor,
                                         fontFamily: kDefaultFont,
-                                        fontWeight: FontWeight.w200,
-                                        fontSize: size.height * 0.015,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: size.height * 0.018,
                                       ),
                                     ),
                                     TextSpan(
                                       text: "Terms of Service of Use",
                                       style: TextStyle(
                                         color: kPrimaryColor,
-                                        fontSize: size.height * 0.015,
+                                        fontSize: size.height * 0.018,
                                         fontFamily: kDefaultFont,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -463,14 +529,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       style: TextStyle(
                                         color: kPlaceholderColor,
                                         fontFamily: kDefaultFont,
-                                        fontSize: size.height * 0.015,
+                                        fontSize: size.height * 0.018,
                                       ),
                                     ),
                                     TextSpan(
                                       text: "Privacy Policy",
                                       style: TextStyle(
                                         color: kPrimaryColor,
-                                        fontSize: size.height * 0.015,
+                                        fontSize: size.height * 0.018,
                                         fontFamily: kDefaultFont,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -488,9 +554,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       AppButton(
                         text: "Create Account",
                         type: ButtonType.primary,
+                        loading: _registerViewModel.creatingAccount,
                         onPressed: () {
                           _registerViewModel.registerNewUserAsync(context);
-                          //CustomRouter.nextScreen(context, "/verifyOtp");
                         },
                       ),
                       const SizedBox(

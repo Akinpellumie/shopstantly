@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+//import 'package:hexcolor/hexcolor.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/dimensions.dart';
@@ -22,9 +22,11 @@ class ThemeHelper {
           fontFamily: kDefaultFont),
       hintText: hintText,
       hintStyle: const TextStyle(
-          color: kPlaceholderColor,
-          fontWeight: FontWeight.normal,
-          fontFamily: kDefaultFont,),
+        color: kPlaceholderColor,
+        fontWeight: FontWeight.normal,
+        fontFamily: kDefaultFont,
+        fontSize: 12.0,
+      ),
       fillColor: bgColor,
       filled: true,
       contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -32,7 +34,7 @@ class ThemeHelper {
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
           color:
-              showBorder ? kPrimaryColor.withOpacity(0.4) : Colors.transparent,
+              showBorder ? kPrimaryColor.withOpacity(0.85) : Colors.transparent,
           width: 0.5,
         ),
       ),
@@ -44,7 +46,7 @@ class ThemeHelper {
         ),
       ),
       prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+      suffixIcon: suffixIcon,
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(7.0),
         borderSide: BorderSide(
@@ -78,9 +80,10 @@ class ThemeHelper {
           fontFamily: kDefaultFont),
       hintText: hintText,
       hintStyle: const TextStyle(
-          color: kPostEntryTextColor,
-          fontWeight: FontWeight.normal,
-          fontFamily: kDefaultFont,),
+        color: kPostEntryTextColor,
+        fontWeight: FontWeight.normal,
+        fontFamily: kDefaultFont,
+      ),
       fillColor: bgColor,
       filled: true,
       contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -167,12 +170,12 @@ class ThemeHelper {
       [String color1 = "", String color2 = ""]) {
     Color c1 = kPrimaryColor;
     Color c2 = kPrimaryColor;
-    if (color1.isEmpty == false) {
-      c1 = HexColor(color1);
-    }
-    if (color2.isEmpty == false) {
-      c2 = HexColor(color2);
-    }
+    // if (color1.isEmpty == false) {
+    //   c1 = HexColor(color1);
+    // }
+    // if (color2.isEmpty == false) {
+    //   c2 = HexColor(color2);
+    // }
 
     return BoxDecoration(
       // ignore: prefer_const_literals_to_create_immutables

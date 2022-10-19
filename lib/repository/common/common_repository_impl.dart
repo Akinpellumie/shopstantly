@@ -12,10 +12,15 @@ import 'common_repository.dart';
 
 class CommonRepositoryImpl implements CommonRepository {
   @override
-  Future<Tuple> uploadFileToServer(File file, String fileName) async {
+  Future<Tuple> uploadFileToServer(
+      File file, String fileName, String userId) async {
     try {
+      String url = "${ApiUrl.fileUploadUrl}/$userId";
       var data = await RequestHelper.postImageApi(
-          ApiUrl.fileUploadUrl, fileName, file,);
+        url,
+        fileName,
+        file,
+      );
       int status = getHttpStatus(data!.statusCode);
       if (status == 200) {
         var result = FileUploadModel.fromJson(jsonDecode(data.body));

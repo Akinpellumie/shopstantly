@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
+import 'package:shopstantly_app/extensions/string_extension.dart';
 import 'package:shopstantly_app/utils/app_button.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
@@ -12,6 +14,7 @@ import '../../../utils/app_colors.dart';
 import '../../../utils/app_styling.dart';
 import '../../../utils/base_app_bar.dart';
 import '../../../utils/custom_router.dart';
+import '../../../view_models/auth/login_view_model.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -42,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    LoginViewModel viewModel = context.watch<LoginViewModel>();
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Login',
@@ -49,7 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
         showLogo: true,
       ),
       body: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(
+          left: 20.0,
+          right: 20.0,
+          top: 20.0,
+        ),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -63,13 +71,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20.0),
                 Form(
-                  //key: _loginViewModel.formKey,
+                  key: viewModel.formKey,
                   child: Column(
                     children: [
                       Container(
                         child: TextFormField(
-                          //initialValue: initialUser,
-                          //readOnly: _loginViewModel.loggingIn,
+                          readOnly: viewModel.loggingIn,
                           decoration: ThemeHelper().textInputDecoration(
                             'Email',
                             'Enter Mail',
@@ -79,30 +86,33 @@ class _LoginScreenState extends State<LoginScreen> {
                               size: 20.0,
                             ),
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: '',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "User ID",
-                              //   'Enter a valid user ID',
-                              // );
-                            } else {
-                              //_loginViewModel.removeError("userId");
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter preferred email';
                             }
-                            return null;
+                            if (!val.isValidEmail) {
+                              return 'Enter valid email';
+                            } else {
+                              return null;
+                            }
                           },
-                          //controller: _loginViewModel.userIdController,
-                          style: TextStyle(fontSize: size.height * 0.0170),
-                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.next,
+                          controller: viewModel.emailController,
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                          ),
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
                       const SizedBox(height: 15.0),
                       Container(
                         child: TextFormField(
-                          // readOnly: _loginViewModel.loggingIn,
-                          // controller: _loginViewModel.passwordController,
+                          readOnly: viewModel.loggingIn,
+                          controller: viewModel.passwordController,
                           obscureText: _obscureText,
                           obscuringCharacter: "*",
                           decoration: ThemeHelper().passwordInputDecoration(
@@ -122,30 +132,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                       size: 20.0,
                                     ),
                             ),
-                            // Image.asset(
-                            //   AssetsPath.lock,
-                            //   height: 20.0,
-                            // ),
                             const Icon(
                               CupertinoIcons.lock_fill,
                               color: kLightGrayColor,
                               size: 20.0,
                             ),
                           ),
-                          validator: (v) {
-                            if (!RequiredValidator(
-                              errorText: '',
-                            ).isValid(v)) {
-                              // _loginViewModel.setError(
-                              //   "Password",
-                              //   'Enter a valid password',
-                              // );
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return 'Enter password';
                             } else {
-                              //_loginViewModel.removeError("password");
+                              return null;
                             }
-                            return null;
                           },
-                          style: TextStyle(fontSize: size.height * 0.0170),
+                          textInputAction: TextInputAction.done,
+                          style: TextStyle(
+                            fontSize: size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryTextColor,
+                            fontFamily: kDefaultFont,
+                          ),
                         ),
                         decoration: ThemeHelper().inputBoxDecorationShaddow(),
                       ),
@@ -207,8 +213,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       AppButton(
                         text: "Sign In",
                         type: ButtonType.primary,
+                        loading: viewModel.loggingIn,
                         onPressed: () {
-                          CustomRouter.nextScreen(context, "/mainPage");
+                          viewModel.loginUser(context);
+                          //CustomRouter.nextScreen(context, "/mainPage");
                         },
                       ),
                       const SizedBox(

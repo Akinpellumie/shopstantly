@@ -4,7 +4,7 @@ import 'package:shopstantly_app/utils/assets_path.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/dimensions.dart';
-import '../models/general/account_type_model.dart';
+import '../models/common/account_type_model.dart';
 
 class SwitchAccountModal {
   static showAccountListModal(

@@ -40,6 +40,30 @@ class RequestHelper {
     }
   }
 
+  static Future<http.Response?> putApi(String url, dynamic data) async {
+    try {
+      String token = await SharedPrefs.getString('userToken');
+      var res = await http.put(Uri.parse(url),
+          headers: url == ApiUrl.loginUrl
+              ? {'Content-Type': 'application/json'}
+              : {'Content-Type': 'application/json', 'Authorization': token},
+          body: data);
+      int status = getHttpStatus(res.statusCode);
+      if (status == 200) {
+        return res;
+      } else if (status == 401) {
+        return res;
+      } else if (status == 400 && url == ApiUrl.loginUrl) {
+        return res;
+      } else {
+        return res;
+      }
+    } on Exception catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
   static Future<http.Response?> postImageApi(
       String url, String fileName, File imageFile) async {
     try {
