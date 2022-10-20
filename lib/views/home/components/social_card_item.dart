@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shopstantly_app/utils/custom_router.dart';
 import 'package:shopstantly_app/views/home/components/single_image_card.dart';
 import 'package:shopstantly_app/views/home/components/single_video_card.dart';
+import 'package:shopstantly_app/views/popups/auth_pop_up.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../components/video_card.dart';
@@ -43,6 +44,30 @@ class SocialCardItem extends StatelessWidget {
           children: [
             Row(
               children: [
+                Icon(
+                  Icons.cached_outlined,
+                  color: kPlaceholderColor,
+                  size: size.height * 0.025,
+                ),
+                const SizedBox(
+                  width: 5.0,
+                ),
+                Text(
+                  'toyosiolufade reshared +28 others engaged',
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontFamily: kDefaultFont,
+                    fontSize: size.height * 0.0140,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5.0,
+            ),
+            Row(
+              children: [
                 Expanded(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,19 +75,25 @@ class SocialCardItem extends StatelessWidget {
                       Container(
                         width: 40.0,
                         height: 40.0,
-                        padding: const EdgeInsets.all(2.0),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 2.0,
+                          vertical: 2.0,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: kPrimaryColor,
+                            width: 2.0,
                           ),
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: ClipRRect(
-                            borderRadius: BorderRadius.circular(4.0),
-                            child: Image.asset(
-                              AssetsPath.image2,
-                              fit: BoxFit.cover,
-                            )),
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            AssetsPath.image2,
+                            fit: BoxFit.cover,
+                            height: 25.0,
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         width: 10.0,
@@ -78,7 +109,7 @@ class SocialCardItem extends StatelessWidget {
                                 style: TextStyle(
                                   color: kPrimaryColor,
                                   fontFamily: kDefaultFont,
-                                  fontSize: size.height * 0.0150,
+                                  fontSize: size.height * 0.0170,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -86,7 +117,7 @@ class SocialCardItem extends StatelessWidget {
                                 width: 5.0,
                               ),
                               const Icon(
-                                Icons.check_circle,
+                                Icons.verified_user,
                                 color: kOrangeColor,
                                 size: 15.0,
                               ),
@@ -97,7 +128,7 @@ class SocialCardItem extends StatelessWidget {
                             style: TextStyle(
                               color: kPrimaryColor,
                               fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0130,
+                              fontSize: size.height * 0.0150,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
@@ -161,89 +192,101 @@ class SocialCardItem extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          CupertinoIcons.heart,
-                          color: kPlaceholderColor,
-                          size: size.height * 0.03,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      GestureDetector(
-                        onTap: () =>
-                            CustomRouter.nextScreen(context, '/commentScreen'),
-                        child: Icon(
-                          CupertinoIcons.chat_bubble,
-                          color: kPlaceholderColor,
-                          size: size.height * 0.03,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      GestureDetector(
-                        onTap: () => {},
-                        child: Icon(
-                          Icons.share_outlined,
-                          color: kPlaceholderColor,
-                          size: size.height * 0.03,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      GestureDetector(
-                        onTap: () => {},
-                        child: Icon(
-                          CupertinoIcons.bookmark,
-                          color: kPlaceholderColor,
-                          size: size.height * 0.03,
-                        ),
-                      ),
-                    ],
+                  IconButton(
+                    icon: Icon(
+                      CupertinoIcons.heart,
+                      color: kPlaceholderColor,
+                      size: size.height * 0.04,
+                    ),
+                    onPressed: () {
+                      Future.delayed(Duration.zero, () {
+                        AuthPopUp.authPopupModal(
+                          context,
+                        );
+                      });
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      CupertinoIcons.chat_bubble,
+                      color: kPlaceholderColor,
+                      size: size.height * 0.04,
+                    ),
+                    onPressed: () {
+                      CustomRouter.nextScreen(context, '/commentScreen');
+                      // Future.delayed(Duration.zero, () {
+                      //   AuthPopUp.authPopupModal(
+                      //     context,
+                      //   );
+                      // });
+                    },
+                  ),
+                  IconButton(
+                    onPressed: () => {},
+                    icon: Icon(
+                      Icons.cached_outlined,
+                      color: kPlaceholderColor,
+                      size: size.height * 0.04,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => {},
+                    icon: Icon(
+                      Icons.share_outlined,
+                      color: kPlaceholderColor,
+                      size: size.height * 0.04,
+                    ),
                   ),
                   const SizedBox(
                     width: 10.0,
                   ),
-                  Flexible(
-                    child: Row(
-                      children: [
-                        FacePile(
-                          radius: 10,
-                          space: 12,
-                          images: const [
-                            NetworkImage("https://i.pravatar.cc/300?img=1"),
-                            NetworkImage("https://i.pravatar.cc/300?img=2"),
-                            NetworkImage("https://i.pravatar.cc/300?img=3"),
-                          ],
-                          border: Border.all(color: kWhiteColor, width: 2),
-                        ),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
-                        Flexible(
-                          child: Text(
-                            '+28 others engaged this post',
-                            style: TextStyle(
-                              fontFamily: kDefaultFont,
-                              fontSize: size.height * 0.0130,
-                              fontWeight: FontWeight.normal,
-                              color: kPlaceholderColor.withOpacity(0.75),
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
+                  IconButton(
+                    onPressed: () => {},
+                    icon: Icon(
+                      CupertinoIcons.bookmark,
+                      color: kPlaceholderColor,
+                      size: size.height * 0.04,
                     ),
                   ),
                 ],
               ),
+              // const SizedBox(
+              //   width: 10.0,
+              // ),
+              // Flexible(
+              //   child: Row(
+              //     children: [
+              //       FacePile(
+              //         radius: 10,
+              //         space: 12,
+              //         images: const [
+              //           NetworkImage("https://i.pravatar.cc/300?img=1"),
+              //           NetworkImage("https://i.pravatar.cc/300?img=2"),
+              //           NetworkImage("https://i.pravatar.cc/300?img=3"),
+              //         ],
+              //         border: Border.all(color: kWhiteColor, width: 2),
+              //       ),
+              //       const SizedBox(
+              //         width: 5.0,
+              //       ),
+              //       Flexible(
+              //         child: Text(
+              //           '+28 others engaged this post',
+              //           style: TextStyle(
+              //             fontFamily: kDefaultFont,
+              //             fontSize: size.height * 0.0130,
+              //             fontWeight: FontWeight.normal,
+              //             color: kPlaceholderColor.withOpacity(0.75),
+              //           ),
+              //           overflow: TextOverflow.ellipsis,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ),
             const SizedBox(
               height: 10.0,
@@ -278,7 +321,8 @@ class SocialCardItem extends StatelessWidget {
     );
   }
 
-  Widget displayWidget(bool isVideo, String? videoUrl, Size _size, List<String> _imageUrls) {
+  Widget displayWidget(
+      bool isVideo, String? videoUrl, Size _size, List<String> _imageUrls) {
     if (_imageUrls.length == 1 && !isVideo) {
       return SingleImageCard(
         imageUrl: _imageUrls[0],
@@ -293,11 +337,10 @@ class SocialCardItem extends StatelessWidget {
     }
     if (_imageUrls.length == 4 && !isVideo) {
       return ImageGridPost(size: _size, imageUrls: _imageUrls);
-    } 
+    }
     if (isVideo && videoUrl!.isNotEmpty) {
       return SingleVideoCard(size: size, videoUrl: videoUrl);
-    } 
-    else {
+    } else {
       return SingleImageCard(
         imageUrl: _imageUrls[0],
         size: _size,

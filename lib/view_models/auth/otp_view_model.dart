@@ -46,10 +46,11 @@ class OtpViewModel extends ChangeNotifier {
   Future<void> activateAcctAsync(BuildContext context, String userId) async {
     try {
       String otp =
-          '${_otp1Controller.text}${_otp2Controller.text}${_otp3Controller.text}${_otp3Controller.text}';
+          '${_otp1Controller.text}${_otp2Controller.text}${_otp3Controller.text}${_otp4Controller.text}';
       if (otp.isEmpty || otp.length != 4) {
         return;
       } else {
+        _toggleActivating(true);
         Tuple result = await _registerRepoImpl.activateAccount(userId, otp);
         if (result.response != null && result.statusCode == 200) {
           ValidationModel response = result.response as ValidationModel;

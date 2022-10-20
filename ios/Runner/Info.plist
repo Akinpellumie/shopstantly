@@ -49,6 +49,9 @@
 	<string>This app would like to access your location to enable feature and support for users.</string>	
 	<key>NSLocationWhenInUseUsageDescription</key>	
 	<string>This app would like to access your location to enable feature and support for users. </string>
-	
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app would like to access your photo library to choose your preffered display picture.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app would like to access your device camera to capture your profile picture.</string>
 </dict>
 </plist>

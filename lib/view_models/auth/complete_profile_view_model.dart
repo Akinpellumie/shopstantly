@@ -288,7 +288,7 @@ class CompleteProfileViewModel extends ChangeNotifier {
           );
           CustomRouter.nextScreen(
             context,
-            "/verifyOtp",
+            "/mainPage",
           );
           print(response);
         } else if (result.statusCode != 200 || result.error != null) {

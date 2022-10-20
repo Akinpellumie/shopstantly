@@ -42,22 +42,22 @@ class _OtpScreenState extends State<OtpScreen> {
                   height: 40.0,
                 ),
                 Text(
-                  "Verify Email",
+                  "Verify Account",
                   style: TextStyle(
                     color: kDarkColor,
                     fontFamily: kDefaultFont,
                     fontWeight: FontWeight.w500,
-                    fontSize: size.height * 0.019,
+                    fontSize: size.height * 0.025,
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                const Text(
+                Text(
                   "Enter one time verification code sent to your Email",
                   style: TextStyle(
+                    fontSize: size.height * 0.019,
                     color: kPlaceholderColor,
                     fontFamily: kDefaultFont,
                     fontWeight: FontWeight.w400,
-                    fontSize: kNormalText,
                   ),
                 ),
                 const SizedBox(

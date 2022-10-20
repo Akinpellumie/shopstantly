@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -50,7 +49,7 @@ class CustomSnackbar extends StatelessWidget {
             horizontal: 15,
             vertical: 10,
           ),
-          height: size.height * 0.12,
+          height: size.height * 0.15,
           decoration: BoxDecoration(
             color: color ?? contentType.color,
             borderRadius: BorderRadius.circular(20),

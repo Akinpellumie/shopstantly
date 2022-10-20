@@ -68,10 +68,10 @@ class _FeedViewState extends State<FeedView> {
                             width: widget.size.width / 6,
                             decoration: BoxDecoration(
                               border: Border.all(
-                                width: 1.0,
+                                width: 3.0,
                                 color: kPlaceholderColor,
                               ),
-                              borderRadius: BorderRadius.circular(15.0),
+                              borderRadius: BorderRadius.circular(25.0),
                             ),
                             child: const Icon(
                               Icons.add,
@@ -97,19 +97,23 @@ class _FeedViewState extends State<FeedView> {
                           Container(
                             height: 60.0,
                             width: widget.size.width / 6,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 4.0,
+                              vertical: 3.0,
+                            ),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                width: 1.0,
-                                color: kPlaceholderColor,
+                                width: 3.0,
+                                color: kPrimaryColor,
                               ),
-                              borderRadius: BorderRadius.circular(15.0),
+                              borderRadius: BorderRadius.circular(23.0),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Image.asset(
                                 AssetsPath.image1,
                                 fit: BoxFit.cover,
-                                height: 60.0,
+                                height: 50.0,
                                 width: widget.size.width / 6,
                               ),
                             ),
@@ -133,19 +137,23 @@ class _FeedViewState extends State<FeedView> {
                           Container(
                             height: 60.0,
                             width: widget.size.width / 6,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 4.0,
+                              vertical: 3.0,
+                            ),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                width: 1.0,
-                                color: kPlaceholderColor,
+                                width: 3.0,
+                                color: kPrimaryColor,
                               ),
-                              borderRadius: BorderRadius.circular(15.0),
+                              borderRadius: BorderRadius.circular(23.0),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Image.asset(
                                 AssetsPath.image2,
                                 fit: BoxFit.cover,
-                                height: 60.0,
+                                height: 50.0,
                                 width: widget.size.width / 6,
                               ),
                             ),
@@ -169,19 +177,23 @@ class _FeedViewState extends State<FeedView> {
                           Container(
                             height: 60.0,
                             width: widget.size.width / 6,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 4.0,
+                              vertical: 3.0,
+                            ),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                width: 1.0,
-                                color: kPlaceholderColor,
+                                width: 3.0,
+                                color: kPlaceholderColor.withOpacity(0.70),
                               ),
-                              borderRadius: BorderRadius.circular(15.0),
+                              borderRadius: BorderRadius.circular(23.0),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Image.asset(
                                 AssetsPath.image1,
                                 fit: BoxFit.cover,
-                                height: 60.0,
+                                height: 50.0,
                                 width: widget.size.width / 6,
                               ),
                             ),
@@ -205,19 +217,23 @@ class _FeedViewState extends State<FeedView> {
                           Container(
                             height: 60.0,
                             width: widget.size.width / 6,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 4.0,
+                              vertical: 3.0,
+                            ),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                width: 1.0,
-                                color: kPlaceholderColor,
+                                width: 3.0,
+                                color: kPlaceholderColor.withOpacity(0.70),
                               ),
-                              borderRadius: BorderRadius.circular(15.0),
+                              borderRadius: BorderRadius.circular(23.0),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: Image.asset(
                                 AssetsPath.image2,
                                 fit: BoxFit.cover,
-                                height: 60.0,
+                                height: 50.0,
                                 width: widget.size.width / 6,
                               ),
                             ),

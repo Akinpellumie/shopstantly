@@ -56,8 +56,36 @@ class _TrendViewState extends State<TrendView> {
           height: 10.0,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: buildChoiceChips(size),
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 50,
+                child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  //shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: choiceChips.length,
+                  itemBuilder: (context, index) {
+                    return index.isEven ? buildChoiceChips(size) : Container();
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  //shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: choiceChips.length,
+                  itemBuilder: (context, index) {
+                    return index.isOdd ? buildChoiceChips(size) : Container();
+                  },
+                ),
+              )
+            ],
+          ),
+          //buildChoiceChips(size),
         ),
         const SizedBox(
           height: 20.0,

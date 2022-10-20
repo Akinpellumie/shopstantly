@@ -5,6 +5,7 @@ import '../utils/app_colors.dart';
 import '../utils/helpers.dart';
 import '../utils/shared_prefs.dart';
 import 'api_url.dart';
+import 'package:http_parser/http_parser.dart';
 
 class RequestHelper {
   //save user token in constant
@@ -68,7 +69,7 @@ class RequestHelper {
       String url, String fileName, File imageFile) async {
     try {
       //String token = await SharedPrefs.getString('userToken');
-      var postUri = Uri.parse("apiUrl");
+      var postUri = Uri.parse(url);
 
       http.MultipartRequest request = http.MultipartRequest("POST", postUri);
 
@@ -76,6 +77,7 @@ class RequestHelper {
         'file',
         imageFile.path,
         filename: fileName,
+        contentType: MediaType('image', 'jpeg'),
       );
 
       request.files.add(multipartFile);

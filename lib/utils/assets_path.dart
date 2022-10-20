@@ -2,12 +2,18 @@ import 'package:flutter/cupertino.dart';
 
 /// path to various SVGs being used from `assets` folder
 class AssetsPath {
-    static const String help = 'assets/icons/help.svg';
+  static const String help = 'assets/icons/help.svg';
   static const String failure = 'assets/icons/failure.svg';
   static const String successTag = 'assets/icons/successIcon.svg';
   static const String warning = 'assets/icons/warning.svg';
   static const String back = 'assets/icons/back.svg';
   static const String bubbles = 'assets/icons/bubbles.svg';
+  static const String eventMenu = 'assets/icons/eventMenu.svg';
+  static const String videoMenu = 'assets/icons/videoMenu.svg';
+  static const String audioMenu = 'assets/icons/audioMenu.svg';
+  static const String feedMenu = 'assets/icons/feedMenu.svg';
+  static const String trendMenu = 'assets/icons/trendMenu.svg';
+  static const String authSvg = 'assets/images/authSvg.svg';
   static const String logo = 'assets/images/shoplogo.png';
   static const String eyeOff = 'assets/icons/eyeOff.svg';
   static const String profileComplete = 'assets/images/complete.png';

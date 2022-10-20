@@ -78,7 +78,6 @@ class LoginViewModel extends ChangeNotifier {
           _passwordController.text = "";
         } else if (result.statusCode != 200 || result.error != null) {
           showsnackbar(context, result.error, SnackbarContentType.failure);
-          //navigate to account activation if possible
         } else {
           //print(_errorBag);
           showsnackbar(

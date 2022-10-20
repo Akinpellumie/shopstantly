@@ -26,184 +26,190 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 0.0,
-        backgroundColor: kBackgroundColor,
-        elevation: 0.0,
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Image.asset(
-            'assets/images/shoplogo.png',
-            fit: BoxFit.fitHeight,
-            height: 60.0,
-          ),
-        ),
-        actions: [
-          SvgPicture.asset(
-            AssetsPath.searchIcon,
-            color: kIconColor,
-            width: 20.0,
-            height: 20.0,
-          ),
-          const SizedBox(
-            width: 10.0,
-          ),
-          SvgPicture.asset(
-            AssetsPath.settingsIcon,
-            color: kIconColor,
-            width: 20.0,
-            height: 20.0,
-          ),
-          const SizedBox(
-            width: 20.0,
-          ),
-        ],
-      ),
-      body: CustomScrollView(
-        controller: ScrollController(
-          keepScrollOffset: true,
-        ),
-        slivers: [
-          SliverAppBar(
-            leadingWidth: 0.0,
-            elevation: 0.0,
-            automaticallyImplyLeading: true,
-            pinned: true,
-            backgroundColor: kBackgroundColor,
-            flexibleSpace: FlexibleSpaceBar(
-              titlePadding: const EdgeInsets.all(0.0),
-              centerTitle: false,
-              title: Column(
-                children: [
-                  Container(
-                    height: 1.0,
-                    margin: const EdgeInsets.symmetric(vertical: 10.0),
-                    width: size.width,
-                    color: kLightGrayColor.withOpacity(0.45),
-                  ),
-                  Container(
-                    width: size.width,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = 0;
-                            });
-                          },
-                          child: menuTabItem(
-                            size,
-                            'Trend',
-                            selectedIndex == 0 ? true : false,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = 1;
-                            });
-                          },
-                          child: menuTabItem(
-                            size,
-                            'Feed',
-                            selectedIndex == 1 ? true : false,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = 2;
-                            });
-                          },
-                          child: menuTabItem(
-                            size,
-                            'Video',
-                            selectedIndex == 2 ? true : false,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = 3;
-                            });
-                          },
-                          child: menuTabItem(
-                            size,
-                            'Audio',
-                            selectedIndex == 3 ? true : false,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = 4;
-                              showFilterTabs = true;
-                            });
-                          },
-                          child: menuTabItem(
-                            size,
-                            'Event',
-                            selectedIndex == 4 ? true : false,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leadingWidth: 0.0,
+          backgroundColor: kBackgroundColor,
+          elevation: 0.0,
+          flexibleSpace: Center(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Image.asset(
+                'assets/images/shoplogo.png',
+                fit: BoxFit.fitHeight,
+                height: 60.0,
               ),
             ),
           ),
-          // //this tab will only appear when event or thrift is active
-          // SliverToBoxAdapter(
-          //   child: Container(
-          //     padding: const EdgeInsets.only(
-          //       left: 20.0,
-          //     ),
-          //     height: selectedIndex < 3 ? 1.0 : size.height * 0.050,
-          //     child: ListView.builder(
-          //       scrollDirection: Axis.horizontal,
-          //       itemCount: getFilterLength(),
-          //       itemBuilder: (context, index) {
-          //         return GestureDetector(
-          //             onTap: () {
-          //               setState(() {
-          //                 switch (selectedIndex) {
-          //                   case 3:
-          //                     thriftFilterIndex = index;
-          //                     break;
-          //                   case 4:
-          //                     eventFilterIndex = index;
-          //                     break;
-          //                   default:
-          //                     break;
-          //                 }
-          //               });
-          //             },
-          //             child: displayFilterTabs(size, index));
-          //       },
-          //     ),
-          //   ),
-          // ),
-
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => Container(
-                padding: const EdgeInsets.symmetric(
-                  //horizontal: selectedIndex == 0 ? 0.0 : 20.0,
-                  vertical: 10.0,
+          actions: [
+            SvgPicture.asset(
+              AssetsPath.searchIcon,
+              color: kIconColor,
+              width: 20.0,
+              height: 20.0,
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            const Icon(
+              Icons.add_circle_outline,
+              color: kIconColor,
+              size: 22.0,
+            ),
+            const SizedBox(
+              width: 20.0,
+            ),
+          ],
+        ),
+        body: CustomScrollView(
+          controller: ScrollController(
+            keepScrollOffset: true,
+          ),
+          slivers: [
+            SliverAppBar(
+              leadingWidth: 0.0,
+              elevation: 0.0,
+              automaticallyImplyLeading: true,
+              pinned: true,
+              backgroundColor: kBackgroundColor,
+              flexibleSpace: FlexibleSpaceBar(
+                titlePadding: const EdgeInsets.all(0.0),
+                centerTitle: false,
+                title: Column(
+                  children: [
+                    Container(
+                      height: 1.0,
+                      margin: const EdgeInsets.symmetric(vertical: 10.0),
+                      width: size.width,
+                      color: kLightGrayColor.withOpacity(0.45),
+                    ),
+                    Container(
+                      width: size.width,
+                      padding: EdgeInsets.zero,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = 0;
+                              });
+                            },
+                            child: menuTabItem(
+                              size,
+                              'Trend',
+                              selectedIndex == 0 ? true : false,
+                              AssetsPath.trendMenu,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = 1;
+                              });
+                            },
+                            child: menuTabItem(
+                              size,
+                              'Feed',
+                              selectedIndex == 1 ? true : false,
+                              AssetsPath.feedMenu,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = 2;
+                              });
+                            },
+                            child: menuTabItem(
+                              size,
+                              'Video',
+                              selectedIndex == 2 ? true : false,
+                              AssetsPath.videoMenu,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = 3;
+                              });
+                            },
+                            child: menuTabItem(
+                              size,
+                              'Audio',
+                              selectedIndex == 3 ? true : false,
+                              AssetsPath.audioMenu,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = 4;
+                                showFilterTabs = true;
+                              });
+                            },
+                            child: menuTabItem(
+                              size,
+                              'Event',
+                              selectedIndex == 4 ? true : false,
+                              AssetsPath.eventMenu,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                child: displayWidget(size),
               ),
-              childCount: 1,
             ),
-          ),
-        ],
+            // //this tab will only appear when event or thrift is active
+            // SliverToBoxAdapter(
+            //   child: Container(
+            //     padding: const EdgeInsets.only(
+            //       left: 20.0,
+            //     ),
+            //     height: selectedIndex < 3 ? 1.0 : size.height * 0.050,
+            //     child: ListView.builder(
+            //       scrollDirection: Axis.horizontal,
+            //       itemCount: getFilterLength(),
+            //       itemBuilder: (context, index) {
+            //         return GestureDetector(
+            //             onTap: () {
+            //               setState(() {
+            //                 switch (selectedIndex) {
+            //                   case 3:
+            //                     thriftFilterIndex = index;
+            //                     break;
+            //                   case 4:
+            //                     eventFilterIndex = index;
+            //                     break;
+            //                   default:
+            //                     break;
+            //                 }
+            //               });
+            //             },
+            //             child: displayFilterTabs(size, index));
+            //       },
+            //     ),
+            //   ),
+            // ),
+
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => Container(
+                  padding: const EdgeInsets.symmetric(
+                    //horizontal: selectedIndex == 0 ? 0.0 : 20.0,
+                    vertical: 10.0,
+                  ),
+                  child: displayWidget(size),
+                ),
+                childCount: 1,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -252,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  SizedBox menuTabItem(Size size, String title, bool active) {
+  SizedBox menuTabItem(Size size, String title, bool active, String iconPath) {
     return SizedBox(
       //width: boxWidth,
       child: Row(
@@ -264,12 +270,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 horizontal: 5.0,
                 vertical: 5.0,
               ),
+              height: 25.0,
+              width: 25.0,
               decoration: BoxDecoration(
                 color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(5.0),
+                borderRadius: BorderRadius.circular(10.0),
               ),
               child: SvgPicture.asset(
-                AssetsPath.work,
+                iconPath,
                 color: kWhiteColor,
               ),
             ),

@@ -123,10 +123,13 @@ class _PageSwitcherState extends State<PageSwitcher> {
           ),
           Align(
             alignment: Alignment.center,
-            child: Icon(
-              bottomBarMenus[i].iconData,
-              color: isActive ? kPrimaryColor : kPlaceholderColor,
-              size: 24.0,
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 3.0),
+              child: Icon(
+                bottomBarMenus[i].iconData,
+                color: isActive ? kPrimaryColor : kPlaceholderColor,
+                size: 24.0,
+              ),
             ),
           ),
           Align(
@@ -138,7 +141,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
                 style: TextStyle(
                   color: isActive ? kPrimaryColor : kPlaceholderColor,
                   fontFamily: kDefaultFont,
-                  fontSize: 12.0,
+                  fontSize: 11.0,
                   fontWeight: isActive ? FontWeight.w500 : FontWeight.w400,
                 ),
               ),
