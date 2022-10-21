@@ -25,6 +25,9 @@ class _TrendViewState extends State<TrendView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(
+          height: 10.0,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
@@ -34,9 +37,9 @@ class _TrendViewState extends State<TrendView> {
                   'Popular Mentions',
                   style: TextStyle(
                     color: kPrimaryTextColor,
-                    fontSize: size.height * 0.019,
+                    fontSize: size.height * 0.018,
                     fontFamily: kDefaultFont,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -53,7 +56,7 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 10.0,
+          height: 15.0,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
@@ -96,12 +99,12 @@ class _TrendViewState extends State<TrendView> {
             children: [
               Expanded(
                 child: Text(
-                  'Major News',
+                  'Qwik Sales (Suggested)',
                   style: TextStyle(
                     color: kPrimaryTextColor,
-                    fontSize: size.height * 0.019,
+                    fontSize: size.height * 0.018,
                     fontFamily: kDefaultFont,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -118,7 +121,7 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 10.0,
+          height: 15.0,
         ),
         Container(
           height: size.height * 0.28,
@@ -131,84 +134,111 @@ class _TrendViewState extends State<TrendView> {
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               return Container(
-                //height: size.height * 0.25,
-                width: size.width * 0.70,
+                width: size.width * 0.4,
+                height: size.height * 0.25,
                 margin: const EdgeInsets.only(right: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: size.width * 0.70,
-                      height: size.height * 0.20,
-                      //margin: const EdgeInsets.only(bottom: 10.0),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0),
-                        ),
-                        child: Image.network(
-                          'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      'Climate change: Arctic warming linked to colder winters',
-                      style: TextStyle(
-                        color: kPrimaryTextColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: size.height * 0.017,
-                        fontFamily: kDefaultFont,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Nature Channel',
-                          style: TextStyle(
-                            color: kPrimaryLinkColor,
-                            fontWeight: FontWeight.w300,
-                            fontSize: size.height * 0.014,
-                            fontFamily: kDefaultFont,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
-                        Container(
-                          height: 5.0,
-                          width: 5.0,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: kPlaceholderColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          '4mins ago',
-                          style: TextStyle(
-                            color: kPlaceholderColor,
-                            fontWeight: FontWeight.w300,
-                            fontSize: size.height * 0.014,
-                            fontFamily: kDefaultFont,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                  child: Image.network(
+                    'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },
           ),
         ),
+        // Container(
+        //   height: size.height * 0.28,
+        //   padding: const EdgeInsets.only(left: 20.0),
+        //   child: ListView.builder(
+        //     physics: const AlwaysScrollableScrollPhysics(),
+        //     scrollDirection: Axis.horizontal,
+        //     shrinkWrap: true,
+        //     itemCount: 4,
+        //     padding: EdgeInsets.zero,
+        //     itemBuilder: (context, index) {
+        //       return Container(
+        //         //height: size.height * 0.25,
+        //         width: size.width * 0.70,
+        //         margin: const EdgeInsets.only(right: 10.0),
+        //         child: Column(
+        //           crossAxisAlignment: CrossAxisAlignment.stretch,
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: [
+        //             SizedBox(
+        //               width: size.width * 0.70,
+        //               height: size.height * 0.20,
+        //               //margin: const EdgeInsets.only(bottom: 10.0),
+        //               child: ClipRRect(
+        //                 borderRadius: const BorderRadius.all(
+        //                   Radius.circular(10.0),
+        //                 ),
+        //                 child: Image.network(
+        //                   'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+        //                   fit: BoxFit.cover,
+        //                 ),
+        //               ),
+        //             ),
+        //             const SizedBox(
+        //               width: 5.0,
+        //             ),
+        //             Text(
+        //               'Climate change: Arctic warming linked to colder winters',
+        //               style: TextStyle(
+        //                 color: kPrimaryTextColor,
+        //                 fontWeight: FontWeight.w500,
+        //                 fontSize: size.height * 0.017,
+        //                 fontFamily: kDefaultFont,
+        //               ),
+        //             ),
+        //             const SizedBox(
+        //               width: 5.0,
+        //             ),
+        //             Row(
+        //               children: [
+        //                 Text(
+        //                   'Nature Channel',
+        //                   style: TextStyle(
+        //                     color: kPrimaryLinkColor,
+        //                     fontWeight: FontWeight.w300,
+        //                     fontSize: size.height * 0.014,
+        //                     fontFamily: kDefaultFont,
+        //                   ),
+        //                 ),
+        //                 const SizedBox(
+        //                   width: 5.0,
+        //                 ),
+        //                 Container(
+        //                   height: 5.0,
+        //                   width: 5.0,
+        //                   decoration: const BoxDecoration(
+        //                     shape: BoxShape.circle,
+        //                     color: kPlaceholderColor,
+        //                   ),
+        //                 ),
+        //                 const SizedBox(
+        //                   width: 5.0,
+        //                 ),
+        //                 Text(
+        //                   '4mins ago',
+        //                   style: TextStyle(
+        //                     color: kPlaceholderColor,
+        //                     fontWeight: FontWeight.w300,
+        //                     fontSize: size.height * 0.014,
+        //                     fontFamily: kDefaultFont,
+        //                   ),
+        //                 ),
+        //               ],
+        //             ),
+        //           ],
+        //         ),
+        //       );
+        //     },
+        //   ),
+        // ),
         const SizedBox(
           height: 20.0,
         ),
@@ -221,9 +251,9 @@ class _TrendViewState extends State<TrendView> {
                   'Interests',
                   style: TextStyle(
                     color: kPrimaryTextColor,
-                    fontSize: size.height * 0.019,
+                    fontSize: size.height * 0.018,
                     fontFamily: kDefaultFont,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -240,7 +270,7 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 10.0,
+          height: 15.0,
         ),
         Container(
           height: 30.0,
@@ -282,7 +312,7 @@ class _TrendViewState extends State<TrendView> {
                       color: carouselMenus[index].active
                           ? kPrimaryTextColor
                           : kPlaceholderColor,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.normal,
                       fontSize: size.height * 0.018,
                       fontFamily: kDefaultFont,
                     ),
@@ -410,38 +440,40 @@ class _TrendViewState extends State<TrendView> {
         runSpacing: spacing,
         spacing: spacing,
         children: choiceChips
-            .map((choiceChip) => ChoiceChip(
-                  label: Text(choiceChip.label),
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color:
-                        choiceChip.isSelected ? kWhiteColor : kPrimaryTextColor,
-                    fontSize: size.height * 0.017,
+            .map(
+              (choiceChip) => ChoiceChip(
+                label: Text(choiceChip.label),
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  color: choiceChip.isSelected ? kWhiteColor : kTabTextColor,
+                  fontSize: size.height * 0.015,
+                ),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(7.0),
                   ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(7.0),
-                    ),
-                    side: BorderSide(
-                      color: kPrimaryColor,
-                      width: 1.0,
-                    ),
-                  ),
-                  onSelected: (isSelected) => setState(() {
-                    choiceChips = choiceChips.map((otherChip) {
-                      final newChip = otherChip.copy(
-                          isSelected: false, label: choiceChip.label);
+                  // side: BorderSide(
+                  //   color: kPrimaryColor,
+                  //   width: 1.0,
+                  // ),
+                ),
+                onSelected: (isSelected) => setState(() {
+                  choiceChips = choiceChips.map((otherChip) {
+                    final newChip = otherChip.copy(
+                        isSelected: false, label: choiceChip.label);
 
-                      return choiceChip == newChip
-                          ? newChip.copy(
-                              isSelected: isSelected, label: choiceChip.label)
-                          : newChip;
-                    }).toList();
-                  }),
-                  selected: choiceChip.isSelected,
-                  selectedColor: kPrimaryColor,
-                  backgroundColor: Colors.transparent,
-                ))
+                    return choiceChip == newChip
+                        ? newChip.copy(
+                            isSelected: isSelected, label: choiceChip.label)
+                        : newChip;
+                  }).toList();
+                }),
+                selected: choiceChip.isSelected,
+                selectedColor: kPrimaryColor,
+                backgroundColor:
+                    choiceChip.isSelected ? kPrimaryColor : kIconBgColor,
+              ),
+            )
             .toList(),
       );
 }

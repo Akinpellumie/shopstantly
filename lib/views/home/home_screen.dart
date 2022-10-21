@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           leadingWidth: 0.0,
           backgroundColor: kBackgroundColor,
           elevation: 0.0,
+          toolbarHeight: 65.0,
           flexibleSpace: Center(
             child: Align(
               alignment: Alignment.centerLeft,
@@ -46,16 +47,16 @@ class _HomeScreenState extends State<HomeScreen> {
             SvgPicture.asset(
               AssetsPath.searchIcon,
               color: kIconColor,
-              width: 20.0,
-              height: 20.0,
+              width: 22.0,
+              height: 22.0,
             ),
             const SizedBox(
-              width: 10.0,
+              width: 20.0,
             ),
             const Icon(
               Icons.add_circle_outline,
               color: kIconColor,
-              size: 22.0,
+              size: 26.0,
             ),
             const SizedBox(
               width: 20.0,
@@ -80,7 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Container(
                       height: 1.0,
-                      margin: const EdgeInsets.symmetric(vertical: 10.0),
+                      margin: const EdgeInsets.only(
+                        top: 10.0,
+                        bottom: 20.0,
+                      ),
                       width: size.width,
                       color: kLightGrayColor.withOpacity(0.45),
                     ),
@@ -267,8 +271,8 @@ class _HomeScreenState extends State<HomeScreen> {
             visible: active,
             child: Container(
               padding: const EdgeInsets.symmetric(
-                horizontal: 5.0,
-                vertical: 5.0,
+                horizontal: 6.0,
+                vertical: 6.0,
               ),
               height: 25.0,
               width: 25.0,
@@ -289,7 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title,
             style: TextStyle(
               fontFamily: kDefaultFont,
-              fontSize: size.height * 0.0180,
+              fontSize: size.height * 0.015,
               fontWeight: FontWeight.normal,
               color: active ? kPrimaryColor : kPlaceholderColor,
             ),
