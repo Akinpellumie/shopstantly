@@ -26,8 +26,8 @@ void initState() {
   chewieController = ChewieController(
     videoPlayerController: widget.videoPlayerController,
     aspectRatio:5/8,
-    autoInitialize: true,
-    autoPlay: true,
+    autoInitialize: false,
+    autoPlay: false,
     looping: true,
     errorBuilder: (context, errorMessage) {
       return Center(

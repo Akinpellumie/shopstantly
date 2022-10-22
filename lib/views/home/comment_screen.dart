@@ -165,219 +165,206 @@ class _CommentScreenState extends State<CommentScreen> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: 1,
-              shrinkWrap: true,
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 10.0),
+          Column(
+            children: [
+              const SizedBox(
+                height: 15.0,
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 10.0),
+                height: 100.0,
+                child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: 4,
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (context, index) {
+                    return Container(
                       height: 100.0,
-                      child: ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: 4,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            height: 100.0,
-                            width: (size.width / 4) - 10,
-                            margin: const EdgeInsets.only(right: 5.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.network(
-                                _imageUrls[index],
-                                width: (size.width / 4),
-                                height: 100.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          );
-                        },
+                      width: (size.width / 4) - 10,
+                      margin: const EdgeInsets.only(right: 5.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Text(
-                        'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
-                        style: TextStyle(
-                          fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0250,
-                          fontWeight: FontWeight.w500,
-                          color: kPrimaryColor,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          _imageUrls[index],
+                          width: (size.width / 4),
+                          height: 100.0,
+                          fit: BoxFit.cover,
                         ),
                       ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: Text(
+                  'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
+                  style: TextStyle(
+                    fontFamily: kDefaultFont,
+                    fontSize: size.height * 0.0250,
+                    fontWeight: FontWeight.w500,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                width: size.width,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(
+                          CupertinoIcons.eye_fill,
+                          color: kPlaceholderColor,
+                          size: 20.0,
+                        ),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          '125,908 views',
+                          style: TextStyle(
+                            fontFamily: kDefaultFont,
+                            fontSize: size.height * 0.0120,
+                            fontWeight: FontWeight.normal,
+                            color: kPlaceholderColor.withOpacity(0.75),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
-                      height: 5.0,
+                      width: 20.0,
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15.0, bottom: 15.0),
-                      width: size.width,
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                CupertinoIcons.eye_fill,
-                                color: kPlaceholderColor,
-                                size: 20.0,
-                              ),
-                              const SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                '125,908 views',
-                                style: TextStyle(
-                                  fontFamily: kDefaultFont,
-                                  fontSize: size.height * 0.0120,
-                                  fontWeight: FontWeight.normal,
-                                  color: kPlaceholderColor.withOpacity(0.75),
-                                ),
-                              ),
-                            ],
+                    Row(
+                      children: [
+                        const Icon(
+                          CupertinoIcons.heart_fill,
+                          color: kPlaceholderColor,
+                          size: 20.0,
+                        ),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          '47,987 likes',
+                          style: TextStyle(
+                            fontFamily: kDefaultFont,
+                            fontSize: size.height * 0.0120,
+                            fontWeight: FontWeight.normal,
+                            color: kPlaceholderColor.withOpacity(0.75),
                           ),
-                          const SizedBox(
-                            width: 20.0,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                CupertinoIcons.heart_fill,
-                                color: kPlaceholderColor,
-                                size: 20.0,
-                              ),
-                              const SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                '47,987 likes',
-                                style: TextStyle(
-                                  fontFamily: kDefaultFont,
-                                  fontSize: size.height * 0.0120,
-                                  fontWeight: FontWeight.normal,
-                                  color: kPlaceholderColor.withOpacity(0.75),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: messages.length,
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            padding: const EdgeInsets.only(
-                                left: 14, right: 14, top: 10, bottom: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Stack(
-                                  children: [
-                                    const CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          "https://randomuser.me/api/portraits/men/5.jpg"),
-                                      maxRadius: 20,
-                                    ),
-                                    Positioned(
-                                      bottom: 0.0,
-                                      right: 0.0,
-                                      child: Container(
-                                        height: 15.0,
-                                        width: 15.0,
-                                        //padding: const EdgeInsets.all(5.0),
-                                        decoration: BoxDecoration(
-                                          color: kOrangeColor,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            width: 1.0,
-                                            color: kPrimaryColor,
-                                          ),
-                                        ),
-                                        child: const Center(
-                                          child: Icon(
-                                            Icons.check,
-                                            color: kWhiteColor,
-                                            size: 10.0,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 10.0,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Container(
-                                          margin: const EdgeInsets.only(
-                                              right: 50.0),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: kPrimaryColor
-                                                  .withOpacity(0.65),
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              bottomLeft: Radius.circular(20.0),
-                                              topRight: Radius.circular(20.0),
-                                              bottomRight:
-                                                  Radius.circular(20.0),
-                                            ),
-                                          ),
-                                          padding: const EdgeInsets.all(12.0),
-                                          child: Text(
-                                            messages[index].messageContent,
-                                            style: TextStyle(
-                                              fontFamily: kDefaultFont,
-                                              fontSize: size.height * 0.0175,
-                                              fontWeight: FontWeight.normal,
-                                              color: kPrimaryColor,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                        ),
+                      ],
                     ),
                   ],
-                );
-              },
-            ),
+                ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              // Expanded(
+              //   child: ListView.builder(
+              //     itemCount: messages.length,
+              //     shrinkWrap: true,
+              //     padding: const EdgeInsets.only(top: 10, bottom: 10),
+              //     physics: const NeverScrollableScrollPhysics(),
+              //     itemBuilder: (context, index) {
+              //       return Container(
+              //         padding: const EdgeInsets.only(
+              //             left: 14, right: 14, top: 10, bottom: 10),
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.start,
+              //           children: [
+              //             Stack(
+              //               children: [
+              //                 const CircleAvatar(
+              //                   backgroundImage: NetworkImage(
+              //                       "https://randomuser.me/api/portraits/men/5.jpg"),
+              //                   maxRadius: 20,
+              //                 ),
+              //                 Positioned(
+              //                   bottom: 0.0,
+              //                   right: 0.0,
+              //                   child: Container(
+              //                     height: 15.0,
+              //                     width: 15.0,
+              //                     //padding: const EdgeInsets.all(5.0),
+              //                     decoration: BoxDecoration(
+              //                       color: kOrangeColor,
+              //                       shape: BoxShape.circle,
+              //                       border: Border.all(
+              //                         width: 1.0,
+              //                         color: kPrimaryColor,
+              //                       ),
+              //                     ),
+              //                     child: const Center(
+              //                       child: Icon(
+              //                         Icons.check,
+              //                         color: kWhiteColor,
+              //                         size: 10.0,
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 )
+              //               ],
+              //             ),
+              //             const SizedBox(
+              //               width: 10.0,
+              //             ),
+              //             Expanded(
+              //               child: Column(
+              //                 mainAxisAlignment: MainAxisAlignment.start,
+              //                 children: [
+              //                   Align(
+              //                     alignment: Alignment.centerLeft,
+              //                     child: Container(
+              //                       margin: const EdgeInsets.only(right: 50.0),
+              //                       decoration: BoxDecoration(
+              //                         border: Border.all(
+              //                           color: kPrimaryColor.withOpacity(0.65),
+              //                         ),
+              //                         borderRadius: const BorderRadius.only(
+              //                           bottomLeft: Radius.circular(20.0),
+              //                           topRight: Radius.circular(20.0),
+              //                           bottomRight: Radius.circular(20.0),
+              //                         ),
+              //                       ),
+              //                       padding: const EdgeInsets.all(12.0),
+              //                       child: Text(
+              //                         messages[index].messageContent,
+              //                         style: TextStyle(
+              //                           fontFamily: kDefaultFont,
+              //                           fontSize: size.height * 0.0175,
+              //                           fontWeight: FontWeight.normal,
+              //                           color: kPrimaryColor,
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
+            
+            ],
           ),
           SizedBox(
             //height: size.height * 0.15,

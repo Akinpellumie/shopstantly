@@ -2,13 +2,12 @@ import 'package:face_pile/face_pile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:shopstantly_app/utils/custom_router.dart';
+import 'package:shopstantly_app/views/home/components/qwik_sale_card.dart';
 import 'package:shopstantly_app/views/home/components/single_image_card.dart';
 import 'package:shopstantly_app/views/home/components/single_video_card.dart';
 import 'package:shopstantly_app/views/popups/auth_pop_up.dart';
-import 'package:video_player/video_player.dart';
-
-import '../../../components/video_card.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
@@ -23,12 +22,14 @@ class SocialCardItem extends StatelessWidget {
     required List<String> imageUrls,
     this.isVideo = false,
     this.hasMedia = true,
+    this.isQwikSale = false,
     this.videoUrl,
   })  : _imageUrls = imageUrls,
         super(key: key);
 
   final bool isVideo;
   final bool hasMedia;
+  final bool isQwikSale;
   final Size size;
   final String? videoUrl;
   final List<String> _imageUrls;
@@ -44,22 +45,48 @@ class SocialCardItem extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.cached_outlined,
-                  color: kPlaceholderColor,
-                  size: size.height * 0.025,
-                ),
-                const SizedBox(
-                  width: 5.0,
-                ),
-                Text(
-                  'toyosiolufade reshared +28 others engaged',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0140,
-                    fontWeight: FontWeight.normal,
+                Expanded(
+                  child: Row(
+                    children: [
+                      const SizedBox(
+                        width: 24.0,
+                      ),
+                      Icon(
+                        Icons.cached_outlined,
+                        color: kPlaceholderColor,
+                        size: size.height * 0.025,
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Text(
+                        'toyosiolufade reshared +28 others engaged',
+                        style: TextStyle(
+                          color: kPrimaryColor,
+                          fontFamily: kDefaultFont,
+                          fontSize: size.height * 0.0140,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      AssetsPath.giveaway,
+                      height: size.height * 0.025,
+                      width: size.height * 0.025,
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    Image.asset(
+                      AssetsPath.deals,
+                      height: size.height * 0.025,
+                      width: size.height * 0.025,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -160,144 +187,397 @@ class SocialCardItem extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(
-              height: 13.0,
-            ),
+            hasMedia
+                ? const SizedBox(
+                    height: 10.0,
+                  )
+                : const SizedBox(
+                    height: 0.0,
+                  ),
             hasMedia
                 ? SizedBox(
                     width: size.width,
-                    child: displayWidget(isVideo, videoUrl, size, _imageUrls),
+                    child: displayWidget(
+                      isVideo,
+                      videoUrl,
+                      size,
+                      _imageUrls,
+                      isQwikSale,
+                    ),
                   )
                 : const SizedBox(
-                    height: 5.0,
+                    height: 0.0,
                   ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
-                style: TextStyle(
-                  fontFamily: kDefaultFont,
-                  fontSize: size.height * 0.02,
-                  fontWeight: FontWeight.w500,
-                  color: kPrimaryColor,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      CupertinoIcons.heart,
-                      color: kPlaceholderColor,
-                      size: size.height * 0.04,
-                    ),
-                    onPressed: () {
-                      Future.delayed(Duration.zero, () {
-                        AuthPopUp.authPopupModal(
-                          context,
-                        );
-                      });
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      CupertinoIcons.chat_bubble,
-                      color: kPlaceholderColor,
-                      size: size.height * 0.04,
-                    ),
-                    onPressed: () {
-                      CustomRouter.nextScreen(context, '/commentScreen');
-                      // Future.delayed(Duration.zero, () {
-                      //   AuthPopUp.authPopupModal(
-                      //     context,
-                      //   );
-                      // });
-                    },
-                  ),
-                  IconButton(
-                    onPressed: () => {},
-                    icon: Icon(
-                      Icons.cached_outlined,
-                      color: kPlaceholderColor,
-                      size: size.height * 0.04,
+            isQwikSale
+                ? const SizedBox(
+                    height: 0.0,
+                  )
+                : Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
+                      style: TextStyle(
+                        fontFamily: kDefaultFont,
+                        fontSize: size.height * 0.02,
+                        fontWeight: FontWeight.w500,
+                        color: kPrimaryColor,
+                      ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () => {},
-                    icon: Icon(
-                      Icons.share_outlined,
-                      color: kPlaceholderColor,
-                      size: size.height * 0.04,
+            isQwikSale
+                ? SizedBox(
+                    width: size.width,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // SizedBox(
+                        //   width: size.width / 5 - 25,
+                        //   child: IconButton(
+                        //     alignment: Alignment.centerLeft,
+                        //     padding: EdgeInsets.zero,
+                        //     onPressed: () => {},
+                        //     icon: Icon(
+                        //       CupertinoIcons.cart_badge_plus,
+                        //       color: kPlaceholderColor,
+                        //       size: size.height * 0.040,
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   width: size.width / 5 - 25,
+                        //   child: IconButton(
+                        //     alignment: Alignment.centerLeft,
+                        //     padding: EdgeInsets.zero,
+                        //     onPressed: () => {},
+                        //     icon: Icon(
+                        //       CupertinoIcons.calendar_badge_plus,
+                        //       color: kPlaceholderColor,
+                        //       size: size.height * 0.032,
+                        //     ),
+                        //   ),
+                        // ),
+                        SizedBox(
+                          width: size.width / 5 - 8,
+                          child: IconButton(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.zero,
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.cart_badge_plus,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.04,
+                                ),
+                                const SizedBox(
+                                  width: 3.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kBackgroundColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              Future.delayed(Duration.zero, () {
+                                AuthPopUp.authPopupModal(
+                                  context,
+                                );
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 5 - 8,
+                          child: IconButton(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.zero,
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.calendar_badge_plus,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.04,
+                                ),
+                                const SizedBox(
+                                  width: 3.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kBackgroundColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              Future.delayed(Duration.zero, () {
+                                AuthPopUp.authPopupModal(
+                                  context,
+                                );
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 5 - 8,
+                          child: IconButton(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.zero,
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.heart,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.04,
+                                ),
+                                const SizedBox(
+                                  width: 3.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              Future.delayed(Duration.zero, () {
+                                AuthPopUp.authPopupModal(
+                                  context,
+                                );
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 5 - 8,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.chat_bubble,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.035,
+                                ),
+                                const SizedBox(
+                                  width: 7.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              CustomRouter.nextScreen(
+                                  context, '/commentScreen');
+                              // Future.delayed(Duration.zero, () {
+                              //   AuthPopUp.authPopupModal(
+                              //     context,
+                              //   );
+                              // });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 5 - 8,
+                          child: IconButton(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.zero,
+                            onPressed: () => {},
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.cached_outlined,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.035,
+                                ),
+                                const SizedBox(
+                                  width: 5.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox(
+                    width: size.width,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: size.width / 4.8,
+                          child: IconButton(
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.zero,
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.heart,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.04,
+                                ),
+                                const SizedBox(
+                                  width: 3.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              Future.delayed(Duration.zero, () {
+                                AuthPopUp.authPopupModal(
+                                  context,
+                                );
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 4.8,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.chat_bubble,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.035,
+                                ),
+                                const SizedBox(
+                                  width: 7.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              CustomRouter.nextScreen(
+                                  context, '/commentScreen');
+                              // Future.delayed(Duration.zero, () {
+                              //   AuthPopUp.authPopupModal(
+                              //     context,
+                              //   );
+                              // });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 4.8,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () => {},
+                            icon: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.cached_outlined,
+                                  color: kPlaceholderColor,
+                                  size: size.height * 0.035,
+                                ),
+                                const SizedBox(
+                                  width: 5.0,
+                                ),
+                                Text(
+                                  '128',
+                                  style: TextStyle(
+                                    fontFamily: kDefaultFont,
+                                    fontSize: size.height * 0.0170,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 5 - 25,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () => {},
+                            icon: Icon(
+                              Icons.share_outlined,
+                              color: kPlaceholderColor,
+                              size: size.height * 0.030,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 5 - 25,
+                          child: IconButton(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.zero,
+                            onPressed: () => {},
+                            icon: Icon(
+                              CupertinoIcons.bookmark,
+                              color: kPlaceholderColor,
+                              size: size.height * 0.032,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  IconButton(
-                    onPressed: () => {},
-                    icon: Icon(
-                      CupertinoIcons.bookmark,
-                      color: kPlaceholderColor,
-                      size: size.height * 0.04,
-                    ),
-                  ),
-                ],
-              ),
-              // const SizedBox(
-              //   width: 10.0,
-              // ),
-              // Flexible(
-              //   child: Row(
-              //     children: [
-              //       FacePile(
-              //         radius: 10,
-              //         space: 12,
-              //         images: const [
-              //           NetworkImage("https://i.pravatar.cc/300?img=1"),
-              //           NetworkImage("https://i.pravatar.cc/300?img=2"),
-              //           NetworkImage("https://i.pravatar.cc/300?img=3"),
-              //         ],
-              //         border: Border.all(color: kWhiteColor, width: 2),
-              //       ),
-              //       const SizedBox(
-              //         width: 5.0,
-              //       ),
-              //       Flexible(
-              //         child: Text(
-              //           '+28 others engaged this post',
-              //           style: TextStyle(
-              //             fontFamily: kDefaultFont,
-              //             fontSize: size.height * 0.0130,
-              //             fontWeight: FontWeight.normal,
-              //             color: kPlaceholderColor.withOpacity(0.75),
-              //           ),
-              //           overflow: TextOverflow.ellipsis,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
             RichText(
               text: TextSpan(
                 text:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi tortor, molestie sed convallis sit amet, ultrices et enim. In ut maximus augue, quis venenatis risus.. ',
                 style: TextStyle(
                   color: kPrimaryColor,
-                  fontSize: size.height * 0.0140,
+                  fontSize: size.height * 0.019,
                   fontWeight: FontWeight.w400,
                 ),
                 children: <TextSpan>[
@@ -322,24 +602,32 @@ class SocialCardItem extends StatelessWidget {
   }
 
   Widget displayWidget(
-      bool isVideo, String? videoUrl, Size _size, List<String> _imageUrls) {
-    if (_imageUrls.length == 1 && !isVideo) {
+    bool isVideo,
+    String? videoUrl,
+    Size _size,
+    List<String> _imageUrls,
+    bool isQwik,
+  ) {
+    if (_imageUrls.length == 1 && !isVideo && !isQwik) {
       return SingleImageCard(
         imageUrl: _imageUrls[0],
         size: _size,
       );
     }
-    if (_imageUrls.length == 2 && !isVideo) {
+    if (_imageUrls.length == 2 && !isVideo && !isQwik) {
       return CustomDoubleGrid(imageUrls: _imageUrls);
     }
-    if (_imageUrls.length == 3 && !isVideo) {
+    if (_imageUrls.length == 3 && !isVideo && !isQwik) {
       return CustomStaggeredGrid(imageUrls: _imageUrls);
     }
-    if (_imageUrls.length == 4 && !isVideo) {
+    if (_imageUrls.length == 4 && !isVideo && !isQwik) {
       return ImageGridPost(size: _size, imageUrls: _imageUrls);
     }
-    if (isVideo && videoUrl!.isNotEmpty) {
+    if (isVideo && videoUrl!.isNotEmpty && !isQwik) {
       return SingleVideoCard(size: size, videoUrl: videoUrl);
+    }
+    if (isQwik && _imageUrls.isNotEmpty && !isVideo) {
+      return QwikSaleCard(size: size, imageUrls: _imageUrls);
     } else {
       return SingleImageCard(
         imageUrl: _imageUrls[0],

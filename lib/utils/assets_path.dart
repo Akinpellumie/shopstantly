@@ -7,7 +7,9 @@ class AssetsPath {
   static const String successTag = 'assets/icons/successIcon.svg';
   static const String warning = 'assets/icons/warning.svg';
   static const String back = 'assets/icons/back.svg';
+  static const String giveaway = 'assets/icons/trophy.png';
   static const String bubbles = 'assets/icons/bubbles.svg';
+  static const String deals = 'assets/icons/sales.png';
   static const String eventMenu = 'assets/icons/eventMenu.svg';
   static const String videoMenu = 'assets/icons/videoMenu.svg';
   static const String audioMenu = 'assets/icons/audioMenu.svg';

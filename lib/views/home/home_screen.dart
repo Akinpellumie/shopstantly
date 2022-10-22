@@ -32,15 +32,14 @@ class _HomeScreenState extends State<HomeScreen> {
           leadingWidth: 0.0,
           backgroundColor: kBackgroundColor,
           elevation: 0.0,
-          toolbarHeight: 65.0,
-          flexibleSpace: Center(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(
-                'assets/images/shoplogo.png',
-                fit: BoxFit.fitHeight,
-                height: 60.0,
-              ),
+          //toolbarHeight: 65.0,
+          flexibleSpace: Align(
+            alignment: Alignment.centerLeft,
+            child: Image.asset(
+              'assets/images/shoplogo.png',
+              fit: BoxFit.fitHeight,
+              height: 60.0,
+              alignment: Alignment.topLeft,
             ),
           ),
           actions: [
@@ -71,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverAppBar(
               leadingWidth: 0.0,
               elevation: 0.0,
+              toolbarHeight: 50.0,
               automaticallyImplyLeading: true,
               pinned: true,
               backgroundColor: kBackgroundColor,
@@ -82,8 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: 1.0,
                       margin: const EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 20.0,
+                        top: 5.0,
+                        bottom: 10.0,
                       ),
                       width: size.width,
                       color: kLightGrayColor.withOpacity(0.45),
@@ -203,9 +203,8 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) => Container(
-                  padding: const EdgeInsets.symmetric(
-                    //horizontal: selectedIndex == 0 ? 0.0 : 20.0,
-                    vertical: 10.0,
+                  padding: const EdgeInsets.only(
+                    top: 10.0,
                   ),
                   child: displayWidget(size),
                 ),

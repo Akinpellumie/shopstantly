@@ -29,7 +29,7 @@ class SingleVideoCard extends StatelessWidget {
           videoPlayerController: VideoPlayerController.network(
             videoUrl,
             videoPlayerOptions: VideoPlayerOptions(
-              allowBackgroundPlayback: true,
+              allowBackgroundPlayback: false,
             ),
           ),
           size: size,

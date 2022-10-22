@@ -16,7 +16,7 @@ class TrendView extends StatefulWidget {
 }
 
 class _TrendViewState extends State<TrendView> {
-  final double spacing = 8;
+  final double spacing = 7;
   List<ChoiceChipData> choiceChips = ChoiceChips.all;
   List<TextMenu> carouselMenus = TrendTextMenus.carouselTextMenus;
   @override
@@ -25,9 +25,6 @@ class _TrendViewState extends State<TrendView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: 10.0,
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
@@ -56,14 +53,14 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 15.0,
+          height: 0.0,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Column(
             children: [
               SizedBox(
-                height: 50,
+                height: 40,
                 child: ListView.builder(
                   physics: const AlwaysScrollableScrollPhysics(),
                   //shrinkWrap: true,
@@ -75,7 +72,7 @@ class _TrendViewState extends State<TrendView> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 40,
                 child: ListView.builder(
                   physics: const AlwaysScrollableScrollPhysics(),
                   //shrinkWrap: true,
@@ -91,7 +88,7 @@ class _TrendViewState extends State<TrendView> {
           //buildChoiceChips(size),
         ),
         const SizedBox(
-          height: 20.0,
+          height: 25.0,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -121,7 +118,7 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 15.0,
+          height: 10.0,
         ),
         Container(
           height: size.height * 0.28,
@@ -136,7 +133,7 @@ class _TrendViewState extends State<TrendView> {
               return Container(
                 width: size.width * 0.4,
                 height: size.height * 0.25,
-                margin: const EdgeInsets.only(right: 10.0),
+                margin: const EdgeInsets.only(right: 7.0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10.0),
@@ -240,7 +237,7 @@ class _TrendViewState extends State<TrendView> {
         //   ),
         // ),
         const SizedBox(
-          height: 20.0,
+          height: 25.0,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -270,7 +267,7 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 15.0,
+          height: 10.0,
         ),
         Container(
           height: 30.0,
@@ -290,21 +287,11 @@ class _TrendViewState extends State<TrendView> {
                           ? carouselMenus[i].active = true
                           : carouselMenus[i].active = false;
                     }
-
-                    // carouselMenus[index].active = true;
-                    // carouselMenus = carouselMenus.map((otherMenu) {
-                    //   final newMenu =
-                    //       otherMenu.copy(active: false, title: otherMenu.title);
-
-                    //   return otherMenu == newMenu
-                    //       ? newMenu.copy(active: active, title: otherMenu.title)
-                    //       : newMenu;
-                    // }).toList();
                   });
                 },
                 child: Container(
                   margin: const EdgeInsets.only(
-                    right: 20.0,
+                    right: 25.0,
                   ),
                   child: Text(
                     carouselMenus[index].title,
@@ -312,8 +299,10 @@ class _TrendViewState extends State<TrendView> {
                       color: carouselMenus[index].active
                           ? kPrimaryTextColor
                           : kPlaceholderColor,
-                      fontWeight: FontWeight.normal,
-                      fontSize: size.height * 0.018,
+                      fontSize: size.height * 0.017,
+                      fontWeight: carouselMenus[index].active
+                          ? FontWeight.w600
+                          : FontWeight.normal,
                       fontFamily: kDefaultFont,
                     ),
                   ),
@@ -323,7 +312,7 @@ class _TrendViewState extends State<TrendView> {
           ),
         ),
         const SizedBox(
-          height: 10.0,
+          height: 5.0,
         ),
         Container(
           padding: const EdgeInsets.only(
@@ -341,9 +330,8 @@ class _TrendViewState extends State<TrendView> {
                 width: size.width,
                 child: Row(
                   children: [
-                    SizedBox(
-                      width: 100.0,
-                      height: 100.0,
+                    SizedBox.square(
+                      dimension: 70.0,
                       child: ClipRRect(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(10.0),
@@ -355,7 +343,7 @@ class _TrendViewState extends State<TrendView> {
                       ),
                     ),
                     const SizedBox(
-                      width: 20.0,
+                      width: 10.0,
                     ),
                     Expanded(
                       child: Column(
@@ -372,7 +360,7 @@ class _TrendViewState extends State<TrendView> {
                             ),
                           ),
                           Text(
-                            "The new Candyman and how horror is reckoning with racism",
+                            "The new Candyman and how horror is with reckoning and racism",
                             style: TextStyle(
                               color: kPrimaryTextColor,
                               fontWeight: FontWeight.w400,
