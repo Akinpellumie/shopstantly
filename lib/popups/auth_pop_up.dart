@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 
-import '../../utils/app_button.dart';
-import '../../utils/app_colors.dart';
-import '../../utils/custom_router.dart';
-import '../../utils/dimensions.dart';
+import '../utils/app_button.dart';
+import '../utils/app_colors.dart';
+import '../utils/custom_router.dart';
+import '../utils/dimensions.dart';
 
 class AuthPopUp {
   static void authPopupModal(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shopstantly_app/popups/home_more_option_pop_up.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
 import 'package:shopstantly_app/views/home/widgets/feed_view.dart';
@@ -43,19 +44,28 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           actions: [
-            SvgPicture.asset(
-              AssetsPath.searchIcon,
-              color: kIconColor,
-              width: 22.0,
-              height: 22.0,
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                AssetsPath.searchIcon,
+                color: kIconColor,
+                width: 22.0,
+                height: 22.0,
+              ),
             ),
-            const SizedBox(
-              width: 20.0,
-            ),
-            const Icon(
-              Icons.add_circle_outline,
-              color: kIconColor,
-              size: 26.0,
+            IconButton(
+              onPressed: () {
+                Future.delayed(Duration.zero, () {
+                  HomeMoreOptionPopUp.moreOptionPopupModal(
+                    context,
+                  );
+                });
+              },
+              icon: const Icon(
+                Icons.add_circle_outline,
+                color: kIconColor,
+                size: 26.0,
+              ),
             ),
             const SizedBox(
               width: 20.0,

@@ -5,6 +5,7 @@ import '../../../data/trend_text_menus.dart';
 import '../../../models/common/choice_chip_data.dart';
 import '../../../models/common/text_menu.dart';
 import '../../../utils/app_colors.dart';
+import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
 
 class TrendView extends StatefulWidget {
@@ -19,6 +20,7 @@ class _TrendViewState extends State<TrendView> {
   final double spacing = 7;
   List<ChoiceChipData> choiceChips = ChoiceChips.all;
   List<TextMenu> carouselMenus = TrendTextMenus.carouselTextMenus;
+  List<TextMenu> qwikMenus = TrendTextMenus.qwikTextMenus;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -96,7 +98,7 @@ class _TrendViewState extends State<TrendView> {
             children: [
               Expanded(
                 child: Text(
-                  'Qwik Sales (Suggested)',
+                  'Qwiks',
                   style: TextStyle(
                     color: kPrimaryTextColor,
                     fontSize: size.height * 0.018,
@@ -105,15 +107,15 @@ class _TrendViewState extends State<TrendView> {
                   ),
                 ),
               ),
-              Text(
-                'see all',
-                style: TextStyle(
-                  color: kPrimaryTextColor.withOpacity(0.45),
-                  fontSize: size.height * 0.015,
-                  fontFamily: kDefaultFont,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              // Text(
+              //   'see all',
+              //   style: TextStyle(
+              //     color: kPrimaryTextColor.withOpacity(0.45),
+              //     fontSize: size.height * 0.015,
+              //     fontFamily: kDefaultFont,
+              //     fontWeight: FontWeight.w400,
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -121,8 +123,57 @@ class _TrendViewState extends State<TrendView> {
           height: 10.0,
         ),
         Container(
-          height: size.height * 0.28,
+          alignment: Alignment.center,
+          height: 20.0,
+          width: size.width,
           padding: const EdgeInsets.only(left: 20.0),
+          child: Center(
+            child: ListView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: qwikMenus.length,
+              padding: EdgeInsets.zero,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      for (int i = 0; i < qwikMenus.length; i++) {
+                        index == i
+                            ? qwikMenus[i].active = true
+                            : qwikMenus[i].active = false;
+                      }
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      right: 25.0,
+                    ),
+                    child: Text(
+                      qwikMenus[index].title,
+                      style: TextStyle(
+                        color: qwikMenus[index].active
+                            ? kPrimaryTextColor
+                            : kPlaceholderColor,
+                        fontSize: size.height * 0.017,
+                        fontWeight: qwikMenus[index].active
+                            ? FontWeight.w600
+                            : FontWeight.normal,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 5.0,
+        ),
+        Container(
+          height: size.height * 0.28,
+          padding: EdgeInsets.zero,
           child: ListView.builder(
             physics: const AlwaysScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
@@ -131,111 +182,107 @@ class _TrendViewState extends State<TrendView> {
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               return Container(
-                width: size.width * 0.4,
+                width: size.width * 0.325,
                 height: size.height * 0.25,
-                margin: const EdgeInsets.only(right: 7.0),
+                margin: const EdgeInsets.only(right: 3.0),
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(10.0),
-                  ),
-                  child: Image.network(
-                    'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
-                    fit: BoxFit.cover,
+                  // borderRadius: const BorderRadius.all(
+                  //   Radius.circular(10.0),
+                  // ),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Image.network(
+                        'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned(
+                        bottom: 0.0,
+                        child: Container(
+                          width: size.width * 0.325,
+                          padding: const EdgeInsets.only(
+                            left: 10.0,
+                            top: 10.0,
+                            bottom: 10.0,
+                          ),
+                          color: Colors.black12.withOpacity(0.65),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 30.0,
+                                height: 30.0,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 2.0,
+                                  vertical: 2.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: kPlaceholderColor,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(6.0),
+                                  child: Image.asset(
+                                    AssetsPath.image2,
+                                    fit: BoxFit.cover,
+                                    height: 25.0,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Tolani Favor',
+                                        style: TextStyle(
+                                          color: kWhiteColor,
+                                          fontFamily: kDefaultFont,
+                                          fontSize: size.width * 0.0190,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      const Icon(
+                                        Icons.verified_user,
+                                        color: kOrangeColor,
+                                        size: 12.0,
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    '@tolani_soft',
+                                    style: TextStyle(
+                                      color: kWhiteColor,
+                                      fontFamily: kDefaultFont,
+                                      fontSize: size.width * 0.0180,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );
             },
           ),
         ),
-        // Container(
-        //   height: size.height * 0.28,
-        //   padding: const EdgeInsets.only(left: 20.0),
-        //   child: ListView.builder(
-        //     physics: const AlwaysScrollableScrollPhysics(),
-        //     scrollDirection: Axis.horizontal,
-        //     shrinkWrap: true,
-        //     itemCount: 4,
-        //     padding: EdgeInsets.zero,
-        //     itemBuilder: (context, index) {
-        //       return Container(
-        //         //height: size.height * 0.25,
-        //         width: size.width * 0.70,
-        //         margin: const EdgeInsets.only(right: 10.0),
-        //         child: Column(
-        //           crossAxisAlignment: CrossAxisAlignment.stretch,
-        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //           children: [
-        //             SizedBox(
-        //               width: size.width * 0.70,
-        //               height: size.height * 0.20,
-        //               //margin: const EdgeInsets.only(bottom: 10.0),
-        //               child: ClipRRect(
-        //                 borderRadius: const BorderRadius.all(
-        //                   Radius.circular(10.0),
-        //                 ),
-        //                 child: Image.network(
-        //                   'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
-        //                   fit: BoxFit.cover,
-        //                 ),
-        //               ),
-        //             ),
-        //             const SizedBox(
-        //               width: 5.0,
-        //             ),
-        //             Text(
-        //               'Climate change: Arctic warming linked to colder winters',
-        //               style: TextStyle(
-        //                 color: kPrimaryTextColor,
-        //                 fontWeight: FontWeight.w500,
-        //                 fontSize: size.height * 0.017,
-        //                 fontFamily: kDefaultFont,
-        //               ),
-        //             ),
-        //             const SizedBox(
-        //               width: 5.0,
-        //             ),
-        //             Row(
-        //               children: [
-        //                 Text(
-        //                   'Nature Channel',
-        //                   style: TextStyle(
-        //                     color: kPrimaryLinkColor,
-        //                     fontWeight: FontWeight.w300,
-        //                     fontSize: size.height * 0.014,
-        //                     fontFamily: kDefaultFont,
-        //                   ),
-        //                 ),
-        //                 const SizedBox(
-        //                   width: 5.0,
-        //                 ),
-        //                 Container(
-        //                   height: 5.0,
-        //                   width: 5.0,
-        //                   decoration: const BoxDecoration(
-        //                     shape: BoxShape.circle,
-        //                     color: kPlaceholderColor,
-        //                   ),
-        //                 ),
-        //                 const SizedBox(
-        //                   width: 5.0,
-        //                 ),
-        //                 Text(
-        //                   '4mins ago',
-        //                   style: TextStyle(
-        //                     color: kPlaceholderColor,
-        //                     fontWeight: FontWeight.w300,
-        //                     fontSize: size.height * 0.014,
-        //                     fontFamily: kDefaultFont,
-        //                   ),
-        //                 ),
-        //               ],
-        //             ),
-        //           ],
-        //         ),
-        //       );
-        //     },
-        //   ),
-        // ),
         const SizedBox(
           height: 25.0,
         ),

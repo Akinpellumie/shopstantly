@@ -7,7 +7,7 @@ import 'package:shopstantly_app/utils/custom_router.dart';
 import 'package:shopstantly_app/views/home/components/qwik_sale_card.dart';
 import 'package:shopstantly_app/views/home/components/single_image_card.dart';
 import 'package:shopstantly_app/views/home/components/single_video_card.dart';
-import 'package:shopstantly_app/views/popups/auth_pop_up.dart';
+import 'package:shopstantly_app/popups/auth_pop_up.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
@@ -132,7 +132,7 @@ class SocialCardItem extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'Linda Flora',
+                                'Tolani Favor',
                                 style: TextStyle(
                                   color: kPrimaryColor,
                                   fontFamily: kDefaultFont,
@@ -151,7 +151,7 @@ class SocialCardItem extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'Ibadan, Nigeria',
+                            '@tolani_soft',
                             style: TextStyle(
                               color: kPrimaryColor,
                               fontFamily: kDefaultFont,
