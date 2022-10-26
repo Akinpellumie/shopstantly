@@ -30,6 +30,7 @@ import '../views/profile/complete_profile_screen.dart';
 import '../views/profile/choose_location_screen.dart';
 import '../views/profile/profile_complete_screen.dart';
 import '../views/profile/set_profile_screen.dart';
+import '../views/qwiks/qwik_screen.dart';
 import '../views/thrift/thrift_detail_screen.dart';
 import '../views/unboarding/choose_account_screen.dart';
 import '../views/unboarding/landing_screen.dart';
@@ -97,6 +98,12 @@ Route<dynamic> generateRouter(RouteSettings settings) {
           settings: settings,
           builder: (BuildContext context) {
             return const CommentScreen();
+          });
+    case "/qwikScreen":
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (BuildContext context) {
+            return const QwikScreen();
           });
     case "/profileComplete":
       return MaterialPageRoute(

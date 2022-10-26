@@ -82,6 +82,11 @@ class AssetsPath {
   static const String businessAcct = 'assets/icons/business_icon.svg';
   static const String postEventIcon = 'assets/icons/carbon_event.svg';
   static const String postIcon = 'assets/icons/post_icon.svg';
+  static const String bubble = 'assets/icons/bubble.svg';
+  static const String buy = 'assets/icons/buy.svg';
+  static const String reshare = 'assets/icons/reshare.svg';
+  static const String share = 'assets/icons/share.svg';
+  static const String like = 'assets/icons/like.svg';
   static const String user = 'assets/icons/user.svg';
   static const String profile = 'assets/icons/profile.svg';
   static const String bank = 'assets/icons/bank.svg';
@@ -90,6 +95,7 @@ class AssetsPath {
   static const String invest = 'assets/icons/invest.svg';
   static const String cashback = 'assets/icons/cashback.svg';
   static const String qrcode = 'assets/images/qrcode.svg';
+  static const String qwikBg = 'assets/images/background.png';
   static const String map = 'assets/images/map.jpg';
   static const String emptyActivity = 'assets/images/Artwork.png';
   static const String mastercard = 'assets/images/mastercard.png';

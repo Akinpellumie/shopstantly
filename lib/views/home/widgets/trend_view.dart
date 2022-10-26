@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopstantly_app/utils/custom_router.dart';
 
 import '../../../data/choice_chips.dart';
 import '../../../data/trend_text_menus.dart';
@@ -181,102 +182,107 @@ class _TrendViewState extends State<TrendView> {
             itemCount: 4,
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
-              return Container(
-                width: size.width * 0.325,
-                height: size.height * 0.25,
-                margin: const EdgeInsets.only(right: 3.0),
-                child: ClipRRect(
-                  // borderRadius: const BorderRadius.all(
-                  //   Radius.circular(10.0),
-                  // ),
-                  child: Stack(
-                    fit: StackFit.expand,
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Image.network(
-                        'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
-                        fit: BoxFit.cover,
-                      ),
-                      Positioned(
-                        bottom: 0.0,
-                        child: Container(
-                          width: size.width * 0.325,
-                          padding: const EdgeInsets.only(
-                            left: 10.0,
-                            top: 10.0,
-                            bottom: 10.0,
-                          ),
-                          color: Colors.black12.withOpacity(0.65),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 30.0,
-                                height: 30.0,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 2.0,
-                                  vertical: 2.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: kPlaceholderColor,
-                                    width: 2.0,
+              return GestureDetector(
+                onTap: () {
+                  CustomRouter.nextScreen(context, '/qwikScreen');
+                },
+                child: Container(
+                  width: size.width * 0.325,
+                  height: size.height * 0.25,
+                  margin: const EdgeInsets.only(right: 3.0),
+                  child: ClipRRect(
+                    // borderRadius: const BorderRadius.all(
+                    //   Radius.circular(10.0),
+                    // ),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Image.network(
+                          'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+                          fit: BoxFit.cover,
+                        ),
+                        Positioned(
+                          bottom: 0.0,
+                          child: Container(
+                            width: size.width * 0.325,
+                            padding: const EdgeInsets.only(
+                              left: 10.0,
+                              top: 10.0,
+                              bottom: 10.0,
+                            ),
+                            color: Colors.black12.withOpacity(0.65),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 30.0,
+                                  height: 30.0,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 2.0,
+                                    vertical: 2.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(6.0),
-                                  child: Image.asset(
-                                    AssetsPath.image2,
-                                    fit: BoxFit.cover,
-                                    height: 25.0,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: kPlaceholderColor,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10.0,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Tolani Favor',
-                                        style: TextStyle(
-                                          color: kWhiteColor,
-                                          fontFamily: kDefaultFont,
-                                          fontSize: size.width * 0.0190,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 5.0,
-                                      ),
-                                      const Icon(
-                                        Icons.verified_user,
-                                        color: kOrangeColor,
-                                        size: 12.0,
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    '@tolani_soft',
-                                    style: TextStyle(
-                                      color: kWhiteColor,
-                                      fontFamily: kDefaultFont,
-                                      fontSize: size.width * 0.0180,
-                                      fontWeight: FontWeight.normal,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(6.0),
+                                    child: Image.asset(
+                                      AssetsPath.image2,
+                                      fit: BoxFit.cover,
+                                      height: 25.0,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Tolani Favor',
+                                          style: TextStyle(
+                                            color: kWhiteColor,
+                                            fontFamily: kDefaultFont,
+                                            fontSize: size.width * 0.0190,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 5.0,
+                                        ),
+                                        const Icon(
+                                          Icons.verified_user,
+                                          color: kOrangeColor,
+                                          size: 12.0,
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      '@tolani_soft',
+                                      style: TextStyle(
+                                        color: kWhiteColor,
+                                        fontFamily: kDefaultFont,
+                                        fontSize: size.width * 0.0180,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
