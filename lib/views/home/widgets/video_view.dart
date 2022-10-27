@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstantly_app/data/video_filter_menus.dart';
 
+import '../../../data/trend_text_menus.dart';
 import '../../../models/common/text_menu.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/custom_router.dart';
@@ -17,67 +19,67 @@ class VideoView extends StatefulWidget {
 
 class _VideoViewState extends State<VideoView> {
   List<TextMenu> carouselMenus = VideoFilterMenus.carouselVideoMenus;
+
+  List<TextMenu> ssTvMenus = VideoFilterMenus.ssTvMenus;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         Container(
-          height: 30.0,
-          padding: const EdgeInsets.only(left: 20.0),
-          child: ListView.builder(
-            physics: const AlwaysScrollableScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: carouselMenus.length,
-            padding: EdgeInsets.zero,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    //carouselMenus[index].active = true;
-                    for (int i = 0; i < carouselMenus.length; i++) {
-                      index == i
-                          ? carouselMenus[i].active = true
-                          : carouselMenus[i].active = false;
-                    }
-                  });
-                },
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          margin: const EdgeInsets.only(bottom: 20.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Flexible(
+                flex: 9,
                 child: Container(
-                  margin: const EdgeInsets.only(
-                    right: 10.0,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 5.0),
+                  //margin: const EdgeInsets.only(bo: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  height: 45.0,
                   decoration: BoxDecoration(
-                      color: carouselMenus[index].active
-                          ? kPrimaryColor
-                          : Colors.transparent,
-                      border: Border.all(
-                        color: carouselMenus[index].active
-                            ? Colors.transparent
-                            : kPlaceholderColor,
-                        width: 1.0,
+                    color: kPlaceholderColor.withOpacity(0.10),
+                    borderRadius: BorderRadius.circular(27.5),
+                  ),
+                  child: Center(
+                    child: TextFormField(
+                      onChanged: (value) {},
+                      maxLines: null,
+                      textAlignVertical: TextAlignVertical.center,
+                      //maxLength: 100,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: TextStyle(
+                        color: kPrimaryTextColor,
+                        fontFamily: kDefaultFont,
+                        fontSize: size.height * 0.019,
+                        fontWeight: FontWeight.normal,
                       ),
-                      borderRadius: BorderRadius.circular(5.0)),
-                  child: Text(
-                    carouselMenus[index].title,
-                    style: TextStyle(
-                      color: carouselMenus[index].active
-                          ? kWhiteColor
-                          : kPrimaryTextColor,
-                      fontWeight: FontWeight.w500,
-                      fontSize: size.height * 0.018,
-                      fontFamily: kDefaultFont,
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        hintStyle: TextStyle(
+                          color: kPlaceholderColor.withOpacity(0.65),
+                        ),
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.text,
                     ),
                   ),
                 ),
-              );
-            },
+              ),
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.filter_list,
+                    color: kPlaceholderColor,
+                    size: size.height * 0.035,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(
-          height: 20.0,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -85,17 +87,17 @@ class _VideoViewState extends State<VideoView> {
             children: [
               Expanded(
                 child: Text(
-                  'Top Videos',
+                  'Most Watched',
                   style: TextStyle(
                     color: kPrimaryTextColor,
-                    fontSize: size.height * 0.019,
+                    fontSize: size.height * 0.018,
                     fontFamily: kDefaultFont,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
               Text(
-                'see all',
+                'view all',
                 style: TextStyle(
                   color: kPrimaryTextColor.withOpacity(0.45),
                   fontSize: size.height * 0.015,
@@ -110,7 +112,7 @@ class _VideoViewState extends State<VideoView> {
           height: 10.0,
         ),
         Container(
-          height: size.height * 0.28,
+          height: size.height * 0.32,
           padding: const EdgeInsets.only(left: 20.0),
           child: ListView.builder(
             physics: const AlwaysScrollableScrollPhysics(),
@@ -128,40 +130,45 @@ class _VideoViewState extends State<VideoView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: size.width * 0.70,
+                      width: size.width * 0.65,
                       height: size.height * 0.20,
                       //margin: const EdgeInsets.only(bottom: 10.0),
                       child: ClipRRect(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(10.0),
                         ),
-                        child: Image.network(
-                          'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
                           fit: BoxFit.cover,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Center(
+                            child: SizedBox(
+                              height: 40.0,
+                              width: 40.0,
+                              child: CircularProgressIndicator(
+                                color: kPrimaryColor,
+                                value: downloadProgress.progress,
+                              ),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            padding: const EdgeInsets.all(5.0),
+                            child: const Icon(
+                              Icons.image_not_supported_outlined,
+                              color: kIconBgColor,
+                              size: 80.0,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      'Climate change: Arctic warming linked to colder winters',
-                      style: TextStyle(
-                        color: kPrimaryTextColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: size.height * 0.017,
-                        fontFamily: kDefaultFont,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 5.0,
                     ),
                     Row(
                       children: [
                         Text(
-                          'Nature Channel',
+                          '30k views',
                           style: TextStyle(
-                            color: kPrimaryLinkColor,
+                            color: kPlaceholderColor,
                             fontWeight: FontWeight.w300,
                             fontSize: size.height * 0.014,
                             fontFamily: kDefaultFont,
@@ -192,6 +199,24 @@ class _VideoViewState extends State<VideoView> {
                         ),
                       ],
                     ),
+                    Text(
+                      'Climate change: Arctic warming linked to colder winters',
+                      style: TextStyle(
+                        color: kPrimaryTextColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: size.height * 0.017,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                    Text(
+                      'Burna Boy',
+                      style: TextStyle(
+                        color: kPrimaryTextColor,
+                        fontWeight: FontWeight.w300,
+                        fontSize: size.height * 0.014,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -199,7 +224,7 @@ class _VideoViewState extends State<VideoView> {
           ),
         ),
         const SizedBox(
-          height: 20.0,
+          height: 25.0,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -207,17 +232,17 @@ class _VideoViewState extends State<VideoView> {
             children: [
               Expanded(
                 child: Text(
-                  'Most Watched',
+                  'Trending Videos',
                   style: TextStyle(
                     color: kPrimaryTextColor,
-                    fontSize: size.height * 0.019,
+                    fontSize: size.height * 0.018,
                     fontFamily: kDefaultFont,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
               Text(
-                'see all',
+                'edit interests',
                 style: TextStyle(
                   color: kPrimaryTextColor.withOpacity(0.45),
                   fontSize: size.height * 0.015,
@@ -226,6 +251,55 @@ class _VideoViewState extends State<VideoView> {
                 ),
               ),
             ],
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        Container(
+          alignment: Alignment.center,
+          height: 20.0,
+          width: size.width,
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Center(
+            child: ListView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: ssTvMenus.length,
+              padding: EdgeInsets.zero,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      for (int i = 0; i < ssTvMenus.length; i++) {
+                        index == i
+                            ? ssTvMenus[i].active = true
+                            : ssTvMenus[i].active = false;
+                      }
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      right: 25.0,
+                    ),
+                    child: Text(
+                      ssTvMenus[index].title,
+                      style: TextStyle(
+                        color: ssTvMenus[index].active
+                            ? kPrimaryTextColor
+                            : kPlaceholderColor,
+                        fontSize: size.height * 0.017,
+                        fontWeight: ssTvMenus[index].active
+                            ? FontWeight.w600
+                            : FontWeight.normal,
+                        fontFamily: kDefaultFont,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ),
         const SizedBox(
@@ -258,10 +332,34 @@ class _VideoViewState extends State<VideoView> {
                             borderRadius: const BorderRadius.all(
                               Radius.circular(10.0),
                             ),
-                            child: Image.network(
-                              'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
                               fit: BoxFit.cover,
+                              progressIndicatorBuilder:
+                                  (context, url, downloadProgress) => Center(
+                                child: SizedBox(
+                                  height: 40.0,
+                                  width: 40.0,
+                                  child: CircularProgressIndicator(
+                                    color: kPrimaryColor,
+                                    value: downloadProgress.progress,
+                                  ),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                padding: const EdgeInsets.all(5.0),
+                                child: const Icon(
+                                  Icons.image_not_supported_outlined,
+                                  color: kIconBgColor,
+                                  size: 80.0,
+                                ),
+                              ),
                             ),
+//  Image.network(
+//                               'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+//                               fit: BoxFit.cover,
+//                             ),
                           ),
                           Positioned(
                             bottom: 5.0,
@@ -312,7 +410,7 @@ class _VideoViewState extends State<VideoView> {
                           Row(
                             children: [
                               Text(
-                                'Esther Howard',
+                                '30k views',
                                 style: TextStyle(
                                   color: kPlaceholderColor,
                                   fontWeight: FontWeight.w400,
@@ -321,22 +419,21 @@ class _VideoViewState extends State<VideoView> {
                                 ),
                               ),
                               const SizedBox(
-                                width: 10.0,
+                                width: 5.0,
                               ),
-                              Text(
-                                '|',
-                                style: TextStyle(
+                              Container(
+                                height: 5.0,
+                                width: 5.0,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: kPlaceholderColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: size.height * 0.015,
-                                  fontFamily: kDefaultFont,
                                 ),
                               ),
                               const SizedBox(
-                                width: 10.0,
+                                width: 5.0,
                               ),
                               Text(
-                                '3h ago',
+                                '3days ago',
                                 style: TextStyle(
                                   color: kPlaceholderColor,
                                   fontWeight: FontWeight.w400,

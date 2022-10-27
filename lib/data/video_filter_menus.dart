@@ -10,4 +10,15 @@ class VideoFilterMenus {
     TextMenu(title: 'Education', active: false),
     TextMenu(title: 'Lifestyle', active: false),
   ];
+  
+  static final ssTvMenus = <TextMenu>[
+    TextMenu(title: 'Music', active: true),
+    TextMenu(title: 'Movies', active: false),
+    TextMenu(title: 'Arts', active: false),
+    TextMenu(title: 'Tech', active: false),
+    TextMenu(title: 'Fashion', active: false),
+    TextMenu(title: 'Education', active: false),
+    TextMenu(title: 'Lifestyle', active: false),
+  ];
+  
 }

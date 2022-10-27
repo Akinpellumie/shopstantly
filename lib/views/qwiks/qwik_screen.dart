@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marquee/marquee.dart';
-import 'package:provider/provider.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/assets_path.dart';
-import 'package:video_player/video_player.dart';
 
 import '../../utils/dimensions.dart';
 import 'widgets/qwik_action_button.dart';

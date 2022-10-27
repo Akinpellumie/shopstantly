@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: menuTabItem(
                               size,
-                              'Video',
+                              'SsTv',
                               selectedIndex == 2 ? true : false,
                               AssetsPath.videoMenu,
                             ),
