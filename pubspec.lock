@@ -478,6 +478,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.5"
+  material_symbol_icons:
+    dependency: "direct main"
+    description:
+      name: material_symbol_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   meta:
     dependency: transitive
     description:

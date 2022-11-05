@@ -8,7 +8,6 @@ import 'package:shopstantly_app/views/accounts/personal/owner/widgets/store_view
 import '../../../../models/common/account_type_model.dart';
 import '../../personal/owner/widgets/event_view.dart';
 import '../../personal/owner/widgets/owner_info_view.dart';
-import '../widgets/service_view.dart';
 import 'widgets/owner_post_view.dart';
 
 class PersonalAccountOwnerScreen extends StatefulWidget {
@@ -47,7 +46,7 @@ class _PersonalAccountOwnerScreenState
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  margin: EdgeInsets.only(bottom: size.height * 0.007),
+                  margin: EdgeInsets.only(bottom: size.height * 0.005),
                   child: Row(
                     children: [
                       Expanded(
@@ -96,7 +95,7 @@ class _PersonalAccountOwnerScreenState
                           await MoreOptionModal.showMoreOptionModal(context);
                         },
                         icon: Icon(
-                          Icons.add_box_outlined,
+                          Icons.add_circle_outline,
                           color: kIconColor,
                           size: size.height * 0.035,
                         ),
@@ -210,12 +209,12 @@ class _PersonalAccountOwnerScreenState
                         ),
                       ],
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: size.height * 0.004),
-                      width: size.width,
-                      height: 1.0,
-                      decoration: const BoxDecoration(color: kLightGrayColor),
-                    ),
+                    // Container(
+                    //   margin: EdgeInsets.only(top: size.height * 0.004),
+                    //   width: size.width,
+                    //   height: 1.0,
+                    //   decoration: const BoxDecoration(color: kLightGrayColor),
+                    // ),
                   ],
                 ),
               ],
@@ -238,11 +237,8 @@ class _PersonalAccountOwnerScreenState
   Widget displayWidgetView(Size size) {
     if (selectedIndex == 0) {
       return OwnerInfoView(size: size);
-    }
-    if (selectedIndex == 1) {
-      return OwnerPostView(
-        size: size,
-      );
+    } else if (selectedIndex == 1) {
+      return OwnerPostView(size: size);
     } else if (selectedIndex == 2) {
       return const StoreView();
     } else if (selectedIndex == 3) {

@@ -104,6 +104,7 @@ class AssetsPath {
   static const String iconLogo = 'assets/images/shopiconlogo.png';
   static const String bagShop = 'assets/icons/bag.png';
   static const String bagShopePlus = 'assets/icons/bagAccent.png';
+  static const String profileImageUrl = 'https://images.pexels.com/photos/7275394/pexels-photo-7275394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
   static const String sneakerPhoto =
       'https://media.istockphoto.com/photos/fashion-white-sneakers-in-neon-light-sport-shoes-for-training-in-the-picture-id1301394040?b=1&k=20&m=1301394040&s=170667a&w=0&h=DM2FyLVbwZ-YjZeb5P8d45RgF2x_gTmT8kC66u7zIrk=';
   static const IconData email = IconData(0xe22a, fontFamily: 'MaterialIcons');
