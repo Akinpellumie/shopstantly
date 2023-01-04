@@ -26,16 +26,16 @@ class QwikAuthorWidget extends StatelessWidget {
             horizontalTitleGap: 5,
             dense: true,
             title: SizedBox(
-              width: 125,
+              //width: 125,
               height: size.height * 0.020,
               child: Marquee(
                 text: 'Roddy Roundicch - The Rounder boat - original sound | ',
                 velocity: 10,
                 scrollAxis: Axis.horizontal,
-                style: TextStyle(
+                style: const TextStyle(
                   color: kWhiteColor,
-                  fontSize: size.height * 0.017,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 11.0,
+                  fontWeight: FontWeight.w500,
                   fontFamily: kDefaultFont,
                 ),
               ),
@@ -79,23 +79,23 @@ class QwikAuthorWidget extends StatelessWidget {
                 width: 5.0,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     'Tolani Favor',
                     style: TextStyle(
                       color: kWhiteColor,
                       fontFamily: kDefaultFont,
-                      fontSize: size.height * 0.0150,
+                      fontSize: 12.0,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 3.0,
                   ),
-                  const Icon(
+                  Icon(
                     Icons.verified_user,
                     color: kOrangeColor,
-                    size: 10.0,
+                    size: 7.0,
                   ),
                 ],
               ),

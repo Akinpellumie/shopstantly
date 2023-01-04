@@ -77,108 +77,108 @@ class _HomeScreenState extends State<HomeScreen> {
             keepScrollOffset: true,
           ),
           slivers: [
-            SliverAppBar(
-              leadingWidth: 0.0,
-              elevation: 0.0,
-              toolbarHeight: 50.0,
-              automaticallyImplyLeading: true,
-              pinned: true,
-              backgroundColor: kBackgroundColor,
-              flexibleSpace: FlexibleSpaceBar(
-                titlePadding: const EdgeInsets.all(0.0),
-                centerTitle: false,
-                title: Column(
-                  children: [
-                    Container(
-                      height: 1.0,
-                      margin: const EdgeInsets.only(
-                        top: 5.0,
-                        bottom: 10.0,
-                      ),
-                      width: size.width,
-                      color: kLightGrayColor.withOpacity(0.45),
-                    ),
-                    Container(
-                      width: size.width,
-                      padding: EdgeInsets.zero,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = 0;
-                              });
-                            },
-                            child: menuTabItem(
-                              size,
-                              'Trend',
-                              selectedIndex == 0 ? true : false,
-                              AssetsPath.trendMenu,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = 1;
-                              });
-                            },
-                            child: menuTabItem(
-                              size,
-                              'Feed',
-                              selectedIndex == 1 ? true : false,
-                              AssetsPath.feedMenu,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = 2;
-                              });
-                            },
-                            child: menuTabItem(
-                              size,
-                              'SsTv',
-                              selectedIndex == 2 ? true : false,
-                              AssetsPath.videoMenu,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = 3;
-                              });
-                            },
-                            child: menuTabItem(
-                              size,
-                              'Audio',
-                              selectedIndex == 3 ? true : false,
-                              AssetsPath.audioMenu,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = 4;
-                                showFilterTabs = true;
-                              });
-                            },
-                            child: menuTabItem(
-                              size,
-                              'Event',
-                              selectedIndex == 4 ? true : false,
-                              AssetsPath.eventMenu,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            // //this tab will only appear when event or thrift is active
+            // SliverAppBar(
+            //   leadingWidth: 0.0,
+            //   elevation: 0.0,
+            //   toolbarHeight: 50.0,
+            //   automaticallyImplyLeading: true,
+            //   pinned: true,
+            //   backgroundColor: kBackgroundColor,
+            //   flexibleSpace: FlexibleSpaceBar(
+            //     titlePadding: const EdgeInsets.all(0.0),
+            //     centerTitle: false,
+            //     title: Column(
+            //       children: [
+            //         Container(
+            //           height: 1.0,
+            //           margin: const EdgeInsets.only(
+            //             top: 5.0,
+            //             bottom: 10.0,
+            //           ),
+            //           width: size.width,
+            //           color: kLightGrayColor.withOpacity(0.45),
+            //         ),
+            //         Container(
+            //           width: size.width,
+            //           padding: EdgeInsets.zero,
+            //           child: Row(
+            //             crossAxisAlignment: CrossAxisAlignment.center,
+            //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //             children: [
+            //               GestureDetector(
+            //                 onTap: () {
+            //                   setState(() {
+            //                     selectedIndex = 0;
+            //                   });
+            //                 },
+            //                 child: menuTabItem(
+            //                   size,
+            //                   'Trend',
+            //                   selectedIndex == 0 ? true : false,
+            //                   AssetsPath.trendMenu,
+            //                 ),
+            //               ),
+            //               GestureDetector(
+            //                 onTap: () {
+            //                   setState(() {
+            //                     selectedIndex = 1;
+            //                   });
+            //                 },
+            //                 child: menuTabItem(
+            //                   size,
+            //                   'Feed',
+            //                   selectedIndex == 1 ? true : false,
+            //                   AssetsPath.feedMenu,
+            //                 ),
+            //               ),
+            //               GestureDetector(
+            //                 onTap: () {
+            //                   setState(() {
+            //                     selectedIndex = 2;
+            //                   });
+            //                 },
+            //                 child: menuTabItem(
+            //                   size,
+            //                   'SsTv',
+            //                   selectedIndex == 2 ? true : false,
+            //                   AssetsPath.videoMenu,
+            //                 ),
+            //               ),
+            //               GestureDetector(
+            //                 onTap: () {
+            //                   setState(() {
+            //                     selectedIndex = 3;
+            //                   });
+            //                 },
+            //                 child: menuTabItem(
+            //                   size,
+            //                   'Audio',
+            //                   selectedIndex == 3 ? true : false,
+            //                   AssetsPath.audioMenu,
+            //                 ),
+            //               ),
+            //               GestureDetector(
+            //                 onTap: () {
+            //                   setState(() {
+            //                     selectedIndex = 4;
+            //                     showFilterTabs = true;
+            //                   });
+            //                 },
+            //                 child: menuTabItem(
+            //                   size,
+            //                   'Event',
+            //                   selectedIndex == 4 ? true : false,
+            //                   AssetsPath.eventMenu,
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            // // //this tab will only appear when event or thrift is active
             // SliverToBoxAdapter(
             //   child: Container(
             //     padding: const EdgeInsets.only(
@@ -216,7 +216,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.only(
                     top: 10.0,
                   ),
-                  child: displayWidget(size),
+                  //child: displayWidget(size),
+                  child: FeedView(size:size),
                 ),
                 childCount: 1,
               ),

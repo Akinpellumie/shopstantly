@@ -36,7 +36,7 @@ class _FeedViewState extends State<FeedView> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Story',
+                          'Stories',
                           style: TextStyle(
                             color: kPrimaryTextColor,
                             fontSize: size.height * 0.018,
@@ -142,13 +142,13 @@ class _FeedViewState extends State<FeedView> {
                             ],
                           ),
                           const SizedBox(
-                            height: 5.0,
+                            height: 2.0,
                           ),
-                          Text(
+                          const Text(
                             'My Story',
                             style: TextStyle(
                               fontFamily: kDefaultFont,
-                              fontSize: widget.size.height * 0.014,
+                              fontSize: 10.0,
                               color: kPrimaryColor,
                               fontWeight: FontWeight.w400,
                             ),
@@ -193,13 +193,13 @@ class _FeedViewState extends State<FeedView> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 5.0,
+                                  height: 2.0,
                                 ),
-                                Text(
+                                const Text(
                                   'Linda',
                                   style: TextStyle(
                                     fontFamily: kDefaultFont,
-                                    fontSize: widget.size.height * 0.014,
+                                    fontSize: 10.0,
                                     color: kPrimaryColor,
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -213,172 +213,11 @@ class _FeedViewState extends State<FeedView> {
                           ),
                         ),
                       ),
-
-                      // Column(
-                      //   children: [
-                      //     Container(
-                      //       height: 60.0,
-                      //       width: widget.size.width / 6,
-                      //       padding: const EdgeInsets.symmetric(
-                      //         horizontal: 4.0,
-                      //         vertical: 3.0,
-                      //       ),
-                      //       decoration: BoxDecoration(
-                      //         border: Border.all(
-                      //           width: 3.0,
-                      //           color: kPrimaryColor,
-                      //         ),
-                      //         borderRadius: BorderRadius.circular(23.0),
-                      //       ),
-                      //       child: ClipRRect(
-                      //         borderRadius: BorderRadius.circular(15.0),
-                      //         child: Image.asset(
-                      //           AssetsPath.image1,
-                      //           fit: BoxFit.cover,
-                      //           height: 50.0,
-                      //           width: widget.size.width / 6,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     const SizedBox(
-                      //       height: 5.0,
-                      //     ),
-                      //     Text(
-                      //       'Linda',
-                      //       style: TextStyle(
-                      //         fontFamily: kDefaultFont,
-                      //         fontSize: widget.size.height * 0.014,
-                      //         color: kPrimaryColor,
-                      //         fontWeight: FontWeight.w400,
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Column(
-                      //   children: [
-                      //     Container(
-                      //       height: 60.0,
-                      //       width: widget.size.width / 6,
-                      //       padding: const EdgeInsets.symmetric(
-                      //         horizontal: 4.0,
-                      //         vertical: 3.0,
-                      //       ),
-                      //       decoration: BoxDecoration(
-                      //         border: Border.all(
-                      //           width: 3.0,
-                      //           color: kPrimaryColor,
-                      //         ),
-                      //         borderRadius: BorderRadius.circular(23.0),
-                      //       ),
-                      //       child: ClipRRect(
-                      //         borderRadius: BorderRadius.circular(15.0),
-                      //         child: Image.asset(
-                      //           AssetsPath.image2,
-                      //           fit: BoxFit.cover,
-                      //           height: 50.0,
-                      //           width: widget.size.width / 6,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     const SizedBox(
-                      //       height: 5.0,
-                      //     ),
-                      //     Text(
-                      //       'Lade',
-                      //       style: TextStyle(
-                      //         fontFamily: kDefaultFont,
-                      //         fontSize: widget.size.height * 0.014,
-                      //         color: kPrimaryColor,
-                      //         fontWeight: FontWeight.w400,
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Column(
-                      //   children: [
-                      //     Container(
-                      //       height: 60.0,
-                      //       width: widget.size.width / 6,
-                      //       padding: const EdgeInsets.symmetric(
-                      //         horizontal: 4.0,
-                      //         vertical: 3.0,
-                      //       ),
-                      //       decoration: BoxDecoration(
-                      //         border: Border.all(
-                      //           width: 3.0,
-                      //           color: kPlaceholderColor.withOpacity(0.70),
-                      //         ),
-                      //         borderRadius: BorderRadius.circular(23.0),
-                      //       ),
-                      //       child: ClipRRect(
-                      //         borderRadius: BorderRadius.circular(15.0),
-                      //         child: Image.asset(
-                      //           AssetsPath.image1,
-                      //           fit: BoxFit.cover,
-                      //           height: 50.0,
-                      //           width: widget.size.width / 6,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     const SizedBox(
-                      //       height: 5.0,
-                      //     ),
-                      //     Text(
-                      //       'Yemi',
-                      //       style: TextStyle(
-                      //         fontFamily: kDefaultFont,
-                      //         fontSize: widget.size.height * 0.014,
-                      //         color: kPrimaryColor,
-                      //         fontWeight: FontWeight.w400,
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Column(
-                      //   children: [
-                      //     Container(
-                      //       height: 60.0,
-                      //       width: widget.size.width / 6,
-                      //       padding: const EdgeInsets.symmetric(
-                      //         horizontal: 4.0,
-                      //         vertical: 3.0,
-                      //       ),
-                      //       decoration: BoxDecoration(
-                      //         border: Border.all(
-                      //           width: 3.0,
-                      //           color: kPlaceholderColor.withOpacity(0.70),
-                      //         ),
-                      //         borderRadius: BorderRadius.circular(23.0),
-                      //       ),
-                      //       child: ClipRRect(
-                      //         borderRadius: BorderRadius.circular(15.0),
-                      //         child: Image.asset(
-                      //           AssetsPath.image2,
-                      //           fit: BoxFit.cover,
-                      //           height: 50.0,
-                      //           width: widget.size.width / 6,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     const SizedBox(
-                      //       height: 5.0,
-                      //     ),
-                      //     Text(
-                      //       'Akin',
-                      //       style: TextStyle(
-                      //         fontFamily: kDefaultFont,
-                      //         fontSize: widget.size.height * 0.014,
-                      //         color: kPrimaryColor,
-                      //         fontWeight: FontWeight.w400,
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  height: 25.0,
+                  height: 20.0,
                 ),
               ],
             ),

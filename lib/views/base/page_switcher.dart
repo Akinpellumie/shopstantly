@@ -9,6 +9,7 @@ import 'package:shopstantly_app/views/manage/manage_screen.dart';
 import '../../utils/dimensions.dart';
 import '../../utils/material_indicator.dart';
 import '../accounts/others/account_switch_screen.dart';
+import '../qwiks/qwik_screen.dart';
 
 class PageSwitcher extends StatefulWidget {
   const PageSwitcher({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _PageSwitcherState extends State<PageSwitcher>
   void initState() {
     tabController = TabController(
       vsync: this,
-      length: 5,
+      length: 6,
       initialIndex: selectedIndex,
     );
     super.initState();
@@ -41,21 +42,23 @@ class _PageSwitcherState extends State<PageSwitcher>
     return Scaffold(
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
-            color: kBackgroundColor,
-            border: Border.fromBorderSide(BorderSide(
+          color: kBackgroundColor,
+          border: Border.fromBorderSide(
+            BorderSide(
               width: 1.0,
               color: kPlaceholderColor,
               style: BorderStyle.solid,
-            ),),
-            // borderRadius: BorderRadius.only(
-            //   topLeft: Radius.circular(
-            //     25,
-            //   ),
-            //   topRight: Radius.circular(
-            //     25,
-            //   ),
-            // ),
             ),
+          ),
+          // borderRadius: BorderRadius.only(
+          //   topLeft: Radius.circular(
+          //     25,
+          //   ),
+          //   topRight: Radius.circular(
+          //     25,
+          //   ),
+          // ),
+        ),
         child: TabBar(
           controller: tabController,
           onTap: (index) {
@@ -106,10 +109,10 @@ class _PageSwitcherState extends State<PageSwitcher>
               //             ? kPrimaryColor
               //             : kPlaceholderColor,
               //         fontFamily: kDefaultFont,
-              //         fontSize: 12.0,
-              //         fontWeight: selectedIndex == 0
-              //             ? FontWeight.w500
-              //             : FontWeight.w400,
+              //         fontSize: 8.0,
+              //         // fontWeight: selectedIndex == 1
+              //         //     ? FontWeight.w500
+              //         //     : FontWeight.w400,
               //       ),
               //     ),
               //   ),
@@ -121,22 +124,22 @@ class _PageSwitcherState extends State<PageSwitcher>
                 size: selectedIndex == 1 ? 26.0 : 24.0,
                 color: selectedIndex == 1 ? kPrimaryColor : kPlaceholderColor,
               ),
-              text: 'Manage',
+              text: 'Qwiks',
               // child: Align(
               //   alignment: Alignment.bottomCenter,
               //   child: Padding(
               //     padding: const EdgeInsets.only(bottom: 3.0),
               //     child: Text(
-              //       'Manage',
+              //       'Qwiks',
               //       style: TextStyle(
               //         color: selectedIndex == 1
               //             ? kPrimaryColor
               //             : kPlaceholderColor,
               //         fontFamily: kDefaultFont,
-              //         fontSize: 12.0,
-              //         fontWeight: selectedIndex == 1
-              //             ? FontWeight.w500
-              //             : FontWeight.w400,
+              //         fontSize: 8.0,
+              //         // fontWeight: selectedIndex == 1
+              //         //     ? FontWeight.w500
+              //         //     : FontWeight.w400,
               //       ),
               //     ),
               //   ),
@@ -148,22 +151,49 @@ class _PageSwitcherState extends State<PageSwitcher>
                 size: selectedIndex == 2 ? 26.0 : 24.0,
                 color: selectedIndex == 2 ? kPrimaryColor : kPlaceholderColor,
               ),
-              text: 'Plus',
+              text: 'Explore',
               // child: Align(
               //   alignment: Alignment.bottomCenter,
               //   child: Padding(
               //     padding: const EdgeInsets.only(bottom: 3.0),
               //     child: Text(
-              //       'Plus',
+              //       'Explore',
               //       style: TextStyle(
               //         color: selectedIndex == 2
               //             ? kPrimaryColor
               //             : kPlaceholderColor,
               //         fontFamily: kDefaultFont,
-              //         fontSize: 12.0,
-              //         fontWeight: selectedIndex == 2
-              //             ? FontWeight.w500
-              //             : FontWeight.w400,
+              //         fontSize: 8.0,
+              //         // fontWeight: selectedIndex == 2
+              //         //     ? FontWeight.w500
+              //         //     : FontWeight.w400,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.shopping_cart,
+                size: selectedIndex == 3 ? 26.0 : 24.0,
+                color: selectedIndex == 3 ? kPrimaryColor : kPlaceholderColor,
+              ),
+              text: 'Manage',
+              // child: Align(
+              //   alignment: Alignment.bottomCenter,
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(bottom: 3.0),
+              //     child: Text(
+              //       'Manage',
+              //       style: TextStyle(
+              //         color: selectedIndex == 3
+              //             ? kPrimaryColor
+              //             : kPlaceholderColor,
+              //         fontFamily: kDefaultFont,
+              //         fontSize: 8,
+              //         // fontWeight: selectedIndex == 3
+              //         //     ? FontWeight.w500
+              //         //     : FontWeight.w400,
               //       ),
               //     ),
               //   ),
@@ -172,8 +202,8 @@ class _PageSwitcherState extends State<PageSwitcher>
             Tab(
               icon: Icon(
                 Icons.notifications,
-                size: selectedIndex == 3 ? 26.0 : 24.0,
-                color: selectedIndex == 3 ? kPrimaryColor : kPlaceholderColor,
+                size: selectedIndex == 4 ? 22.0 : 20.0,
+                color: selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor,
               ),
               text: 'Activity',
               // child: Align(
@@ -183,14 +213,14 @@ class _PageSwitcherState extends State<PageSwitcher>
               //     child: Text(
               //       'Activity',
               //       style: TextStyle(
-              //         color: selectedIndex == 3
+              //         color: selectedIndex == 4
               //             ? kPrimaryColor
               //             : kPlaceholderColor,
               //         fontFamily: kDefaultFont,
-              //         fontSize: 12.0,
-              //         fontWeight: selectedIndex == 3
-              //             ? FontWeight.w500
-              //             : FontWeight.w400,
+              //         fontSize: 8.0,
+              //         // fontWeight: selectedIndex == 4
+              //         //     ? FontWeight.w500
+              //         //     : FontWeight.w400,
               //       ),
               //     ),
               //   ),
@@ -199,8 +229,8 @@ class _PageSwitcherState extends State<PageSwitcher>
             Tab(
               icon: Icon(
                 Icons.account_circle,
-                size: selectedIndex == 4 ? 26.0 : 24.0,
-                color: selectedIndex == 4 ? kPrimaryColor : kPlaceholderColor,
+                size: selectedIndex == 5 ? 22.0 : 20.0,
+                color: selectedIndex == 5 ? kPrimaryColor : kPlaceholderColor,
               ),
               text: 'Profile',
               // child: Align(
@@ -210,14 +240,14 @@ class _PageSwitcherState extends State<PageSwitcher>
               //     child: Text(
               //       'Profile',
               //       style: TextStyle(
-              //         color: selectedIndex == 4
+              //         color: selectedIndex == 5
               //             ? kPrimaryColor
               //             : kPlaceholderColor,
               //         fontFamily: kDefaultFont,
-              //         fontSize: 12.0,
-              //         fontWeight: selectedIndex == 4
-              //             ? FontWeight.w500
-              //             : FontWeight.w400,
+              //         fontSize: 8.0,
+              //         // fontWeight: selectedIndex == 5
+              //         //     ? FontWeight.w500
+              //         //     : FontWeight.w400,
               //       ),
               //     ),
               //   ),
@@ -230,8 +260,9 @@ class _PageSwitcherState extends State<PageSwitcher>
         controller: tabController,
         children: const <Widget>[
           HomeScreen(),
-          ManageScreen(),
+          QwikScreen(),
           GettingStarted(),
+          ManageScreen(),
           ActivityScreen(),
           AccountSwitchScreen(),
         ],

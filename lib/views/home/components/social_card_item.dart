@@ -47,24 +47,16 @@ class SocialCardItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 24.0,
-                      ),
-                      Icon(
-                        Icons.cached_outlined,
-                        color: kPlaceholderColor,
-                        size: size.height * 0.025,
-                      ),
-                      const SizedBox(
-                        width: 10.0,
+                    children: const [
+                      SizedBox(
+                        width: 34.0,
                       ),
                       Text(
                         'toyosiolufade reshared +28 others engaged',
                         style: TextStyle(
                           color: kPrimaryColor,
                           fontFamily: kDefaultFont,
-                          fontSize: size.height * 0.0140,
+                          fontSize: 10.0,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -75,16 +67,16 @@ class SocialCardItem extends StatelessWidget {
                   children: [
                     Image.asset(
                       AssetsPath.giveaway,
-                      height: size.height * 0.025,
-                      width: size.height * 0.025,
+                      height: size.height * 0.015,
+                      width: size.height * 0.015,
                     ),
                     const SizedBox(
                       width: 10.0,
                     ),
                     Image.asset(
                       AssetsPath.deals,
-                      height: size.height * 0.025,
-                      width: size.height * 0.025,
+                      height: size.height * 0.015,
+                      width: size.height * 0.015,
                     ),
                   ],
                 ),
@@ -218,7 +210,7 @@ class SocialCardItem extends StatelessWidget {
                       'Lorem ipsum dolor sit amet, consec- tetur adipiscing elit.',
                       style: TextStyle(
                         fontFamily: kDefaultFont,
-                        fontSize: size.height * 0.02,
+                        fontSize: size.height * 0.017,
                         fontWeight: FontWeight.w500,
                         color: kPrimaryColor,
                       ),
@@ -231,32 +223,6 @@ class SocialCardItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // SizedBox(
-                        //   width: size.width / 5 - 25,
-                        //   child: IconButton(
-                        //     alignment: Alignment.centerLeft,
-                        //     padding: EdgeInsets.zero,
-                        //     onPressed: () => {},
-                        //     icon: Icon(
-                        //       CupertinoIcons.cart_badge_plus,
-                        //       color: kPlaceholderColor,
-                        //       size: size.height * 0.040,
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   width: size.width / 5 - 25,
-                        //   child: IconButton(
-                        //     alignment: Alignment.centerLeft,
-                        //     padding: EdgeInsets.zero,
-                        //     onPressed: () => {},
-                        //     icon: Icon(
-                        //       CupertinoIcons.calendar_badge_plus,
-                        //       color: kPlaceholderColor,
-                        //       size: size.height * 0.032,
-                        //     ),
-                        //   ),
-                        // ),
                         SizedBox(
                           width: size.width / 5 - 8,
                           child: IconButton(
@@ -268,7 +234,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   CupertinoIcons.cart_badge_plus,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.04,
+                                  size: size.height * 0.03,
                                 ),
                                 const SizedBox(
                                   width: 3.0,
@@ -304,7 +270,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   CupertinoIcons.calendar_badge_plus,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.04,
+                                  size: size.height * 0.03,
                                 ),
                                 const SizedBox(
                                   width: 3.0,
@@ -340,7 +306,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   CupertinoIcons.heart,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.04,
+                                  size: size.height * 0.03,
                                 ),
                                 const SizedBox(
                                   width: 3.0,
@@ -375,7 +341,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   CupertinoIcons.chat_bubble,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.035,
+                                  size: size.height * 0.027,
                                 ),
                                 const SizedBox(
                                   width: 7.0,
@@ -414,7 +380,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   Icons.cached_outlined,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.035,
+                                  size: size.height * 0.027,
                                 ),
                                 const SizedBox(
                                   width: 5.0,
@@ -439,7 +405,6 @@ class SocialCardItem extends StatelessWidget {
                     width: size.width,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
                           width: size.width / 4.8,
@@ -452,7 +417,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   CupertinoIcons.heart,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.04,
+                                  size: size.height * 0.03,
                                 ),
                                 const SizedBox(
                                   width: 3.0,
@@ -487,7 +452,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   CupertinoIcons.chat_bubble,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.035,
+                                  size: size.height * 0.027,
                                 ),
                                 const SizedBox(
                                   width: 7.0,
@@ -525,7 +490,7 @@ class SocialCardItem extends StatelessWidget {
                                 Icon(
                                   Icons.cached_outlined,
                                   color: kPlaceholderColor,
-                                  size: size.height * 0.035,
+                                  size: size.height * 0.027,
                                 ),
                                 const SizedBox(
                                   width: 5.0,
@@ -551,7 +516,7 @@ class SocialCardItem extends StatelessWidget {
                             icon: Icon(
                               Icons.share_outlined,
                               color: kPlaceholderColor,
-                              size: size.height * 0.030,
+                              size: size.height * 0.027,
                             ),
                           ),
                         ),
@@ -564,7 +529,7 @@ class SocialCardItem extends StatelessWidget {
                             icon: Icon(
                               CupertinoIcons.bookmark,
                               color: kPlaceholderColor,
-                              size: size.height * 0.032,
+                              size: size.height * 0.027,
                             ),
                           ),
                         ),
@@ -577,7 +542,7 @@ class SocialCardItem extends StatelessWidget {
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi tortor, molestie sed convallis sit amet, ultrices et enim. In ut maximus augue, quis venenatis risus.. ',
                 style: TextStyle(
                   color: kPrimaryColor,
-                  fontSize: size.height * 0.019,
+                  fontSize: size.height * 0.015,
                   fontWeight: FontWeight.w400,
                 ),
                 children: <TextSpan>[

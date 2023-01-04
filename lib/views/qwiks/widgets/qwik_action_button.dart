@@ -90,17 +90,17 @@ class QwikActionButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   AssetsPath.buy,
-                  height: size.height * 0.030,
+                  height: size.height * 0.025,
                   color: kWhiteColor,
                 ),
                 const SizedBox(
-                  height: 3.0,
+                  height: 2.0,
                 ),
-                Text(
+                const Text(
                   '128',
                   style: TextStyle(
                     fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0170,
+                    fontSize: 11.0,
                     fontWeight: FontWeight.w500,
                     color: kWhiteColor,
                   ),
@@ -123,17 +123,17 @@ class QwikActionButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   AssetsPath.like,
-                  height: size.height * 0.030,
+                  height: size.height * 0.025,
                   color: kWhiteColor,
                 ),
                 const SizedBox(
-                  height: 3.0,
+                  height: 2.0,
                 ),
-                Text(
+               const Text(
                   '128',
                   style: TextStyle(
                     fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0170,
+                    fontSize: 11.0,
                     fontWeight: FontWeight.w500,
                     color: kWhiteColor,
                   ),
@@ -156,17 +156,17 @@ class QwikActionButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   AssetsPath.bubble,
-                  height: size.height * 0.030,
+                  height: size.height * 0.025,
                   color: kWhiteColor,
                 ),
                 const SizedBox(
-                  height: 3.0,
+                  height: 2.0,
                 ),
-                Text(
+                const Text(
                   '128',
                   style: TextStyle(
                     fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0170,
+                    fontSize: 11.0,
                     fontWeight: FontWeight.w500,
                     color: kWhiteColor,
                   ),
@@ -189,17 +189,17 @@ class QwikActionButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   AssetsPath.reshare,
-                  height: size.height * 0.030,
+                  height: size.height * 0.025,
                   color: kWhiteColor,
                 ),
                 const SizedBox(
-                  height: 3.0,
+                  height: 2.0,
                 ),
-                Text(
+                const Text(
                   '128',
                   style: TextStyle(
                     fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0170,
+                    fontSize: 11.0,
                     fontWeight: FontWeight.w500,
                     color: kWhiteColor,
                   ),
@@ -222,17 +222,17 @@ class QwikActionButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   AssetsPath.share,
-                  height: size.height * 0.030,
+                  height: size.height * 0.025,
                   color: kWhiteColor,
                 ),
                 const SizedBox(
-                  height: 3.0,
+                  height: 2.0,
                 ),
-                Text(
+                const Text(
                   '128',
                   style: TextStyle(
                     fontFamily: kDefaultFont,
-                    fontSize: size.height * 0.0170,
+                    fontSize: 11.0,
                     fontWeight: FontWeight.w500,
                     color: kWhiteColor,
                   ),

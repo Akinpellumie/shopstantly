@@ -24,21 +24,30 @@ class _QwikSaleCardState extends State<QwikSaleCard> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        Container(
           height: widget.size.height * 0.45,
           width: widget.size.width,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
           child: Swiper(
             scrollDirection: Axis.horizontal,
-            viewportFraction: 0.8,
+            viewportFraction: 0.6,
+            curve: Curves.linearToEaseOut,
             loop: true,
             itemHeight: widget.size.height * 0.45,
             layout: SwiperLayout.STACK,
-            itemWidth: widget.size.width - 100,
+            itemWidth: widget.size.width - 70,
             itemBuilder: (context, index) {
               final image = widget._imageUrls[index];
-              return Image.network(
-                image,
-                fit: BoxFit.fitHeight,
+              return Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.network(
+                    image,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
               );
             },
             indicatorLayout: PageIndicatorLayout.SCALE,
