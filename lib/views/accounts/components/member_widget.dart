@@ -6,7 +6,6 @@ import '../../../utils/app_colors.dart';
 import '../../../utils/assets_path.dart';
 import '../../../utils/dimensions.dart';
 
-
 class MemberWidget extends StatelessWidget {
   const MemberWidget({
     Key? key,
@@ -41,51 +40,100 @@ class MemberWidget extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            UserProfileWidget(
-              size: size,
-              imagePath: AssetsPath.profileDp,
-              firstname: 'Lade',
-              lastname: 'Ajala',
-              role: 'Designer',
-              height: size.height * 0.100,
-            ),
-            UserProfileWidget(
-              size: size,
-              imagePath: AssetsPath.profileDp,
-              firstname: 'Oyinlade',
-              lastname: 'Ajala',
-              role: 'Designer',
-              height: size.height * 0.100,
-            ),
-            UserProfileWidget(
-              size: size,
-              imagePath: AssetsPath.profileDp,
-              firstname: 'Akinpelumi',
-              lastname: 'Ade',
-              role: 'Developer',
-              height: size.height * 0.100,
-            ),
-            UserProfileWidget(
-              size: size,
-              imagePath: AssetsPath.profileDp,
-              firstname: 'Emmanuel',
-              lastname: 'Ade',
-              role: 'CTO',
-              height: size.height * 0.100,
-            ),
-            UserProfileWidget(
-              size: size,
-              imagePath: AssetsPath.profileDp,
-              firstname: 'Tosin',
-              lastname: 'Ajewole',
-              role: 'Designer',
-              height: size.height * 0.100,
-            ),
-          ],
+        Container(
+          padding: const EdgeInsets.only(left: 0.0),
+          height: size.height * 0.140,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              UserProfileWidget(
+                size: size,
+                imagePath: AssetsPath.profileDp,
+                firstname: 'Lade',
+                lastname: 'Ajala',
+                role: 'Designer',
+                height: size.height * 0.080,
+              ),
+              UserProfileWidget(
+                size: size,
+                imagePath: AssetsPath.imageDp,
+                firstname: 'Oyinlade',
+                lastname: 'Ajala',
+                role: 'Designer',
+                height: size.height * 0.080,
+              ),
+              UserProfileWidget(
+                size: size,
+                imagePath: AssetsPath.image2,
+                firstname: 'Akinpelumi',
+                lastname: 'Ade',
+                role: 'Developer',
+                height: size.height * 0.080,
+              ),
+              UserProfileWidget(
+                size: size,
+                imagePath: AssetsPath.image1,
+                firstname: 'Emmanuel',
+                lastname: 'Ade',
+                role: 'CTO',
+                height: size.height * 0.080,
+              ),
+              UserProfileWidget(
+                size: size,
+                imagePath: AssetsPath.imageDp,
+                firstname: 'Tosin',
+                lastname: 'Ajewole',
+                role: 'Designer',
+                height: size.height * 0.080,
+              ),
+            ],
+          ),
         ),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   children: <Widget>[
+        //     UserProfileWidget(
+        //       size: size,
+        //       imagePath: AssetsPath.profileDp,
+        //       firstname: 'Lade',
+        //       lastname: 'Ajala',
+        //       role: 'Designer',
+        //       height: size.height * 0.100,
+        //     ),
+        //     UserProfileWidget(
+        //       size: size,
+        //       imagePath: AssetsPath.profileDp,
+        //       firstname: 'Oyinlade',
+        //       lastname: 'Ajala',
+        //       role: 'Designer',
+        //       height: size.height * 0.100,
+        //     ),
+        //     UserProfileWidget(
+        //       size: size,
+        //       imagePath: AssetsPath.profileDp,
+        //       firstname: 'Akinpelumi',
+        //       lastname: 'Ade',
+        //       role: 'Developer',
+        //       height: size.height * 0.100,
+        //     ),
+        //     UserProfileWidget(
+        //       size: size,
+        //       imagePath: AssetsPath.profileDp,
+        //       firstname: 'Emmanuel',
+        //       lastname: 'Ade',
+        //       role: 'CTO',
+        //       height: size.height * 0.100,
+        //     ),
+        //     UserProfileWidget(
+        //       size: size,
+        //       imagePath: AssetsPath.profileDp,
+        //       firstname: 'Tosin',
+        //       lastname: 'Ajewole',
+        //       role: 'Designer',
+        //       height: size.height * 0.100,
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }

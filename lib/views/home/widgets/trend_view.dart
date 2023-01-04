@@ -179,7 +179,7 @@ class _TrendViewState extends State<TrendView> {
             physics: const AlwaysScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: 4,
+            itemCount: imageUrls.length,
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               return GestureDetector(
@@ -199,7 +199,7 @@ class _TrendViewState extends State<TrendView> {
                       alignment: Alignment.bottomCenter,
                       children: [
                         Image.network(
-                          'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+                          imageUrls[index],
                           fit: BoxFit.cover,
                         ),
                         Positioned(
@@ -517,4 +517,10 @@ class _TrendViewState extends State<TrendView> {
             )
             .toList(),
       );
+  List<String> imageUrls = [
+    'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2NlYW58ZW58MHx8MHx8&w=1000&q=80',
+    AssetsPath.profileImageUrl,
+    'https://images.pexels.com/photos/2050994/pexels-photo-2050994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/1709003/pexels-photo-1709003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  ];
 }

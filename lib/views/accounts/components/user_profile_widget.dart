@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/dimensions.dart';
 
-
 class UserProfileWidget extends StatelessWidget {
-  const UserProfileWidget({
-    Key? key,
-    required this.size,
-    required this.lastname,
-    required this.firstname,
-    required this.role,
-    required this.height,
-    required this.imagePath
-  }) : super(key: key);
+  const UserProfileWidget(
+      {Key? key,
+      required this.size,
+      required this.lastname,
+      required this.firstname,
+      required this.role,
+      required this.height,
+      required this.imagePath})
+      : super(key: key);
 
   final Size size;
   final String lastname;
@@ -33,11 +32,13 @@ class UserProfileWidget extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: kProfileBannerColor,
-            border:
-                Border.all(color: Colors.white, width: 5.0),
+            border: Border.all(color: Colors.white, width: 5.0),
           ),
           child: ClipOval(
-            child: Image.asset(imagePath),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Text(
@@ -45,8 +46,8 @@ class UserProfileWidget extends StatelessWidget {
           style: TextStyle(
             color: kPrimaryTextColor,
             fontFamily: kDefaultFont,
-            fontWeight: FontWeight.bold,
-            fontSize: size.height * 0.0125,
+            fontWeight: FontWeight.w500,
+            fontSize: size.height * 0.0120,
           ),
         ),
         Text(
@@ -54,8 +55,8 @@ class UserProfileWidget extends StatelessWidget {
           style: TextStyle(
             color: kPrimaryTextColor,
             fontFamily: kDefaultFont,
-            fontWeight: FontWeight.bold,
-            fontSize: size.height * 0.0125,
+            fontWeight: FontWeight.w500,
+            fontSize: size.height * 0.0120,
           ),
         ),
         Text(
@@ -64,7 +65,7 @@ class UserProfileWidget extends StatelessWidget {
             color: kPlaceholderColor,
             fontFamily: kDefaultFont,
             fontWeight: FontWeight.normal,
-            fontSize: size.height * 0.0120,
+            fontSize: size.height * 0.0115,
           ),
         ),
       ],

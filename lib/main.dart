@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:is_first_run/is_first_run.dart';
 import 'package:provider/provider.dart';
 import 'package:shopstantly_app/utils/app_colors.dart';
 import 'package:shopstantly_app/utils/dimensions.dart';
