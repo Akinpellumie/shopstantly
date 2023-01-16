@@ -407,7 +407,7 @@ class SocialCardItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: size.width / 4.8,
+                          width: size.width / 5 - 10,
                           child: IconButton(
                             alignment: Alignment.centerLeft,
                             padding: EdgeInsets.zero,
@@ -443,7 +443,7 @@ class SocialCardItem extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: size.width / 4.8,
+                          width: size.width / 5 - 10,
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             icon: Row(
@@ -480,7 +480,7 @@ class SocialCardItem extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: size.width / 4.8,
+                          width: size.width / 5 - 10,
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () => {},
@@ -509,7 +509,7 @@ class SocialCardItem extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: size.width / 5 - 25,
+                          width: size.width / 5 - 10,
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () => {},
@@ -521,7 +521,7 @@ class SocialCardItem extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: size.width / 5 - 25,
+                          width: size.width / 5 - 10,
                           child: IconButton(
                             alignment: Alignment.centerRight,
                             padding: EdgeInsets.zero,
